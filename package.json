@@ -7,7 +7,7 @@
 
       "publishHtml": "npm run cleanAndGeneratePdfs && npm run clanAndGenerateHtml",      
   
-      "clanAndGenerateHtml": "rm -rf static_html && reveal-md scripts/ --static static_html --static-dirs=scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads --css style.css",
+      "clanAndGenerateHtml": "rm -rf docs && reveal-md scripts/ --static docs --static-dirs=scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads --css style.css",
       
       "cleanAndGeneratePdfs": "rm -rf scripts/pdfdownloads/* && npm run generateLecturePdfs && npm run generateSoftwareCraftsmanshipPdfs",
 
