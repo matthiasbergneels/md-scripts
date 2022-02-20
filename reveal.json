@@ -1,0 +1,9 @@
+{
+    "transition": "slide",
+    "transitionSpeed": "slow",
+    "controls": true,
+    "progress": true,
+    "slideNumber": "c/t",
+    "hash": true,
+    "previewLinks": true
+  }

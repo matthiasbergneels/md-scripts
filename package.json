@@ -1,0 +1,22 @@
+{
+  "name": "md-scripts",
+  "version": "1.0.0",
+  "description": "Markdown Scripts and publishing for programming lectures and presentations by Matthias",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthiasbergneels/md-scripts.git"
+  },
+  "author": "Matthias Berg-Neels",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthiasbergneels/md-scripts/issues"
+  },
+  "homepage": "https://github.com/matthiasbergneels/md-scripts#readme",
+  "dependencies": {
+    "reveal-md": "^5.3.2"
+  }
+}
