@@ -2,7 +2,7 @@
 title: Programmieren I
 theme: simple
 data-separator-notes: '^Note:'
-center: true
+center: false
 
 ---
 
