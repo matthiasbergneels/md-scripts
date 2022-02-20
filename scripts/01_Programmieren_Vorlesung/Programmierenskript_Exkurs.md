@@ -2,11 +2,13 @@
 title: Programmieren - Exkurse
 theme: simple
 data-separator-notes: '^Note:'
-center: false
+center: true
 ---
 
 # Programmieren - Exkurse
 ### Matthias Berg-Neels
+
+> [Download Skript](../pdfdownloads/ProgrammierenSkript_Exkurs.pdf)
 
 ----
 ## Inhalt
@@ -14,6 +16,7 @@ center: false
 * Naming conventions
 * Implizite Typisierung mittels ```var```
 * Unit Tests
+* (Innereklassen)
 * (Optionals)
 * (Programming Principals)
 

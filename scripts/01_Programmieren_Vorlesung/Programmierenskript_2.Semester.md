@@ -2,11 +2,13 @@
 title: Programmieren II
 theme: simple
 data-separator-notes: '^Note:'
-center: false
+center: true
 ---
 
-# Programmieren 2 - Fortgeschrittene Programmierung
+# Programmieren II
 ### Matthias Berg-Neels
+
+> [Download Skript](../pdfdownloads/ProgrammierenSkript_2Semester.pdf)
 
 ----
 ## Kapitelübersicht - Programmieren 2
@@ -20,6 +22,9 @@ center: false
       <li>Algorithmen</li>
 </ol>
 
+### Exkurse
+* Unit Testing
+* Innere Klassen
 
 ---
 # Exkurs

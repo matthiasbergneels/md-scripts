@@ -3,23 +3,19 @@ title: Programmieren I
 theme: simple
 data-separator-notes: '^Note:'
 center: true
+
 ---
 
 # Programmieren I
 ### Matthias Berg-Neels
+
+> [Download Skript](../pdfdownloads/ProgrammierenSkript_1Semester.pdf)
 
 ----
 ## Vorstellungsrunde
 * Name
 * Firma
 * Guess what?
-
-Note: 
-geht euch gar nichts an!
-
-Alles was hier steht! :P 
-
-Hihi
 
 
 ----
@@ -40,6 +36,7 @@ Hihi
 
 ### Exkurse
 * Naming conventions
+* Implizite Typisierung mittels ```var```
 * Unit Testing
 
 ----
@@ -57,6 +54,7 @@ Hihi
 <li>ZUSER, W., BIFFL, S., GRECHENING, T. und KÖHLE, M.: Software Engineering mit UML und dem Unified Process. Pearson Studium, 2001. ISBN 3-8273-7027-2</li>
 <li>RATZ / SCHULMEISTER-ZIMOLONG / SEESE / WIESENBERGER: Grundkurs Programmieren in Java. Hanser, 8. Auflage, 2018. ISBN 978-3-446-45212-1</li>
 </ul><!-- .element style="font-size: 0.5em;" -->
+
 ---
 # Kapitel 1
 # Einführung
