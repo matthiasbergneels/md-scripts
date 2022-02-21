@@ -19,7 +19,7 @@
       "generateSoftwareCraftsmanshipPdfs": "npm run pdf2java && npm run pdf2junit && npm run pdf2thereader",
       "pdf2java": "reveal-md scripts/02_SoftwareCraftsmanship/javaevolution.md --print scripts/pdfdownloads/SCSC@IoT_Java9-16.pdf --print-size 297x210mm --css style.css",
       "pdf2junit": "reveal-md scripts/02_SoftwareCraftsmanship/junit5.md --print scripts/pdfdownloads/SCSC@IoT_JUnit5.pdf --print-size 297x210mm --css style.css",
-      "pdf2thereader": "reveal-md scripts/02_SoftwareCraftsmanship/thereader.md --print scripts/pdfdownloads/SCSC@IoT_Bedtime_stories_-_we_dont_need_heros.pdf --print-size 297x210mm --css style.css"
+      "pdf2thereader": "reveal-md scripts/02_SoftwareCraftsmanship/thereader.md --print scripts/pdfdownloads/SCSC@IoT_Bedtime_stories.pdf --print-size 297x210mm --css style.css"
   },
   "repository": {
     "type": "git",
