@@ -17,6 +17,7 @@ center: false
 * Implizite Typisierung mittels ```var```
 * Unit Tests
 * (Innereklassen)
+* (Die Evolution von Java)
 * (Optionals)
 * (Programming Principals)
 
