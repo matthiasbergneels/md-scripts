@@ -3,4 +3,4 @@ Markdown Scripts and publishing for programming lectures and presentations by Ma
 
 
 ## Publishing
-Scripts are published on GitHub Pages --> [https://matthiasbergneels.github.io/md-scripts/](https://matthiasbergneels.github.io/md-scripts/){:target="_blank"}
+Scripts are published on GitHub Pages --> <a href="https://matthiasbergneels.github.io/md-scripts/" target="_blank">https://matthiasbergneels.github.io/md-scripts/</a>
