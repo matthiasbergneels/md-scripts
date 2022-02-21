@@ -80,6 +80,7 @@ center: false
 ---
 ## Ziel der Programmierung
 Umsetzung eines gegebenen oder selbstentwickelten Algorithmus in ein lauffähiges Computerprogramm
+
 <img src="img/01einfuehrung_01ziel.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 
 ----
