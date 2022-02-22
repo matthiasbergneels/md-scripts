@@ -3,23 +3,18 @@
   "version": "1.0.0",
   "description": "Markdown Scripts and publishing for programming lectures and presentations by Matthias",
   "scripts": {
-      "start": "reveal-md scripts/ --css scripts/_assets/style.css",
-
-      "publishHtml": "npm run cleanAndGeneratePdfs && npm run clanAndGenerateHtml",      
-  
-      "clanAndGenerateHtml": "rm -rf docs && reveal-md scripts/ --static docs --static-dirs=scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads --css scripts/_assets/style.css && touch docs/.nojekyll",
-      
-      "cleanAndGeneratePdfs": "rm -rf scripts/pdfdownloads/* && npm run generateLecturePdfs && npm run generateSoftwareCraftsmanshipPdfs",
-
-      "generateLecturePdfs": "npm run pdf1semester && npm run pdf2semester && npm run pdfexkurs",
-      "pdf1semester": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_1.Semester.md --print scripts/pdfdownloads/ProgrammierenSkript_1Semester.pdf --print-size 297x210mm --css scripts/_assets/style.css",
-      "pdf2semester": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_2.Semester.md --print scripts/pdfdownloads/ProgrammierenSkript_2Semester.pdf --print-size 297x210mm --css scripts/_assets/style.css",
-      "pdfexkurs": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_Exkurs.md --print scripts/pdfdownloads/ProgrammierenSkript_Exkurs.pdf --print-size 297x210mm --css scripts/_assets/style.css",
-      
-      "generateSoftwareCraftsmanshipPdfs": "npm run pdf2java && npm run pdf2junit && npm run pdf2thereader",
-      "pdf2java": "reveal-md scripts/02_SoftwareCraftsmanship/javaevolution.md --print scripts/pdfdownloads/SCSC@IoT_Java9-16.pdf --print-size 297x210mm --css scripts/_assets/style.css",
-      "pdf2junit": "reveal-md scripts/02_SoftwareCraftsmanship/junit5.md --print scripts/pdfdownloads/SCSC@IoT_JUnit5.pdf --print-size 297x210mm --css scripts/_assets/style.css",
-      "pdf2thereader": "reveal-md scripts/02_SoftwareCraftsmanship/thereader.md --print scripts/pdfdownloads/SCSC@IoT_Bedtime_stories.pdf --print-size 297x210mm --css scripts/_assets/style.css"
+    "start": "reveal-md scripts/ --css scripts/_assets/style.css",
+    "publishHtml": "npm run cleanAndGeneratePdfs && npm run clanAndGenerateHtml",
+    "clanAndGenerateHtml": "rm -rf docs && reveal-md scripts/ --static docs --static-dirs=scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads --css scripts/_assets/style.css && touch docs/.nojekyll",
+    "cleanAndGeneratePdfs": "rm -rf scripts/pdfdownloads/* && npm run generateLecturePdfs && npm run generateSoftwareCraftsmanshipPdfs",
+    "generateLecturePdfs": "npm run pdf1semester && npm run pdf2semester && npm run pdfexkurs",
+    "pdf1semester": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_1.Semester.md --print scripts/pdfdownloads/ProgrammierenSkript_1Semester.pdf --print-size 297x210mm --css scripts/_assets/style.css",
+    "pdf2semester": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_2.Semester.md --print scripts/pdfdownloads/ProgrammierenSkript_2Semester.pdf --print-size 297x210mm --css scripts/_assets/style.css",
+    "pdfexkurs": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_Exkurs.md --print scripts/pdfdownloads/ProgrammierenSkript_Exkurs.pdf --print-size 297x210mm --css scripts/_assets/style.css",
+    "generateSoftwareCraftsmanshipPdfs": "npm run pdf2java && npm run pdf2junit && npm run pdf2thereader",
+    "pdf2java": "reveal-md scripts/02_SoftwareCraftsmanship/javaevolution.md --print scripts/pdfdownloads/SCSC@IoT_Java9-16.pdf --print-size 297x210mm --css scripts/_assets/style.css",
+    "pdf2junit": "reveal-md scripts/02_SoftwareCraftsmanship/junit5.md --print scripts/pdfdownloads/SCSC@IoT_JUnit5.pdf --print-size 297x210mm --css scripts/_assets/style.css",
+    "pdf2thereader": "reveal-md scripts/02_SoftwareCraftsmanship/thereader.md --print scripts/pdfdownloads/SCSC@IoT_Bedtime_stories.pdf --print-size 297x210mm --css scripts/_assets/style.css"
   },
   "repository": {
     "type": "git",
@@ -32,6 +27,6 @@
   },
   "homepage": "https://github.com/matthiasbergneels/md-scripts#readme",
   "dependencies": {
-    "reveal-md": "^4.2.0"
+    "reveal-md": "^5.3.2"
   }
 }

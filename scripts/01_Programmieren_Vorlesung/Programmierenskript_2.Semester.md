@@ -40,7 +40,7 @@ center: false
 ----
 ## Kapitelübersicht - Programmieren 2
 <ol start="8">
-      <li>**Exception Handling**</li>
+      <li><b>Exception Handling</b></li>
       <li>Collection Framework</li>
       <li>Swing</li>
       <li>Optional: Input- & Output-Stream</li>
@@ -63,7 +63,7 @@ center: false
   <table>
   <tr style="vertical-align:middle">
   <td width=50%>
-  **Compiler-Fehler**
+  <b>Compiler-Fehler</b>
   <ul>
   <li>syntaktische Fehler werden beim Kompilieren erkannt</li>
   </ul>
@@ -136,7 +136,8 @@ public class Auto {
   // ...
   public void fahren() throws TankLeer {
     while (true) {
-      if (fuel > 0) { fuel -= 6;
+      if (fuel > 0) { 
+        fuel -= 6;
         tagesKM += 100;
         kmCount += 100;
       } else {
@@ -238,27 +239,22 @@ at prog2.demos.exceptions.Auto.fahren(Auto.java:21)
 <table width=100%>
 <tr><td width=50%>Checked</td><td>Unchecked</td></tr>
 <tr><td>
-<ul>
-<li>müssen verarbeitet werden
-<ul>
-<li>abfangen mit ```try / catch```</li>
-<li>weiterleiten mit ```throws```</li>
-</ul>
-<li>werden explizit ausgelöst ```throw```</li>
-</ul>
+
++ müssen verarbeitet werden
+  * abfangen mit try / catch
+  * weiterleiten mit ```throws```
+* werden explizit ausgelöst ```throw```
+
 </td><td>
-<ul>
-<li>treten zur Laufzeit auf (RuntimeException)</li>
-<li>werden automatisch an den Aufrufer weitergeben</li>
-<li>können abgefangen werden ```try / catch```</li>
-<li>oftmals logische Programmfehler
-<ul>
-<li>```Division by Zero```</li>
-<li>```NullPointerException```</li>
-<li>```IndexOutOfBoundsException```</li>
-</ul>
-</li>
-</ul>
+
+* treten zur Laufzeit auf (RuntimeException)
+* werden automatisch an den Aufrufer weitergeben
+* können abgefangen werden ```try / catch```
+* oftmals logische Programmfehler
+  * ```Division by Zero```
+  * ```NullPointerException```
+  * ```IndexOutOfBoundsException```
+
 </td></tr>
 
 </table>
@@ -292,219 +288,7 @@ Assertions.assertDoesNotThrow(<Executable Interface> [, <Message>]);
 # Exkurs
 # Innere Klassen
 
-> von inneren Klassen hin zu Lambda-Funktionen
-
-----
-
-## Arten von inneren Klassen
-
-<div>
-* Innere Top-Level Klasse
-  * Geschachtelte statische Klasse innerhalb einer anderen Klasse mit Bezeichner (Klassenname)
-  * können innerhalb und außerhalb (abhängig von der Sichtbarkeit) der Klasse verwendet werden
-* Innere Element Klasse
-  * Geschachtelte Klasse innerhalb einer anderen Klasse mit Bezeichner (Klassenname)
-  * können innerhalb und außerhalb (abhängig von der Sichtbarkeit) der Klasse verwendet werden
-    * nur im Kontext eines Objekts der äußeren Klasse
-* Innere lokale Klasse
-  * Geschachtelte Klasse innerhalb einer Methode mit Bezeichner (Klassenname)
-  * können nur innerhalb der Methode (Scope) genutzt werden
-* Innere anonyme Klasse
-  * geschachtelte Klasse innerhalb einer anderen Klasse / Methode **ohne** Bezeichner
-  * werden direkt einer Referenz zugwiesen
-  * basieren immer auf einer Klasse (erweitern) oder einem Interface (implementieren)
-</div><!-- .element style="font-size: 0.8em;" -->
-
-----
-## Innere Top-Level-Klasse
-
-<div>
-```Java
-package main.inner.toplevelclass;
-
-public class OuterClass {
-
-    // Innerhalnb einer anderen Klasse definierte Top-Level Klasse
-    public static class InnerTopLevelClass{
-        void print(String printText){
-            System.out.println(this.getClass().getName() + " " + printText);
-        }
-    }
-
-    private static void printFromInnerTopLevelClass(String printText) {
-        OuterClass.InnerTopLevelClass myInnerTopLevelClass = new OuterClass.InnerTopLevelClass();
-        myInnerTopLevelClass.print(printText);
-    }
-
-    public static void main(String[] args) {
-        OuterClass myClass = new OuterClass();
-
-        System.out.println("OuterClass: " + myClass.getClass().getName());
-        OuterClass.printFromInnerTopLevelClass("Inner Top-Level Class: HelloWorld");
-    }
-}
-```
-</div><!-- .element style="font-size: 0.9em;" -->
-
-----
-## Innere Element-Klasse
-
-<div>
-```Java
-package main.inner.elementclass;
-
-public class OuterClass {
-
-    // Innerhalb einer andere Klasse definierte Element Klasse
-    public class InnerElementClass {
-        void print(String printText){
-            System.out.println(this.getClass().getName() + " " + printText);
-        }
-    }
-
-    void printFromInnerElementClass(String printText){
-        OuterClass.InnerElementClass myInnerElementClass = this.new InnerElementClass();
-
-        myInnerElementClass.print(printText);
-    }
-
-    public static void main(String[] args) {
-        OuterClass myClass = new OuterClass();
-
-        System.out.println("OuterClass: " + myClass.getClass().getName());
-        myClass.printFromInnerElementClass("Inner Element Class: HelloWorld");
-    }
-}
-```
-</div><!-- .element style="font-size: 0.9em;" -->
-
-----
-## Innere lokale Klasse
-
-<div>
-```Java
-package main.inner.local;
-
-public class OuterClass {
-
-    void printFromLocalInnerClass(String printText){
-        // innerhalb einer Methode (Scope) definierte Klasse
-        class LocalInnerClass{
-            void print(String printText){
-                System.out.println(this.getClass().getName() + " " + printText);
-            }
-        }
-
-        LocalInnerClass myLocalInnerClass = new LocalInnerClass();
-
-        myLocalInnerClass.print(printText);
-    }
-
-    public static void main(String[] args) {
-        OuterClass myClass = new OuterClass();
-
-        System.out.println("OuterClass: " + myClass.getClass().getName());
-        myClass.printFromLocalInnerClass("local inner Class: HelloWorld");
-    }
-}
-```
-</div><!-- .element style="font-size: 0.9em;" -->
-
-----
-## Innere anonyme Klasse
-
-<div>
-```Java
-package main.inner.anonym;
-
-public class OuterClass {
-
-    private static interface Printable{
-        void print(String printText);
-    }
-
-    void printFromAnonymousInnerClass(String printText) {
-        // ohne eigenen Bezeichner definiert (kann nicht wiederverwendet werden)
-        // erweitert eine bestehende Klasse oder implementiert ein Interface
-        OuterClass.Printable myAnonymousInnerClass = new OuterClass.Printable() {
-            @Override
-            public void print(String printText) {
-                System.out.println(this.getClass().getName() + " " + printText);
-            }
-        };
-
-        myAnonymousInnerClass.print(printText);
-    }
-
-    public static void main(String[] args) {
-        OuterClass myClass = new OuterClass();
-
-        System.out.println("OuterClass: " + myClass.getClass().getName());
-        myClass.printFromAnonymousInnerClass("Inner anonymous Class: HelloWorld");
-    }
-}
-```
-</div><!-- .element style="font-size: 0.75em;" -->
-
-----
-## Lambda Funktionen (anonyme Funktionen)
-
-<div>
-* seit Java 8
-* reine Funktionen ohne eigene Klasse
-* Definition: ```()->{}```
-* implementieren ein funktionales Interface (Interface mit **einer** Methode)
-  * ersetzen (unter dieser Voraussetzung) anonyme Klassen
-* haben Zugriff auf den umliegenden Kontext (finale / effektiv finale Variablen)
-  * in diesem Zusammenhang auch als "Closure" bezeichnet
-* verkürzte Schreibweise durch Herleitung der Informationen aus Interface-Definition
-* werden an eine Referenz übergeben (direkt oder indirekt)
-</div><!-- .element style="font-size: 0.8em;" -->
-
-```Java
-Interface1 lambda1 = parameter -> Anweisung;
-Interface2 lambda2 = (parameter1, parameter2) -> Anweisung;
-Interface3 lambda3 = () -> {
-  Anweisung1;
-  Anweisung2;
-  Anweisung3;
-}
-
-```
-
-----
-## Lambda Funktion
-
-<div>
-```Java
-package main.lambda;
-
-public class OuterClass {
-
-    private static interface Printable{
-        void print(String printText);
-    }
-
-    void printFromLambdaFunction(String printText) {
-        // Lambda Funktionen sind "reine Funktionen" ohne Klasse
-        // nutzen immer ein funktionales Interface (nur eine Methode)
-        // zur Implementierung
-        OuterClass.Printable myLambdaPrintFunction = (lambdaPrintText) -> {
-            System.out.println(this.getClass().getName() + " " + lambdaPrintText);
-        };
-
-        myLambdaPrintFunction.print(printText);
-    }
-
-    public static void main(String[] args) {
-        OuterClass myClass = new OuterClass();
-
-        System.out.println("OuterClass: " + myClass.getClass().getName());
-        myClass.printFromLambdaFunction("Lambda Function: HelloWorld");
-    }
-}
-```
-</div><!-- .element style="font-size: 0.8em;" -->
+> siehe "Exkurs" Skript
 
 ---
 # Kapitel 9
@@ -514,7 +298,7 @@ public class OuterClass {
 ## Kapitelübersicht - Programmieren 2
 <ol start="8">
       <li>Exception Handling</li>
-      <li>**Collection Framework**</li>
+      <li><b>Collection Framework</b></li>
       <li>Swing</li>
       <li>Optional: Input- & Output-Stream</li>
       <li>Datenstrukturen</li>
@@ -594,6 +378,7 @@ werden, bleibt erhalten
 ## Wesentliche Methoden im Umgang mit Listen
 
 <div>
+
 * ```add(int i, Object o)``` oder ```add(Object o)``` fügt neue Objekte in die Liste ein
 * ```set(int i, Object o)``` überschreibt das Objekt an der Stelle i mit dem Objekt o
 * ```get(int i)``` liefert das Objekt an der Stelle i zurück
@@ -628,6 +413,7 @@ Wichtige Iterator-Methoden
 ## Beispiel für eine List mit Iteratoren
 
 <div>
+
 ```Java
 import java.util.List;
 import java.util.ArrayList;
@@ -682,6 +468,7 @@ public class ListDemo {
 ## Beispiel für eine Menge mit Iteratoren
 
 <div>
+
 ```Java
 import java.util.Set;
 import java.util.TreeSet;
@@ -875,8 +662,8 @@ public class DemoMenge1 {
 
 <table>
 <tr>
-  <th width=50%>direkte Sub-Klasse von ```Object```</th>
-  <th>indirekte Sub-Klasse von ```Object```</th>
+  <th width=50%>direkte Sub-Klasse von Object</th>
+  <th>indirekte Sub-Klasse von Object</th>
 </tr>
 <tr>
   <td>
@@ -902,6 +689,7 @@ public class DemoMenge1 {
 ### direkte Subklasse von ```Object```
 
 <div>
+
 ```Java
 public class Haustier {
   private String art;
@@ -941,6 +729,7 @@ public class Haustier {
 ### indirekte Subklasse von ```Object```
 
 <div>
+
 ```Java
 public class Hund extends Haustier {
   private String rasse;
@@ -971,6 +760,7 @@ public class Hund extends Haustier {
 ----
 ## Zusammenhang ```hashCode()``` und ```equals()```
 <div>
+
 * Verwendung für die Verwaltung der Einträge in hash-basierten Datencontainern (HashSet, HashMap, ...)
 * korrekte Verwaltung der Einträge basiert auf folgender Bedingung (<a target=_blank href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Object.html#hashCode()">hashCode-Contract</a>)
   * wenn ```o1.equals(o2)``` den Wert ```true``` liefert,
@@ -1086,6 +876,7 @@ public class Haustier {
 ## Wesentliche Methoden im Umgang mit Maps
 
 <div>
+
 * ```keySet()``` liefert ein Set der Schlüssel einer Map ohne Duplikate zurück
 * ```values()``` liefert eine Collection der Werte einer Map zurück (Duplikate erlaubt)
 * ```put(Object k, Object v)``` nimmt ein Schlüssel-Werte-Paar in die Map auf
@@ -1101,6 +892,7 @@ Schlüssel k ein Eintrag in der Map enthalten ist
 ## Beispiel für eine TreeMap mit Iteratoren
 
 <div>
+
 ```Java
 import java.util.Set;
 import java.util.Iterator;
@@ -1136,6 +928,7 @@ public class DemoMap {
 ## Umgang mit Wrapper-Klassen
 
 <div>
+
 * statt elementarer Datentypen werden Objekte erwartet (z.B. in Datencontainern)
 * um elementare Datentypen in Objekten zu kapseln, gibt es die Wrapper-Klassen
   * stellen Methoden zur Ein- und Ausgabe sowie zur Manipulation zur Verfügung
@@ -1156,7 +949,7 @@ public class DemoMap {
 <ol start="8">
       <li>Exception Handling</li>
       <li>Collection Framework</li>
-      <li>**Swing**</li>
+      <li><b>Swing</b></li>
       <li>Optional: Input- & Output-Stream</li>
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
@@ -1298,6 +1091,7 @@ public class DemoFlow {
 </div><!-- .element align="center" -->
 
 <div>
+
 * Hauptfenster = BorderLayout
 * rot und grün umrahmtes Panel =FlowLayout
 * blau umrahmte Panels = GridLayout, wobei jedes einzelne Feld auf einem eigenen Panel mit FlowLayout liegt
@@ -1818,6 +1612,7 @@ public class DemoJMenuBar {
 
 
 <div>
+
 ```Java
 import javax.swing.JButton;
 
@@ -1848,7 +1643,7 @@ public class DemoToolTip {
       <li>Exception Handling</li>
       <li>Collection Framework</li>
       <li>Swing</li>
-      <li>**Optional: Input- & Output-Streams**</li>
+      <li><b>Optional: Input- & Output-Streams</b></li>
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
 </ol>
@@ -1914,6 +1709,7 @@ public class AusgabeVerzeichnis {
 ## Informationen über Verzeichnisse
 
 <div>
+
 ```Java
 import java.io.File;
 
@@ -1936,6 +1732,7 @@ public class VerzeichnisEigenschaften {
 </div><!-- .element style="font-size: 0.8em;" -->
 
 <div>
+
 * ```isDirectory()``` überprüft, ob das Objekt ein Verzeichnis ist
 * ```getParent()``` liefert Pfad des Vorgängers als String zurück
 * ```getPath()``` liefert den Pfadnamen als String zurück
@@ -1948,6 +1745,7 @@ public class VerzeichnisEigenschaften {
 ## Informationen über Dateien
 
 <div>
+
 ```Java
 import java.io.File;
 
@@ -1972,6 +1770,7 @@ public class DateiEigenschaften {
 </div><!-- .element style="font-size: 0.8em;" -->
 
 <div>
+
 * ```isFile()``` überprüft, ob das Objekt eine Datei ist
 * ```length()``` gibt die Länge der Datei in Byte an
 * ```canRead()``` überprüft die Leseberechtigung
@@ -1983,6 +1782,7 @@ public class DateiEigenschaften {
 ## Umgang mit Verzeichnissen
 
 <div>
+
 ```Java
 import java.io.File;
 
@@ -2018,6 +1818,7 @@ public class Verzeichnis {
 ## Umgang mit Dateien
 
 <div>
+
 ```Java
 import java.io.File;
 import java.io.IOException;
@@ -2231,6 +2032,7 @@ Schreiben in Dateien
 ## Lesen aus Textdateien
 
 <div>
+
 ```Java
 import java.io.*;
 
@@ -2265,6 +2067,7 @@ public class LesenAusDatei {
 ## Schreiben in Textdatei
 
 <div>
+
 ```Java
 import java.io.*;
 
@@ -2321,6 +2124,7 @@ public class SchreibenInDatei {
 ## Einfache Möglichkeit zum Kopieren von Dateien
 
 <div>
+
 ```Java
 import java.io.*;
 
@@ -2351,6 +2155,7 @@ public class DateiKopieren {
 ## Kopieren von Dateien über Puffer
 
 <div>
+
 ```Java
 import java.io.*;
 
@@ -2407,6 +2212,7 @@ Umsetzung in Java
 ## Serialisierungs-Beispiel: Person
 
 <div>
+
 ```Java
 import java.io.Serializable;
 
@@ -2442,6 +2248,7 @@ public class Person implements Serializable {
 ## ```ObjectOutputStream```: Speichern von Personen Objekten
 
 <div>
+
 ```Java
 import java.io.*;
 
@@ -2472,6 +2279,7 @@ public class PersonSaveExample {
 ## ```ObjectInputStream```: Lesen von Personen-Objekten
 
 <div>
+
 ```Java
 import java.io.*;
 
@@ -2525,6 +2333,7 @@ Umsetzung in Java
 ## Texte in Java-Properties-Dateien speichern (!)
 
 <div>
+
 ```Java
 import java.io.*;
 import java.util.*;
@@ -2565,6 +2374,7 @@ Language=Deutsch
 ## Texte aus Java-Properties-Dateien lesen (!)
 
 <div>
+
 ```Java
 import java.io.*;
 import java.util.*;
@@ -2695,6 +2505,7 @@ Beispiel
 ## Beispiel für den Umgang mit ResourceBundle
 
 <div>
+
 ```Java
 import java.util.*;
 
@@ -2781,7 +2592,7 @@ alias=This is the english version.
       <li>Collection Framework</li>
       <li>Swing</li>
       <li>Optional: Input- & Output-Streams</li>
-      <li>**Datenstrukturen**</li>
+      <li><b>Datenstrukturen</b></li>
       <li>Algorithmen</li>
 </ol>
 
@@ -2818,6 +2629,7 @@ Funktionen
 ## Doppelt Verkettete Liste (Double Linked List)
 
 <div>
+
 Funktionen
 * add() / addFirst() / addLast() / addAfter() / addBefore()
 * remove(by object / by search attributes)
@@ -2837,13 +2649,14 @@ Parallel Suche: O(n/2) -> O(n)
 ## Stapel (Stack)
 
 <div>
+
 Funktionen
 * push()
 * pop()
 * peek()
 </div><!-- .element style="font-size: 0.8em;" -->
 
-<div>
+<div align="center">
 <img src="img/12datenstrukturen_03stack.png" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
 
@@ -2854,8 +2667,9 @@ Funktionen
 * enqueue()
 * dequeue()
 
-<div>
+<div align="center">
 <img src="img/12datenstrukturen_04queue.png" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+
 </div><!-- .element align="center" -->
 
 ---
@@ -2865,6 +2679,7 @@ Funktionen
 ## Binär-Baum (Binary Tree)
 
 <div>
+
 Funktionen
 * insert()
 * find(by search attribute)
@@ -2872,7 +2687,7 @@ Funktionen
 * Remove(by search attribute / object)
 </div><!-- .element style="font-size: 0.8em;" -->
 
-<div>
+<div align="center">
 <img src="img/12datenstrukturen_05binarytree.png" width=30% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
 
@@ -2932,11 +2747,5 @@ Eigenschaften von rekursiver Programmierung
       <li>Swing</li>
       <li>Optional: Input- & Output-Streams</li>
       <li>Datenstrukturen</li>
-      <li>**Algorithmen**</li>
+      <li><b>Algorithmen</b></li>
 </ol>
-
----
-## Principal Collection
-* KISS
-* DRY
-* FIRST

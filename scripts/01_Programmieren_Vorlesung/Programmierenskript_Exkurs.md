@@ -16,7 +16,7 @@ center: false
 * Naming conventions
 * Implizite Typisierung mittels ```var```
 * Unit Tests
-* (Innereklassen)
+* Innere Klassen
 * (Die Evolution von Java)
 * (Optionals)
 * (Programming Principals)
@@ -141,6 +141,7 @@ getFamilyName();
 ## Ein Beispiel aus dem echten Leben (/ produktiven Code)
 
 <div>
+
 ```Java
 
 package com.sap.iot.rules.ruleprocessorstream.cache.repository;
@@ -405,6 +406,234 @@ class CalculatorTest {
 * **Self-Validating**: Ein Unit-Test soll entweder fehlschlagen oder gut gehen. Diese Entscheidung muss der Test treffen und als Ergebnis liefern. Es dürfen keine manuellen Prüfungen nötig sein.
 * **Timely**: Man soll Unit-Tests vor der Entwicklung des Produktivcodes schreiben.
 
+---
+
+# Innere Klassen
+
+> von inneren Klassen hin zu Lambda-Funktionen
+
+----
+
+## Arten von inneren Klassen
+
+<div>
+
+* Innere Top-Level Klasse
+  * Geschachtelte statische Klasse innerhalb einer anderen Klasse mit Bezeichner (Klassenname)
+  * können innerhalb und außerhalb (abhängig von der Sichtbarkeit) der Klasse verwendet werden
+* Innere Element Klasse
+  * Geschachtelte Klasse innerhalb einer anderen Klasse mit Bezeichner (Klassenname)
+  * können innerhalb und außerhalb (abhängig von der Sichtbarkeit) der Klasse verwendet werden
+    * nur im Kontext eines Objekts der äußeren Klasse
+* Innere lokale Klasse
+  * Geschachtelte Klasse innerhalb einer Methode mit Bezeichner (Klassenname)
+  * können nur innerhalb der Methode (Scope) genutzt werden
+* Innere anonyme Klasse
+  * geschachtelte Klasse innerhalb einer anderen Klasse / Methode **ohne** Bezeichner
+  * werden direkt einer Referenz zugwiesen
+  * basieren immer auf einer Klasse (erweitern) oder einem Interface (implementieren)
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
+## Innere Top-Level-Klasse
+
+<div>
+
+```Java
+package main.inner.toplevelclass;
+
+public class OuterClass {
+
+    // Innerhalnb einer anderen Klasse definierte Top-Level Klasse
+    public static class InnerTopLevelClass{
+        void print(String printText){
+            System.out.println(this.getClass().getName() + " " + printText);
+        }
+    }
+
+    private static void printFromInnerTopLevelClass(String printText) {
+        OuterClass.InnerTopLevelClass myInnerTopLevelClass = new OuterClass.InnerTopLevelClass();
+        myInnerTopLevelClass.print(printText);
+    }
+
+    public static void main(String[] args) {
+        OuterClass myClass = new OuterClass();
+
+        System.out.println("OuterClass: " + myClass.getClass().getName());
+        OuterClass.printFromInnerTopLevelClass("Inner Top-Level Class: HelloWorld");
+    }
+}
+```
+
+</div><!-- .element style="font-size: 0.9em;" -->
+
+----
+## Innere Element-Klasse
+
+<div>
+
+```Java
+
+package main.inner.elementclass;
+
+public class OuterClass {
+
+    // Innerhalb einer andere Klasse definierte Element Klasse
+    public class InnerElementClass {
+        void print(String printText){
+            System.out.println(this.getClass().getName() + " " + printText);
+        }
+    }
+
+    void printFromInnerElementClass(String printText){
+        OuterClass.InnerElementClass myInnerElementClass = this.new InnerElementClass();
+
+        myInnerElementClass.print(printText);
+    }
+
+    public static void main(String[] args) {
+        OuterClass myClass = new OuterClass();
+
+        System.out.println("OuterClass: " + myClass.getClass().getName());
+        myClass.printFromInnerElementClass("Inner Element Class: HelloWorld");
+    }
+}
+```
+
+</div><!-- .element style="font-size: 0.9em;" -->
+
+----
+## Innere lokale Klasse
+
+<div>
+
+```Java
+package main.inner.local;
+
+public class OuterClass {
+
+    void printFromLocalInnerClass(String printText){
+        // innerhalb einer Methode (Scope) definierte Klasse
+        class LocalInnerClass{
+            void print(String printText){
+                System.out.println(this.getClass().getName() + " " + printText);
+            }
+        }
+
+        LocalInnerClass myLocalInnerClass = new LocalInnerClass();
+
+        myLocalInnerClass.print(printText);
+    }
+
+    public static void main(String[] args) {
+        OuterClass myClass = new OuterClass();
+
+        System.out.println("OuterClass: " + myClass.getClass().getName());
+        myClass.printFromLocalInnerClass("local inner Class: HelloWorld");
+    }
+}
+```
+
+</div><!-- .element style="font-size: 0.9em;" -->
+
+----
+## Innere anonyme Klasse
+
+<div>
+
+```Java
+package main.inner.anonym;
+
+public class OuterClass {
+
+    private static interface Printable{
+        void print(String printText);
+    }
+
+    void printFromAnonymousInnerClass(String printText) {
+        // ohne eigenen Bezeichner definiert (kann nicht wiederverwendet werden)
+        // erweitert eine bestehende Klasse oder implementiert ein Interface
+        OuterClass.Printable myAnonymousInnerClass = new OuterClass.Printable() {
+            @Override
+            public void print(String printText) {
+                System.out.println(this.getClass().getName() + " " + printText);
+            }
+        };
+
+        myAnonymousInnerClass.print(printText);
+    }
+
+    public static void main(String[] args) {
+        OuterClass myClass = new OuterClass();
+
+        System.out.println("OuterClass: " + myClass.getClass().getName());
+        myClass.printFromAnonymousInnerClass("Inner anonymous Class: HelloWorld");
+    }
+}
+```
+</div><!-- .element style="font-size: 0.75em;" -->
+
+----
+## Lambda Funktionen (anonyme Funktionen)
+
+<div>
+
+* seit Java 8
+* reine Funktionen ohne eigene Klasse
+* Definition: ```()->{}```
+* implementieren ein funktionales Interface (Interface mit **einer** Methode)
+  * ersetzen (unter dieser Voraussetzung) anonyme Klassen
+* haben Zugriff auf den umliegenden Kontext (finale / effektiv finale Variablen)
+  * in diesem Zusammenhang auch als "Closure" bezeichnet
+* verkürzte Schreibweise durch Herleitung der Informationen aus Interface-Definition
+* werden an eine Referenz übergeben (direkt oder indirekt)
+</div><!-- .element style="font-size: 0.8em;" -->
+
+```Java
+Interface1 lambda1 = parameter -> Anweisung;
+Interface2 lambda2 = (parameter1, parameter2) -> Anweisung;
+Interface3 lambda3 = () -> {
+  Anweisung1;
+  Anweisung2;
+  Anweisung3;
+}
+
+```
+
+----
+## Lambda Funktion
+
+<div>
+
+```Java
+package main.lambda;
+
+public class OuterClass {
+
+    private static interface Printable{
+        void print(String printText);
+    }
+
+    void printFromLambdaFunction(String printText) {
+        // Lambda Funktionen sind "reine Funktionen" ohne Klasse
+        // nutzen immer ein funktionales Interface (nur eine Methode)
+        // zur Implementierung
+        OuterClass.Printable myLambdaPrintFunction = (lambdaPrintText) -> {
+            System.out.println(this.getClass().getName() + " " + lambdaPrintText);
+        };
+
+        myLambdaPrintFunction.print(printText);
+    }
+
+    public static void main(String[] args) {
+        OuterClass myClass = new OuterClass();
+
+        System.out.println("OuterClass: " + myClass.getClass().getName());
+        myClass.printFromLambdaFunction("Lambda Function: HelloWorld");
+    }
+}
+```
+</div><!-- .element style="font-size: 0.8em;" -->
 
 
 ---
@@ -417,3 +646,9 @@ class CalculatorTest {
 # Programming Principals
 
 > DRY, KISS, ... TODO... :-)
+
+----
+## Principal Collection
+* KISS
+* DRY
+* FIRST
