@@ -101,10 +101,10 @@ Umsetzung eines gegebenen oder selbstentwickelten Algorithmus in ein lauffähige
 </ul>
 </td>
 <td style="vertical-align:middle">
-<img src="img/01einfuehrung_02beispiel_1.png" width=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --><br/><br/><img src="img/01einfuehrung_02beispiel_2.png" width=70%/><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+<img src="img/01einfuehrung_02beispiel_1.jpg" width=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --><br/><br/><img src="img/01einfuehrung_02beispiel_2.jpg" width=70%/><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </td>
 <td style="vertical-align:middle">
-<img src="img/01einfuehrung_02beispiel_3.png" height=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+<img src="img/01einfuehrung_02beispiel_3.jpg" height=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </td>
 </tr>
 </table>
@@ -156,6 +156,7 @@ KURZ: Die Beschreibung lässt Raum für individuelle Entscheidungen und Interpre
 ----
 ## Verbesserungsmöglichkeiten des Rezepts
 <div>
+
 * komplette Eliminierung von individuellen Interpretationsspielräumen
 * vollständige Beschreibung der Arbeitsschritte inkl. Vorbereitung und der Kochanweisung für die Spaghetti
 * vollständige Angabe der Zutaten
@@ -179,32 +180,36 @@ präzise Angaben bei den Aussagen
 ----
 ## Algorithmus: Eigenschaften
 ### Terminierung<!-- .element style="text-align: left;" -->
-* bricht nach endlich vielen Schritten ab<!-- .element style="font-size: 0.6em;" -->
+
+* bricht nach endlich vielen Schritten ab
+
 ***
 
 ### Determinismus<!-- .element style="text-align: left;" -->
-<ul>
-<li>legt die „Wahlfreiheit“ fest</li>
 
-<li>deterministischer Ablauf
-  <ul><li>legt eindeutige Vorgabe der Schrittfolge der auszuführenden Schritte fest</li></ul></li>
-<li>determiniertes Ergebnis
-  <ul><li>wird immer dann geliefert, wenn bei vorgegebener Eingabe ein eindeutiges Ergebnis geliefert wird - auch bei mehrfacher Durchführung mit denselben Eingabeparametern</li></ul></li>
-</ul><!-- .element style="font-size: 0.6em;" -->
+
+* legt die „Wahlfreiheit“ fest
+* deterministischer Ablauf
+  * legt eindeutige Vorgabe der Schrittfolge der auszuführenden Schritte fest
+* determiniertes Ergebnis
+  * wird immer dann geliefert, wenn bei vorgegebener Eingabe ein eindeutiges Ergebnis geliefert wird - auch bei mehrfacher Durchführung mit denselben Eingabeparametern
+
+
 ***
+
 ----
 ## Algorithmus: Bestandteile
-* elementare Operationen (Ausdrücke und Anweisungen)<br/>*Berechne 5 plus 7*
-* sequenzielle Ausführung
-<br/>*Berechne 10 minus 3, dann multipliziere das Ergebnis mit 4*
-* parallele Ausführung
-<br/>*Du rechnest Aufgabe 1 und ich rechne Aufgabe 2*
-* bedingte Ausführung
-<br/>*Wenn Du Aufgabe 1 gelöst hast, dann beginne mit Aufgabe 2*
-* Schleife
-<br/>*Rechne Aufgabe 1, bis Du das richtige Ergebnis bekommst*
-* Unterprogramm
-<br/>*Rechne Aufgabe 1 anhand der Lösung auf Seite 106*
+* elementare Operationen (Ausdrücke und Anweisungen)<br/>Berechne 5 plus 7
+* sequenzielle Ausführung
+<br/>Berechne 10 minus 3, dann multipliziere das Ergebnis mit 4
+* parallele Ausführung
+<br/>Du rechnest Aufgabe 1 und ich rechne Aufgabe 2
+* bedingte Ausführung
+<br/>Wenn Du Aufgabe 1 gelöst hast, dann beginne mit Aufgabe 2
+* Schleife
+<br/>Rechne Aufgabe 1, bis Du das richtige Ergebnis bekommst
+* Unterprogramm
+<br/>Rechne Aufgabe 1 anhand der Lösung auf Seite 106
 
 * Variablen und Konstanten
 
@@ -213,13 +218,13 @@ präzise Angaben bei den Aussagen
 Ausdruck
 * Kombination von Operanden und Operatoren als "Vorschrift" zur Berechnung eines Werts
 * liefert immer einen Wert (Ergebniswert) ab
-* Beispiel:1 / x
+* Beispiel: 1 / x
 
 Anweisung
-* Kombination von Ausdrücken und Methoden als "Vorschrift" zurAusführung einer Aktion
-* Beispiele:
-<br/>y = 1 / x Wertzuweisung
-<br/>print(x) Ausgabeanweisung (Methodenaufruf "Drucke x")
+* Kombination von Ausdrücken und Methoden als "Vorschrift" zur Ausführung einer Aktion
+* Beispiele:
+<br/>y = 1 / x Wertzuweisung
+<br/>print(x) Ausgabeanweisung (Methodenaufruf "Drucke x")
 
 ----
 ## Grundbegriffe der Programmierung
@@ -271,6 +276,7 @@ Nassi-Schneiderman-Diagramme (Struktogramme)
 ---
 ## Pseudocode
 <div>
+
 Sequenz
 * Alternative 1: Schritte werden durchnummeriert: 1, 2, 3, …
 * Alternative 2: Abschluss der Sequenz durch Semikolon
@@ -304,16 +310,16 @@ Schleifen
 <p>
 <p>
 <h3>Bedingte Anweisung</h3>
-&nbsp;&nbsp;**falls** Ampel rot oder gelb<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**dann** stoppe<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**sonst** fahre weiter
+&nbsp;&nbsp;<b>falls</b> Ampel rot oder gelb<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>dann</b> stoppe<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>sonst</b> fahre weiter
 </p>
 <p>
-&nbsp;&nbsp;**falls** Ampel ausgefallen<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**dann** fahre vorsichtig weiter<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**sonst** **falls** Ampel grün<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**dann** fahre weiter<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**sonst** stopp
+&nbsp;&nbsp;<b>falls</b> Ampel ausgefallen<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>dann</b> fahre vorsichtig weiter<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>sonst falls</b> Ampel grün<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>dann</b> fahre weiter<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sonst</b> stopp
 </p>
 </p>
 </td>
@@ -321,18 +327,18 @@ Schleifen
 <td>
 <h3>Schleifen</h3>
 <p>
-**solange** Liste nicht erschöpft<br/>
-&nbsp;&nbsp;**führe aus**<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;Gib nächste Zahl aus der Liste aus
+<b>solange</b> Liste nicht erschöpft<br/>
+&nbsp;&nbsp;<b>führe aus</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Gib nächste Zahl aus der Liste aus
 </p>
 <p>
-**wiederhole**<br/>
-&nbsp;&nbsp;Gib nächste Zahl aus derListe aus<br/>
-**bis** Liste erschöpft
+<b>wiederhole</b><br/>
+&nbsp;&nbsp;Gib nächste Zahl aus der Liste aus<br/>
+<b>bis</b> Liste erschöpft
 </p>
 <p>
-**wiederhole für** 5 bis 10 <br/>
-&nbsp;&nbsp;Gib nächste Zahl aus der Liste aus
+<b>wiederhole für</b> 5 bis 10<br/>
+&nbsp;&nbsp;Gib nächste Zahl aus der Liste aus
 </p>
 </td>
 </tr>
@@ -508,6 +514,7 @@ von Primzahlen.
 ### Funktionsweise eines Interpreters
 
 <div>
+
 * übersetzt den Quellcode nicht in eine direkt ausführbare Datei
 * liest den Quellcode ein, analysiert diesen und führt ihn dann aus
 * die Analyse erfolgt also zur Laufzeit des Programms
@@ -623,6 +630,7 @@ ending with the signs
 Beispiel
 
 <div>
+
 ```java
 // HelloWorld class as first small programming example
 class HelloWorld {
@@ -681,12 +689,12 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 
 ---
 ## Das Paketkonzept in Java
-* Möglichkeit zur Strukturierung bzw. sinnvollenSortierung von Klassen
+* Möglichkeit zur Strukturierung bzw. sinnvollen Sortierung von Klassen
 * Pakete sind somit Sammlungen von Klassen
 * die Klassen verfolgen einen gemeinsamen Zweck
 * jede Klasse ist genau einem Paket zugeordnet
 * Paketnamen können aus mehreren Teilen bestehen und hierarchisch aufgebaut sein (vergleichbar mit der Ordnerstruktur im Windows-Explorer)
-* eine Klasse kann eindeutig über das Paket und ihren Namen identifiziert werden
+* eine Klasse kann eindeutig über das Paket und ihren Namen identifiziert werden
 
 ---
 ## Funktionsumfang der Java 2™ Platform (!)
@@ -695,6 +703,7 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 ----
 ## Funktionsumfang der Java 2™ Platform (!)
 <div>
+
 * Java 2 Standard Edition beinhaltet das Software Development Kit mit der Standard API zur Entwicklung von Java-Applikationen
 * Java 2 Enterprise Edition umfasst neben der J2SE weitere Packages zur serverseitigen Programmierung (Enterprice Java Beanss, Servlets, JSP, Java-Mail-API, etc.)
 * Java 2 Micro Edition stellt eine funktional kleinere Laufzeitumgebung für mobile Endgeräte (PDAs, Handys, Navigationssysteme, etc.) dar
@@ -1110,11 +1119,11 @@ Anweisungen sind elementare Arbeitsschritte
 **der Anweisungsblock**
 
 ```java
-{
-  Anweisung 1;
+{
+  Anweisung 1;
   Anweisung 2;
   ...
-  Anweisung n;
+  Anweisung n;
 }
 ```
 * ist eine Zusammenfassung von Anweisungen
@@ -1134,7 +1143,7 @@ Anweisungen sind elementare Arbeitsschritte
 **die einfache if-Anweisung**
 
 ```java
-if (ausdruck)
+if (ausdruck)
   anweisung;
 ```
   * ausdruck kann aus einem relationalen Operator oder aus mehreren relationalen Operatoren bestehen, die mit logischen Operatoren verknüpft sind
@@ -1145,9 +1154,9 @@ if (ausdruck)
 **die if-else-Anweisung**
 
 ```java
-if (ausdruck)
+if (ausdruck)
   anweisung1;
-else
+else
   anweisung2;
 ```
   * *anweisung1* wird ausgeführt, wenn *ausdruck* true ist
@@ -1280,13 +1289,14 @@ for ( Typ Bezeicher : Feld )
 ----
 ### korrekter Code
 
-*schlecht lesbar (gar nicht eingerückt)*
+* schlecht lesbar (gar nicht eingerückt)*
 
 ```Java
 ausdruck0; if(ausdruck1) anweisung1; else ausdruck2; ausdruck3;
 ```
 
-*besser lesbar (eingerückt)*
+* besser lesbar (eingerückt)*
+
 
 ```Java
 ausdruck0;
@@ -1302,7 +1312,7 @@ ausdruck3;
 ----
 ### korrekter Code
 
-*schlecht lesbar (falsch eingerückt)*
+* schlecht lesbar (falsch eingerückt)*
 
 (dangaling-else)
 
@@ -1314,7 +1324,8 @@ else
   anweisung2;  
 ```
 
-*besser lesbar (korrekt eingerückt)*
+* besser lesbar (korrekt eingerückt)
+
 ```JAVA
 if(ausdruck1)
   if(ausdruck2)
@@ -1323,8 +1334,8 @@ if(ausdruck1)
     anweisung2;  
 ```
 
-*besser lesbar (Verzweigungen mit Coding-Blöcken separiert)*
-<div>
+* besser lesbar (Verzweigungen mit Coding-Blöcken separiert)
+
 ```JAVA
 if(ausdruck1){
   if(ausdruck2){
@@ -1334,7 +1345,6 @@ if(ausdruck1){
   }
 }
 ```
-</div><!-- .element style="font-size: 0.8em;" -->
 
 ----
 ### korrekter Code
@@ -1395,6 +1405,7 @@ anweisung4;
 ----
 ### Übungen
 <div>
+
 1. Implementieren Sie Ihr Struktogramm aus Übung 1 im Kapitel 1. zur Berechnung des größten gemeinsamen Teilers nach Euklid!
 2. Implementieren Sie Ihre Pseudocode-Lösung aus Übung 2 im Kapitel 1. zur Berechnung der Fakultät einer Zahl!
 3. Implementieren Sie Ihr Struktogramm aus Übung 4 im Kapitel 1. zur Bestimmung
@@ -1417,6 +1428,7 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
 ----
 
   <div>
+
 5. Gegeben sind folgende Variablen mit ihren Werten:
   ```JAVA
   int a = 10;
@@ -1564,6 +1576,7 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
 ### Beispiel für die Implementierung einer Klasse
 
 <div>
+
 ```Java
 package prog1.demos.objekt;
 class Auto {
@@ -1632,6 +1645,7 @@ class Auto {
 ### Beispiel für Getter- und Setter-Methoden
 
 <div>
+
 ```Java
 package prog1.demos.objekt;
 class Auto {
@@ -1665,6 +1679,7 @@ class Auto {
 ---
 ## Zugriff auf Attribute und Methoden
 <div>
+
 * auf Methoden und Attribute wird in der Punktnotation zugegriffen
 
 ```Java
@@ -1685,6 +1700,7 @@ class Auto {
 ----
 ### Beispiel für Methoden- und Attributzugriffe
 <div>
+
 ```Java
 package prog1.demos.objekt;
 class Auto {
@@ -1719,6 +1735,7 @@ class Auto {
 ----
 ### Beispiel für Methoden- und Attributzugriffe II
 <div>
+
 ```Java
 package prog1.demos.objekt;
 class AutoTest {
@@ -1755,6 +1772,7 @@ class AutoTest {
 ----
 ### Beispiel für überladene Methoden
 <div>
+
 ```Java
 package prog1.demos.objekt;
 class Auto {
@@ -1798,6 +1816,7 @@ class Auto {
 ----
 ### Beispiel für Klassenattribute und -methoden
 <div>
+
 ```Java
 package prog1.demos.objekt;
 class Auto {
@@ -1833,6 +1852,7 @@ class Auto {
 ----
 ### Beispiel für Klassenattribute und -methoden II
 <div>
+
 ```Java
 package prog1.demos.objekt;
 class AutoTest {
@@ -1863,7 +1883,7 @@ class AutoTest {
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ---
-## Exkurs: Enumerations (Enum)
+## Mini-Exkurs: Enumerations (Enum)
 * Spezielle Klasse (erbt von java.lang.Enum)
 * definiert eine Menge an gültigen Werten
 * bietet Prüfung auf gültige Werte zur Kompilierungs- und Laufzeit
@@ -1880,6 +1900,7 @@ public enum AllowedBrands {
 ---
 ## Objekte löschen mit dem Garbage-Collector
 <div>
+
 * nicht mehr benötigte Objekte belasten den Speicher und müssen daher „eingesammelt“ werden
 * diese Aufgabe übernimmt der Garbage Collector
 * benötigte Objekte sind dadurch gekennzeichnet, dass sie noch referenziert sind (reachable)
