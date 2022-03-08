@@ -458,8 +458,8 @@ public class ListDemo {
 * Zugriff auf die Container erfolgt sequentiell über Iteratoren
 * Index beginnt mit 0 und endet bei n Elementen bei n-1
 * Größe der Liste wird dynamisch beim Einfügen oder Löschen von Elementen angepasst
-* Duplikate sind nicht erlaubt (Vergleich über die equals-Methode) l die Reihenfolge, in der Elemente eingefügt werden, bleibt nicht erhalten
-* Einfluss auf die Sortierung der Elemente
+* Duplikate sind nicht erlaubt (Vergleich über die equals-Methode)
+* die Reihenfolge, in der Elemente eingefügt werden, bleibt nicht erhalten
 * Sortieren nach der natürlichen Ordnung durch Implementierung des Comparable-Interface
   * Das Comparable-Interface muss auf jeden Fall implementiert werden, wenn Objekte in ein TreeSet eingefügt werden
   * Beliebige Sortierung durch Implementierung des Comparator- Interface
