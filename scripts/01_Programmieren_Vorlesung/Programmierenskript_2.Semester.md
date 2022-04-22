@@ -2613,7 +2613,7 @@ alias=This is the english version.
 ----
 ## Verkettete Liste (Linked List)
 
-Funktionen
+Methoden
 * add() / addFirst() / addLast() / addAfter()
 * remove(by object / by search attributes)
 * find(by search attributes)
@@ -2630,7 +2630,7 @@ Funktionen
 
 <div>
 
-Funktionen
+Methoden
 * add() / addFirst() / addLast() / addAfter() / addBefore()
 * remove(by object / by search attributes)
 * find(by search attributes)
@@ -2650,10 +2650,13 @@ Parallel Suche: O(n/2) -> O(n)
 
 <div>
 
-Funktionen
-* push()
-* pop()
-* peek()
+* Eigenschaften
+  * Ein-/Ausgabe Strategie: FIFO (First In - First Out)
+    * Neue Elemente werden oben auf den Stapel gelegt, das nächste Element (neueste auf dem Stapel) wird oben vom Stapel entnommen
+* Methoden
+  * push()
+  * pop()
+  * peek()
 </div><!-- .element style="font-size: 0.8em;" -->
 
 <div align="center">
@@ -2663,9 +2666,12 @@ Funktionen
 ----
 ## (Warte-) Schlange (Queue)
 
-Funktionen
-* enqueue()
-* dequeue()
+* Eigenschaften
+  * Ein-/Ausgabe Strategie: LIFO (Last In - First Out)
+    * Neue Elemente werden in die Schlange eingereiht, das älteste Element (am längsten in der Schlange) wird als nächstes entnommen
+* Methoden
+  * enqueue()
+  * dequeue()
 
 <div align="center">
 <img src="img/12datenstrukturen_04queue.png" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
@@ -2676,20 +2682,28 @@ Funktionen
 ## Bäume
 
 ----
-## Binär-Baum (Binary Tree)
+## Binär-Baum / Binäre-Such-Bäume (Binary Tree)
 
 <div>
 
-Funktionen
-* insert()
-* find(by search attribute)
-* contains(by search attribute / object)
-* Remove(by search attribute / object)
+Methoden
+* insert(object)
+* [find(by search attribute)] (Nicht für generische Container)
+* contains(object)
+* Remove(object)
+* ...
 </div><!-- .element style="font-size: 0.8em;" -->
 
 <div align="center">
 <img src="img/12datenstrukturen_05binarytree.png" width=30% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
+
+----
+TODO: ALVTree
+
+* ALV -> Adelson-Velsky and Landis (bennant nach den Erfindern)
+* selbstständig balancierende Binäre-Such-Bäume
+* [Visualisation](https://www.cs.usfca.edu/~galles/visualization/AVLtree.html)
 
 ---
 ## Iteration VS. Rekursion
