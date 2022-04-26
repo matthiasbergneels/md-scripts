@@ -2651,7 +2651,7 @@ Parallel Suche: O(n/2) -> O(n)
 <div>
 
 * Eigenschaften
-  * Ein-/Ausgabe Strategie: FIFO (First In - First Out)
+  * Ein-/Ausgabe Strategie: LIFO (Last In - First Out)
     * Neue Elemente werden oben auf den Stapel gelegt, das nächste Element (neueste auf dem Stapel) wird oben vom Stapel entnommen
 * Methoden
   * push()
@@ -2667,7 +2667,7 @@ Parallel Suche: O(n/2) -> O(n)
 ## (Warte-) Schlange (Queue)
 
 * Eigenschaften
-  * Ein-/Ausgabe Strategie: LIFO (Last In - First Out)
+  * Ein-/Ausgabe Strategie: FIFO (First In - First Out)
     * Neue Elemente werden in die Schlange eingereiht, das älteste Element (am längsten in der Schlange) wird als nächstes entnommen
 * Methoden
   * enqueue()
@@ -2676,6 +2676,13 @@ Parallel Suche: O(n/2) -> O(n)
 <div align="center">
 <img src="img/12datenstrukturen_04queue.png" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 
+</div><!-- .element align="center" -->
+
+----
+## Ein-Ausgabe Startegien - endlich erklärt
+
+<div align="center">
+<img src="img/12datenstrukturen_06FIFO_LIFO.jpeg" width=40% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
 
 ---
