@@ -180,12 +180,13 @@ public class TankLeerDemo {
 
 * ```try``` markiert den Überwachungsbereich - ausgelöste Ausnahmen beenden die Ausführung des Überwachungsbereiches umgehend
 * ```catch``` fängt mögliche Ausnahmen aus dem Überwachungsbereich auf
-* ```finally``` wird unabhängig vom Auftreten von Ausnahmen ausgeführt
+* ```finally``` wird unabhängig vom Auftreten von Ausnahmen zum Abschluss des ```try-catch```-Blocks ausgeführt
 
 ----
 ## try-with-Resource (Ausblick: Kapitel 11)
 
 * vermeiden unschöner Schachtelung von try-Blöcken
+  * ABER: andere Reihenfolge im Vergleich zur ```finally``` Ausführung
 * Voraussetzung: Resource implementiert ```Closable``` Interface
 * automatisches schließen der Resourcen nach try-Block
   * Exceptions beim schließen werden innerhalb der Catch-Blöcke mit abgefangen
