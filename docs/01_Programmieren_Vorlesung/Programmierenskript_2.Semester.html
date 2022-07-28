@@ -450,7 +450,7 @@ public class SetDemo {
 
 * sortiert Elemente beim Einfügen in Sets oder Maps
 * Sortierung erfolgt nach der natürlichen Ordnung
-* muss für alle Klassen implementiert werden, deren Instanzen in Sets oder Maps gespeichert werden
+* Voraussetzung für Datencontainer vom Typ ```SortedSet``` oder ```SortedMap``` (sofern keine externe Sortierung über eine ```Comparator``` Implementierung gegeben ist)
 * beinhaltet genau eine Methode: public int ```compareTo(Object o)```
 * Bedeutung der Rückgabewert
   * ```Wert < 0```: das einzufügende Element liegt vor dem Vergleichsobjekt
