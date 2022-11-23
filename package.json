@@ -5,7 +5,7 @@
   "scripts": {
     "start": "reveal-md scripts/ --css scripts/_assets/style.css",
     "publishHtml": "npm run cleanAndGeneratePdfs && npm run clanAndGenerateHtml",
-    "clanAndGenerateHtml": "rm -rf docs && reveal-md scripts/ --static docs --static-dirs=scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/01_OtherStuff/img --css scripts/_assets/style.css && touch docs/.nojekyll",
+    "clanAndGenerateHtml": "rm -rf docs && reveal-md scripts/ --static docs --static-dirs=scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img --css scripts/_assets/style.css && touch docs/.nojekyll",
     "cleanAndGeneratePdfs": "rm -rf scripts/pdfdownloads/* && npm run generateLecturePdfs && npm run generateSoftwareCraftsmanshipPdfs && npm run generateOtherStuffPdfs",
     "generateLecturePdfs": "npm run pdf1semester && npm run pdf2semester && npm run pdfexkurs",
     "pdf1semester": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_1.Semester.md --print scripts/pdfdownloads/ProgrammierenSkript_1Semester.pdf --print-size 297x210mm --css scripts/_assets/style.css",
