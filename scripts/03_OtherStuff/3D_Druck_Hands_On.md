@@ -67,6 +67,33 @@ center: false
 
 [printables.com - 66748-fidget-ring-thing](https://www.printables.com/de/model/66748-fidget-ring-thing)
 
+----
+## Mal was eigenes - Das Problem
+
+<div align="center">
+<img src="img/01_07_ownprint01.jpeg" width=45% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
+
+----
+## Mal was Eigenes - Im Druck
+
+<div align="center">
+<img src="img/01_08_ownprint02.jpeg" width=45% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
+
+
+----
+## Mal was Eigenes - Das Ergebnis
+
+<div align="center">
+<img src="img/01_10_ownprint04.jpeg" width=45% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
+
+
+
 ---
 # Wo kommen die Modelle her?
 
