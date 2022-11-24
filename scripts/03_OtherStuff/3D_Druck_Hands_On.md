@@ -58,6 +58,15 @@ center: false
 
 [printables.com - 178035-cute-mini-octopus](https://www.printables.com/de/model/178035-cute-mini-octopus)
 
+----
+## Fidget (noch cooler)
+
+<div align="center">
+<img src="img/01_06_fidget.jpg" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
+[printables.com - 66748-fidget-ring-thing](https://www.printables.com/de/model/66748-fidget-ring-thing)
+
 ---
 # Wo kommen die Modelle her?
 
