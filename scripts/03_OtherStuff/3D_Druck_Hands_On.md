@@ -9,6 +9,8 @@ center: false
 # 3D Druck Hands On
 ### Matthias Berg-Neels & Christian Heller
 
+> [Folien-Download](../pdfdownloads/3D_Druck_Hands_On.pdf)
+
 ----
 ## Übersicht
 1. Was kann man Drucken? 
