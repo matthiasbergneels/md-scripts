@@ -91,7 +91,8 @@ Umsetzung eines gegebenen oder selbstentwickelten Algorithmus in ein lauffähige
 </ul>
 </td>
 <td style="vertical-align:middle">
-<img src="img/01einfuehrung_02beispiel_1.jpg" width=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --><br/><br/><img src="img/01einfuehrung_02beispiel_2.jpg" width=70%/><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+<img src="img/01einfuehrung_02Beispiel_1.jpg" width=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --><br/><br/>
+<img src="img/01einfuehrung_02beispiel_2.jpg" width=70%/><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </td>
 <td style="vertical-align:middle">
 <img src="img/01einfuehrung_02beispiel_3.jpg" height=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
@@ -482,13 +483,13 @@ Bytecode Verifier
 <tr style="vertical-align:middle">
 <td>
 PATH
-<ul><li>Verzeichnis, in dem sich dieJAVA-Tools befinden</li></ul>
+<ul><li>Verzeichnis, in dem sich die JAVA-Tools befinden</li></ul>
 
 CLASSPATH
-<ul><li>Verzeichnisse, in denen nachKlassen und Paketen gesucht werden soll</li></ul>
+<ul><li>Verzeichnisse, in denen nach Klassen und Paketen gesucht werden soll</li></ul>
 
 JAVA_HOME
-<ul><li>Verzeichnis, in dem das J2SDKinstalliert wurde</li></ul>
+<ul><li>Verzeichnis, in dem das J2SDK installiert wurde</li></ul>
 
 </td>
 <td style="vertical-align:middle">
@@ -571,7 +572,7 @@ Beispiel:
 * @version 1.0
 * @since 1.0
 */
-class HelloWorld {
+public class HelloWorld {
 
   /** main method as starting point for program start
   * @param args String array for parameters from the console
@@ -584,7 +585,7 @@ class HelloWorld {
 ```</script></section><section data-markdown><script type="text/template">#### Generierung der Dokumentation (!)
 
 ```
-javadoc HelloWorld.java -html5 -author -version
+javadoc HelloWorld.java -author -version
 ```
 
 Ergebnis:
@@ -688,22 +689,22 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 </script></section></section><section ><section data-markdown><script type="text/template">## Deklaration von Variablen
 * Variablen werden durch Datentyp und Variablennamen deklariert
 ```java
-Typname Variablenname;
+Typname Variablenname;
 ```
 * Beispiele für Variablendeklarationen
 ```java
-boolean muede;
+boolean muede;
 int a;
 ```
 * Beispiele für Deklarationen mit Initialisierung
 ```java
-char buchstabe = ‘a‘;
+char buchstabe = ‘a‘;
 long zahl = 45768;
 ```</script></section><section data-markdown><script type="text/template">## Deklaration von Konstanten
 * Konstanten werden ähnlich wie Variablen deklariert
 vor den Typnamen wird das Schlüsselwort
 ```java
-final gesetztfinal Typname Konstantenname;
+final gesetzt final Typname Konstantenname;
 ```
 * Konstanten können nach der Deklaration einmalig mit einem Wert initialisiert werden
 ```java
@@ -726,7 +727,7 @@ Literale für Fließkommazahlen float und double
 * Vorkomma- oder Nachkommateil darf ausgelassen werden, der Exponent und das Suffix sind optional
 * ohne Suffix sind Fließkommazahlen immer vom Typ double
 </script></section><section data-markdown><script type="text/template">## Alphanumerische Literale
-* besondere Literale für den Datentyp boolean
+* besondere Literale für den Datentyp boolean
 
 *true und false*
 ***
@@ -778,21 +779,21 @@ Literale für Fließkommazahlen float und double
 
 ```java
 int [] zahl = {1, 2, 3, 4, 5};
-zahl[1] = 7;
+zahl[1] = 7;
 ```
 
 ```java
 int [][] matrix = new int[3][3];
-matrix[1][2] = 15;
+matrix[1][2] = 15;
 ```
 
 ```java
 int [][] matrix = new int[3][];
-matrix[0] = new int[4];
+matrix[0] = new int[4];
 ```
 
 ```java
-int [][][] wuerfel = new int[3][3][3];
+int [][][] wuerfel = new int[3][3][3];
 wuerfel[2][0][0] = 73;
 ```
 
@@ -993,11 +994,11 @@ else
 **die if-else if-Anweisung**
 
 ```java
-if (ausdruck1)
+if (ausdruck1)
   anweisung1;
-else if (ausdruck2)
+else if (ausdruck2)
   anweisung2;
-else
+else
   anweisung3;
 ```
 
@@ -1008,14 +1009,14 @@ if (ausdruck1)
 </script></section><section data-markdown><script type="text/template">#### Verzweigungen mit der switch-Anweisung
 
 ```JAVA
-switch (ausdruck) {
+switch (ausdruck) {
   case constant1:
-    anweisung1;
+    anweisung1;
   case constant2:
-    anweisung2;
-  …
+    anweisung2;
+  // …
   default:
-    default_anweisung;}
+    default_anweisung;}
 ```
 
 * bietet die Möglichkeit der Mehrfachverzweigung
@@ -1042,7 +1043,7 @@ switch (ausdruck) {
 </script></section><section data-markdown><script type="text/template">#### Kopfgesteuerte Schleifen
 
 ```JAVA
-while (ausdruck)
+while (ausdruck)
   anweisung;
 ```
 
@@ -1050,13 +1051,13 @@ while (ausdruck)
 * die Abbruchbedingung ausdruck muss als Ergebnis einen Wert vom Typ boolean zurückliefern
 * ist das Ergebnis von ausdruck true, wird die Anweisung anweisung; ausgeführt
 * liefert ausdruck als Ergebnis false, wird mit der ersten Anweisung nach der Schleife fortgefahren
-* ist das Ergebnis von ausdruck gleich zu Beginn false, werden die Anweisungen in der Schleife nie ausgeführt&#8658; daher der Begriff: abweisende Schleife
+* ist das Ergebnis von ausdruck gleich zu Beginn false, werden die Anweisungen in der Schleife nie ausgeführt &#8658; daher der Begriff: abweisende Schleife
 </script></section><section data-markdown><script type="text/template">#### Fußgesteuerte Schleifen
 
 ```JAVA
-do
+do
   anweisung1;
-while (ausdruck);
+while (ausdruck);
 ```
 
 * in Java realisiert durch die do-while-Schleife
@@ -1064,12 +1065,12 @@ do
 * erst danach wird das Ergebnis der Abbruchbedingung ausdruck geprüft
 * ist das Ergebnis von ausdruck true, wird die Schleife ein weiteres Mal durchlaufen
 * ist das Ergebnis von ausdruck false, wird die Schleifenverarbeitung beendet
-* da die Bedingung erst nach dem ersten Durchlauf geprüft wird, muss die Schleife mindestens einmal durchlaufen werden&#8658; daher der Begriff: nicht abweisende Schleife
+* da die Bedingung erst nach dem ersten Durchlauf geprüft wird, muss die Schleife mindestens einmal durchlaufen werden &#8658; daher der Begriff: nicht abweisende Schleife
 
 </script></section><section data-markdown><script type="text/template">#### Zählende Schleifen
 
 ```JAVA
-for (init; test; update)
+for (init; test; update)
   anweisung1;
 ```
 
@@ -1080,7 +1081,7 @@ for (init; test; update)
   * anweisung1 wird nur dann ausgeführt, wenn test als Ergebnis true liefert
   * fehlt der test-Teil, setzt der Compiler an diese Stelle die Konstante true
   * im update-Teil werden die Schleifenzähler verändert
-* besondere for-Schleife zum Durchlaufen von Feldern (Arrays)
+* besondere for-Schleife zum Durchlaufen von Feldern (Arrays)
 
 ```Java
 for ( Typ Bezeicher : Feld )
@@ -1259,8 +1260,8 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
 * Sie können das Prinzip der Kapselung im Zusammenhang mit Getter- und Setter-Methoden erläutern.
 * Sie kennen die unterschiedlichen Sichtbarkeiten von Attributen und Methoden.
 * Sie können Methoden überladen.
-* Sie kennen die Begriffe der Klassenattributeund –methoden.
-* Sie können Objekte mit dem Garbage Collectorzerstören.
+* Sie kennen die Begriffe der Klassenattribute und –methoden.
+* Sie können Objekte mit dem Garbage Collector zerstören.
 * Sie kennen die Begriffe Assoziation, Aggregation und Komposition
 
 </script></section></section><section ><section data-markdown><script type="text/template">## Einführung in die Objektorientierung
@@ -1299,9 +1300,9 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
 * die Deklaration von Methoden erfolgt nach folgender Syntax
 
 ```Java
-[Modifier] Typ Name ([Übergabeparameter]) {
+[Modifier] Typ Name ([Übergabeparameter]) {
   Anweisungen;
-}
+}
 ```
 
 * sowohl Attribute und Methoden haben einen Modifier, der die Sichtbarkeit außerhalb der Klassen festlegt
@@ -1447,8 +1448,8 @@ class Auto {
 * auf Methoden und Attribute wird in der Punktnotation zugegriffen
 
 ```Java
-objektname.methode(Übergabeparameter);
-objektname.attribut;
+objektname.methode(Übergabeparameter);
+objektname.attribut;
 ```
 
 * Voraussetzung: die Sichtbarkeit der Methoden und Attribute lässt den direkten Zugriff zu
@@ -1631,19 +1632,69 @@ class AutoTest {
 
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section  data-markdown><script type="text/template">## Mini-Exkurs: Enumerations (Enum)
+</script></section></section><section ><section data-markdown><script type="text/template">## Mini-Exkurs: Enumerations (Enum)
 * Spezielle Klasse (erbt von java.lang.Enum)
 * definiert eine Menge an gültigen Werten
 * bietet Prüfung auf gültige Werte zur Kompilierungs- und Laufzeit
+* Naming Convention: Enum-Klassenname UpperCamelCase, Werte UPPER_CASE
 
 ```Java
-public enum AllowedBrands {
+public enum CarBrand {
   MERCEDES,
   BMW,
   FORD,
   TESLA
 }
 ```
+</script></section><section data-markdown><script type="text/template">### Mini-Exkurs: Enum als Klasse
+* kann Konstruktor, Attribute und Methoden haben
+* Konstanten werden als Objekt der Enum(-Klasse) instanziiert (Singleton)
+
+```Java
+public enum CarBrand {
+  MERCEDES("$$$"),
+  BMW("$$$"),
+  FORD("$"),
+  TESLA("$$");
+
+  private String priceClass;
+
+  public CarBrand(String priceClass){
+    this.priceClass = priceClass;
+  }
+
+  public String getPriceClass(){
+    return priceClass;
+  }
+}
+```
+</script></section></section><section  data-markdown><script type="text/template">## Initialisierungs-Codeblöcke (!)
+* stehen im Kontext einer Klasse 
+* werden als spezielle ("namenlose") Methoden kompiliert
+* Objekt- und Klassen-Initialisierungs-Codeblöcke
+  * Objekt: laufen vor jedem Konstruktoraufruf
+  * Klasse: laufen einmalig vor dem ersten Zugriff auf die Klasse (kennzeichnung durch ```static```)
+* können für komplexe Initialisierungen genutzt werden
+
+```Java
+public class Car {
+  // ...
+
+  private static int carCount;
+  private static String nextDefaultColor;
+
+  // Klassen-Initialisierungs-Codeblock
+  static{
+    carCount = DataBaseService.getCurrentNumberOfCars();
+  }
+
+  // Objekt-Initialisierungs-Codeblock
+  {
+    nextDefaultColor = CarStatisticService.getLessUsedColor();
+  }
+}
+```
+
 </script></section><section  data-markdown><script type="text/template">## Objekte löschen mit dem Garbage-Collector
 <div>
 
@@ -1705,10 +1756,9 @@ finalize();
 
 10. Was versteht man unter dem Begriff „überladen von Methoden“?
 11. Worin unterscheiden sich Klassenattribute und –methoden von Instanzattributen und –methoden?
-12. ~~Wie können Klassenmethoden auf den Instanzenkontext zugreifen? Beschreiben Sie zwei Lösungsansätze!~~
-13. Erläutern Sie das Prinzip der Garbage Collection in Java!
-14. Was sind Destruktoren und wie werden Sie aufgerufen?
-15. Erläutern Sie die Begriffe Assoziation, Aggregation und Komposition! Wie werden die unterschiedlichen Beziehungen in der UML dargestellt?
+12. Erläutern Sie das Prinzip der Garbage Collection in Java!
+13. Was ist der Destruktor und wie wird dieser aufgerufen?
+14. Erläutern Sie die Begriffe Assoziation, Aggregation und Komposition! Wie werden die unterschiedlichen Beziehungen in der UML dargestellt?
 </script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 6
 # Vererbung
 </script></section><section data-markdown><script type="text/template">## Übersicht
@@ -1729,11 +1779,11 @@ finalize();
 * Sie können Methoden überschreiben.
 * Sie kennen die Bedeutung der Modifier abstract und final.
 * Sie können die Bedeutung von this und super erklären.
-* Sie kennen die Konzepte des narrowing undwidening casts.
+* Sie kennen die Konzepte des narrowing und widening casts.
 * Sie können den Begriff der Polymorphie erklären.
 </script></section></section><section ><section data-markdown><script type="text/template">## Eigenschaften der Vererbung
 * eine Unterklasse (Subklasse) erbt die Attribute und Methoden einer Oberklasse (Superklasse)
-* statt Vererbung spricht man auch vom Ableiten von Klassen eine Subklasse leitet sich aus einer oder mehreren Superklassen ab
+* statt Vererbung spricht man auch vom Ableiten von Klassen eine Subklasse leitet sich aus einer oder mehreren Superklassen ab
 * es entsteht eine Vererbungshierarchie, die theoretisch beliebig tief geschachtelt werden kann
 * i.d.R. besitzt die Subklasse noch zusätzliche Attribute und Methoden
 * Ziel und Vorteil: bestehender Programmcode kann wieder verwendet werden (Reuse)
@@ -1792,7 +1842,7 @@ public
 * von überall sichtbar
 * normalerweise sind die Getter- und Setter-Methoden öffentlich, um auf private Attribute zuzugreifen
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section  data-markdown><script type="text/template">## Methoden überschreiben
+</script></section></section><section ><section data-markdown><script type="text/template">## Methoden überschreiben
 <div>
 
 * Methoden, die bereits in der Superklasse implementiert sind, können in Subklassen neu definiert werden (Überschreiben)
@@ -1805,7 +1855,40 @@ public
   * final &#8658; verhindert explizit das Überschreiben
 * die Sichtbarkeit bei überschriebenen Methoden darf erhöht aber nicht eingeschränkt werden
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section  data-markdown><script type="text/template">## Weitere Modifier
+</script></section><section data-markdown><script type="text/template">----
+### Mini-Exkurs: Enum als veerbte Klasse
+* Enums Erben von java.lang.Enum
+* ```toString()```- Methode von Objekt Überschrieben
+  * geben den Namen des Konstanten-Wertes zurück
+  * kann weiter auf Klassen- und Objekt-Ebene überschrieben werden  
+
+```Java
+public enum CarBrand {
+  MERCEDES("$$$"),
+  BMW("$$$"),
+  FORD("$"),
+  TESLA("$$"){
+        @Override
+        public String toString() {
+            return super.toString() + " voll elektrisch";
+        }
+    };
+
+  // ...
+
+  @Override
+    public String toString() {
+        return switch(this){
+            case TESLA -> "Tesla";
+            case FIAT -> "Fiat";
+            case MERCEDES -> "Mercedes";
+            case BMW -> "BMW";
+        } +  "(" + priceClass + ")";
+    }
+}
+```
+
+</script></section></section><section  data-markdown><script type="text/template">## Weitere Modifier
 <div>
 
 **abstract**
@@ -1844,11 +1927,11 @@ final-Attribute sind Konstanten, deren Wert sich nicht verändern darf
 * Referenzen auf Objekte, die in einer Referenzvariable vom Typ der Superklasse gespeichert sind, sollen in einer Referenzvariable vom Typ der Subklasse gespeichert werden
 * es handelt sich dabei um eine unsichere Konvertierung
   * es muss sichergestellt werden, dass es sich bei den Referenzen um Referenzen auf Objekte der Subklasse handelt
-  * vor der Umwandlung muss der Typ der Referenz mit dem Operator instanceof überprüft werden &#8658; referenzvariable instanceof Subklasse muss true ergeben
+  * vor der Umwandlung muss der Typ der Referenz mit dem Operator instanceof überprüft werden &#8658; referenzvariable instanceof Subklasse muss true ergeben
   * bei der Durchführung muss ein expliziter Cast auf den Typ der Subklasse durchgeführt werden
 
   ```Java
-refSubklasse = (Subklasse)referenzdatentyp;
+refSubklasse = (Subklasse)referenzdatentyp;
   ```
 
 * der widening cast wechselt von einer Sicht mit weniger auf eine Sicht mit mehr Details und blendet die subklassen-spezifischen Attribute und Methoden wieder ein
@@ -1945,14 +2028,14 @@ class xyz implements abc { }
 ```
 
 * die Klasse muss alle Methoden des Interfaces implementieren oder als abstrakte Klasse deklariert werden
-* Klassen können im Gegensatz zur Vererbung mehrere Interfaces implementieren z.B.
+* Klassen können im Gegensatz zur Vererbung mehrere Interfaces implementieren z.B.
 
 ```Java
 class xyz implements abc, def { }
 ```
 
 * durch die Implementierung mehrerer Interfaces wird eine Art von Mehrfachvererbung realisiert
-* Objekte einer Klasse sind zu allen Interface-Datentypen kompatibel, sobald die Klasse das Interface implementiert z.B. alle Objekte der Klasse xyz könnten in Referenzvariablen vom Typ abc oder def gespeichert werden
+* Objekte einer Klasse sind zu allen Interface-Datentypen kompatibel, sobald die Klasse das Interface implementiert z.B. alle Objekte der Klasse xyz könnten in Referenzvariablen vom Typ abc oder def gespeichert werden
 </div><!-- .element style="font-size: 0.8em;" -->
 </script></section></section><section  data-markdown><script type="text/template">## Darstellung in UML
 
