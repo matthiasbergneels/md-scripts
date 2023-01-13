@@ -1981,7 +1981,7 @@ finalize();
 * Assoziationen können benannt werden, durch eine verbale Beschreibung der Beziehung
 * die Darstellung in der UML erfolgt durch eine einfache Verbindungslinie zwischen den Klassen
 <div align="center">
-<img src="img/05objektorientierung_03Assoziation.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+<img src="img/05objektorientierung_03Assoziation.png" width=45% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
 ----
 ### Aggregation
@@ -1991,7 +1991,7 @@ finalize();
 * Beispiel: die Beziehung zwischen einem Güterwagon und der Fracht; der Wagon existiert auch ohne Fracht
 * die Notation in der UML erfolgt durch eine Linie mit einer Raute am Ende, wobei die Raute bei der Aggregatsklasse (dem Ganzen) angesiedelt ist
 <div align="center">
-<img src="img/05objektorientierung_04Aggregation.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+<img src="img/05objektorientierung_04Aggregation.png" width=45% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
 ----
 ### Komposition
@@ -2002,8 +2002,36 @@ finalize();
 * Beispiel: ein Güterzug kann nur dann existieren, wenn mind. eine Zuglokomotive und mind. ein Güterwagon existiert
 * die Darstellung erfolgt analog der Aggregation nur mit einer ausgefüllten Raute
 <div align="center">
-<img src="img/05objektorientierung_05Komposition.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+<img src="img/05objektorientierung_05Komposition.png" width=45% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
+
+----
+### Kardinalität (Multiplizität)
+* Beschreibt die mengen- / zahlenmässige Ausprägung einer Beziehung (Assoziation)
+* Werden an der Assoziation eingetragen
+<br/>
+
+<div>
+<table>
+<tr>
+  <td>
+    <table>
+    <tr><td align=center><b>Kardinalität</b></td><td><b>Beschreibung</b></td></tr>
+    <tr><td align=center>1</td><td>Ein Objekt muss genau einem anderen Objekt zugeordnet sein (MUSS-Beziehung, siehe Komposition)</td></tr>
+    <tr><td align=center>0..1</td><td>Es kann ein oder kein Objekt dem anderen zugeordnet sein (Kann-Beziehung)</td></tr>
+    <tr><td align=center>0..n</td><td>Es können beliebig viele Objekte einem anderen Objekt zugeordnet sein (Kann-Beziehung)</td></tr>
+    <tr><td align=center>1..n</td><td>Es muss mindestens ein Objekt bis beliebig viele Objekte einem anderen Objekt zugeordnet sein (MUSS-Beziehung, siehe Komposition)</td></tr>
+    </table>
+  </td>
+  <td>
+    <div align="center">
+    <img src="img/05objektorientierung_06Kardinalitaeten.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+    </div>
+  </td>
+</tr>
+</table>
+</div><!-- .element style="font-size: 0.7em;" -->
+
 
 
 ---
@@ -2075,7 +2103,7 @@ finalize();
 ### Darstellung der Vererbung in UML
 
 <div align="center">
-<img src="img/06vererbung_01tiere.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+<img src="img/06vererbung_01tiere.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
 
 
@@ -2368,7 +2396,7 @@ class xyz implements abc, def { }
 ## Darstellung in UML
 
 <div align="center">
-<img src="img/07interfaces_01tiere.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+<img src="img/07interfaces_01tiere.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
 
 ---
