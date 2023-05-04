@@ -504,14 +504,22 @@ public class SetDemo {
 ----
 ## Das Interface [```Comparable```](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Comparable.html)
 
-* sortiert Elemente beim Einfügen in Sets oder Maps
-* Sortierung erfolgt nach der natürlichen Ordnung
+* sortiert Elemente beim Einfügen in Sets oder Maps (welche auf ```SortedSet``` basieren)
+* soll die "natürliche Ordnung" der Objekte widerspiegeln
 * Voraussetzung für Datencontainer vom Typ ```SortedSet``` oder ```SortedMap``` (sofern keine externe Sortierung über eine ```Comparator``` Implementierung gegeben ist)
 * beinhaltet genau eine Methode: public int ```compareTo(Object o)```
-* Bedeutung der Rückgabewert
-  * ```Wert < 0```: das einzufügende Element liegt vor dem Vergleichsobjekt
-  * ```Wert = 0```: das einzufügende Element und das Vergleichsobjekt sind gleich
-  * ```Wert > 0```: das einzufügende Element liegt hinter dem Vergleichsobjekt
+* Bedeutung der Rückgabewert --> ```aufgerufenesObjekt.compareTo(übergebenesObjekt)```
+  * ```Wert < 0```: das aufgerufene Objekt ist kleiner als das übergebene Objekt
+  * ```Wert = 0```: das aufgerufene Objekt ist gleich dem übergebenen Objekt
+  * ```Wert > 0```: das aufgerufene Objekt ist größer als das übergebene Objekt
+
+
+* Beispiel:
+```Java
+"a".compareTo("c"); // --> ergibt -2
+"c".compareTo("c"); // --> ergibt  0
+"c".compareTo("a"); // --> ergibt  2
+```
 
 ----
 ## Beispiel für eine Comparable-Implementierung
