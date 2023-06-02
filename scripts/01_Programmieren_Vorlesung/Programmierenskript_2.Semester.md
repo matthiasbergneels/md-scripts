@@ -363,8 +363,7 @@ Schlüssel-Werte-Paare (Map)
 ## Das Interface [```List```](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/List.html)
 
 * befindet sich im Package java.util
-* Zugriff auf die Container erfolgt sequentiell oder über
-* Indexzugriff
+* Zugriff auf die Container erfolgt sequentiell oder wahlfrei (über Index)
 * sequentieller Zugriff erfolgt über Iteratoren
 * Index beginnt mit 0 und endet bei n Elementen bei n-1
 * Größe der Liste wird dynamisch beim Einfügen oder Löschen von Elementen angepasst
@@ -457,7 +456,6 @@ public class ListDemo {
 
 * befindet sich im Package java.util
 * Zugriff auf die Container erfolgt sequentiell über Iteratoren
-* Index beginnt mit 0 und endet bei n Elementen bei n-1
 * Größe der Liste wird dynamisch beim Einfügen oder Löschen von Elementen angepasst
 * Duplikate sind nicht erlaubt (Vergleich über die equals-Methode)
 * die Reihenfolge, in der Elemente eingefügt werden, bleibt nicht erhalten
@@ -576,9 +574,9 @@ public class DemoMenge1 {
 ## Das Interface [```Comparator```]()
 
 * sortiert Elemente beim Einfügen in Sets oder Maps
-* Sortierung erfolgt nach einer beliebigen Sortierreihenolge und übersteuert die natürliche Ordnung
-* Comparator sollten in eigener Klasse implementiert werden
-* zur Verwendung des Comparators wird die implementierende Klasse dem Konstruktor des Sets oder der Map übergeben
+* Sortierung erfolgt nach einer beliebigen Sortierreihenfolge und übersteuert die natürliche Ordnung
+* ```Comparator``` sollten in eigener Klasse implementiert werden (auch innere Klassen oder Lamdafunktionen)
+* zur Verwendung des Comparators wird ein Objekt der implementierende Klasse dem Konstruktor des Sets oder der Map übergeben
 * beinhaltet genau eine Methode: ```public int compare(Object o1, Object o2)```
 * Beeutung der Rückgabewerte
   * ```Wert < 0```: o1 liegt vor o2
