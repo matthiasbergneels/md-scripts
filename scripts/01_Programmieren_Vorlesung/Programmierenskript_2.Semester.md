@@ -249,7 +249,7 @@ at prog2.demos.exceptions.Auto.fahren(Auto.java:21)
 </td><td>
 
 * treten zur Laufzeit auf (RuntimeException)
-* werden automatisch an den Aufrufer weitergeben
+* werden automatisch an den Aufrufer weitergegeben
 * können abgefangen werden ```try / catch```
 * oftmals logische Programmfehler
   * ```Division by Zero```
