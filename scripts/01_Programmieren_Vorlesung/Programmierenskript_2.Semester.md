@@ -1015,6 +1015,7 @@ verwendet
 * Hauptkomponente eines JFrames ist die RootPane
 * darunter folgt eine Hierarchie sogenannter Panels
 * neue Komponenten werden der ContentPane zugeordnet und nicht dem JFrame
+* Java Tutorial <a target=_blank href='https://docs.oracle.com/javase/tutorial/uiswing/components/rootpane.html'>"How to use rootPane"</a>
 
 ----
 ## Wichtige Methoden für JFrames
