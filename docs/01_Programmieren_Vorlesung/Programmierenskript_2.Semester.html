@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>Programmieren II</title>
-    <link rel="shortcut icon" href="./../favicon.ico"/>
+    <link rel="shortcut icon" href="./../favicon.ico" />
+    <link rel="stylesheet" href="./../dist/reset.css" />
     <link rel="stylesheet" href="./../dist/reveal.css" />
     <link rel="stylesheet" href="./../dist/theme/simple.css" id="theme" />
-    <link rel="stylesheet" href="./../css/highlight/zenburn.css" />
+    <link rel="stylesheet" href="./../css/highlight/base16/zenburn.css" />
+
     <link rel="stylesheet" href="./../_assets/scripts/_assets/style.css" />
 
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section ><section data-markdown><script type="text/template">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
 
 # Programmieren II
 ### Matthias Berg-Neels
 
 > [Download Skript](../pdfdownloads/ProgrammierenSkript_2Semester.pdf)
-</script></section><section data-markdown><script type="text/template">## Kapitelübersicht - Programmieren 2
+
+----
+## Kapitelübersicht - Programmieren 2
 
 <ol start="8">
       <li>Exception Handling</li>
@@ -34,13 +41,19 @@
 ### Exkurse
 * Unit Testing
 * Innere Klassen
-</script></section></section><section  data-markdown><script type="text/template"># Exkurs
+
+---
+# Exkurs
 # Unit Testing
 
 > siehe "Exkurs" Skript
-</script></section><section ><section data-markdown><script type="text/template"># Kapitel 8
+
+---
+# Kapitel 8
 # Exception Handling
-</script></section><section data-markdown><script type="text/template">## Kapitelübersicht - Programmieren 2
+
+----
+## Kapitelübersicht - Programmieren 2
 <ol start="8">
       <li><b>Exception Handling</b></li>
       <li>Collection Framework</li>
@@ -49,13 +62,17 @@
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
 </ol>
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie kennen die unterschiedlichen Ausnahmen in Java
 * Sie können eigene Ausnahmeklassen definieren
 * Sie können Ausnahmen auslösen und weitergeben
 * Sie können Ausnahmen behandeln und das Ausnahmenkonzept in Java erläutern
 * Sie können den Unterschied zwischen ckecked und unchecked Exceptions erklären
-</script></section></section><section ><section data-markdown><script type="text/template">## Fehler in Java
+
+---
+## Fehler in Java
 
 
   <table>
@@ -85,7 +102,9 @@
   </td>
   </tr>
   </table>
-</script></section><section data-markdown><script type="text/template">## Grundprinzip der Ausnahmebehandlung
+
+----
+## Grundprinzip der Ausnahmebehandlung
 * Laufzeitfehler oder explizite Anweisung löst Ausnahme aus
 
 * 2 Möglichkeiten der Fehlerbehandlung
@@ -97,15 +116,21 @@
   * Er kann die Ausnahme an seinen Aufrufer weitergeben
 
 * wird die Ausnahme nicht behandelt, führt sie zur Ausgabe einer Fehlermeldung und zum Programmabbruch (Laufzeitfehler)
-</script></section><section data-markdown><script type="text/template">## Ausnahmen behandeln
+
+----
+## Ausnahmen behandeln
 <div>
 <img src="img/08_exceptionhandling_03catchreihenfolge.png" width=700% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
 
 * Überwachung des Codingbereichs, in dem Ausnahmen ausgelöst werden können
 * spezieller Code zur Behandlung aufgetretener Ausnahmen
-</script></section></section><section ><section data-markdown><script type="text/template">## Eigene Ausnahmeklassen
-</script></section><section data-markdown><script type="text/template">## Erzeugen eigener Ausnahmeklassen
+
+---
+## Eigene Ausnahmeklassen
+
+----
+## Erzeugen eigener Ausnahmeklassen
 
 ```java
 public class TankLeer extends Exception {
@@ -117,7 +142,9 @@ public class TankLeer extends Exception {
 <div>
 <img src="img/08_exceptionhandling_02hierarchie.png" width=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">## Ausnahmen explizit auslösen und weitergeben
+
+----
+## Ausnahmen explizit auslösen und weitergeben
 
 ```Java
 public class Auto {
@@ -140,7 +167,9 @@ public class Auto {
 * Definition der möglichen Ausnahmen in Methoden-Signatur: ``` throws```
 * Erzeugen eines neuen Ausnahme-Objektes: ``` new TankLeer(tagesKM)```
 * Auslösen (werfen) der Ausnahme (im Ausnahmefall) innerhalb der Methode: ``` throw```
-</script></section><section data-markdown><script type="text/template">## Ausnahme behandeln
+
+----
+## Ausnahme behandeln
 
 ```Java
 public class TankLeerDemo {
@@ -167,7 +196,9 @@ public class TankLeerDemo {
 * ```try``` markiert den Überwachungsbereich - ausgelöste Ausnahmen beenden die Ausführung des Überwachungsbereiches umgehend
 * ```catch``` fängt mögliche Ausnahmen aus dem Überwachungsbereich auf
 * ```finally``` wird unabhängig vom Auftreten von Ausnahmen zum Abschluss des ```try-catch```-Blocks ausgeführt
-</script></section><section data-markdown><script type="text/template">## try-with-Resource (Ausblick: Kapitel 11)
+
+----
+## try-with-Resource (Ausblick: Kapitel 11)
 
 * vermeiden unschöner Schachtelung von try-Blöcken
   * ABER: andere Reihenfolge im Vergleich zur ```finally``` Ausführung
@@ -192,7 +223,9 @@ public class SchreibenInDatei {
   }
 }
 ```
-</script></section></section><section  data-markdown><script type="text/template">## Wichtige Methoden der Klasse Throwable
+
+---
+## Wichtige Methoden der Klasse Throwable
 <div>
 
 ```public String getMessage()```
@@ -216,7 +249,9 @@ prog2.demos.exceptions.TankLeer: Der Tank ist nach 1100 Kilometern leer.
 prog2.demos.exceptions.TankLeer: Der Tank ist nach 1100 Kilometern leer.
 at prog2.demos.exceptions.Auto.fahren(Auto.java:21)
 ```
-</div><!-- .element style="font-size: 0.85em;" --></script></section><section  data-markdown><script type="text/template">## Checked VS. Unchecked Exceptions
+</div><!-- .element style="font-size: 0.85em;" -->
+---
+## Checked VS. Unchecked Exceptions
 <table width=100%>
 <tr><td width=50%>Checked</td><td>Unchecked</td></tr>
 <tr><td>
@@ -239,7 +274,9 @@ at prog2.demos.exceptions.Auto.fahren(Auto.java:21)
 </td></tr>
 
 </table>
-</script></section><section  data-markdown><script type="text/template">## Ausnahmen in JUnit-Tests
+
+---
+## Ausnahmen in JUnit-Tests
 
 * spezielle Assertion
   * Rückgabe des Ausnahme Objektes
@@ -262,13 +299,19 @@ Assertions.assertDoesNotThrow(<Executable Interface> [, <Message>]);
 ```Java
 @Test(expected = <Erwartete Ausnahme Klasse>)
 ```
-</script></section><section  data-markdown><script type="text/template"># Exkurs
+
+---
+# Exkurs
 # Innere Klassen
 
 > siehe "Exkurs" Skript
-</script></section><section ><section data-markdown><script type="text/template"># Kapitel 9
+
+---
+# Kapitel 9
 # Collection Framework
-</script></section><section data-markdown><script type="text/template">## Kapitelübersicht - Programmieren 2
+
+----
+## Kapitelübersicht - Programmieren 2
 <ol start="8">
       <li>Exception Handling</li>
       <li><b>Collection Framework</b></li>
@@ -277,7 +320,9 @@ Assertions.assertDoesNotThrow(<Executable Interface> [, <Message>]);
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
 </ol>
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie können die Unterschiede der 3 Objekt-Containerarten erklären
 * Sie können Objekte in den Containern einfügen, löschen und finden
 * Sie können mit Iteratoren die Container durchlaufen
@@ -285,7 +330,9 @@ Assertions.assertDoesNotThrow(<Executable Interface> [, <Message>]);
 * Sie können die ```equals()``` und die ```hashCode()``` Methode in eigenen Klassen überschreiben
 * Sie können den Zusammenhang zwischen den Methoden ```equals()``` , ```hashCode()``` und ```compareTo()``` erklären
 
-</script></section></section><section ><section data-markdown><script type="text/template">## Datenstrukturen und -container
+
+---
+## Datenstrukturen und -container
 <div>
 <img align=center src="img/09_collectionframework_01cotainerstruktur.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0"-->
 </div><!-- .element align="center" -->
@@ -294,12 +341,16 @@ Das Collection Framework bietet generische Container
 * können verschiedenste Objekte enthalten
 * können beliebig viele Objekte aufnehmen
 * können auf bestimmte Objekte typisiert werden
-</script></section><section data-markdown><script type="text/template">## Überblick über das Collection Framework
+
+----
+## Überblick über das Collection Framework
 
 <div>
 <img align=center src="img/09_collectionframework_02klassenuebersicht.png" width=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0"-->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">## Die drei Arten von Containern
+
+----
+## Die drei Arten von Containern
 
 <div>
 
@@ -317,10 +368,14 @@ Schlüssel-Werte-Paare (Map)
 * zusammengehörige Objektpaare
 * Schlüssel sind immer eindeutig
 * Zugriff über Schlüssel
-</div><!-- .element style="font-size: 0.9em;" --></script></section></section><section ><section data-markdown><script type="text/template">## Listen
+</div><!-- .element style="font-size: 0.9em;" -->
+---
+## Listen
 
 > List
-</script></section><section data-markdown><script type="text/template">## Das Interface [```List```](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/List.html)
+
+----
+## Das Interface [```List```](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/List.html)
 
 * befindet sich im Package java.util
 * Zugriff auf die Container erfolgt sequentiell oder wahlfrei (über Index)
@@ -333,7 +388,9 @@ werden, bleibt erhalten
 * meist genutzte Implementierung:  ```ArrayList``` & ```Vector```
   * intern als Arrays realisiert
   * Hauptunterschied zwischen ArrayList und Vector: Zugriffsmethoden auf Vector sind synchronisiert (wichtig bei Threads)
-</script></section><section data-markdown><script type="text/template">## Wesentliche Methoden im Umgang mit Listen
+
+----
+## Wesentliche Methoden im Umgang mit Listen
 
 <div>
 
@@ -346,7 +403,9 @@ werden, bleibt erhalten
 * ```clear()``` initialisiert die Liste
 * ```size()``` liefert die Länge der Liste zurück
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Der Umgang mit Iteratoren
+
+----
+## Der Umgang mit Iteratoren
 
 <div>
 
@@ -364,7 +423,9 @@ Wichtige Iterator-Methoden
 * ```next()``` greift auf das nächste Element des Containers zu
 * ```remove()``` löscht das Element aus dem Container, welches zuletzt vom Iterator gelesen wurde
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Beispiel für eine List mit Iteratoren
+
+----
+## Beispiel für eine List mit Iteratoren
 
 <div>
 
@@ -399,10 +460,14 @@ public class ListDemo {
 }
 ```
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Mengen
+
+---
+## Mengen
 
 > Set
-</script></section><section data-markdown><script type="text/template">## Die Klasse TreeSet
+
+----
+## Die Klasse TreeSet
 
 * befindet sich im Package java.util
 * Zugriff auf die Container erfolgt sequentiell über Iteratoren
@@ -412,7 +477,9 @@ public class ListDemo {
 * Sortieren nach der natürlichen Ordnung durch Implementierung des Comparable-Interface
   * Das Comparable-Interface muss auf jeden Fall implementiert werden, wenn Objekte in ein TreeSet eingefügt werden
   * Beliebige Sortierung durch Implementierung des Comparator- Interface
-</script></section><section data-markdown><script type="text/template">## Beispiel für eine Menge mit Iteratoren
+
+----
+## Beispiel für eine Menge mit Iteratoren
 
 <div>
 
@@ -442,9 +509,13 @@ public class SetDemo {
 }
 ```
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ## Ordnung und Sortierung von Objekten
-</script></section><section data-markdown><script type="text/template">## Das Interface [```Comparable```](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Comparable.html)
+
+----
+## Das Interface [```Comparable```](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Comparable.html)
 
 * sortiert Elemente beim Einfügen in Sets oder Maps (welche auf ```SortedSet``` basieren)
 * soll die "natürliche Ordnung" der Objekte widerspiegeln
@@ -462,7 +533,9 @@ public class SetDemo {
 "c".compareTo("c"); // --> ergibt  0
 "c".compareTo("a"); // --> ergibt  2
 ```
-</script></section><section data-markdown><script type="text/template">## Beispiel für eine Comparable-Implementierung
+
+----
+## Beispiel für eine Comparable-Implementierung
 
 ```Java
 public class Student implements Comparable {
@@ -483,7 +556,9 @@ public class Student implements Comparable {
   }
 }
 ```
-</script></section><section data-markdown><script type="text/template">## Beispiel TreeSet mit eigener Comparable-Implementierung
+
+----
+## Beispiel TreeSet mit eigener Comparable-Implementierung
 
 ```Java
 import java.util.Iterator;
@@ -509,7 +584,9 @@ public class DemoMenge1 {
 }
 
 ```
-</script></section><section data-markdown><script type="text/template">## Das Interface [```Comparator```]()
+
+----
+## Das Interface [```Comparator```]()
 
 * sortiert Elemente beim Einfügen in Sets oder Maps
 * Sortierung erfolgt nach einer beliebigen Sortierreihenfolge und übersteuert die natürliche Ordnung
@@ -520,7 +597,9 @@ public class DemoMenge1 {
   * ```Wert < 0```: o1 liegt vor o2
   * ```Wert = 0```: o1 und o2 sind gleich
   * ```Wert > 0```: o1 liegt hinter o2
-</script></section><section data-markdown><script type="text/template">## Beispiel für eine Comparator-Implementierung
+
+----
+## Beispiel für eine Comparator-Implementierung
 
 ```Java
 import java.util.Comparator;
@@ -543,7 +622,9 @@ public class StudentComparator implements Comparator{
 }
 
 ```
-</script></section><section data-markdown><script type="text/template">## Beispiel TreeSet mit eigener Comparator-Implementierung
+
+----
+## Beispiel TreeSet mit eigener Comparator-Implementierung
 
 ```Java
 import java.util.*;
@@ -565,7 +646,9 @@ public class DemoMenge1 {
   }
 }
 ```
-</script></section><section data-markdown><script type="text/template">## Sortieren von Listen
+
+----
+## Sortieren von Listen
 
 * Listen (```Vector```, ```ArrayList```, ...) sind normalerweise unsortiert
 * die Klasse ```Collections``` bietet eine überladene Sortiermethode zum Sortieren von List-Objekten an
@@ -575,13 +658,17 @@ public class DemoMenge1 {
     * dazu müssen die Klassen das Interface Comparable implementieren, deren Instanzen in der Liste gespeichert sind
   * ```static void sort(List liste, Comparator c)```
     * übersteuert die natürliche Ordnung und sortiert die Objekte der Liste über den entsprechenden Comparator c
-</script></section></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ## Vergleichen von Objekten
 
 > ```equals()``` und ```hashCode()```
 
 > ... und ```compareTo(Object o)```
-</script></section><section data-markdown><script type="text/template">## Der Vergleich von Objekten
+
+----
+## Der Vergleich von Objekten
 
 * Vergleich mit dem ==-Operator prüft, ob es sich um die identische Speicherreferenz handelt
 * inhaltliche Vergleiche erfolgen über die ```equals()```-Methode (```equals()```-Methode der Klasse Object entspricht dem ==-Operator)
@@ -591,7 +678,9 @@ public class DemoMenge1 {
   * transitiv: wenn x gleich y und y gleich z ist, dann ist auch x gleich z
   * konsistent: solange sich zwei Objekte nicht verändern, liefert der Vergleich der beiden Objekte immer das gleiche Ergebnis
   * Objekte müssen von null verschieden sein
-</script></section><section data-markdown><script type="text/template">## Das Überschreiben der ```equals()```-Methode
+
+----
+## Das Überschreiben der ```equals()```-Methode
 
 <table>
 <tr>
@@ -616,7 +705,9 @@ public class DemoMenge1 {
   </td>
 </tr>
 </table><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Das Überschreiben der ```equals()```-Methode
+
+----
+## Das Überschreiben der ```equals()```-Methode
 ### direkte Subklasse von ```Object```
 
 <div>
@@ -654,7 +745,9 @@ public class Haustier {
 }
 ```
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">## Das Überschreiben der ```equals()```-Methode
+
+----
+## Das Überschreiben der ```equals()```-Methode
 ### indirekte Subklasse von ```Object```
 
 <div>
@@ -685,7 +778,9 @@ public class Hund extends Haustier {
 }
 ```
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">## Zusammenhang ```hashCode()``` und ```equals()```
+
+----
+## Zusammenhang ```hashCode()``` und ```equals()```
 <div>
 
 * Verwendung für die Verwaltung der Einträge in hash-basierten Datencontainern (HashSet, HashMap, ...)
@@ -699,7 +794,9 @@ public class Hund extends Haustier {
   * Ermittlung der Hash-Codes der ausgewählten Attribute einer Klasse
   * Addition oder bitweise Verknüpfung mit exklusivem Oder der einzelnen Hash-Codes
 </div><!-- .element style="font-size: 0.85em;" -->
-</script></section><section data-markdown><script type="text/template">## Überschreiben von ```hashCode()```
+
+----
+## Überschreiben von ```hashCode()```
 
 ```Java
 public class Haustier {
@@ -732,7 +829,9 @@ public class Hund extends Haustier {
   }
 }
 ```
-</script></section><section data-markdown><script type="text/template">## ```hashCode()``` – Alternative Implementierung
+
+----
+## ```hashCode()``` – Alternative Implementierung
 
 <div>
 
@@ -746,7 +845,9 @@ public class Hund extends Haustier {
 |Referenz|```((field==null) ? 0 : field.hashCode())```|
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## ```hashCode()``` – Alternative Implementierung
+
+----
+## ```hashCode()``` – Alternative Implementierung
 
 ```Java
 public class Haustier {
@@ -763,7 +864,9 @@ public class Haustier {
   }
 }
 ```
-</script></section><section data-markdown><script type="text/template">## Was hat das mit ```Comparable``` zu tun?
+
+----
+## Was hat das mit ```Comparable``` zu tun?
 
 * ```comapreTo()``` sortiert Objekte nach einer "natürlichen" Ordnung
   * Rückgabe Wert 0: die Objekte sind gleich
@@ -772,10 +875,14 @@ public class Haustier {
 > ```equals()``` und ```compareTo()``` sollten sich konsistent verhalten
 
 * Zusammengefasst: ```equals()```, ```hashCode()``` und ```compareTo()``` **sollten** für ein Objekt immer auf den gleichen Attributen basieren
-</script></section></section><section ><section data-markdown><script type="text/template">## Schlüssel-Werte-Paare
+
+---
+## Schlüssel-Werte-Paare
 
 > Maps
-</script></section><section data-markdown><script type="text/template">## Das Interface `Map`
+
+----
+## Das Interface `Map`
 
 * befindet sich im Package java.util
 * ist kein Sub-Interface von Collection
@@ -786,7 +893,9 @@ public class Haustier {
 * zwei wesentliche Vertreter
   * TreeMap: Einträge werden nach Schlüsseln sortiert -> Schlüssel- Klasse muss das Interface Comparable implementieren
   * HashMap: auf Basis der hashCode()-Methode der Schlüsselklasse wird eine interne Position (Bucket) berechnet, an der das Schlüssel- Werte-Paar in die Map aufgenommen wird
-</script></section><section data-markdown><script type="text/template">## Wesentliche Methoden im Umgang mit Maps
+
+----
+## Wesentliche Methoden im Umgang mit Maps
 
 <div>
 
@@ -800,7 +909,9 @@ Schlüssel k ein Eintrag in der Map enthalten ist
 * ```size()``` liefert die Länge der Map zurück
 * ```clear()``` initialisiert die Map
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Beispiel für eine TreeMap mit Iteratoren
+
+----
+## Beispiel für eine TreeMap mit Iteratoren
 
 <div>
 
@@ -831,8 +942,12 @@ public class DemoMap {
 }
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Wrapper-Klassen
-</script></section><section data-markdown><script type="text/template">## Umgang mit Wrapper-Klassen
+
+---
+## Wrapper-Klassen
+
+----
+## Umgang mit Wrapper-Klassen
 
 <div>
 
@@ -846,9 +961,13 @@ public class DemoMap {
   * Java erstellt automatisch ein Objekt der passenden Wrapper-Klasse wenn ein Objekt erwartet, aber ein einfacher Datentyp bereitgestellt wird (Auto-Boxing)
   * umgekehrt wird der Wert als einfacher Datentyp bereitgestellt, wenn ein Objekt der Wrapper-Klasse zurückgegeben wird (Auto-Unboxing)
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 10
+
+---
+# Kapitel 10
 # Swing
-</script></section><section data-markdown><script type="text/template">## Kapitelübersicht - Programmieren 2
+
+----
+## Kapitelübersicht - Programmieren 2
 <ol start="8">
       <li>Exception Handling</li>
       <li>Collection Framework</li>
@@ -857,7 +976,9 @@ public class DemoMap {
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
 </ol>
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie können den wesentlichen Unterschied zwischen AWT und Swing erläutern
 * Sie können mit Swing einfache Fenster erzeugen und schließen
 * Sie können unterschiedliche Layouts in Verbindung mit Panels einsetzen
@@ -867,7 +988,9 @@ public class DemoMap {
 * Sie können eigene Menüs implementieren
 * Sie können die Benutzeroberfläche mit Panels, Rahmen und Tooltips ergänzen
 
-</script></section></section><section ><section data-markdown><script type="text/template">## Abgrenzung von AWT und Swing
+
+---
+## Abgrenzung von AWT und Swing
 
 <div>
 
@@ -886,13 +1009,19 @@ verwendet
 * Vorteil: „bessere“ Plattformunabhängigkeit
 * Nachteil: im Vergleich zu AWT eher langsam
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Abgrenzung von AWT und Swing
+
+----
+## Abgrenzung von AWT und Swing
 
 <div>
 <img src="img/10_swing_01klassenubersicht.png" width=90% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JFrame.html'>```JFrame```</a>
-</script></section><section data-markdown><script type="text/template">## Aufbau eines Swing-Fensters mit ```JFrame```
+
+---
+## <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JFrame.html'>```JFrame```</a>
+
+----
+## Aufbau eines Swing-Fensters mit ```JFrame```
 
 <div>
 <img src="img/10_swing_02layerpane.png" width=40% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
@@ -902,7 +1031,9 @@ verwendet
 * darunter folgt eine Hierarchie sogenannter Panels
 * neue Komponenten werden der ContentPane zugeordnet und nicht dem JFrame
 * Java Tutorial <a target=_blank href='https://docs.oracle.com/javase/tutorial/uiswing/components/rootpane.html'>"How to use rootPane"</a>
-</script></section><section data-markdown><script type="text/template">## Wichtige Methoden für JFrames
+
+----
+## Wichtige Methoden für JFrames
 
 <div>
 
@@ -920,8 +1051,12 @@ des Fensters passiert
   * ```pack()``` passt die Fenstergröße an den Content an
 * ```setVisible(boolean b)``` aus der Klasse java.awt.Component
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/java/awt/LayoutManager.html'>```Layoutmanager```</a>
-</script></section><section data-markdown><script type="text/template">## Layouts im Rahmen von Swing
+
+---
+## <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/java/awt/LayoutManager.html'>```Layoutmanager```</a>
+
+----
+## Layouts im Rahmen von Swing
 
 <div>
 
@@ -936,14 +1071,20 @@ des Fensters passiert
 <div>
 <img src="img/10_swing_03layoutmanager.png" width=90% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">## <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JPanel.html'>```JPanel```</a>
-</script></section><section data-markdown><script type="text/template">## Der Container JPanel
+
+----
+## <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JPanel.html'>```JPanel```</a>
+
+----
+## Der Container JPanel
 
 * JPanel ist eine weitere Container-Form
 * ordnet mehrere Elemente unter der Kontrolle eines Layoutmanagers an
 * Layoutmanager und Komponenten werden direkt dem Panel zugewiesen
 * bereits dem Konstruktor wird der Layoutmanager mitgegeben l über die add()-Methode werden die Komponenten dem Panel zugeordnet
-</script></section><section data-markdown><script type="text/template">## JPanel Beispiel
+
+----
+## JPanel Beispiel
 
 ```Java
 import java.awt.FlowLayout;
@@ -964,7 +1105,9 @@ public class DemoFlow {
   }
 }
 ```
-</script></section><section data-markdown><script type="text/template">## Beispiel: Einsatz von JPanel und Layouts
+
+----
+## Beispiel: Einsatz von JPanel und Layouts
 
 <div>
 <img src="img/10_swing_04logon.png" width=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
@@ -976,15 +1119,21 @@ public class DemoFlow {
 * rot und grün umrahmtes Panel =FlowLayout
 * blau umrahmte Panels = GridLayout, wobei jedes einzelne Feld auf einem eigenen Panel mit FlowLayout liegt
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Rahmen mit dem <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/border/Border.html'>```Border```</a> Interface
-</script></section><section data-markdown><script type="text/template">## Panels mit Rahmen hervorheben
+
+---
+## Rahmen mit dem <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/border/Border.html'>```Border```</a> Interface
+
+----
+## Panels mit Rahmen hervorheben
 
 * Rahmen sind über Klassen relisiert, die das Interface <a target=_blank href=
 'https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/border/Border.html'>```Border```</a> implementieren
 * Rahmen sollten nicht direkt über die Konstruktoren der Rahmen-Klassen sondern über die Klassenmethoden der <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/BorderFactory.html'>```BorderFactory```</a> erzeugt werden
 * jeder Swing-Komponente kann mit der Methode ```setBorder(Border b)``` ein Rahmen zugewiesen werden
 * einige Standardrahmen sind in Swing bereits implementiert
-</script></section><section data-markdown><script type="text/template">## Verschiedene Rahmen
+
+----
+## Verschiedene Rahmen
 
 <div>
 
@@ -1001,7 +1150,9 @@ public class DemoFlow {
 |<a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/border/TitledBorder.html'>```TitledBorder```</a>|Rahmen mit String in einer gewünschten Ecke|
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## Beispiel: Panels mit verschiedenen Rahmen
+
+----
+## Beispiel: Panels mit verschiedenen Rahmen
 
 <div>
 
@@ -1033,14 +1184,20 @@ public class DemoLogonScreen {
 ```
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## Beispiel: DemoLogonScreen
+
+----
+## Beispiel: DemoLogonScreen
 
 <div>
 <img src="img/10_swing_06borderexample.png" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
 
-</script></section></section><section ><section data-markdown><script type="text/template">## Swing UI Komponenten
-</script></section><section data-markdown><script type="text/template">## Beschriftungen und Grafikanzeige mit <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JLabel.html'> ```JLabel```</a>
+
+---
+## Swing UI Komponenten
+
+----
+## Beschriftungen und Grafikanzeige mit <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JLabel.html'> ```JLabel```</a>
 
 <div>
 
@@ -1068,7 +1225,9 @@ public class DemoLabelGrafik {
 ```
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## Unterschiedliche Arten von Textfeldern
+
+----
+## Unterschiedliche Arten von Textfeldern
 
 <div>
 
@@ -1086,7 +1245,9 @@ public class DemoLabelGrafik {
   * Zeilenumbrüche werden bei getText() berücksichtigt
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## Validierende Textfelder als spezielle Form
+
+----
+## Validierende Textfelder als spezielle Form
 
 <div>
 
@@ -1114,7 +1275,9 @@ public class DemoLabelGrafik {
 |H|nur Zeichen zur Hexadezimaldarstellung sind erlaubt (0-9 und A-F)|
 
 </div><!-- .element style="font-size: 0.45em;" -->
-</script></section><section data-markdown><script type="text/template">## Drop-Down-Listen über <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JComboBox.html'>```JComboBox```</a>
+
+----
+## Drop-Down-Listen über <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JComboBox.html'>```JComboBox```</a>
 
 * eine bestimmte Wertemenge wird zur Auswahl bereit gestellt
 * dem Konstruktor der Klasse JComboBox wird die Wertemenge als ein Array von Objekten der Klasse Object übergeben
@@ -1124,7 +1287,9 @@ public class DemoLabelGrafik {
   * ```setEditable(boolean b)``` bestimmt, ob auch Werte außerhalb der Wertemenge erlaubt sind
     * b = true -> freie Eingabe erlaubt
     * b = false -> freie Eingabe nicht erlaubt
-</script></section><section data-markdown><script type="text/template">## Weitere Klassen aus dem Package Swing
+
+----
+## Weitere Klassen aus dem Package Swing
 
 <div>
 
@@ -1141,8 +1306,12 @@ public class DemoLabelGrafik {
 *  ...
 
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/EventListener.html'>```EventListener```</a>
-</script></section><section data-markdown><script type="text/template">## <a target=_blank href='https://docs.oracle.com/javase/tutorial/uiswing/events/intro.html'>Das Event Konzept</a>
+
+---
+## <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/EventListener.html'>```EventListener```</a>
+
+----
+## <a target=_blank href='https://docs.oracle.com/javase/tutorial/uiswing/events/intro.html'>Das Event Konzept</a>
 
 <div>
 
@@ -1161,7 +1330,9 @@ public class DemoLabelGrafik {
 <img src="img/10_swing_05eventkonzept.gif" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
 
-</script></section><section data-markdown><script type="text/template">## Die Aufgaben des <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/java/awt/event/ItemListener.html'>```ItemListener```</a>
+
+----
+## Die Aufgaben des <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/java/awt/event/ItemListener.html'>```ItemListener```</a>
 
 <div>
 
@@ -1174,7 +1345,9 @@ public class DemoLabelGrafik {
 * Beispiel: beim Setzen des Hakens wird ein zusätzliches Feld eingeblendet
 
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Beispiel: ```JComboBox``` mit ```ItemListener```
+
+----
+## Beispiel: ```JComboBox``` mit ```ItemListener```
 
 <div>
 
@@ -1215,7 +1388,9 @@ public class DemoJComboBox {
 ```
 
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">## Interaktion über Drucktasten mit <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JButton.html'>```JButton```</a>
+
+----
+## Interaktion über Drucktasten mit <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JButton.html'>```JButton```</a>
 
 * überladener Konstruktor, der es ermöglicht Text und oder Grafik in Form eines Icon auf dem Button zu positionieren
 * mit der Methode ```setText(String s)``` kann der Text nachträglich verändert werden
@@ -1223,7 +1398,9 @@ public class DemoJComboBox {
 * der ```ActionListener``` ist der Beobachter des Knopfes
 * ohne ```ActionListener``` kann dem Button keine Funktionalität zugewiesen werden
 * sobald der Button gedrückt wird, wird ein ```ActionEvent``` ausgelöst, welches vom Beobachter abgefangen und ausgewertet wird
-</script></section><section data-markdown><script type="text/template">## Die Aufgaben des <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/java/awt/event/ActionListener.html'>```ActionListener```</a>
+
+----
+## Die Aufgaben des <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/java/awt/event/ActionListener.html'>```ActionListener```</a>
 
 * der ```ActionListener``` ist als Interface implementiert
 * das Interface gibt die abstrakte Methode ```actionPerformed(ActionEvent e)``` vor
@@ -1232,7 +1409,9 @@ public class DemoJComboBox {
   * ```getActionCommand()``` liefert den String, der mit der Aktion verbunden ist (bei JButton die Beschriftung des Buttons)
   * ```getModifiers()``` liefert einen Integer-Wert zurück, welche Funktionstaste bei dem Ereignis gedrückt wurde (Shift, Alt, etc.)
   * ```paramString()``` liefert einen Erkennungs-String, der mit „ACTION_PERFORMED“ oder „unknown type“ beginnt
-</script></section><section data-markdown><script type="text/template">## Beispiel für einen ```JButton``` mit ```ActionListener```
+
+----
+## Beispiel für einen ```JButton``` mit ```ActionListener```
 
 <div>
 
@@ -1270,7 +1449,9 @@ public class DemoButton { public DemoButton() {
 ```
 
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">## Kontrollfelder mit ```JCheckBox```
+
+----
+## Kontrollfelder mit ```JCheckBox```
 
 <div>
 
@@ -1283,7 +1464,9 @@ public class DemoButton { public DemoButton() {
 * im ```ItemListener``` kann der Zustand des Kontrollfeldes ausgewertet und weiter verarbeitet werden
 
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Beispiel: ```JCkeckBox``` mit ```ItemListener```
+
+----
+## Beispiel: ```JCkeckBox``` mit ```ItemListener```
 
 <div>
 
@@ -1321,7 +1504,9 @@ public class DemoJCheckBox {
 ```
 
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">## Optionsfelder mit ```JRadioButton``` & ```ButtonGroup```
+
+----
+## Optionsfelder mit ```JRadioButton``` & ```ButtonGroup```
 
 <div>
 
@@ -1336,7 +1521,9 @@ public class DemoJCheckBox {
 
 </div><!-- .element style="font-size: 0.8em;" -->
 
-</script></section><section data-markdown><script type="text/template">## Beispiel: ```JRadioButton``` mit ```ActionListener```
+
+----
+## Beispiel: ```JRadioButton``` mit ```ActionListener```
 
 <div>
 
@@ -1381,8 +1568,12 @@ public class DemoRadioButton {
 ```
 
 </div><!-- .element style="font-size: 0.6em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Weitere Komponenten
-</script></section><section data-markdown><script type="text/template">## Erstellen von Menüs mit Swing-Komponenten
+
+---
+## Weitere Komponenten
+
+----
+## Erstellen von Menüs mit Swing-Komponenten
 
 * <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JMenuBar.html'>```JMenuBar```</a> ist der Container für die einzelnen Menüs
   * mit der ```add(JMenu m)``` Methode wird dem Container ein Menü hinzugefügt
@@ -1391,7 +1582,9 @@ public class DemoRadioButton {
 * Objekte der Klasse <a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/javax/swing/JMenuItem.html'>```JMenuItem```</a> repräsentieren Menüeinträge
 * mit der Methode ```setJMenuBar(JMenubar m)``` wird einem Fenster eine Menüleiste zugeordnet
 * um auf die Auswahl eines Menüeintrags zu reagieren, müssen die Menüeinträge einem ```ActionListener``` zugeordnet werden
-</script></section><section data-markdown><script type="text/template">## Beispiel: einfaches Menü mit ActionListener
+
+----
+## Beispiel: einfaches Menü mit ActionListener
 
 <div>
 
@@ -1428,7 +1621,9 @@ public class DemoJMenuBar {
 ```
 
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">## Tooltips
+
+----
+## Tooltips
 
 <div>
 
@@ -1460,9 +1655,13 @@ public class DemoToolTip {
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
 
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 11
+
+---
+# Kapitel 11
 # Input- & Output-Streams (!)
-</script></section><section data-markdown><script type="text/template">## Kapitelübersicht - Programmieren 2
+
+----
+## Kapitelübersicht - Programmieren 2
 <ol start="8">
       <li>Exception Handling</li>
       <li>Collection Framework</li>
@@ -1471,7 +1670,9 @@ public class DemoToolTip {
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
 </ol>
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 
 * Sie können aus Java heraus auf das File-System zugreifen
 * Sie können Verzeichnisse und Dateien anlegen, umbenennen und löschen
@@ -1481,13 +1682,19 @@ public class DemoToolTip {
 * Sie können das Konzept der Serialisierung in Java anwenden
 * Sie können Properties-Dateien anlegen, mit Werten füllen und wieder auslesen
 * Sie können Anwendungen mit mehrsprachigen Texten implementieren
-</script></section></section><section ><section data-markdown><script type="text/template">## Umgang mit dem Dateisystem (!)
-</script></section><section data-markdown><script type="text/template">## Windows Dateisystem
+
+---
+## Umgang mit dem Dateisystem (!)
+
+----
+## Windows Dateisystem
 
 <div>
 <img src="img/11_streams_01windowsfilesystem.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">## Die Klasse <a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/io/File.html>```File```</a>
+
+----
+## Die Klasse <a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/io/File.html>```File```</a>
 
 Objekte der Klasse repräsentieren
 * Laufwerke
@@ -1500,7 +1707,9 @@ Wichtige Methoden der Klasse File
   * Dateien
 * zum Beschaffen von Informationen über die Objekte
 * Klassenmethoden zur Auflistung von Inhalten
-</script></section><section data-markdown><script type="text/template">## Anzeigen der Laufwerke
+
+----
+## Anzeigen der Laufwerke
 
 ```Java
 import java.io.File;
@@ -1518,7 +1727,9 @@ public class AusgabeVerzeichnis {
 }
 
 ```
-</script></section><section data-markdown><script type="text/template">## Informationen über Verzeichnisse
+
+----
+## Informationen über Verzeichnisse
 
 <div>
 
@@ -1552,7 +1763,9 @@ public class VerzeichnisEigenschaften {
 * ```listFiles()``` erzeugt ein Array vom Typ File mit dem Verzeichnisinhalt
 </div><!-- .element style="font-size: 0.8em;" -->
 
-</script></section><section data-markdown><script type="text/template">## Informationen über Dateien
+
+----
+## Informationen über Dateien
 
 <div>
 
@@ -1587,7 +1800,9 @@ public class DateiEigenschaften {
 * ```canWrite()``` überprüft die Schreibberechtigung
 * ```lastModified()``` gibt den Zeitpunkt der letzten Änderung an
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## Umgang mit Verzeichnissen
+
+----
+## Umgang mit Verzeichnissen
 
 <div>
 
@@ -1621,7 +1836,9 @@ public class Verzeichnis {
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
 
-</script></section><section data-markdown><script type="text/template">## Umgang mit Dateien
+
+----
+## Umgang mit Dateien
 
 <div>
 
@@ -1654,8 +1871,12 @@ public class Dateien {
 }
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Input- & Output-Streams (!)
-</script></section><section data-markdown><script type="text/template">## Streams (<a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/io/package-summary.html>```java.io```</a>) VS Streams (<a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/stream/package-summary.html>```java.util.stream```</a>)
+
+---
+## Input- & Output-Streams (!)
+
+----
+## Streams (<a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/io/package-summary.html>```java.io```</a>) VS Streams (<a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/stream/package-summary.html>```java.util.stream```</a>)
 
 <div>
 
@@ -1676,7 +1897,9 @@ Stream (```java.util.stream```)
 * Erweiterung des Collection Framework
 * Quelle von Interface Collection, Ziel von Interface Collection, einfache Datentypen, etc (abhängig von Funktion)
 </div><!-- .element style="font-size: 0.6em;" -->
-</script></section><section data-markdown><script type="text/template">## Ein- und Ausgabeströme in Java
+
+----
+## Ein- und Ausgabeströme in Java
 
 Eingabestrom
 * über Tastatur in Verbindung mit der Konsole
@@ -1691,7 +1914,9 @@ Ausgabestrom
 * wichtige Klassen
   * Byte oder Byte-Arrays (```OutputStream```)
   * Zeichen oder Zeichen-Arrays (```Writer```)
-</script></section><section data-markdown><script type="text/template">## Übersicht über wichtige Eingabeklassen
+
+----
+## Übersicht über wichtige Eingabeklassen
 
 <div>
 
@@ -1705,7 +1930,9 @@ Ausgabestrom
 |```FileInputStream```|```FileReader```|Liest aus einer Datei|
 
 </div><!-- .element style="font-size: 0.75em;" -->
-</script></section><section data-markdown><script type="text/template">## Übersicht über wichtige Ausgabeklassen
+
+----
+## Übersicht über wichtige Ausgabeklassen
 
 <div>
 
@@ -1720,7 +1947,9 @@ Ausgabestrom
 
 </div><!-- .element style="font-size: 0.75em;" -->
 
-</script></section><section data-markdown><script type="text/template">## Ein- und Ausgabe auf der Konsole
+
+----
+## Ein- und Ausgabe auf der Konsole
 
 Vordefinierte In- und Outputstreams in der Klasse ```System```
 
@@ -1733,7 +1962,9 @@ Besondere Stream-Klassen für Standardgeräte
 Werden automatisch beim Laden von Klassen erzeugt
 
 Besonderer Output-Stream ```System.err```
-</script></section><section data-markdown><script type="text/template">## Ausgaben auf die Konsole mit System.out
+
+----
+## Ausgaben auf die Konsole mit System.out
 
 2 Möglichkeiten der Ausgabe
 * ```System.out.print();``` ohne Zeilenumbruch
@@ -1747,7 +1978,9 @@ Besonderer Output-Stream ```System.err```
 Konvertierung der Übergabeparameter
 * Parameter werden in einen String konvertiert
 * Konvertierung durch impliziten Aufruf der Methode ```toString()```
-</script></section><section data-markdown><script type="text/template">## Eingaben über die Konsole mit ```System.in```
+
+----
+## Eingaben über die Konsole mit ```System.in```
 
 ```Java
 import java.io.IOException;
@@ -1769,7 +2002,9 @@ public class EingabeTastatur {
   }
 }
 ```
-</script></section><section data-markdown><script type="text/template">## Eingaben über die Konsole mit ```System.in```
+
+----
+## Eingaben über die Konsole mit ```System.in```
 
 
 ```Java
@@ -1795,8 +2030,12 @@ public class EingabeTastaturString {
   }
 }
 ```
-</script></section></section><section ><section data-markdown><script type="text/template">## Streams und Dateien (!)
-</script></section><section data-markdown><script type="text/template">## Fortgeschrittener Umgang mit Dateien
+
+---
+## Streams und Dateien (!)
+
+----
+## Fortgeschrittener Umgang mit Dateien
 
 Lesen aus Dateien
 * aus einfachen Textdateien
@@ -1811,7 +2050,9 @@ Schreiben in Dateien
   * Schreiben von Strings über Objekte der Klasse ```FileWriter```
 * in beliebige Dateien
 * Schreiben von Daten über Objekte der Klasse ```FileOutputStream```
-</script></section><section data-markdown><script type="text/template">## Lesen aus Textdateien
+
+----
+## Lesen aus Textdateien
 
 <div>
 
@@ -1844,7 +2085,9 @@ public class LesenAusDatei {
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
 
-</script></section><section data-markdown><script type="text/template">## Schreiben in Textdatei
+
+----
+## Schreiben in Textdatei
 
 <div>
 
@@ -1874,7 +2117,9 @@ public class SchreibenInDatei {
 
 ```
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Rückblick - Exception Handling: try-with-Resource
+
+----
+## Rückblick - Exception Handling: try-with-Resource
 
 * vermeiden unschöner Schachtelung von try-Blöcken
 * Voraussetzung: Resource implementiert ```Closable```
@@ -1897,7 +2142,9 @@ public class SchreibenInDatei {
   }
 }
 ```
-</script></section><section data-markdown><script type="text/template">## Einfache Möglichkeit zum Kopieren von Dateien
+
+----
+## Einfache Möglichkeit zum Kopieren von Dateien
 
 <div>
 
@@ -1926,7 +2173,9 @@ public class DateiKopieren {
 }
 ```
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Kopieren von Dateien über Puffer
+
+----
+## Kopieren von Dateien über Puffer
 
 <div>
 
@@ -1963,8 +2212,12 @@ public class DateiKopierenMitPuffer2 {
 }
 ```
 </div><!-- .element style="font-size: 0.65em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Serialisierung von Objekten (!)
-</script></section><section data-markdown><script type="text/template">## Übertragung von Objekten
+
+---
+## Serialisierung von Objekten (!)
+
+----
+## Übertragung von Objekten
 
 * Umwandlung von Objekten in Byte-Strom (serialisieren)
 * Umwandlung von Byte-Strom in Objekte (deserialisieren)
@@ -1977,7 +2230,9 @@ Umsetzung in Java
 * Möglichkeiten zur Klassen-spezifischen Implementierung
   * Modifier ```transient``` zum ausschließen von Feldern
   * Methoden im Objekt-Lebenszyklus ```readResolve()```, ```writeObject(ObjectOutputStream s)```, ```readObject(ObjectInputStream s)```
-</script></section><section data-markdown><script type="text/template">## Serialisierungs-Beispiel: Person
+
+----
+## Serialisierungs-Beispiel: Person
 
 <div>
 
@@ -2011,7 +2266,9 @@ public class Person implements Serializable {
 }
 ```
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">## ```ObjectOutputStream```: Speichern von Personen Objekten
+
+----
+## ```ObjectOutputStream```: Speichern von Personen Objekten
 
 <div>
 
@@ -2040,7 +2297,9 @@ public class PersonSaveExample {
 }
 ```
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">## ```ObjectInputStream```: Lesen von Personen-Objekten
+
+----
+## ```ObjectInputStream```: Lesen von Personen-Objekten
 
 <div>
 
@@ -2075,8 +2334,12 @@ public class PersonReadExample {
 }
 ```
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Properties (!)
-</script></section><section data-markdown><script type="text/template">## Texte in Java-Properties-Dateien auslagern (!)
+
+---
+## Properties (!)
+
+----
+## Texte in Java-Properties-Dateien auslagern (!)
 
 Vorteile der Properties
 * Ziel: Auslagerung von Texten in eigener Datei (.properties)
@@ -2088,7 +2351,9 @@ Umsetzung in Java
 * Nutzung der Klasse Properties und des FileInput- bzw. FileOutputStreams
 * Laden, Setzen und Speichern von Properties möglich
 * dynamische Texte mit variablen Parametern möglich
-</script></section><section data-markdown><script type="text/template">## Texte in Java-Properties-Dateien speichern (!)
+
+----
+## Texte in Java-Properties-Dateien speichern (!)
 
 <div>
 
@@ -2127,7 +2392,9 @@ Name=Michael Lang
 Language=Deutsch
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
-</script></section><section data-markdown><script type="text/template">## Texte aus Java-Properties-Dateien lesen (!)
+
+----
+## Texte aus Java-Properties-Dateien lesen (!)
 
 <div>
 
@@ -2170,7 +2437,9 @@ Hallo Michael Lang
 Sie bekommen die Texte in Deutsch angezeigt.
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
-</script></section><section data-markdown><script type="text/template">## Dynamische Texte mit variablen Parametern (!)
+
+----
+## Dynamische Texte mit variablen Parametern (!)
 
 <div>
 
@@ -2222,8 +2491,12 @@ Text mit einem beliebigen Parameter. : mein Text
 Hallo!
 ```
 </div><!-- .element style="font-size: 0.55em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## ResourceBundle (!)
-</script></section><section data-markdown><script type="text/template">## Internationalisierung über ResourceBundle
+
+---
+## ResourceBundle (!)
+
+----
+## Internationalisierung über ResourceBundle
 
 Vorteile der ResourceBundle
 * Ziel: Mehrsprachige Anwendungen sollen ermöglicht werden
@@ -2233,7 +2506,9 @@ Konkrete Umsetzung
 * Kapselung der Übersetzungen in speziellen Dateien (Namensgebung -> siehe nächste Folie)
 * Zugriff auf die Übersetzungen aus der Java-Applikation über sogenannte Aliase (Schlüssel)
 * optional: die jeweilige Sprach- und Ländereinstellungen können auch zur Laufzeit noch geändert werden
-</script></section><section data-markdown><script type="text/template">## Namensbildung für Bundle-Dateien
+
+----
+## Namensbildung für Bundle-Dateien
 
 Regeln
 * alle Dateien enden auf .properties
@@ -2248,7 +2523,9 @@ Beispiel
 * bundleName ist DemoBundle
 * Sprach- und Ländereinstellung ist Deutschland
 * DemoBundle_de_DE.properties
-</script></section><section data-markdown><script type="text/template">## Beispiel für den Umgang mit ResourceBundle
+
+----
+## Beispiel für den Umgang mit ResourceBundle
 
 <div>
 
@@ -2289,7 +2566,9 @@ Deutsch: Dies ist die deutsche Variante.
 English: This is the english version.
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
-</script></section><section data-markdown><script type="text/template">## Beispiel RessourceBundle: DemoBundle
+
+----
+## Beispiel RessourceBundle: DemoBundle
 
 DemoBundle.properties (Default):
 ```
@@ -2312,17 +2591,25 @@ DemoBundle_en.properties (English):
 
 alias=This is the english version.
 ```
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 12
+
+---
+# Kapitel 12
 # Datenstrukturen
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 <div>
 <img src="img/0y_meme_01datenstrukturen.jpeg" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 <div>
 <img src="img/0y_meme_02javadatastructurecry.jpeg" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">## Kapitelübersicht - Programmieren 2
+
+----
+## Kapitelübersicht - Programmieren 2
 <ol start="8">
       <li>Exception Handling</li>
       <li>Collection Framework</li>
@@ -2331,7 +2618,9 @@ alias=This is the english version.
       <li><b>Datenstrukturen</b></li>
       <li>Algorithmen</li>
 </ol>
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 
 * Sie können die Eigenschaften, den internen Aufbau und wichtigsten Funktionen von folgenden Datenstrukturen nennen und implementieren
   * Verkettete Liste / Doppelt verkettete Liste (Linked List)
@@ -2340,8 +2629,12 @@ alias=This is the english version.
   * Binärbaum (Binary Tree)
 * Sie können Iteration und Rekursion unterscheiden und passend anwenden
 * Sie können Angaben zu Komplixitäten von Algorithmen (Funktionen) auf den Datenstrukturen machen
-</script></section></section><section ><section data-markdown><script type="text/template">## Listen
-</script></section><section data-markdown><script type="text/template">## Verkettete Liste (Linked List)
+
+---
+## Listen
+
+----
+## Verkettete Liste (Linked List)
 
 Methoden
 * add() / addFirst() / addLast() / addAfter()
@@ -2354,7 +2647,9 @@ Methoden
 <div>
 <img src="img/12datenstrukturen_01linkedlist.png" width=70% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">## Doppelt Verkettete Liste (Double Linked List)
+
+----
+## Doppelt Verkettete Liste (Double Linked List)
 
 <div>
 
@@ -2372,7 +2667,9 @@ Parallel Suche: O(n/2) -> O(n)
 <div>
 <img src="img/12datenstrukturen_02doublelinkedlist.png" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">## Stapel (Stack)
+
+----
+## Stapel (Stack)
 
 <div>
 
@@ -2388,7 +2685,9 @@ Parallel Suche: O(n/2) -> O(n)
 <div align="center">
 <img src="img/12datenstrukturen_03stack.png" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">## (Warte-) Schlange (Queue)
+
+----
+## (Warte-) Schlange (Queue)
 
 * Eigenschaften
   * Ein-/Ausgabe Strategie: FIFO (First In - First Out)
@@ -2401,13 +2700,19 @@ Parallel Suche: O(n/2) -> O(n)
 <img src="img/12datenstrukturen_04queue.png" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">## Ein-Ausgabe Startegien - endlich erklärt
+
+----
+## Ein-Ausgabe Startegien - endlich erklärt
 
 <div align="center">
 <img src="img/12datenstrukturen_06FIFO_LIFO.jpeg" width=40% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Bäume
-</script></section><section data-markdown><script type="text/template">## Binär-Baum / Binäre-Such-Bäume (Binary Tree)
+
+---
+## Bäume
+
+----
+## Binär-Baum / Binäre-Such-Bäume (Binary Tree)
 
 <div>
 
@@ -2422,12 +2727,16 @@ Methoden
 <div align="center">
 <img src="img/12datenstrukturen_05binarytree.png" width=30% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
-</script></section><section data-markdown><script type="text/template">TODO: ALVTree
+
+----
+TODO: ALVTree
 
 * ALV -> Adelson-Velsky and Landis (bennant nach den Erfindern)
 * selbstständig balancierende Binäre-Such-Bäume
 * [Visualisation](https://www.cs.usfca.edu/~galles/visualization/AVLtree.html)
-</script></section></section><section  data-markdown><script type="text/template">## Iteration VS. Rekursion
+
+---
+## Iteration VS. Rekursion
 
 * Sowohl Iteration als auch Rekursion werden für sich wiederholende Anweisungen in Algorithmen verwendet
 * Iteration nutzt Schleifen zur Aneinanderreihung
@@ -2439,7 +2748,9 @@ Eigenschaften von rekursiver Programmierung
 * jeder (Methoden-/Funktions-)Aufruf für eine neue Ebene braucht extra Rechenleistung (Zeit / Performance)
 * -> intensiver im Speicher- und Rechenleistungsverbrauch
 * Quellcode bleibt (im speziellen in komplexen Fällen) übersichtlicher
-</script></section><section  data-markdown><script type="text/template">## Komplexitäten bei Algorithmen
+
+---
+## Komplexitäten bei Algorithmen
 
 <div>
 
@@ -2467,9 +2778,13 @@ Eigenschaften von rekursiver Programmierung
 |O(n!)|faktoriell|O(mg!)|
 
 </div><!-- .element style="font-size: 0.6em;" -->
-</script></section><section ><section data-markdown><script type="text/template"># Kapitel 13
+
+---
+# Kapitel 13
 # Algorithmen
-</script></section><section data-markdown><script type="text/template">## Kapitelübersicht - Programmieren 2
+
+----
+## Kapitelübersicht - Programmieren 2
 <ol start="8">
       <li>Exception Handling</li>
       <li>Collection Framework</li>
@@ -2477,7 +2792,10 @@ Eigenschaften von rekursiver Programmierung
       <li>Optional: Input- & Output-Streams</li>
       <li>Datenstrukturen</li>
       <li><b>Algorithmen</b></li>
-</ol></script></section></section></div>
+</ol>
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="./../dist/reveal.js"></script>
@@ -2508,6 +2826,7 @@ Eigenschaften von rekursiver Programmierung
         history: true,
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
         plugins: [
           RevealMarkdown,
           RevealHighlight,
@@ -2520,7 +2839,7 @@ Eigenschaften von rekursiver Programmierung
       // options from URL query string
       var queryOptions = Reveal().getQueryHash() || {};
 
-      var options = extend(defaultOptions, {"transition":"slide","transitionSpeed":"slow","controls":true,"progress":true,"slideNumber":"c/t","hash":true,"previewLinks":true}, queryOptions);
+      var options = extend(defaultOptions, {"transition":"slide","transitionSpeed":"slow","controls":true,"progress":true,"slideNumber":"c/t","hash":true,"previewLinks":true,"_":["scripts/"],"static":"docs","static-dirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","staticDirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","css":"scripts/_assets/style.css"}, queryOptions);
     </script>
 
 

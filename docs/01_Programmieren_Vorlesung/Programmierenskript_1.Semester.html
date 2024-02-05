@@ -5,33 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>Programmieren I</title>
-    <link rel="shortcut icon" href="./../favicon.ico"/>
+    <link rel="shortcut icon" href="./../favicon.ico" />
+    <link rel="stylesheet" href="./../dist/reset.css" />
     <link rel="stylesheet" href="./../dist/reveal.css" />
     <link rel="stylesheet" href="./../dist/theme/simple.css" id="theme" />
-    <link rel="stylesheet" href="./../css/highlight/zenburn.css" />
+    <link rel="stylesheet" href="./../css/highlight/base16/zenburn.css" />
+
     <link rel="stylesheet" href="./../_assets/scripts/_assets/style.css" />
 
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
 
 > Sie legen die Basis für den Weg als erfolgreicher Softwareengineer durch grundlegenden Programmierkenntnissen am Beispiel von ```Java```
-</script></section><section ><section data-markdown><script type="text/template">
+
+---
+
 # Programmieren I
 ### Matthias Berg-Neels
 
 > [Download Skript](../pdfdownloads/ProgrammierenSkript_1Semester.pdf)
-</script></section><section data-markdown><script type="text/template">## Vorstellungsrunde
+
+----
+## Vorstellungsrunde
 * Name
 * Firma
 * Guess what?
 
-</script></section><section data-markdown><script type="text/template">## Anmerkungen zur Vorlesung
+
+----
+## Anmerkungen zur Vorlesung
 * Skript
   * PDF in public Code Repository (Downloads/ProgrammierenSkript.pdf)
 * **NICHT** klausurrelevante Folien sind mit "(!)" markiert (nicht zu viel Hoffnung machen!)
-</script></section><section data-markdown><script type="text/template">## Kapitelübersicht - Programmieren 1
+
+----
+## Kapitelübersicht - Programmieren 1
 1. Einführung
 2. Grundlagen von Java
 3. Datentypen
@@ -44,14 +57,20 @@
 * Naming conventions
 * Implizite Typisierung mittels ```var```
 * Unit Testing
-</script></section><section data-markdown><script type="text/template">## Quellen & Literaturverzeichnis
+
+----
+## Quellen & Literaturverzeichnis
 
 <ul>
 <li>RATZ / SCHULMEISTER-ZIMOLONG / SEESE / WIESENBERGER<br>Grundkurs Programmieren in Java. Hanser, 8. Auflage, 2018. ISBN 978-3-446-45212-1</li>
 </ul>
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 1
+
+---
+# Kapitel 1
 # Einführung
-</script></section><section data-markdown><script type="text/template">## Übersicht
+
+----
+## Übersicht
 1. **Einführung**
 2. Grundlagen von Java
 3. Datentypen
@@ -59,18 +78,26 @@
 5. Okjektorientierung
 6. Vererbung
 7. Interfaces
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie können den Begriff Algorithmus definieren
 * Sie kennen die Eigenschaften und Bestandteile von Algorithmen
 * Sie können die Grundbegriffe der Programmierung nennen und einsetzen
 * Sie kennen unterschiedliche Darstellungsformen von Algorithmen
 * Sie können einfache Algorithmen in Form von Pseudocode, Programmablaufplänen und Struktogrammen darstellen
-</script></section></section><section ><section data-markdown><script type="text/template">## Ziel der Programmierung
+
+---
+## Ziel der Programmierung
 Umsetzung eines gegebenen oder selbstentwickelten Algorithmus in ein lauffähiges Computerprogramm
 
 <img src="img/01einfuehrung_01ziel.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-</script></section><section data-markdown><script type="text/template">## Algorithmus
-<img src="img/01einfuehrung_01_1algorithm.jpeg" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></script></section><section data-markdown><script type="text/template">
+
+----
+## Algorithmus
+<img src="img/01einfuehrung_01_1algorithm.jpeg" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+----
+
 ## Beispiele für Algorithmen
 <table>
 <tr style="vertical-align:middle">
@@ -92,7 +119,9 @@ Umsetzung eines gegebenen oder selbstentwickelten Algorithmus in ein lauffähige
 </td>
 </tr>
 </table>
-</script></section><section data-markdown><script type="text/template">## Beispiel: Ein Kochrezept (!)
+
+----
+## Beispiel: Ein Kochrezept (!)
 <table width=100%>
 <tr><th width=40%>Zutaten</th><th>Zubereitung</th></tr>
 <tr>
@@ -118,7 +147,9 @@ Umsetzung eines gegebenen oder selbstentwickelten Algorithmus in ein lauffähige
   </td>
   <td>Butter und Öl in einer Pfanne (besser Bräter) erhitzen. Zwiebeln, Sellerie, Speck und Paprika gut anbraten. Die Sachen aus der Pfanne nehmen und zur Seite stellen. Den Knoblauch leicht anrösten und dann das Hackfleisch dazugeben, alles gut anbraten. Die Sachen wieder dazugeben und alles ca.10 Min. köcheln lassen. Jetzt alle übrigen Zutaten und Gewürze dazugeben und das Ganze ca. 45 Min. ( bei geschlossenem Deckel ) köcheln lassen (gelegentlich abschmecken und ggf. nachwürzen). Über die fertig gegarten Spaghetti geben.</td><!-- .element style="font-size: 0.6em;" -->
   </tr>
-</table></script></section><section data-markdown><script type="text/template">## Probleme bei diesem Beispiel
+</table>
+----
+## Probleme bei diesem Beispiel
 * Zutaten sind bereits vorbereitet
 * Spaghetti fehlen bei Zutaten
 * Beschreibung für Zubereitung der Spaghetti fehlt
@@ -132,7 +163,9 @@ Umsetzung eines gegebenen oder selbstentwickelten Algorithmus in ein lauffähige
 * Pfanne (besser Bräter)
 
 KURZ: Die Beschreibung lässt Raum für individuelle Entscheidungen und Interpretationen.
-</script></section><section data-markdown><script type="text/template">## Verbesserungsmöglichkeiten des Rezepts
+
+----
+## Verbesserungsmöglichkeiten des Rezepts
 <div>
 
 * komplette Eliminierung von individuellen Interpretationsspielräumen
@@ -146,13 +179,17 @@ präzise Angaben bei den Aussagen
   * gut anbraten &#8658; Farbe der Zwiebeln entspricht dem RGB-Wert <span>CC3300</span><!-- .element style="background-color: #CC3300;" -->
   * leicht anrösten &#8658; Farbe des Knoblauchs entspricht dem RGB-Wert <span>CC6600</span><!-- .element style="background-color: #CC6600;" -->
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Algorithmus: Definition
+
+---
+## Algorithmus: Definition
 ### Duden<!-- .element style="text-align: left;" -->
 > Al|go|rith|mus, der; ­, ...men [mlat. algorismus = Art der indischen Rechenkunst, in Anlehnung an griech. arithmós = Zahl entstellt aus dem Namen des pers.- arab. Mathematikers Al-Hwarizmi, gest. nach 846] (Math., Datenverarb.): Verfahren zur schrittweisen Umformung von Zeichenreihen; Rechenvorgang nach einem bestimmten [sich wiederholenden] Schema. <!-- .element style="font-size: 0.6em;" -->
 
 ### Informatik<!-- .element style="text-align: left;" -->
 > Ein Algorithmus ist eine präzise (d.h. in einer festgelegten Sprache abgefasste) endliche Beschreibung eines allgemeinen Verfahrens unter Verwendung ausführbarer elementarer (Verarbeitungs-)Schritte. <!-- .element style="font-size: 0.6em;" -->
-</script></section><section data-markdown><script type="text/template">## Algorithmus: Eigenschaften
+
+----
+## Algorithmus: Eigenschaften
 ### Terminierung<!-- .element style="text-align: left;" -->
 
 * bricht nach endlich vielen Schritten ab
@@ -170,7 +207,9 @@ präzise Angaben bei den Aussagen
 
 
 ***
-</script></section><section data-markdown><script type="text/template">## Algorithmus: Bestandteile
+
+----
+## Algorithmus: Bestandteile
 * elementare Operationen (Ausdrücke und Anweisungen)<br/>Berechne 5 plus 7
 * sequenzielle Ausführung
 <br/>Berechne 10 minus 3, dann multipliziere das Ergebnis mit 4
@@ -184,7 +223,9 @@ präzise Angaben bei den Aussagen
 <br/>Rechne Aufgabe 1 anhand der Lösung auf Seite 106
 
 * Variablen und Konstanten
-</script></section></section><section ><section data-markdown><script type="text/template">## Grundbegriffe der Programmierung
+
+---
+## Grundbegriffe der Programmierung
 Ausdruck
 * Kombination von Operanden und Operatoren als "Vorschrift" zur Berechnung eines Werts
 * liefert immer einen Wert (Ergebniswert) ab
@@ -195,7 +236,9 @@ Anweisung
 * Beispiele:
 <br/>y = 1 / x Wertzuweisung
 <br/>print(x) Ausgabeanweisung (Methodenaufruf "Drucke x")
-</script></section><section data-markdown><script type="text/template">## Grundbegriffe der Programmierung
+
+----
+## Grundbegriffe der Programmierung
 Sequenz
 * bildet eine zeitliche Abfolge von Anweisungen
 * einzelne Schritte werden durchnummeriert oder es wird zum Abschluss der Sequenz ein Semikolon gesetzt
@@ -207,7 +250,9 @@ Bedingte Anweisung
 Schleifen
 * bestimmte Anweisungen werden wiederholt, bis eine definierte Endbedingung erfüllt wird
 * Unterscheidung in drei Schleifenarten
-</script></section><section data-markdown><script type="text/template">## Grundbegriffe der Programmierung
+
+----
+## Grundbegriffe der Programmierung
 Unterprogramme
 * beinhaltet einen Teilalgorithmus
 * dieser Teilalgorithmus kann in mehreren Algorithmen wieder verwendet werden
@@ -221,7 +266,9 @@ Konstanten
 * haben einen festen Wert
 * sind von einem bestimmten Datentyp
 * können ihren Wert NICHT ändern
-</script></section></section><section  data-markdown><script type="text/template">## Darstellungsformen von Algorithmen
+
+---
+## Darstellungsformen von Algorithmen
 Pseudocode
 * nahe an den Konstrukten verbreiteter Programmiersprachen
 * Verwendung spezieller englischer Begriffe aus dem Alltag
@@ -236,7 +283,9 @@ Nassi-Schneiderman-Diagramme (Struktogramme)
 * Entstehung 1973
 * Darstellung genormt nach DIN 66261 im Jahr 1985
 * überwiegender Einsatz in der prozeduralen Programmierung
-</script></section><section ><section data-markdown><script type="text/template">## Pseudocode
+
+---
+## Pseudocode
 <div>
 
 Sequenz
@@ -253,7 +302,9 @@ Schleifen
 * kopfgesteuert: solange Bedingung wahr führe aus Schritte
 * fußgesteuert: wiederhole Schritte bis Bedingung wahr
 * Zählschleife: wiederhole für Zahlenbereich Arbeitsschritte
-</div><!-- .element style="font-size: 0.9em;" --></script></section><section data-markdown><script type="text/template">### Beispiel: Pseudocode
+</div><!-- .element style="font-size: 0.9em;" -->
+----
+### Beispiel: Pseudocode
 
 <div>
 
@@ -304,21 +355,33 @@ Schleifen
 </tr>
 </table>
 
-</div><!-- .element style="font-size: 0.7em;" --></script></section></section><section  data-markdown><script type="text/template">## Struktogramme
+</div><!-- .element style="font-size: 0.7em;" -->
+---
+## Struktogramme
 <img src="img/01einfuehrung_03Struktogramme.png" width=80% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
-</script></section><section ><section data-markdown><script type="text/template">## Programmablaufplan
+
+---
+## Programmablaufplan
 <img src="img/01einfuehrung_04Programmablaufplan.png" width=80% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
-</script></section><section data-markdown><script type="text/template">## Beispiel: Programmablaufplan
+
+----
+## Beispiel: Programmablaufplan
 <img src="img/01einfuehrung_05ProgrammablaufplanBsp.png" width=80% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
-</script></section></section><section  data-markdown><script type="text/template">## Beispiel: Mathematische Problemstellung
+
+---
+## Beispiel: Mathematische Problemstellung
 <img src="img/01einfuehrung_06Euklid.png" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
 
 
 **Übung:** Erstellen Sie zum beschriebenen des euklidschen Algorithmus ein Struktogramm und einen Programmablaufplan.
-</script></section><section ><section data-markdown><script type="text/template"># Kapitel 1
+
+---
+# Kapitel 1
 # Einführung
 ## Kontrollfragen & Übungen
-</script></section><section data-markdown><script type="text/template">### Kontrollfragen
+
+----
+### Kontrollfragen
 1. Wie würden Sie den Begriff Algorithmus im Rahmen der Informatik definieren?
 2. Beschreiben Sie die Bestandteile sowie die Eigenschaften von Algorithmen!
 3. Nennen Sie fünf Grundelemente der Programmierung!
@@ -326,7 +389,9 @@ Schleifen
 darzustellen?
 5. Was ist ein wesentlicher Nachteil der Programmablaufpläne?
 6. Beschreiben Sie die Darstellungsform „Pseudocode“!
-</script></section><section data-markdown><script type="text/template">### Übungen
+
+----
+### Übungen
 1. Beschreiben Sie den euklidschen Algorithmus zur Berechnung des größten
 gemeinsamen Teilers als Struktogramm und Programmablaufplan!
 2. Beschreiben Sie einen Algorithmus zur Berechnung der Fakultät! Nutzen Sie dazu
@@ -335,9 +400,13 @@ den Pseudocode.
 1 – 1 – 2 – 3 – 5 – 8 – 13 – 21!
 4. Beschreiben Sie in einem Struktogramm das Sieb des Eratosthenes zur Bestimmung
 von Primzahlen.
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 2
+
+---
+# Kapitel 2
 # Grundlagen von Java
-</script></section><section data-markdown><script type="text/template">## Übersicht
+
+----
+## Übersicht
 1. Einführung
 2. **Grundlagen von Java**
 3. Datentypen
@@ -345,7 +414,9 @@ von Primzahlen.
 5. Okjektorientierung
 6. Vererbung
 7. Interfaces
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie können die Eigenschaften der Programmiersprache Java beschreiben
 * Sie kennen die Aufgaben von Compiler, Linker und Interpreter
 * Sie können das Zusammenspiel von Bytecode und der Java Virtual Machine erläutern
@@ -353,14 +424,18 @@ von Primzahlen.
 * Sie können das Paketkonzept in Java erläutern
 * Sie kennen die wesentlichen Systemvariablen im Umfeld von Java
 * Sie können Eclipse als Java-Entwicklungsumgebung einsetzen
-</script></section></section><section  data-markdown><script type="text/template">## Vorbereitung
+
+---
+## Vorbereitung
 * [prüfen] Installieren Sie das Java Developer Kit, falls notwendig. [JDK Download von Oracle](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
   * ```
   java --version
   java -version
   ```
 * Aktivieren Sie eine Studierenden-Lizens und installieren Sie IntelliJ [Jetbrains Free License for faculty members - DHBW-Email benötigt](https://www.jetbrains.com/student/)
-* Coding Beispiele in Repository >> "dhbwmawwi[YYYY]se[Kurs]" auf [github.com](https://github.com/)</script></section><section  data-markdown><script type="text/template">## Klassifizierung von Software
+* Coding Beispiele in Repository >> "dhbwmawwi[YYYY]se[Kurs]" auf [github.com](https://github.com/)
+---
+## Klassifizierung von Software
 * Programme zur Steuerung der Verarbeitungsprozesse, der Übertragungsprozesse und der Speicherungsprozesse in Computern
 * unterschiedliche Softwarearten
   * Systemsoftware
@@ -374,7 +449,9 @@ von Primzahlen.
     * Programme zur Verarbeitung der Daten
     * Unterhaltungssoftware
     * Spiele
-</script></section><section ><section data-markdown><script type="text/template">## Eigenschaften von Java
+
+---
+## Eigenschaften von Java
 * vollständig objektorientiert
   * ohne prozedurale Altlasten
 * unkompliziert - einfach und leicht erlernbar
@@ -386,7 +463,9 @@ von Primzahlen.
   * keine Mehrfachvererbung
 * plattformunabhängig (architekturneutral)
   * übersetzte Java-Programme (Bytecode) sind auf jeder javafähigen Plattform ausführbar
-  * fest definierter Wertebereich für Zahlen</script></section><section data-markdown><script type="text/template">## Eigenschaften von Java
+  * fest definierter Wertebereich für Zahlen
+----
+## Eigenschaften von Java
 * sicher
   * keine direkten Speicherzugriffe mit * Pointerarithmetik
   * strenge Typüberprüfung
@@ -399,10 +478,16 @@ von Primzahlen.
   * parallele Ausführung von Programmteilen
 * internetfähig
   * Java-Applets sind über das Internet verteilbar und können lokal auf dem Rechner ausgeführt werden
-</script></section></section><section ><section data-markdown><script type="text/template">## Umwandlung von Quellcode in Maschinensprache
-</script></section><section data-markdown><script type="text/template">### Compiler
+
+---
+## Umwandlung von Quellcode in Maschinensprache
+
+----
+### Compiler
 <img src="img/02java_01Compiler.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-</script></section><section data-markdown><script type="text/template">### Funktionsweise eines Compiler
+
+----
+### Funktionsweise eines Compiler
 * übersetzt ein Computerprogramm aus einer Quellsprache in ein semantisch äquivalentes Programm einer Zielsprache
 * Aufbau eines Compilers in 2 Phasen
   * Analysephase
@@ -413,12 +498,16 @@ von Primzahlen.
     * Zwischencodeerzeugung liefert die Basis für die Optimierung
     * Programmoptimierung auf Basis des maschinennahen Zwischencodes
     * Codegenerierung erzeugt den Programmcode der Zielsprache
-</script></section><section data-markdown><script type="text/template">### Arten von Compilern
+
+----
+### Arten von Compilern
 * Native Compiler erzeugt Code für die Plattform, auf der er läuft
 * Cross-Compiler erzeugt Code für andere Plattformen
 * One-pass-Compiler erzeugt den Code in einem Durchlauf
 * Multi-pass-Compiler erzeugt den Code in mehreren Durchläufen
-</script></section><section data-markdown><script type="text/template">### Linker
+
+----
+### Linker
 * stellt einzelne Programmmodule zu einem ausführbaren Programm zusammen
 * fügt benötigten Code aus Funktionsbibliotheken zum Code des Hauptprogramms hinzu
 * statisches Linken
@@ -427,9 +516,13 @@ von Primzahlen.
   * zur Laufzeit werden die Codings aus Funktionsbibliotheken o.ä. zum Hauptprogramm hinzugelinkt
     * DLL-Konzept von Windows
     * auch bei Java findet dynamisches Linken statt
-</script></section><section data-markdown><script type="text/template">### Interpreter
+
+----
+### Interpreter
 <img src="img/02java_02Interpreter.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-</script></section><section data-markdown><script type="text/template">### Funktionsweise eines Interpreters
+
+----
+### Funktionsweise eines Interpreters
 
 <div>
 
@@ -448,12 +541,20 @@ von Primzahlen.
     * Quellcode wird zur Laufzeit in sog. Bytecode übersetzt
     * Bytecode wird von einem Interpreter (Virtual Machine) ausgeführt
     * Bytecode kann auf verschiedenen Plattformen ausgeführt werden
-</div><!-- .element style="font-size: 0.9em;" --></script></section></section><section ><section data-markdown><script type="text/template">## Javaquellcode zu Maschinensprache
-</script></section><section data-markdown><script type="text/template">### Platformunabhängigkeit durch Bytecode
+</div><!-- .element style="font-size: 0.9em;" -->
+---
+## Javaquellcode zu Maschinensprache
+
+----
+### Platformunabhängigkeit durch Bytecode
 <img src="img/02java_03JavaPlatforms.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-</script></section><section data-markdown><script type="text/template">### Bytecode und virtual Machine
+
+----
+### Bytecode und virtual Machine
 <img src="img/02java_04JavaKomilierung.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-</script></section><section data-markdown><script type="text/template">### Wesentliche Java-Tools
+
+----
+### Wesentliche Java-Tools
 Java-Compiler (javac.exe)
 
 Java virtual Machine (java.exe)
@@ -471,7 +572,9 @@ Bytecode Verifier
 * Überprüfung jeder Methode auf strukturelle Gültigkeit
 * Datenflussanalyse, um u.a. Typfehler zu vermeiden
 
-</script></section><section data-markdown><script type="text/template">### Wichtige Systemvariablen (!)
+
+----
+### Wichtige Systemvariablen (!)
 <table>
 <tr style="vertical-align:middle">
 <td>
@@ -490,7 +593,9 @@ JAVA_HOME
 </td>
 </tr>
 </table>
-</script></section><section data-markdown><script type="text/template">### Beispiel: Hello World über die Konsole
+
+----
+### Beispiel: Hello World über die Konsole
 1. anlegen einer Datei "HelloWorld.java" mit folgendem Quellcode
 
 ```java
@@ -513,7 +618,9 @@ javac HelloWorld.java
 ```
 java HelloWorld
 ```
-</script></section><section data-markdown><script type="text/template">### Java - Kommentare im Quellcode
+
+----
+### Java - Kommentare im Quellcode
 Einzeiliger Kommentar
 
 ```java
@@ -551,7 +658,9 @@ class HelloWorld {
 }
 ```
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">### Exkurs: JavaDoc (!)
+
+---
+### Exkurs: JavaDoc (!)
 #### Generierung von Dokumentation aus Javaquellcode und Kommentaren
 * Generiert Dokumentation anhand des Quellcodes
 * Kommentare mit spezieller Formatierung ("/** ") werden berücksichtig
@@ -575,7 +684,9 @@ public class HelloWorld {
     System.out.println("Hello to the Java World");
   }
 }
-```</script></section><section data-markdown><script type="text/template">#### Generierung der Dokumentation (!)
+```
+----
+#### Generierung der Dokumentation (!)
 
 ```
 javadoc HelloWorld.java -author -version
@@ -586,16 +697,22 @@ Ergebnis:
 <img src="img/02java_06JavaDoc.png" width=40% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 
 Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/en/java/javase/15/docs/api/index.html' target=_blank>JDK Dokumentation</a>
-</script></section></section><section  data-markdown><script type="text/template">## Das Paketkonzept in Java
+
+---
+## Das Paketkonzept in Java
 * Möglichkeit zur Strukturierung bzw. sinnvollen Sortierung von Klassen
 * Pakete sind somit Sammlungen von Klassen
 * die Klassen verfolgen einen gemeinsamen Zweck
 * jede Klasse ist genau einem Paket zugeordnet
 * Paketnamen können aus mehreren Teilen bestehen und hierarchisch aufgebaut sein (vergleichbar mit der Ordnerstruktur im Windows-Explorer)
 * eine Klasse kann eindeutig über das Paket und ihren Namen identifiziert werden
-</script></section><section ><section data-markdown><script type="text/template">## Funktionsumfang der Java 2™ Platform (!)
+
+---
+## Funktionsumfang der Java 2™ Platform (!)
 <img src="img/02java_07JavaPlatform.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-</script></section><section data-markdown><script type="text/template">## Funktionsumfang der Java 2™ Platform (!)
+
+----
+## Funktionsumfang der Java 2™ Platform (!)
 <div>
 
 * Java 2 Standard Edition beinhaltet das Software Development Kit mit der Standard API zur Entwicklung von Java-Applikationen
@@ -605,7 +722,9 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 * Connected Limited Device Configurations (CLDC ) ist eine J2ME-Bibliothek zur Abdeckung gerätespezifischer Funktionen; ermöglicht die Zusammenarbeit verschiedener Geräte der gleichen Kategorie
 * KVM ist die kleinste Laufzeitumgebung und wird für den Einsatz auf Geräten mit beschränkter Speicherkapazität und CPU-Leistung verwendet
 * Java Card APIs definieren eine minimale Laufzeitumgebung auf SmartCards
-</div><!-- .element style="font-size: 0.8em;" --></script></section></section><section  data-markdown><script type="text/template">## Entwicklungsumgebung
+</div><!-- .element style="font-size: 0.8em;" -->
+---
+## Entwicklungsumgebung
 ### IntelliJ IDEA (!)
 
 * Entwickler: [Jetbrains](http:www.jetbrains.com)
@@ -617,10 +736,14 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 * Erweiterbarkeit durch Plug-Ins
 * verschiedene Ableger für weitere Programmiersprachen
   * z.B. Webstorm für PHP
-</script></section><section ><section data-markdown><script type="text/template"># Kapitel 2
+
+---
+# Kapitel 2
 # Grundlagen von Java
 ## Kontrollfragen
-</script></section><section data-markdown><script type="text/template">### Kontrollfragen
+
+----
+### Kontrollfragen
 1. Beschreiben Sie die wesentlichen Eigenschaften von Java!
 2. Beschreiben Sie die Funktionsweise eines Compilers!
 3. Welche Aufgaben übernimmt der Linker?
@@ -632,9 +755,13 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 9. Welche wesentlichen Systemvariablen kennen Sie im Java-Umfeld?
 10. Beschreiben Sie die wesentlichen Unterschiede der verschiedenen Editionen im Rahmen der Java 2™ Platform!
 11. Wozu werden die einzelnen Systemvariablen benötigt?
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 3
+
+---
+# Kapitel 3
 # Datentypen
-</script></section><section data-markdown><script type="text/template">## Übersicht
+
+----
+## Übersicht
 1. Einführung
 2. Grundlagen von Java
 3. **Datentypen**
@@ -642,7 +769,9 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 5. Okjektorientierung
 6. Vererbung
 7. Interfaces
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie kennen die unterschiedlichen einfachen Datentypen in Java
 * Sie kennen die Wertebereiche der jeweiligen Datentypen
 * Sie können Variablen und Konstanten in Java deklarieren
@@ -653,8 +782,12 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 * Sie können Arrays in Java deklarieren
 * Sie kennen den theoretischen Umgang mit Referenzdatentypen
 * Sie kennen die speziellen Referenzdatentypen Array und String
-</script></section></section><section ><section data-markdown><script type="text/template">## Arten von Datentypen
-<img src="img/03datentypen_01datentypen.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></script></section><section data-markdown><script type="text/template">## Arten von Datentypen
+
+---
+## Arten von Datentypen
+<img src="img/03datentypen_01datentypen.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+----
+## Arten von Datentypen
 * bool‘sche Typen sind Wahrheitswerte: True und False
 
 * numerische Typen
@@ -668,7 +801,9 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
   * String: Verkettung von Character-Werten &#8658; Zeichenketten
   * Array: Definition eines n-dimensionalen Feldes
   * Referenzdatentypen: Individuell definierte Datentypen
-</script></section><section data-markdown><script type="text/template">## Wertebereiche und Speicherverbrauch
+
+----
+## Wertebereiche und Speicherverbrauch
 |Typname|Länge in Byte|Wertebereich|
 |:------|:-----------:|:-----------|
 |boolean|1|*true, false*|
@@ -679,7 +814,9 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 |long|8|-2<sup>63</sup> bis 2<sup>63</sup>-1 (-9.223.372.036.854.775.808 bis          9.223.372.036.854.775.807)|
 |float|4|+/- 3.40282347 * 10<sup>38</sup>|
 |double|8|+/- 1.79769313486231570 * 10<sup>308</sup>|
-</script></section></section><section ><section data-markdown><script type="text/template">## Deklaration von Variablen
+
+---
+## Deklaration von Variablen
 * Variablen werden durch Datentyp und Variablennamen deklariert
 ```java
 Typname Variablenname;
@@ -693,7 +830,9 @@ int a;
 ```java
 char buchstabe = ‘a‘;
 long zahl = 45768;
-```</script></section><section data-markdown><script type="text/template">## Deklaration von Konstanten
+```
+----
+## Deklaration von Konstanten
 * Konstanten werden ähnlich wie Variablen deklariert
 vor den Typnamen wird das Schlüsselwort
 ```java
@@ -702,16 +841,22 @@ final gesetzt final Typname Konstantenname;
 * Konstanten können nach der Deklaration einmalig mit einem Wert initialisiert werden
 ```java
 final double pi = 3.1415926535897932384626433832795;
-```</script></section></section><section ><section data-markdown><script type="text/template">## Literale
+```
+---
+## Literale
 > Ein Literal (lateinischen *littera* "Buchstabe") in der Programmiersprache bezeichnet fest definierte Zeichenfolgen zur Darstellung von Werten für Basis-Datentypen.
-</script></section><section data-markdown><script type="text/template">## Numerische Literale
+
+----
+## Numerische Literale
 ### Ganzzahlen
 Literale für die Familie der Integer-Werte (byte, short, int, long) können in Dezimal-, Oktal- oder Hexadezimalform geschrieben werden
 
 * Dezimalliterale bestehen aus den Ziffern 0 bis 9
 * Oktalliterale bestehen aus dem Präfix 0 und den Ziffern 0 bis 7
 * Hexadezimalliterale bestehen aus dem Präfix 0x, den Ziffern 0 bis 9 und den Buchstaben A bis F bzw. a bis f
-* durch das Suffix l bzw. L wird ein Literal vom Typ long erzeugt</script></section><section data-markdown><script type="text/template">## Numerische Literale
+* durch das Suffix l bzw. L wird ein Literal vom Typ long erzeugt
+----
+## Numerische Literale
 ### Fließkommazahlen
 Literale für Fließkommazahlen float und double
 * bestehen aus einem Vorkommateil, dem Dezimalpunkt, einem Nachkommateil, einem Exponenten und einem Suffix
@@ -719,7 +864,9 @@ Literale für Fließkommazahlen float und double
 * Exponent wird durch ein e bzw. E eingeleitet
 * Vorkomma- oder Nachkommateil darf ausgelassen werden, der Exponent und das Suffix sind optional
 * ohne Suffix sind Fließkommazahlen immer vom Typ double
-</script></section><section data-markdown><script type="text/template">## Alphanumerische Literale
+
+----
+## Alphanumerische Literale
 * besondere Literale für den Datentyp boolean
 
 *true und false*
@@ -737,7 +884,9 @@ Literale für Fließkommazahlen float und double
 
 ```java
 "Hier ist eine Zeichenkette"
-```</script></section><section data-markdown><script type="text/template">## Standard-Escape-Sequenzen
+```
+----
+## Standard-Escape-Sequenzen
 * Zeichenliterale können Standard-Escape-Sequenzen zur Darstellung von Sonderzeichen beinhalten
 * Beispiele:
 
@@ -749,14 +898,18 @@ Literale für Fließkommazahlen float und double
 |\‘|Einfaches Anführungszeichen|
 |\\\\|Backslash|
 |\uxxxx|Unicodezeichen (xxxx steht für den Hexadezimalwert des Unicodezeichens)|
-</script></section></section><section  data-markdown><script type="text/template">## Konvertierungsregeln
+
+---
+## Konvertierungsregeln
 * generelle Unterscheidung in erweiternde und einschränkende Konvertierung
 * es existiert keine Konvertierungsvorschrift für den Datentyp boolean und für die Konvertierung zwischen einfachen und Referenzdatentypen
 
 <img src="img/03datentypen_02conversion.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 
 
-</script></section><section ><section data-markdown><script type="text/template">## Arrays
+
+---
+## Arrays
 * Arrays sind (mehrdimensionale) Feldvariablen, die aus mehreren Elementen bestehen
 * alle Elemente eines Arrays gehören dem gleichen Datentyp an
 * in Java sind Arrays semidynamisch, d.h. ihre Größe kann zur Laufzeit festgelegt, aber danach nicht mehr verändert werden
@@ -764,7 +917,9 @@ Literale für Fließkommazahlen float und double
 * die Elemente eines Arrays sind bei n Elementen von 0 bis n-1 durchnummeriert
 * Zugriffe auf einzelne Elemente von Arrays erfolgen über den numerischen Index
 * das Attribut length ist vom Typ Integer und gibt die Anzahl der Elemente eines Arrays zurück
-</script></section><section data-markdown><script type="text/template">## Deklaration und Initialisierung von Arrays
+
+----
+## Deklaration und Initialisierung von Arrays
 * die Deklaration eines Arrays entspricht syntaktisch der einer einfachen Variablen
 * Unterschied: an den Typnamen oder an den Variablennamen werden eckige Klammern angefügt
 * die Initialisierung erfolgt mithilfe des new-Operators oder durch Zuweisung eines Array-Literals
@@ -791,7 +946,9 @@ wuerfel[2][0][0] = 73;
 ```
 
 <img src="img/03datentypen_04arrays.png" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-</script></section></section><section  data-markdown><script type="text/template">## Umgang mit Referenzdatentypen
+
+---
+## Umgang mit Referenzdatentypen
 * im Gegensatz zu einfachen Datentypen handelt es sich bei Referenzdatentypen um komplexe Typen
 * zu den Referenztypen zählen
   * Objekte (näheres im Kapitel 5: Objektorientierung)
@@ -801,10 +958,14 @@ wuerfel[2][0][0] = 73;
 * sowohl bei Strings als auch bei Arrays kennt der Compiler Literale, die den Aufruf des Operators new überflüssig machen
 * bei einfachen Datentypen reicht die Deklaration der Variablen aus, während Referenztypen mittels des new-Operators noch erzeugt werden müssen (Ausnahmen Strings und Arrays)
 * Referenztypen stellen lediglich einen Verweis auf Objekte dar
-</script></section><section ><section data-markdown><script type="text/template"># Kapitel 3
+
+---
+# Kapitel 3
 # Datentypen
 ## Kontrollfragen
-</script></section><section data-markdown><script type="text/template">### Kontrollfragen
+
+----
+### Kontrollfragen
 1. Welche unterschiedlichen Datentypen kennen Sie in Java?
 2. Wie lassen sich diese Datentypen klassifizieren?
 3. Nennen Sie die numerischen Datentypen der Programmiersprache Java! Worin liegt der wesentliche Unterschied im Wertebereich?
@@ -819,9 +980,13 @@ wuerfel[2][0][0] = 73;
 12. Was sind Referenzdatentypen?
 
 
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 4
+
+---
+# Kapitel 4
 # Ausdrücke & Anweisungen
-</script></section><section data-markdown><script type="text/template">## Übersicht
+
+----
+## Übersicht
 1. Einführung
 2. Grundlagen von Java
 3. Datentypen
@@ -829,7 +994,9 @@ wuerfel[2][0][0] = 73;
 5. Okjektorientierung
 6. Vererbung
 7. Interfaces
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie kennen die Begriffe Ausdrücke und Anweisungen
 * Sie kennen die unterschiedlichen Arten von Operatoren
   * arithmetisch
@@ -843,7 +1010,9 @@ wuerfel[2][0][0] = 73;
   * fußgesteuert
   * zählend
 * Sie kennen die break- und continue-Anweisung
-</script></section></section><section  data-markdown><script type="text/template">## Ausdrücke
+
+---
+## Ausdrücke
 * kleinste ausführbare Einheit in einem Programm
 * Ausdrücke haben folgende Aufgaben
   * Variablen Werte zuzuweisen
@@ -857,8 +1026,12 @@ wuerfel[2][0][0] = 73;
   * (bitweise Operatoren)
   * Zuweisungsoperatoren
   * sonstige Operatoren
-</script></section><section ><section data-markdown><script type="text/template">## Operatoren
-</script></section><section data-markdown><script type="text/template">### Arithmetische Operatoren
+
+---
+## Operatoren
+
+----
+### Arithmetische Operatoren
 <div>
 
 |Operator|Bezeichnung|Bedeutung|
@@ -876,7 +1049,9 @@ wuerfel[2][0][0] = 73;
 |--|Postdekrement|a-- ergibt a und verringert a um 1|
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Relationale Operatoren
+
+----
+### Relationale Operatoren
 <div>
 
 |Operator|Bezeichnung|Bedeutung|
@@ -889,7 +1064,9 @@ wuerfel[2][0][0] = 73;
 |>=|Größer gleich|a >= b ergibt true, wenn a größer oder gleich b ist.|
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Logische Operatoren
+
+----
+### Logische Operatoren
 <div>
 
 |Operator|Bezeichnung|Bedeutung|
@@ -902,7 +1079,9 @@ wuerfel[2][0][0] = 73;
 |^|Exklusiv-ODER|a ^ b ergibt true, wenn beide Ausdrücke einen unterschiedlichen Wahrheitswert haben.|
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Zuweisungsoperatoren
+
+----
+### Zuweisungsoperatoren
 <div>
 
 |Operator|Bezeichnung|Bedeutung|
@@ -915,7 +1094,9 @@ wuerfel[2][0][0] = 73;
 |%=|Modulozuweisung|a %= b weist a den Wert von a % b zu und liefert a % b als Rückgabewert.|
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Sonstige Operatoren
+
+----
+### Sonstige Operatoren
 * der Fragezeichenoperator *?:*
   * ist der einzige dreistellige Operator in Java
   * er besteht aus einem logischen Ausdruck und zwei weiteren Ausdrücken, die entweder numerisch, boolean oder von einem Referenztyp sind.
@@ -930,7 +1111,9 @@ a ? b : c // ==> results in b if a is true or c if a is false
 * String-Verkettung
   * mit dem +-Operator können nicht nur mit numerische Operanden verwendet werden, sondern auch zur Verkettung von Strings
   * a + b ergibt einen verketten String, wenn einer der Operanden a oder b ein Objekt vom Typ String ist
-</script></section></section><section  data-markdown><script type="text/template">## Anweisungen
+
+---
+## Anweisungen
 <div>
 Anweisungen sind elementare Arbeitsschritte
 
@@ -957,11 +1140,17 @@ Anweisungen sind elementare Arbeitsschritte
 * ist eine Zusammenfassung von Anweisungen
 * wird als einzelne Anweisung behandelt und wird dort verwendet, wo syntaktisch nur eine Anweisung erlaubt ist
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section  data-markdown><script type="text/template">## Beeinflussung des Kontrollflusses
+
+---
+## Beeinflussung des Kontrollflusses
 
 > Der *Kontrollfluss* (oder *Programmablauf*) bezeichnet in der Informatik die zeitliche Abfolge der einzelnen Befehle eines Computerprogramms. Der Kontrollfluss ist gewöhnlich durch die Reihenfolge der Befehle innerhalb des Programms festgelegt. Durch *Kontrollstrukturen* kann von der sequenziellen Abarbeitung abgewichen werden. Hierzu zählen beispielsweise *Verzweigungen* und *Schleifen*.
-</script></section><section ><section data-markdown><script type="text/template">### Verzweigungen
-</script></section><section data-markdown><script type="text/template">#### Verzweigungen - if-Anweisung
+
+---
+### Verzweigungen
+
+----
+#### Verzweigungen - if-Anweisung
 **die einfache if-Anweisung**
 
 ```java
@@ -983,7 +1172,9 @@ else
 ```
   * *anweisung1* wird ausgeführt, wenn *ausdruck* true ist
   * ist *ausdruck* false, wird *anweisung2* ausgeführt
-</script></section><section data-markdown><script type="text/template">#### Verzweigungen mit der if-Anweisung
+
+----
+#### Verzweigungen mit der if-Anweisung
 **die if-else if-Anweisung**
 
 ```java
@@ -999,7 +1190,9 @@ else
 * ist *ausdruck1* false, wird *ausdruck2* ausgewertet
 * ist *ausdruck2* true, wird *anweisung2* ausgeführt
 * ist auch *ausdruck2* false, wird *anweisung3* ausgeführt
-</script></section><section data-markdown><script type="text/template">#### Verzweigungen mit der switch-Anweisung
+
+----
+#### Verzweigungen mit der switch-Anweisung
 
 ```JAVA
 switch (ausdruck) {
@@ -1019,8 +1212,12 @@ switch (ausdruck) {
   * dies kann durch Einsatz einer break-Anweisung verhindert werden
   * jede Konstante darf nur einmal auftauchen
   * gibt es keine passende Konstante, wird das optionale default-Label am Ende der switch-Anweisung angesprungen
-</script></section></section><section ><section data-markdown><script type="text/template">### Schleifen
-</script></section><section data-markdown><script type="text/template">#### Unterschiedliche Schleifenarten
+
+---
+### Schleifen
+
+----
+#### Unterschiedliche Schleifenarten
 * kopfgesteuerte Schleifen
   * die Abbruchbedingung steht im Schleifenkopf
   * wird auch als abweisende Schleife bezeichnet
@@ -1033,7 +1230,9 @@ switch (ausdruck) {
   * besitzt einen Zähler
   * hat i.d.R. eine feste Anzahl an Durchläufen
   * die Abbruchbedingung kann sich in Java nicht nur auf den Zähler beziehen
-</script></section><section data-markdown><script type="text/template">#### Kopfgesteuerte Schleifen
+
+----
+#### Kopfgesteuerte Schleifen
 
 ```JAVA
 while (ausdruck)
@@ -1045,7 +1244,9 @@ while (ausdruck)
 * ist das Ergebnis von ausdruck true, wird die Anweisung anweisung; ausgeführt
 * liefert ausdruck als Ergebnis false, wird mit der ersten Anweisung nach der Schleife fortgefahren
 * ist das Ergebnis von ausdruck gleich zu Beginn false, werden die Anweisungen in der Schleife nie ausgeführt &#8658; daher der Begriff: abweisende Schleife
-</script></section><section data-markdown><script type="text/template">#### Fußgesteuerte Schleifen
+
+----
+#### Fußgesteuerte Schleifen
 
 ```JAVA
 do
@@ -1060,7 +1261,9 @@ while (ausdruck);
 * ist das Ergebnis von ausdruck false, wird die Schleifenverarbeitung beendet
 * da die Bedingung erst nach dem ersten Durchlauf geprüft wird, muss die Schleife mindestens einmal durchlaufen werden &#8658; daher der Begriff: nicht abweisende Schleife
 
-</script></section><section data-markdown><script type="text/template">#### Zählende Schleifen
+
+----
+#### Zählende Schleifen
 
 ```JAVA
 for (init; test; update)
@@ -1079,7 +1282,9 @@ for (init; test; update)
 ```Java
 for ( Typ Bezeicher : Feld )
 ```
-</script></section><section data-markdown><script type="text/template">#### Die break- und continue-Anweisung
+
+----
+#### Die break- und continue-Anweisung
 * beide Anweisungen dienen der Änderung des Ablaufs innerhalb von Schleifen
 * die break-Anweisung
   * eine break-Anweisung innerhalb einer Schleife führt zum Verlassen der Schleife
@@ -1088,8 +1293,12 @@ for ( Typ Bezeicher : Feld )
   * der aktuelle Schleifendurchlauf wird beendet und das Programm springt zum Ende der Schleife
   * ein neuer Durchlauf der Schleife mit Prüfung der Abbruchbedingung beginnt
 
-</script></section></section><section ><section data-markdown><script type="text/template">## Lesbarer Code durch Einrückung und Coding-Blocks
-</script></section><section data-markdown><script type="text/template">### korrekter Code
+
+---
+## Lesbarer Code durch Einrückung und Coding-Blocks
+
+----
+### korrekter Code
 
 * schlecht lesbar (gar nicht eingerückt)*
 
@@ -1110,7 +1319,9 @@ else
 
 ausdruck3;
 ```
-</script></section><section data-markdown><script type="text/template">### korrekter Code
+
+----
+### korrekter Code
 
 * schlecht lesbar (falsch eingerückt)*
 
@@ -1145,7 +1356,9 @@ if(ausdruck1){
   }
 }
 ```
-</script></section><section data-markdown><script type="text/template">### korrekter Code
+
+----
+### korrekter Code
 
 *schlecht lesbar (falsch eingerückt)*
 
@@ -1177,23 +1390,31 @@ anweisung2;
 anweisung3;
 anweisung4;
 ```
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 4
+
+---
+# Kapitel 4
 # Ausdrücke und Anweisungen
 ## Kontrollfragen & Übungen
-</script></section><section data-markdown><script type="text/template">### Kontrollfragen
+
+----
+### Kontrollfragen
 1. Was verstehen Sie im Zusammenhang mit Programmierung unter dem Begriff „Ausdruck?
 2. Woraus setzen sich Ausdrücke zusammen?
 3. Zählen Sie unterschiedliche Operatoren auf! Unterscheiden Sie dabei die Operatoren nach dem Typ der Operanden!
 4. Erläutern Sie den Fragezeichenoperator anhand des folgenden Codings! String X = (a == b) ? “Ja“ : “Nein“;
 5. Definieren Sie den Begriff „Anweisung“ im Sinne der Programmierung!
 6. Welche Möglichkeiten bietet Ihnen die Programmiersprache Java, um Verzweigungen zu realisieren?
-7. Erläutern Sie den Begriff „dangling else“!</script></section><section data-markdown><script type="text/template">### Kontrollfragen
+7. Erläutern Sie den Begriff „dangling else“!
+----
+### Kontrollfragen
 8. Welche Bedeutung messen Sie der Break-Anweisung im Zusammenhang mit der Switch-Anweisung bei?
 9. Nennen Sie die unterschiedlichen Schleifenarten in Java und beschreiben Sie deren Verhalten!
 10. Worin besteht der wesentliche Unterschied zwischen einer kopf- und einer fußgesteuerten Schleife?
 11. Beschreiben Sie den Schleifenkopf einer For-Schleife!
 12. Was bewirken die Break- und die Continue-Anweisung innerhalb einer Schleife?
-</script></section><section data-markdown><script type="text/template">### Übungen
+
+----
+### Übungen
 <div>
 
 1. Implementieren Sie Ihr Struktogramm aus Übung 1 im Kapitel 1. zur Berechnung des größten gemeinsamen Teilers nach Euklid!
@@ -1214,7 +1435,9 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
   return a==b ? false : true;
   ```
   </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">
+
+----
+
   <div>
 
 5. Gegeben sind folgende Variablen mit ihren Werten:
@@ -1235,9 +1458,13 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
   |(a > b) &#124;&#124; z||
   |!(a < b) ^ !z||
   |(a < b) &#124;&#124; ((a%3 < b) && !z)||
-  </div><!-- .element style="font-size: 0.8em;" --></script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 5
+  </div><!-- .element style="font-size: 0.8em;" -->
+---
+# Kapitel 5
 # Objektorientierung
-</script></section><section data-markdown><script type="text/template">## Übersicht
+
+----
+## Übersicht
 1. Einführung
 2. Grundlagen von Java
 3. Datentypen
@@ -1245,7 +1472,9 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
 5. **Okjektorientierung**
 6. Vererbung
 7. Interfaces
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie kennen die Begriffe Klasse, Objekt, Attribut und Methode..
 * Sie kennen die Eigenschaften von Attributen und Methoden.
 * Sie können Klassen, Attribute und Methoden in der Unified Modelling Language (UML) darstellen.
@@ -1257,11 +1486,15 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
 * Sie können Objekte mit dem Garbage Collector zerstören.
 * Sie kennen die Begriffe Assoziation, Aggregation und Komposition
 
-</script></section></section><section ><section data-markdown><script type="text/template">## Einführung in die Objektorientierung
+
+---
+## Einführung in die Objektorientierung
 <div align="center">
 <img src="img/05objektorientierung_01einfuehrung.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
-</script></section><section data-markdown><script type="text/template">## Einführung in die Objektorientierung
+
+----
+## Einführung in die Objektorientierung
 
 <div>
 
@@ -1283,7 +1516,9 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
 * stellen die Funktionalität von Objekten dar
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Attribute und Methoden
+
+----
+### Attribute und Methoden
 * Attribute sind Variable oder Konstanten innerhalb eines Objektes
 * Attribute werden wie Variablen oder Konstanten deklariert
 * in den Methoden werden die Algorithmen zu einem Objekt implementiert
@@ -1299,7 +1534,9 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
 ```
 
 * sowohl Attribute und Methoden haben einen Modifier, der die Sichtbarkeit außerhalb der Klassen festlegt
-</script></section></section><section ><section data-markdown><script type="text/template">## Darstellung von Klassen in der UML
+
+---
+## Darstellung von Klassen in der UML
 * UML steht für Unified Modelling Language
 * wird im Rahmen der objektorientierten Analyse und im objektorientierten Design eingesetzt
 * beschreibt eine standardisierte Sammlung von Diagrammen
@@ -1313,11 +1550,15 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
   * die Namen und Datentypen der Attribute
   * die Namen und Rückgabewerte der Methoden
   * die Sichtbarkeit von Attributen und Methoden
-</script></section><section data-markdown><script type="text/template">### Darstellung der Klassen in der UML
+
+----
+### Darstellung der Klassen in der UML
 <div align="center">
 <img src="img/05objektorientierung_02UMLClassDiagramm.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
-</script></section></section><section ><section data-markdown><script type="text/template">## Objekte erzeugen
+
+---
+## Objekte erzeugen
 
 * Objekte sind Instanzen einer Klasse
 * zum Erzeugen von Objekten muss zunächst eine Klasse definiert werden
@@ -1329,7 +1570,9 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
   * mit Hilfe des new-Operators wird ein neues Objekt der Klasse instanziiert und muss der Variable zugewiesen werden
   * durch Verwendung des new-Operators wird gleichzeitig für das neue Objekt Speicher allokiert
   * mit dem new-Operator wird eine spezielle Methode der Klasse implizit aufgerufen, der Konstruktor
-</script></section><section data-markdown><script type="text/template">### Konstruktoren
+
+----
+### Konstruktoren
 * sind spezielle Methoden zum Erzeugen von neuen Objekten einer Klasse
 * Konstruktoren tragen den gleichen Namen wie die Klasse
 * werden ausschließlich über den new-Operator aufgerufen
@@ -1339,7 +1582,9 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
   * besitzt keine Übergabeparameter
   * sobald ein Konstruktor in der Klasse implementiert wurde, erzeugt der Compiler keinen Standardkonstruktor mehr
 * Konstruktoren können dazu verwendet werden, um die Attribute zu initialisieren
-</script></section><section data-markdown><script type="text/template">### Beispiel für die Implementierung einer Klasse
+
+----
+### Beispiel für die Implementierung einer Klasse
 
 <div>
 
@@ -1374,7 +1619,9 @@ class Auto {
 
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Prinzip der Kapselung
+
+---
+## Prinzip der Kapselung
 
 * die Kapselung ist ein Programmiergrundsatz in der objektorientierten Programmierung
 * es handelt sich dabei um keine Eigenschaft der Programmiersprache Java
@@ -1385,7 +1632,9 @@ class Auto {
 * die speziellen Änderungsmethoden werden als Getter- und Setter-Methoden bezeichnet
   * Getter-Methoden dienen zum Auslesen der Attribute
   * Setter-Methoden werden zum Verändern der Attribute verwendet
-</script></section><section data-markdown><script type="text/template">## Sichtbarkeit von Attributen und Methoden
+
+----
+## Sichtbarkeit von Attributen und Methoden
 <div>
 
 **private**
@@ -1402,7 +1651,9 @@ class Auto {
 * von überall sichtbar
 * normalerweise sind die Getter- und Setter-Methoden öffentlich, um auf private Attribute zuzugreifen
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Beispiel für Getter- und Setter-Methoden
+
+----
+### Beispiel für Getter- und Setter-Methoden
 
 <div>
 
@@ -1435,7 +1686,9 @@ class Auto {
 }
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Zugriff auf Attribute und Methoden
+
+---
+## Zugriff auf Attribute und Methoden
 <div>
 
 * auf Methoden und Attribute wird in der Punktnotation zugegriffen
@@ -1454,7 +1707,9 @@ objektname.attribut;
   * alle Methoden und Attribute zum Orginalobjekt stehen in der Methode zur Verfügung
   * Änderungen der Attribute finden somit innerhalb des Orginalobjektes statt
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Beispiel für Methoden- und Attributzugriffe
+
+----
+### Beispiel für Methoden- und Attributzugriffe
 <div>
 
 ```Java
@@ -1487,7 +1742,9 @@ class Auto {
 }
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Beispiel für Methoden- und Attributzugriffe II
+
+----
+### Beispiel für Methoden- und Attributzugriffe II
 <div>
 
 ```Java
@@ -1513,14 +1770,18 @@ class AutoTest {
 }
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Überladene Methoden
+
+---
+## Überladene Methoden
 * Methoden mit dem gleichen Namen werden innerhalb einer Klasse mehrmals definiert
 * die Methoden unterscheiden sich dabei in der Anzahl und/oder in der Typisierung der Übergabeparameter
 * die Modifier können dabei unterschiedliche Sichtbarkeiten zulassen
 * Ziel: gleichnamige Operationen können mit unterschiedlichen Datentypen als Parameter versorgt werden
 * gleichnamige Operationen können unterschiedliche Funktionalität zur Verfügung stellen
 * auch Konstruktoren können überladen werden
-</script></section><section data-markdown><script type="text/template">### Beispiel für überladene Methoden
+
+----
+### Beispiel für überladene Methoden
 <div>
 
 ```Java
@@ -1553,14 +1814,18 @@ class Auto {
 }
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Klassenattribute und –methoden
+
+---
+## Klassenattribute und –methoden
 * Klassenattribute und –methoden existieren unabhängig von einer Instanz einer Klasse
 * ohne das ein Objekt existiert können diese verwendet werden
 * sie werden durch den Modifier static als Klassenattribut bzw. –methode definiert
 * ZU beachten: static-Methoden können nur auf static-Attribute zugreifen, und nicht auf Instanzattribute und -methoden
 * auf Klassenattribute und –methoden wird ebenfalls in der Punktnotation über den Klassennamen zugegriffen
 * Darstellung in UML: Klassenattribute und -methoden werden in UML durch Unterstreichung kenntlich gemacht
-</script></section><section data-markdown><script type="text/template">### Beispiel für Klassenattribute und -methoden
+
+----
+### Beispiel für Klassenattribute und -methoden
 <div>
 
 ```Java
@@ -1594,7 +1859,9 @@ class Auto {
 
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Beispiel für Klassenattribute und -methoden II
+
+----
+### Beispiel für Klassenattribute und -methoden II
 <div>
 
 ```Java
@@ -1625,7 +1892,9 @@ class AutoTest {
 
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Mini-Exkurs: Enumerations (Enum)
+
+---
+## Mini-Exkurs: Enumerations (Enum)
 * Spezielle Klasse (erbt von java.lang.Enum)
 * definiert eine Menge an gültigen Werten
 * bietet Prüfung auf gültige Werte zur Kompilierungs- und Laufzeit
@@ -1639,7 +1908,9 @@ public enum CarBrand {
   TESLA
 }
 ```
-</script></section><section data-markdown><script type="text/template">### Mini-Exkurs: Enum als Klasse
+
+----
+### Mini-Exkurs: Enum als Klasse
 * kann Konstruktor, Attribute und Methoden haben
 * Konstanten werden als Objekt der Enum(-Klasse) instanziiert (Singleton)
 
@@ -1661,7 +1932,9 @@ public enum CarBrand {
   }
 }
 ```
-</script></section></section><section  data-markdown><script type="text/template">## Initialisierungs-Codeblöcke (!)
+
+---
+## Initialisierungs-Codeblöcke (!)
 * stehen im Kontext einer Klasse 
 * werden als spezielle ("namenlose") Methoden kompiliert
 * Objekt- und Klassen-Initialisierungs-Codeblöcke
@@ -1688,7 +1961,9 @@ public class Car {
 }
 ```
 
-</script></section><section  data-markdown><script type="text/template">## Objekte löschen mit dem Garbage-Collector
+
+---
+## Objekte löschen mit dem Garbage-Collector
 <div>
 
 * nicht mehr benötigte Objekte belasten den Speicher und müssen daher „eingesammelt“ werden
@@ -1705,15 +1980,21 @@ public class Car {
 finalize();
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section ><section data-markdown><script type="text/template">## Beziehungen zwischen Objekten
-</script></section><section data-markdown><script type="text/template">### Assoziation
+
+---
+## Beziehungen zwischen Objekten
+
+----
+### Assoziation
 * beschreibt die Struktur einer Menge von Beziehungen zwischen Objekten
 * binäre Assoziationen beschreiben die Beziehung zwischen je zwei Klassen
 * Assoziationen können benannt werden, durch eine verbale Beschreibung der Beziehung
 * die Darstellung in der UML erfolgt durch eine einfache Verbindungslinie zwischen den Klassen
 <div align="center">
 <img src="img/05objektorientierung_03Assoziation.png" width=45% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-</div></script></section><section data-markdown><script type="text/template">### Aggregation
+</div>
+----
+### Aggregation
 * Aggregationen stellen eine spezielle Form der Assoziation dar
 * Aggregationen stellen eine „Teile-Ganzes-Beziehung“ oder „Besteht-aus-Beziehung“ dar
 * Aggregationen beschreiben keine existentielle Abhängigkeiten
@@ -1721,7 +2002,9 @@ finalize();
 * die Notation in der UML erfolgt durch eine Linie mit einer Raute am Ende, wobei die Raute bei der Aggregatsklasse (dem Ganzen) angesiedelt ist
 <div align="center">
 <img src="img/05objektorientierung_04Aggregation.png" width=45% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-</div></script></section><section data-markdown><script type="text/template">### Komposition
+</div>
+----
+### Komposition
 * die Komposition ist eine spezielle Form der Aggregation
 * Kompositionen sind „strenger“ als Aggregationen
 * es handelt sich ebenfalls um eine „Teile-Ganzes-Beziehung“
@@ -1731,7 +2014,9 @@ finalize();
 <div align="center">
 <img src="img/05objektorientierung_05Komposition.png" width=45% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
-</script></section><section data-markdown><script type="text/template">### Kardinalität (Multiplizität)
+
+----
+### Kardinalität (Multiplizität)
 * Beschreibt die mengen- / zahlenmässige Ausprägung einer Beziehung (Assoziation)
 * Werden an der Assoziation eingetragen
 <br/>
@@ -1758,10 +2043,14 @@ finalize();
 </div><!-- .element style="font-size: 0.7em;" -->
 
 
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 5
+
+---
+# Kapitel 5
 # Objektorientierung
 ## Kontrollfragen
-</script></section><section data-markdown><script type="text/template">### Kontrollfragen I
+
+----
+### Kontrollfragen I
 1. Grenzen Sie die Begriffe Klasse und Objekt voneinander ab!
 2. Was beschreiben Attribute und Methoden?
 3. Wie werden Klassen in der UML dargestellt?
@@ -1771,16 +2060,22 @@ finalize();
 7. Welche unterschiedlichen Sichtbarkeitsmodifier sind Ihnen bekannt? Beschreiben Sie die Sichtbarkeit jedes Modifiers!
 8. Beschreiben Sie den Zugriff auf Instanzattribute und –methoden! Welche Rolle spielen dabei die Sichtbarkeitsmodifier?
 9. Unterscheiden Sie die Begriffe „call by value“ und „call by reference“!
-</script></section><section data-markdown><script type="text/template">### Kontrollfragen II
+
+----
+### Kontrollfragen II
 
 10. Was versteht man unter dem Begriff „überladen von Methoden“?
 11. Worin unterscheiden sich Klassenattribute und –methoden von Instanzattributen und –methoden?
 12. Erläutern Sie das Prinzip der Garbage Collection in Java!
 13. Was ist der Destruktor und wie wird dieser aufgerufen?
 14. Erläutern Sie die Begriffe Assoziation, Aggregation und Komposition! Wie werden die unterschiedlichen Beziehungen in der UML dargestellt?
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 6
+
+---
+# Kapitel 6
 # Vererbung
-</script></section><section data-markdown><script type="text/template">## Übersicht
+
+----
+## Übersicht
 1. Einführung
 2. Grundlagen von Java
 3. Datentypen
@@ -1788,7 +2083,9 @@ finalize();
 5. Okjektorientierung
 6. **Vererbung**
 7. Interfaces
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie können die Eigenschaften der Vererbung beschreiben.
 * Sie können den Unterschied von Super- und Subklassen beschreiben und den Begriff der Vererbungshierarchie erläutern.
 * Sie können die Begriffe Generalisierung und Spezialisierung im Zusammenhang mit der Vererbung erklären.
@@ -1800,7 +2097,9 @@ finalize();
 * Sie können die Bedeutung von this und super erklären.
 * Sie kennen die Konzepte des narrowing und widening casts.
 * Sie können den Begriff der Polymorphie erklären.
-</script></section></section><section ><section data-markdown><script type="text/template">## Eigenschaften der Vererbung
+
+---
+## Eigenschaften der Vererbung
 * eine Unterklasse (Subklasse) erbt die Attribute und Methoden einer Oberklasse (Superklasse)
 * statt Vererbung spricht man auch vom Ableiten von Klassen eine Subklasse leitet sich aus einer oder mehreren Superklassen ab
 * es entsteht eine Vererbungshierarchie, die theoretisch beliebig tief geschachtelt werden kann
@@ -1809,14 +2108,20 @@ finalize();
 * Mehrfachvererbung besagt, dass eine Subklasse von mehreren Superklassen erbt
 * Superklassen stellen eine Generalisierung ihrer Subklassen dar
 * umgekehrt sind Subklassen Spezialisierungen ihrer Superklassen
-</script></section><section data-markdown><script type="text/template">### Darstellung der Vererbung in UML
+
+----
+### Darstellung der Vererbung in UML
 
 <div align="center">
 <img src="img/06vererbung_01tiere.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
 
-</script></section></section><section ><section data-markdown><script type="text/template">## Vererbung in Java
-</script></section><section data-markdown><script type="text/template">### Übersicht
+
+---
+## Vererbung in Java
+
+----
+### Übersicht
 * Java unterstützt nur die Einfach- und nicht die Mehrfachvererbung
 * über Interfaces (Kapitel 7) kann auf mehrere Klassen Bezug genommen werden
 * die Vererbung ist durch folgende Syntax definiert:
@@ -1832,7 +2137,9 @@ class Subklasse extends Superklasse { }
   * Hinzufügen von Methoden und Attributen
   * Überladen von Methoden
   * Überschreiben von Methoden
-</script></section><section data-markdown><script type="text/template">### Die Superklasse **Object**
+
+----
+### Die Superklasse **Object**
 * ist die Wurzel der Klassenhierarchie in Java
 * liegt im Paket java.lang
 * von ihr sind alle Klassen explizit oder implizit abgeleitet, d.h. jede eigene Klasse ist immer eine Subklasse von Object
@@ -1844,7 +2151,9 @@ class Subklasse extends Superklasse { }
   * clone() – kopiert zwei Objekte
   * finalize() – ist der Destruktor
 * in Referenzvariablen vom Typ Object können alle beliebigen Objektreferenzen gespeichert werden (vgl. Narrowing cast)
-</script></section><section data-markdown><script type="text/template">### Sichtbarkeit von Methoden und Attributen
+
+----
+### Sichtbarkeit von Methoden und Attributen
 <div>
 
 private
@@ -1861,7 +2170,9 @@ public
 * von überall sichtbar
 * normalerweise sind die Getter- und Setter-Methoden öffentlich, um auf private Attribute zuzugreifen
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template">## Methoden überschreiben
+
+---
+## Methoden überschreiben
 <div>
 
 * Methoden, die bereits in der Superklasse implementiert sind, können in Subklassen neu definiert werden (Überschreiben)
@@ -1874,7 +2185,9 @@ public
   * final &#8658; verhindert explizit das Überschreiben
 * die Sichtbarkeit bei überschriebenen Methoden darf erhöht aber nicht eingeschränkt werden
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">----
+
+----
+----
 ### Mini-Exkurs: Enum als veerbte Klasse
 * Enums Erben von java.lang.Enum
 * ```toString()```- Methode von Objekt Überschrieben
@@ -1907,7 +2220,9 @@ public enum CarBrand {
 }
 ```
 
-</script></section></section><section  data-markdown><script type="text/template">## Weitere Modifier
+
+---
+## Weitere Modifier
 <div>
 
 **abstract**
@@ -1923,7 +2238,9 @@ public enum CarBrand {
 * Methoden mit dem Modifier final dürfen nicht überschrieben werden
 final-Attribute sind Konstanten, deren Wert sich nicht verändern darf
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section  data-markdown><script type="text/template">## Bedeutung von this und super
+
+---
+## Bedeutung von this und super
 * mit dem Ausdruck super kann aus einer abgeleiteten Klasse mithilfe der Punktnotation auf Attribute und Methoden der Superklasse zugegriffen werden
 * ein kaskadierender Aufruf super.super.x() ist nicht möglich
 * this ist eine Referenzvariable, die beim Anlegen des Objekts automatisch erzeugt wird und auf das aktuelle Objekt zeigt
@@ -1931,15 +2248,21 @@ final-Attribute sind Konstanten, deren Wert sich nicht verändern darf
 * mithilfe von this(Übergabeparamter) oder super(Übergabeparameter) können Konstruktoren verkettet werden
 * this() und super() müssen bei verketteten Konstruktoraufrufen immer die als erste Anweisung im Konstruktor stehen
 * this() verweist auf Konstruktoren der aktuellen und super() auf Konstruktoren der Superklasse
-</script></section><section ><section data-markdown><script type="text/template">## Casting von Referenztypen
-</script></section><section data-markdown><script type="text/template">### Narrowing Cast
+
+---
+## Casting von Referenztypen
+
+----
+### Narrowing Cast
 * Objekte von Subklassen können in Referenzvariablen gespeichert werden, die vom Typ ihrer Superklasse sind
 * dabei wird nur die Sicht auf die Objekte beschränkt, d.h. es sind nur noch die Attribute und Methoden sichtbar, die in der Superklasse deklariert sind
 * die subklassen-spezifischen Attribute und Methoden sind noch vorhanden, aber vorübergehend ausgeblendet
 * der narrowing cast beschreibt also den Wechsel von einer Sicht mit mehr auf eine Sicht mit weniger Details bei einem Objekt
 * der narrowing cast ist ein wesentliches Prinzip im Vererbungskonzept von Java
 * der narrowing cast ist eine wesentliche Voraussetzung für die Polymorphie
-</script></section><section data-markdown><script type="text/template">### Widening Cast
+
+----
+### Widening Cast
 <div>
 
 * stellt die Umkehrung des narrowing cast dar
@@ -1956,8 +2279,12 @@ refSubklasse = (Subklasse)referenzdatentyp;
 * der widening cast wechselt von einer Sicht mit weniger auf eine Sicht mit mehr Details und blendet die subklassen-spezifischen Attribute und Methoden wieder ein
 </div><!-- .element style="font-size: 0.8em;" -->
 
-</script></section></section><section ><section data-markdown><script type="text/template">## Polymorphie
-</script></section><section data-markdown><script type="text/template">### Übersicht
+
+---
+## Polymorphie
+
+----
+### Übersicht
 * neben der Kapselung und der Vererbung ein weiteres Grundkonzept in der objektorientierten Programmierung
 * bedeutet die Vielgestaltigkeit von Objekten
 * basiert auf dem Konzept des dynamischen Bindens
@@ -1967,7 +2294,9 @@ refSubklasse = (Subklasse)referenzdatentyp;
 <img src="img/06vererbung_02polymorphie.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 
 
-</script></section><section data-markdown><script type="text/template">### Beispiel Quellcode
+
+----
+### Beispiel Quellcode
 
 ```Java
 package prog1.demos.objekt;
@@ -1985,10 +2314,14 @@ class AutoTest {
   }
 }
 ```
-</script></section></section><section ><section data-markdown><script type="text/template"># Kapitel 6
+
+---
+# Kapitel 6
 # Vererbung
 ## Kontrollfragen & Übungen
-</script></section><section data-markdown><script type="text/template">### Kontrollfragen I
+
+----
+### Kontrollfragen I
 1. Beschreiben Sie das objektorientierte Konzept der Vererbung!
 2. Erläutern Sie die Begriffe Superklasse, Subklasse und Vererbungshierarchie!
 3. Beschreiben Sie die Darstellung der Vererbung in der UML mithilfe eines kleinen Beispiels!
@@ -1996,15 +2329,21 @@ class AutoTest {
 5. Beschreiben Sie die wesentlichen Eigenschaften der Klasse Object und ihre besondere Rolle in der Vererbungshierarchie in Java?
 6. Beschreiben Sie das Konzept des Überschreibens von Methoden!
 7. Was bewirken die Modifier abstract und final in Bezug auf Klassen?
-8. Welche Auswirkungen haben die Modifier abstract und final bei Methoden?</script></section><section data-markdown><script type="text/template">### Kontrollfragen II
+8. Welche Auswirkungen haben die Modifier abstract und final bei Methoden?
+----
+### Kontrollfragen II
 9. Wozu wird der Ausdruck super in der Vererbung benötigt?
 10. Was stellt der Ausdruck this dar?
 11. Beschreiben Sie das Konzept des narrowing und widening Cast!
 12. Beschreiben Sie das Konzept des Polymorphismus in der objektorientierten Programmierung anhand eines einfachen Beispiels!
-</script></section></section><section ><section data-markdown><script type="text/template">
+
+---
+
 # Kapitel 7
 # Interfaces
-</script></section><section data-markdown><script type="text/template">## Übersicht
+
+----
+## Übersicht
 1. Einführung
 2. Grundlagen von Java
 3. Datentypen
@@ -2012,7 +2351,9 @@ class AutoTest {
 5. Okjektorientierung
 6. Vererbung
 7. **Interfaces**
-</script></section><section data-markdown><script type="text/template">## Lernziele
+
+----
+## Lernziele
 * Sie können die wesentlichen Eigenschaften von Interfaces beschreiben.
 * Sie können Interfaces deklarieren und implementieren.
 * Sie können Interfaces vererben.
@@ -2020,7 +2361,9 @@ class AutoTest {
 * Sie kennen die besondere Bedeutung von Interfaces in Bezug auf Mehrfachvererbung.
 * Sie können Polymorphie mit Hilfe von Interfaces realisieren.
 * Sie können Objekte kopieren
-</script></section></section><section ><section data-markdown><script type="text/template">## Eigenschaften von Interfaces
+
+---
+## Eigenschaften von Interfaces
 <div>
 
 * Interfaces stellen eine besondere Form der Klassen dar
@@ -2036,7 +2379,9 @@ class AutoTest {
 * Interfaces können von anderen Interfaces mit extends abgeleitet (vererbt) werden
 * Interfaces können genau wie Klassen als Datentyp für Referenzvariablen genutzt werden
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">### Implementierung von Interfaces
+
+----
+### Implementierung von Interfaces
 <div>
 
 * um zu einem Interface die Funktionalität zur Verfügung zu stellen, muss eine Klasse das Interface implementieren
@@ -2056,12 +2401,16 @@ class xyz implements abc, def { }
 * durch die Implementierung mehrerer Interfaces wird eine Art von Mehrfachvererbung realisiert
 * Objekte einer Klasse sind zu allen Interface-Datentypen kompatibel, sobald die Klasse das Interface implementiert z.B. alle Objekte der Klasse xyz könnten in Referenzvariablen vom Typ abc oder def gespeichert werden
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section  data-markdown><script type="text/template">## Darstellung in UML
+
+---
+## Darstellung in UML
 
 <div align="center">
 <img src="img/07interfaces_01tiere.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
-</script></section><section ><section data-markdown><script type="text/template">## Polymorphie über Interfaces
+
+---
+## Polymorphie über Interfaces
 <div>
 
 * analog der Polymorphie durch Vererbung
@@ -2072,7 +2421,9 @@ class xyz implements abc, def { }
 
 <img src="img/07interfaces_02polymorphie.png" width=25% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 
-</div><!-- .element style="font-size: 0.7em;" --></script></section><section data-markdown><script type="text/template">### Beispiel Quellcode
+</div><!-- .element style="font-size: 0.7em;" -->
+----
+### Beispiel Quellcode
 
 ```Java
 package prog1.demos.objekt;
@@ -2089,7 +2440,9 @@ class AutoTest {
   }
 }
 ```
-</script></section></section><section  data-markdown><script type="text/template">## Exkurs: kopieren von Objekten (!)
+
+---
+## Exkurs: kopieren von Objekten (!)
 
 1. "Möglichkeit"
   * mit dem =-Operator
@@ -2100,11 +2453,16 @@ class AutoTest {
   * es wird eine identische Kopie des Objektes erzeugt und unter einer anderen Referenz im Speicher hinterlegt
   * die Attributwerte der beiden Objekte sind gleich
 
-</script></section><section  data-markdown><script type="text/template"># Exkurs
+
+---
+# Exkurs
 # Naming Conventions
 
 > siehe "Exkurs" Skript
-</script></section></div>
+
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="./../dist/reveal.js"></script>
@@ -2135,6 +2493,7 @@ class AutoTest {
         history: true,
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
         plugins: [
           RevealMarkdown,
           RevealHighlight,
@@ -2147,7 +2506,7 @@ class AutoTest {
       // options from URL query string
       var queryOptions = Reveal().getQueryHash() || {};
 
-      var options = extend(defaultOptions, {"transition":"slide","transitionSpeed":"slow","controls":true,"progress":true,"slideNumber":"c/t","hash":true,"previewLinks":true}, queryOptions);
+      var options = extend(defaultOptions, {"transition":"slide","transitionSpeed":"slow","controls":true,"progress":true,"slideNumber":"c/t","hash":true,"previewLinks":true,"_":["scripts/"],"static":"docs","static-dirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","staticDirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","css":"scripts/_assets/style.css"}, queryOptions);
     </script>
 
 

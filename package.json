@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/matthiasbergneels/md-scripts#readme",
   "dependencies": {
-    "reveal-md": "^4.2.0"
+    "reveal-md": "^6.0.1"
   }
 }

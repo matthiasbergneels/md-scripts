@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>Java 9 - 16</title>
-    <link rel="shortcut icon" href="./../favicon.ico"/>
+    <link rel="shortcut icon" href="./../favicon.ico" />
+    <link rel="stylesheet" href="./../dist/reset.css" />
     <link rel="stylesheet" href="./../dist/reveal.css" />
     <link rel="stylesheet" href="./../dist/theme/simple.css" id="theme" />
-    <link rel="stylesheet" href="./../css/highlight/zenburn.css" />
+    <link rel="stylesheet" href="./../css/highlight/base16/zenburn.css" />
+
     <link rel="stylesheet" href="./../_assets/scripts/_assets/style.css" />
 
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section ><section data-markdown><script type="text/template">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
 <style type="text/css">
   .reveal {
    font-size: 30px;
@@ -33,24 +38,32 @@
 # Java 9 - 16
 ## What happened the last 7 years
 ### Matthias
-</script></section><section data-markdown><script type="text/template">## Disclaimer
+
+----
+## Disclaimer
 * Part I (tried to focus on language Features & API)
   * maybe following parts with
     * java "internal" changes (e.g. Garbage Collector, Performance, tooling)
     * deprecations
 * no guarantee on completeness
-</script></section><section data-markdown><script type="text/template">## Sources
+
+----
+## Sources
 * [OpenJDK](https://openjdk.java.net/jeps/0)
 * [Marcobehler.com](https://www.marcobehler.com/guides/a-guide-to-java-versions-and-features#_why_are_companies_still_stuck_with_java_8)
 * [.Lost in Coding](https://ondro.inginea.eu/index.php/new-features-in-java-versions-since-java-8/)
 * [Advanced Web Machinery](https://advancedweb.hu/a-categorized-list-of-all-java-and-jvm-features-since-jdk-8-to-16/#new-apis)
-</script></section><section data-markdown><script type="text/template">## Java history
+
+----
+## Java history
 
 <div>
 <img src="img/javaversions-4.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div><!-- .element align="center" -->
 
-</script></section><section data-markdown><script type="text/template">## Why Java 8
+
+----
+## Why Java 8
 * rich feature set
   * Stream API (Collections)
   * Lambda Functions & Functional Interfaces
@@ -60,10 +73,14 @@
 * initial problems with commonly used build tools
 * is a LTS version
 
-</script></section></section><section ><section data-markdown><script type="text/template"># Java 9
+
+---
+# Java 9
 
 > [OpenJDK 9](https://openjdk.java.net/projects/jdk9/)
-</script></section><section data-markdown><script type="text/template">## Collection factory methods
+
+----
+## Collection factory methods
 
 ```Java
 List<String> list = List.of("one", "two", "three");
@@ -86,7 +103,9 @@ Stream<String> stream =
 ```Java
 user.ifPresentOrElse(this::displayAccount, this::displayLogin);
 ```
-</script></section><section data-markdown><script type="text/template">## JShell (Java Playground)
+
+----
+## JShell (Java Playground)
 ```
 % jshell
 |  Welcome to JShell -- Version 16.0.1
@@ -107,17 +126,23 @@ jshell> /exit
 ```
 
 (You are welcome ;-) )
-</script></section><section data-markdown><script type="text/template">## misc
+
+----
+## misc
 * [TLS1.3 Support](https://openjdk.java.net/jeps/332)
 * [Java Platform module System](https://openjdk.java.net/jeps/332)
 * Flow API (reactive Streams)
 * [MultiResolutionImage](https://docs.oracle.com/javase/9/docs/api/java/awt/image/MultiResolutionImage.html)
 * [Class.getPackageName()](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Class.html#getPackageName())
 
-</script></section></section><section ><section data-markdown><script type="text/template"># Java 10
+
+---
+# Java 10
 
 > [OpenJDK 10](https://openjdk.java.net/projects/jdk/10/)
-</script></section><section data-markdown><script type="text/template">## Local-variable type Inference: ```var```-keyword
+
+----
+## Local-variable type Inference: ```var```-keyword
 
 ```Java
 // Pre-Java 10
@@ -126,10 +151,14 @@ String myName = "Volker";
 // With Java 10
 var myName = "Volker"
 ```
-</script></section></section><section ><section data-markdown><script type="text/template"># Java 11
+
+---
+# Java 11
 
 > [OpenJDK 11](https://openjdk.java.net/projects/jdk/11/)
-</script></section><section data-markdown><script type="text/template">## new methods on ```String```
+
+----
+## new methods on ```String```
 
 * ```repeat()```, ```isBlank()```, ```strip()```, ```lines()```
 
@@ -145,7 +174,9 @@ var myName = "Volker"
 ```Java
 (var firstName, var lastName) -> firstName + lastName
 ```
-</script></section><section data-markdown><script type="text/template">## HTTPClient (Preview >= 9)
+
+----
+## HTTPClient (Preview >= 9)
 
 <div>
 ```Java
@@ -175,10 +206,14 @@ public class HttpClientExample {
 }
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template"># Java 12
+
+---
+# Java 12
 
 > [OpenJDK 12](https://openjdk.java.net/projects/jdk/12/)
-</script></section><section data-markdown><script type="text/template">## new methods on ```String```
+
+----
+## new methods on ```String```
 
 * ```indent()```, ```transform()```
 
@@ -190,15 +225,21 @@ public class HttpClientExample {
   * DE: 1000 -> 1.000, 1000000 -> 1 Mio
 
 ## Unicode 11 support
-</script></section></section><section  data-markdown><script type="text/template"># Java 13
+
+---
+# Java 13
 
 > [OpenJDK 13](https://openjdk.java.net/projects/jdk/13/)
 
 ## Unicode 12.1 support
-</script></section><section ><section data-markdown><script type="text/template"># Java 14
+
+---
+# Java 14
 
 > [OpenJDK 14](https://openjdk.java.net/projects/jdk/14/)
-</script></section><section data-markdown><script type="text/template">## Switch Expression (Preview: 12, 13)
+
+----
+## Switch Expression (Preview: 12, 13)
 
 * new (including new ```yield``` keyword)
   * no fall-through
@@ -216,10 +257,14 @@ int numLetters = switch (day) {
     }
 };
 ```
-</script></section></section><section ><section data-markdown><script type="text/template"># Java 15
+
+---
+# Java 15
 
 > [OpenJDK 15](https://openjdk.java.net/projects/jdk/15/)
-</script></section><section data-markdown><script type="text/template">## Helpfull NullPointerException message
+
+----
+## Helpfull NullPointerException message
 
 <div>
 ```Java
@@ -273,7 +318,9 @@ java.lang.NullPointerException: Cannot invoke "String.length()" because "myClass
   	at de.mubn.java15.NullPointerExample.main(NullPointerExample.java:20)
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## Text Blocks (Preview: 13, 14)
+
+----
+## Text Blocks (Preview: 13, 14)
 
 
 * old
@@ -299,10 +346,14 @@ String html = """
             """;
 ```
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template"># Java 16
+
+---
+# Java 16
 
 > [OpenJDK 16](https://openjdk.java.net/projects/jdk/16/)
-</script></section><section data-markdown><script type="text/template">## Pattern Matching for instanceof
+
+----
+## Pattern Matching for instanceof
 
 ```Java
 if (x instanceOf String s) {
@@ -326,14 +377,19 @@ myPoint.x();                  // -> 10
 System.out.println(myPoint);  // -> "Point[x=10, y=15]"
 
 ```
-</script></section><section data-markdown><script type="text/template">## Sealed Classes (still PREVIEW)
+
+----
+## Sealed Classes (still PREVIEW)
 
 ```Java
 public abstract sealed class Shape permits Circle, Rectangle, Square {
   // ...
 }
 ```
-</script></section></section></div>
+
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="./../dist/reveal.js"></script>
@@ -364,6 +420,7 @@ public abstract sealed class Shape permits Circle, Rectangle, Square {
         history: true,
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
         plugins: [
           RevealMarkdown,
           RevealHighlight,
@@ -376,7 +433,7 @@ public abstract sealed class Shape permits Circle, Rectangle, Square {
       // options from URL query string
       var queryOptions = Reveal().getQueryHash() || {};
 
-      var options = extend(defaultOptions, {"transition":"slide","transitionSpeed":"slow","controls":true,"progress":true,"slideNumber":"c/t","hash":true,"previewLinks":true}, queryOptions);
+      var options = extend(defaultOptions, {"transition":"slide","transitionSpeed":"slow","controls":true,"progress":true,"slideNumber":"c/t","hash":true,"previewLinks":true,"_":["scripts/"],"static":"docs","static-dirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","staticDirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","css":"scripts/_assets/style.css"}, queryOptions);
     </script>
 
 

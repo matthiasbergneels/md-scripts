@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>Programmieren - Exkurse</title>
-    <link rel="shortcut icon" href="./../favicon.ico"/>
+    <link rel="shortcut icon" href="./../favicon.ico" />
+    <link rel="stylesheet" href="./../dist/reset.css" />
     <link rel="stylesheet" href="./../dist/reveal.css" />
     <link rel="stylesheet" href="./../dist/theme/simple.css" id="theme" />
-    <link rel="stylesheet" href="./../css/highlight/zenburn.css" />
+    <link rel="stylesheet" href="./../css/highlight/base16/zenburn.css" />
+
     <link rel="stylesheet" href="./../_assets/scripts/_assets/style.css" />
 
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section ><section data-markdown><script type="text/template">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
 
 # Programmieren - Exkurse
 ### Matthias Berg-Neels
 
 > [Download Skript](../pdfdownloads/ProgrammierenSkript_Exkurs.pdf)
-</script></section><section data-markdown><script type="text/template">## Inhalt
+
+----
+## Inhalt
 
 * Naming conventions
 * Implizite Typisierung mittels ```var```
@@ -30,9 +37,13 @@
 * (Die Evolution von Java)
 * (Optionals)
 * (Programming Principals)
-</script></section></section><section ><section data-markdown><script type="text/template"># Naming conventions
+
+---
+# Naming conventions
 > Naming conventions sind, in (großen) Projekten / Firmen, Bestandteil der "Code Style Guidelines". Firmen bzw. Community basiert gibt es unterschiedliche Code Style Guidelines nach denen man sich richten kann. Die folgenden Konventionen basieren auf den [Google Style Guidelines für Java](https://google.github.io/styleguide/javaguide.html#s5-naming).
-</script></section><section data-markdown><script type="text/template">## Allgemeine Regeln für Bezeichner und Namen (1/2)
+
+----
+## Allgemeine Regeln für Bezeichner und Namen (1/2)
 
 **Regeln**
 * erlaubte Zeichen
@@ -43,7 +54,9 @@
   * Zahlen: 0, 1, 2, ..., 9
 * nicht erlaubte Zeichensatz
   * Sonderzeichen
-</script></section><section data-markdown><script type="text/template">## Allgemeine Regeln für Bezeichner und Namen (2/2)
+
+----
+## Allgemeine Regeln für Bezeichner und Namen (2/2)
 **weitere Regeln**
 * keine Leerzeichen
 * dürfen nicht mit Zahlen beginnen
@@ -57,7 +70,9 @@
 * **Anmerkung**: Namen sollten immer die tatsächliche Funktion einer Entität widerspiegeln, daher stehen sie in hoher Abhängigkeit zum Quellcode. Eine Variable mit dem Namen "WindowCount" (vom Typ Boolean), eine Methode "saveToDatabase" (die nichts Speichert) oder eine Klasse "Student" (die Funktionen einer Vorlesung enthält) sollten namentlich noch einmal überdacht werden, auch wenn diese sich "rein vom Namen" korrekt lesen.
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## Packagenamen
+
+----
+## Packagenamen
 
 **Guideline**
 * klein geschrieben
@@ -66,7 +81,9 @@
 de.mbn.myapp.lecture
 lecture.objectorientation.trainstation
 ```
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 ## Klassennamen
 
 **Guideline**
@@ -79,7 +96,9 @@ Car
 Student
 TrainDriver
 ```
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 ## Variablen / Attribute
 
 **Guideline**
@@ -90,7 +109,9 @@ familyName
 children
 studentId
 ```
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 ## Konstanten
 
 **Guideline**
@@ -99,7 +120,9 @@ studentId
 ```Java
 ALLOWED_COLOR_RED
 MEANING_OF_LIFE
-```</script></section><section data-markdown><script type="text/template">## Methoden
+```
+----
+## Methoden
 
 **Guideline**
 * lowerCamelCase - beginnen mit einem Kleinbuchstaben und jedes neue Wort beginnt mit einem Großbuchstaben
@@ -118,7 +141,9 @@ persistData();
 setFamilyName();
 getFamilyName();
 ```
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 ## Spezialfall: Boolen Attribute / Getter-Methoden
 * sprechende Definition von Boolean-Attribute
   * z.B. enabled, isTired (VS tired), hasFlatRoof (VS flatRoof), canFly (VS fly), ...
@@ -127,7 +152,9 @@ getFamilyName();
 * anhängig vom Attributnamen können in diesem Fall die Setter-Namen doch komisch wirken
   * setEnabled, setIsTired (VS setTired), setHasFlatRoof (VS setFlatRoof), setCanFly (VS setFly)
 
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 ## Ein Beispiel aus dem echten Leben (/ produktiven Code)
 
 <div>
@@ -205,10 +232,14 @@ public class ThingModelBasedDataObjectRepository extends HashOperationsRepositor
 }
 ```
 </div><!-- .element style="font-size: 0.5em;" -->
-</script></section></section><section ><section data-markdown><script type="text/template"># implizite Typisierung mittels ```var```
+
+---
+# implizite Typisierung mittels ```var```
 
 > Ermittlung des Datentyps einer Variable ohne spezifische Angabe des Typs mittels der Initialisierung - Schlüsselwort ```var``` (seit Java 10) <sub>some evil stuff</sub>
-</script></section><section data-markdown><script type="text/template">## Verwendung
+
+----
+## Verwendung
 
 **Voraussetzung**
 * Deklaration mit ```var``` UND sofortiger Initialisierung der Variable.
@@ -240,7 +271,9 @@ var myThingModelRepo = new ThingModelBasedDataObjectRepository(myChacheTemplate,
 ```
 
 </div><!-- .element style="font-size: 0.85em;" -->
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 ## ABER...
 
 Falsch eingesetzt, wird der Code unverständlicher / komplizierter zu lesen:
@@ -251,15 +284,21 @@ var somethingTwo = ("Ergebnis ist " + (numberA + numberB * 50.1)).length() / (do
 var somethingThree = Something.returnSomething();
 // ...
 ```
-</script></section></section><section ><section data-markdown><script type="text/template"># Unit Testing
+
+---
+# Unit Testing
 
 > Unit Testing in Java mit JUnit5.
-</script></section><section data-markdown><script type="text/template">## Einordnung von Unit Tests
+
+----
+## Einordnung von Unit Tests
 
 <div align="center">
 <img src="img/0x_junit_02testpyramide.svg" width=60% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0; align="center"" -->
 </div>
-</script></section><section data-markdown><script type="text/template">## JUnit5 - Basis Annotationen
+
+----
+## JUnit5 - Basis Annotationen
 
 <div>
 
@@ -273,7 +312,9 @@ var somethingThree = Something.returnSomething();
 | ```@AfterAll``` | kennzeichnet eine Methode die **einmal nach allen** Tests läuft (JUnit4 --> ```@AfterClass```) | 
 
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 ## Assertion
 
 <div>
@@ -303,7 +344,9 @@ var somethingThree = Something.returnSomething();
     ```
 
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## JUnit5 - neue Annotationen
+
+----
+## JUnit5 - neue Annotationen
 
 <div>
 
@@ -315,7 +358,9 @@ var somethingThree = Something.returnSomething();
 | ```@ParameterizedTest``` | Testfall Parametrisierung -> siehe nächste Slide |
 
 </div><!-- .element style="font-size: 0.7em;" -->
-</script></section><section data-markdown><script type="text/template">## ```@ParameterizedTest```
+
+----
+## ```@ParameterizedTest```
 
 * Separierung von Test-Code und Testfall
 * verschiedene Quellen für Testfälle
@@ -324,7 +369,9 @@ var somethingThree = Something.returnSomething();
   * ```@EnumSource```
   * ```@CsvSource``` / ```@CsvFileSource```
   * ```@MethodSource```
-</script></section><section data-markdown><script type="text/template">## JUnit5 - Nützliches
+
+----
+## JUnit5 - Nützliches
 
 ### Testen von Ausnahmen
 ```Java
@@ -340,7 +387,9 @@ void assertAll(Executable ...);
 ```Java
 void assertTimeout(Duration, Executable);
 ```
-</script></section><section data-markdown><script type="text/template">## Beispiel: Einfache Test-Klasse
+
+----
+## Beispiel: Einfache Test-Klasse
 ```Java
 import excercises.exkurs.junit.Calculator;
 import org.junit.jupiter.api.*;
@@ -365,17 +414,23 @@ class CalculatorTest {
 }
 
 ```
-</script></section><section data-markdown><script type="text/template">## F.I.R.S.T. Principal
+
+----
+## F.I.R.S.T. Principal
 * **Fast**: Die Testausführung soll schnell sein, damit man sie möglichst oft ausführen kann. Je öfter man die Tests ausführt, desto schneller bemerkt man Fehler und desto einfacher ist es, diese zu beheben.
 * **Independent**: Unit-Tests sind unabhängig voneinander, damit man sie in beliebiger Reihenfolge, parallel oder einzeln ausführen kann.
 * **Repeatable**: Führt man einen Unit-Test mehrfach aus, muss er immer das gleiche Ergebnis liefern.
 * **Self-Validating**: Ein Unit-Test soll entweder fehlschlagen oder gut gehen. Diese Entscheidung muss der Test treffen und als Ergebnis liefern. Es dürfen keine manuellen Prüfungen nötig sein.
 * **Timely**: Man soll Unit-Tests vor der Entwicklung des Produktivcodes schreiben.
-</script></section></section><section ><section data-markdown><script type="text/template">
+
+---
+
 # Innere Klassen
 
 > von inneren Klassen hin zu Lambda-Funktionen
-</script></section><section data-markdown><script type="text/template">
+
+----
+
 ## Arten von inneren Klassen
 
 <div>
@@ -395,7 +450,9 @@ class CalculatorTest {
   * werden direkt einer Referenz zugwiesen
   * basieren immer auf einer Klasse (erweitern) oder einem Interface (implementieren)
 </div><!-- .element style="font-size: 0.8em;" -->
-</script></section><section data-markdown><script type="text/template">## Innere Top-Level-Klasse
+
+----
+## Innere Top-Level-Klasse
 
 <div>
 
@@ -426,7 +483,9 @@ public class OuterClass {
 ```
 
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Innere Element-Klasse
+
+----
+## Innere Element-Klasse
 
 <div>
 
@@ -459,7 +518,9 @@ public class OuterClass {
 ```
 
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Innere lokale Klasse
+
+----
+## Innere lokale Klasse
 
 <div>
 
@@ -491,7 +552,9 @@ public class OuterClass {
 ```
 
 </div><!-- .element style="font-size: 0.9em;" -->
-</script></section><section data-markdown><script type="text/template">## Innere anonyme Klasse
+
+----
+## Innere anonyme Klasse
 
 <div>
 
@@ -526,7 +589,9 @@ public class OuterClass {
 }
 ```
 </div><!-- .element style="font-size: 0.75em;" -->
-</script></section><section data-markdown><script type="text/template">## Lambda Funktionen (anonyme Funktionen)
+
+----
+## Lambda Funktionen (anonyme Funktionen)
 
 <div>
 
@@ -551,7 +616,9 @@ Interface3 lambda3 = () -> {
 }
 
 ```
-</script></section><section data-markdown><script type="text/template">## Lambda Funktion
+
+----
+## Lambda Funktion
 
 <div>
 
@@ -585,33 +652,45 @@ public class OuterClass {
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
 
-</script></section></section><section ><section data-markdown><script type="text/template"># Entwurfsmuster (Design Patterns)
-</script></section><section data-markdown><script type="text/template">## Entwurfsmuster (Design Patterns) in der Software-Entwicklung
+
+---
+# Entwurfsmuster (Design Patterns)
+
+----
+## Entwurfsmuster (Design Patterns) in der Software-Entwicklung
 
 * Lösungsschablonen für wiederkehrende Probleme im Software-Entwurf
 * zur Verbesserung der Softwarearchitektur, Strukturierung des Code und bessere Lesbarkeit
 * verschiedene Arten: Erzeugungs-, Struktur- und Verhaltensmuster
 * stellen keine starren Regeln, sondern flexible Richtlinien, die an die jeweilige Situation angepasst werden können
-</script></section><section data-markdown><script type="text/template">## Erzeugungs-Muster (Creational Patterns)
+
+----
+## Erzeugungs-Muster (Creational Patterns)
 
 * Erzeugung von Objekten
 * entkoppeln die Konstruktion eines Objekts von seiner Repräsentation
 * ermöglichen z.B. eine flexible Auswahl der konkreten Klassen zur Laufzeit
 * Beispiele: factory method, Factory, Singleton, Builder
-</script></section><section data-markdown><script type="text/template">## Struktur-Muster (Structural Patterns)
+
+----
+## Struktur-Muster (Structural Patterns)
 
 * erleichtern den Software Entwurf und die Strukturierung durch herstellen von Beziehungen zwischen Entitäten
 * nutzen Abstraktion um komplexe, kombinierte Objekte zu erzeugen und die einzelnen Bestandteile und Strukturen flexibel zu halten
 * Beispiele: Facade (Einfache Schnittstelle für komplexe Objekte), Adapter (Verbinden von inkompatiblen Schnittstellen) Kompositum, das eine Hierarchie von Objekten bildet, die als Einheit behandelt werden können
 
-</script></section><section data-markdown><script type="text/template">## Verhaltens-Muster (Behavioral Patterns)
+
+----
+## Verhaltens-Muster (Behavioral Patterns)
 
 * erleichtern den Software Entwurf und die Strukturierung durch herstellen von Beziehungen zwischen Entitäten
 * nutzen Abstraktion 
 Sie ermöglichen eine Abstraktion, die mit anderen Lösungsansätzen kommunizieren kann2
 Sie können in verschiedene Arten eingeteilt werden, wie zum Beispiel Adapter, Brücke, Dekorierer, Fassade, Fliegengewicht, Kompositum oder Proxy3
 Beispiele für Strukturmuster sind: Fassade, die eine vereinfachte Schnittstelle zu einem komplexen System bietet4; Adapter, der zwei inkompatible Schnittstellen verbindet; Kompositum, das eine Hierarchie von Objekten bildet, die als Einheit behandelt werden können
-</script></section></section><section ><section data-markdown><script type="text/template"># Optionals
+
+---
+# Optionals
 
 > TODO... :-)
 
@@ -620,11 +699,16 @@ Beispiele für Strukturmuster sind: Fassade, die eine vereinfachte Schnittstelle
 # Programming Principals
 
 > DRY, KISS, ... TODO... :-)
-</script></section><section data-markdown><script type="text/template">## Principal Collection
+
+----
+## Principal Collection
 * KISS
 * DRY
 * FIRST
-</script></section></section></div>
+
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="./../dist/reveal.js"></script>
@@ -655,6 +739,7 @@ Beispiele für Strukturmuster sind: Fassade, die eine vereinfachte Schnittstelle
         history: true,
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
         plugins: [
           RevealMarkdown,
           RevealHighlight,
@@ -667,7 +752,7 @@ Beispiele für Strukturmuster sind: Fassade, die eine vereinfachte Schnittstelle
       // options from URL query string
       var queryOptions = Reveal().getQueryHash() || {};
 
-      var options = extend(defaultOptions, {"transition":"slide","transitionSpeed":"slow","controls":true,"progress":true,"slideNumber":"c/t","hash":true,"previewLinks":true}, queryOptions);
+      var options = extend(defaultOptions, {"transition":"slide","transitionSpeed":"slow","controls":true,"progress":true,"slideNumber":"c/t","hash":true,"previewLinks":true,"_":["scripts/"],"static":"docs","static-dirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","staticDirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","css":"scripts/_assets/style.css"}, queryOptions);
     </script>
 
 
