@@ -17,6 +17,7 @@ center: false
 * Implizite Typisierung mittels ```var```
 * Unit Tests
 * Innere Klassen
+* Entwurfsmuster (Design Patterns)
 * (Die Evolution von Java)
 * (Optionals)
 * (Programming Principals)
@@ -635,6 +636,42 @@ public class OuterClass {
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
 
+
+---
+# Entwurfsmuster (Design Patterns)
+
+----
+## Entwurfsmuster (Design Patterns) in der Software-Entwicklung
+
+* Lösungsschablonen für wiederkehrende Probleme im Software-Entwurf
+* zur Verbesserung der Softwarearchitektur, Strukturierung des Code und bessere Lesbarkeit
+* verschiedene Arten: Erzeugungs-, Struktur- und Verhaltensmuster
+* stellen keine starren Regeln, sondern flexible Richtlinien, die an die jeweilige Situation angepasst werden können
+
+----
+## Erzeugungs-Muster (Creational Patterns)
+
+* Erzeugung von Objekten
+* entkoppeln die Konstruktion eines Objekts von seiner Repräsentation
+* ermöglichen z.B. eine flexible Auswahl der konkreten Klassen zur Laufzeit
+* Beispiele: factory method, Factory, Singleton, Builder
+
+----
+## Struktur-Muster (Structural Patterns)
+
+* erleichtern den Software Entwurf und die Strukturierung durch herstellen von Beziehungen zwischen Entitäten
+* nutzen Abstraktion um komplexe, kombinierte Objekte zu erzeugen und die einzelnen Bestandteile und Strukturen flexibel zu halten
+* Beispiele: Facade (Einfache Schnittstelle für komplexe Objekte), Adapter (Verbinden von inkompatiblen Schnittstellen) Kompositum, das eine Hierarchie von Objekten bildet, die als Einheit behandelt werden können
+
+
+----
+## Verhaltens-Muster (Behavioral Patterns)
+
+* erleichtern den Software Entwurf und die Strukturierung durch herstellen von Beziehungen zwischen Entitäten
+* nutzen Abstraktion 
+Sie ermöglichen eine Abstraktion, die mit anderen Lösungsansätzen kommunizieren kann2
+Sie können in verschiedene Arten eingeteilt werden, wie zum Beispiel Adapter, Brücke, Dekorierer, Fassade, Fliegengewicht, Kompositum oder Proxy3
+Beispiele für Strukturmuster sind: Fassade, die eine vereinfachte Schnittstelle zu einem komplexen System bietet4; Adapter, der zwei inkompatible Schnittstellen verbindet; Kompositum, das eine Hierarchie von Objekten bildet, die als Einheit behandelt werden können
 
 ---
 # Optionals
