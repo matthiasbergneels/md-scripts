@@ -8,6 +8,12 @@ center: false
 
 > Sie legen die Basis für den Weg als erfolgreicher Softwareengineer durch grundlegenden Programmierkenntnissen am Beispiel von ```Java```
 
+----
+
+<div align="center" width="90%">
+<img src="img/00_MustCodeJava.jpeg" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
 ---
 
 # Programmieren I
@@ -47,7 +53,7 @@ center: false
 ## Quellen & Literaturverzeichnis
 
 <ul>
-<li>RATZ / SCHULMEISTER-ZIMOLONG / SEESE / WIESENBERGER<br>Grundkurs Programmieren in Java. Hanser, 8. Auflage, 2018. ISBN 978-3-446-45212-1</li>
+<li>RATZ / SCHULMEISTER-ZIMOLONG / SEESE / WIESENBERGER<br>Grundkurs Programmieren in Java. Hanser, 8. Auflage, 2018. ISBN 978-3-446-45212-1</li><!-- .element style="font-size: 0.9em;" -->
 </ul>
 
 ---
