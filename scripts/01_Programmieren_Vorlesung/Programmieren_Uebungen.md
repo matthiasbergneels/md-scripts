@@ -33,7 +33,7 @@ center: false
 ## Kontrollfragen & Übungen
 
 ----
-### Kontrollfragen
+### 1.1 Kontrollfragen
 1. Nennen Sie die Definition für den Begriff des Algorithmus im Kontext der Informatik.
 2. Beschreiben Sie die Bestandteile sowie die Eigenschaften von Algorithmen.
 3. Nennen Sie fünf Grundelemente der Programmierung.
@@ -43,7 +43,7 @@ darzustellen?
 6. Beschreiben Sie die Darstellungsform „Pseudocode“!
 
 ----
-### Übungen
+### 1.2 Übungen
 1. Beschreiben Sie den euklidschen Algorithmus zur Berechnung des größten
 gemeinsamen Teilers als Struktogramm und Programmablaufplan!
 2. Beschreiben Sie einen Algorithmus zur Berechnung der Fakultät! Nutzen Sie dazu
@@ -59,7 +59,7 @@ von Primzahlen.
 ## Kontrollfragen
 
 ----
-### Kontrollfragen
+### 2.1 Kontrollfragen
 1. Beschreiben Sie die wesentlichen Eigenschaften von Java!
 2. Beschreiben Sie die Funktionsweise eines Compilers!
 3. Welche Aufgaben übernimmt der Linker?
@@ -78,7 +78,7 @@ von Primzahlen.
 ## Kontrollfragen
 
 ----
-### Kontrollfragen
+### 3.1 Kontrollfragen
 1. Welche unterschiedlichen Datentypen kennen Sie in Java?
 2. Wie lassen sich diese Datentypen klassifizieren?
 3. Nennen Sie die numerischen Datentypen der Programmiersprache Java! Worin liegt der wesentliche Unterschied im Wertebereich?
@@ -98,7 +98,10 @@ von Primzahlen.
 ## Kontrollfragen & Übungen
 
 ----
-### Kontrollfragen
+### 4.1 Kontrollfragen
+
+<div>
+
 1. Was verstehen Sie im Zusammenhang mit Programmierung unter dem Begriff „Ausdruck?
 2. Woraus setzen sich Ausdrücke zusammen?
 3. Zählen Sie unterschiedliche Operatoren auf! Unterscheiden Sie dabei die Operatoren nach dem Typ der Operanden!
@@ -109,17 +112,17 @@ String X = (a == b) ? “Ja“ : “Nein“;
 5. Definieren Sie den Begriff „Anweisung“ im Sinne der Programmierung!
 6. Welche Möglichkeiten bietet Ihnen die Programmiersprache Java, um Verzweigungen zu realisieren?
 7. Erläutern Sie den Begriff „dangling else“!
-
-----
-### Kontrollfragen
 8. Welche Bedeutung messen Sie der Break-Anweisung im Zusammenhang mit der Switch-Anweisung bei?
 9. Nennen Sie die unterschiedlichen Schleifenarten in Java und beschreiben Sie deren Verhalten!
 10. Worin besteht der wesentliche Unterschied zwischen einer kopf- und einer fußgesteuerten Schleife?
 11. Beschreiben Sie den Schleifenkopf einer For-Schleife!
 12. Was bewirken die Break- und die Continue-Anweisung innerhalb einer Schleife?
 
+</div><!-- .element style="font-size: 0.8em;" -->
+
 ----
-### Übungen
+### 4.2 Übungen
+
 <div>
 
 1. Implementieren Sie Ihr Struktogramm aus Übung 1 im Kapitel 1. zur Berechnung des größten gemeinsamen Teilers nach Euklid!
@@ -139,9 +142,11 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
   ```Java
   return a==b ? false : true;
   ```
-  </div><!-- .element style="font-size: 0.8em;" -->
+  
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ----
+### 4.2 Übungen
 
 <div>
 
@@ -167,6 +172,8 @@ Füllen Sie folgende Wahrheitstabelle aus:
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ----
+### 4.2 Übungen
+
 6. Folgende Ausgabe soll erzeugt werden:  
 ```
 1 3 5 7 9
@@ -190,6 +197,7 @@ Lösen Sie diese Aufgabe mithilfe einer
 * For-Schleife
 
 ----
+### 4.2 Übungen
 
 8. Entwerfen Sie eine For-Schleife, die die Buchstaben A bis Z auf dem Bildschirm ausgibt.
 9. Welche mathematischen Operationen werden durch die Methoden ```meth1()``` und ```meth2()``` beschrieben und welche Werte haben ```zahl1``` und ```zahl2``` am Ende der Berechnung?
@@ -228,6 +236,8 @@ public class TestAlgorithmen {
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ----
+### 4.2 Übungen
+
 10. Setzen Sie Ihre Lösung zur Bestimmung der Fibonacci-Folge aus Übung 3 im Kapitel 1.2 in ein Programm um, wobei die Zahlenfolge dauerhaft in einem Array gespeichert werden soll!
 11. Beschreiben Sie einen iterativen Algorithmus zur Berechnung der Wurzel einer Zahl nach dem Heron-Verfahren (babylonisches Wurzelziehen) als Struktogramm! Dabei gilt folgende Berechnungsvorschrift:
 a = Zahl, deren Quadratwurzel bestimmt werden soll
@@ -240,6 +250,8 @@ $$
 Die Berechnung soll abbrechen, sobald die Differenz zwischen X(n+1) und X(n) weniger als ± 0,000001 beträgt.
 
 ----
+### 4.2 Übungen
+
 12. Beschreiben Sie in einem Struktogramm einen Algorithmus zur Berechnung des Pascal’schen Dreiecks und implementieren Sie diesen.
 
 Beispiel: 
@@ -259,7 +271,21 @@ Beispiel:
 # Kapitel 5
 # Okjektorientierung
 
+
 ----
+### 5.1 Kontrollfragen
+
+> Todo
+
+----
+### 5.2 Übungen
+
+> Todo
+
+
+----
+### 5.2 Übungen
+
 1. Die Klasse ```java.lang.Math``` stellt eine Sammlung von mathematischen Stan- dardfunktionen dar, die allesamt als ```static``` definiert sind. Weil die Klasse über keine Instanzmethoden oder -variablen verfügt, wäre eine Erzeugung von Objekten dieser Klasse recht unsinnig. Um dies zu verhindern, haben ihre Programmie- rer einen Trick angewendet. Wie konnten sie eine Instanziierung verhindern, ohne die Klasse abstrakt zu definieren?
 2. Innerhalb eines Pakets ```mypackage``` werden zwei Klassen ```Vater``` und ```Sohn``` definiert. ```Sohn``` ist eine Subklasse der Klasse ```Vater```. Beide verfügen über eine Methode ```familienbande()```, die nur für Kindklassen innerhalb des Pakets zugänglich sein soll.
 * Welcher Modifikator ist also für die Methode zu nehmen: public, protected, private oder der Standardmodifikator?
@@ -271,18 +297,28 @@ Beispiel:
 # Kapitel 6
 # Vererbung
 
+----
+### 6.1Kontrollfragen
+
+> Todo
+
+----
+### 6.2 Übungen
+
+> Todo
+
 ---
 # Kapitel 7
 # Interfaces
 ## Kontrollfragen & Übungen
 
 ----
-### Kontrollfragen
+### 7.1 Kontrollfragen
 
 > Todo
 
 ----
-### Übungen
+### 7.2 Übungen
 
 > Todo
 
@@ -292,7 +328,7 @@ Beispiel:
 ## Kontrollfragen & Übungen
 
 ----
-### Kontrollfragen
+### 8.1 Kontrollfragen
 1. Welche Unterschiedlichen Fehler kennen Sie im Java-Umfeld? Welche Fehler sollten nicht, können oder müssen behandelt werden?
 2. Welche Arten von Ausnahmen sind Ihnen im Java-Umfeld bekannt?
 3. Erläutern Sie das Grundprinzip der Ausnahmebehandlung!
@@ -305,7 +341,7 @@ Beispiel:
 
 
 ----
-### Übungen
+### 8.2 Übungen
 1. Das folgende Programm soll die Zahlen von 1 bis 100 in eine Textdatei mit dem Namen ausgabe.txt schreiben. Leider kann das Programm in dieser Form nicht ausgeführt werden. Was ist der Grund dafür und wie können Sie es korrigieren? (Anmerkung: Auch wenn der Input- & Output-Stream noch nicht behandelt wurde, können Sie die Frage schon jetzt beantworten.)
 
 ```Java
@@ -330,7 +366,7 @@ public class Uebung1 {
 ```
 
 ----
-### Übungen
+### 8.2 Übungen
 
 <div>
 
@@ -346,7 +382,7 @@ Testen Sie Ihre Klasse AutoSitze mit einem kleinen Testprogramm TestAutoSitzeExc
 
 
 ----
-### Übungen
+### 8.2 Übungen
 
 3. Im folgenden Quellcode befindet sich ein logischer Fehler. Worin besteht er und wie kann er behoben werden?
 
@@ -393,7 +429,7 @@ public class TankLeerDemo {
 ## Kontrollfragen & Übungen
 
 ----
-### Kontrollfragen
+### 9.1 Kontrollfragen
 
 <div>
 
@@ -418,7 +454,7 @@ public class TankLeerDemo {
 
 
 ----
-### Übungen
+### 9.2 Übungen
 
 <div>
 
@@ -443,7 +479,7 @@ Geben Sie abschließend die Elemente aus dem TreeSet über einen Iterator auf de
 </div><!-- .element style="font-size: 0.6em;" -->
 
 ----
-### Übungen
+### 9.2 Übungen
 
 2. Erweitern Sie die Klassen ```Kunde``` und ```TestKunde``` aus der vorangegangenen Übung so, dass Sie die Objekte der Klasse ```Kunde``` in einem Datencontainer der Klasse ```Vector``` nach dem Namen und bei Namensgleichheit nach dem Vornamen aufsteigend sortiert ablegen können.
 
@@ -452,3 +488,36 @@ Geben Sie abschließend auch die Elemente aus dem ```Vector``` über einen ```It
 3. Ermöglichen Sie es, dass Objekte der Klasse ```Kunde``` aus den vorangegangenen Übungen miteinander verglichen werden können. Implementieren Sie dazu alle erforderlichen Methoden in der Klasse ```Kunde```.
 
 Testen Sie die Vergleichsmethode(n), indem Sie in einem Testprogramm ```TestVergleichKunde``` zwei gleiche Objekte der Klasse ```Kunde``` erzeugen und diese miteinander vergleichen. Geben Sie das Ergebnis des Vergleichs auf der Konsole aus.
+
+
+---
+# Kapitel 10
+# Swing
+## Kontrollfragen & Übungen
+
+----
+### 10.1 Kontrollfragen
+
+<div>
+
+1. Erläutern Sie die fünf wesentlichen Unterschiede zwischen AWT- und Swing- Komponenten!
+2. Beschreiben Sie die wesentlichen Komponenten eines JFrame-Fensters!
+3. Welche Bedeutung kommt den Layout-Managern bei der Gestaltung von Benutzeroberflächen zu?
+4. Erläutern Sie den Zusammenhang zwischen Containern der Klasse JPanel und den Layout-Managern!
+5. Welche unterschiedlichen Rahmenarten sind Ihnen bekannt?
+6. Nennen Sie fünf Swing-Komponenten und deren Funktion zur Gestaltung von Benutzerdialogen!
+7. Welche unterschiedlichen Arten von Textfeldern sind Ihnen bekannt?
+8. Beschreiben Sie die Vorgehensweise bei der Erstellung von validierenden Textfeldern!
+9. Beschreiben Sie die Aufgaben und Anwendungsgebiete des ItemListener!
+10. Wozu wird der ActionListener benötigt? Wie funktioniert er?
+11. Beschreiben Sie die wesentlichen Unterschiede zwischen den Objekten der Klassen JCheckBox und JRadioButton!
+12. Welche unterschiedlichen Klassen und Interfaces benötigen Sie zum Erzeugen von Benutzermenüs? Beschreiben Sie jeweils mit einem Satz die entsprechenden Klassen!
+13. Was sind Tooltips und wie werden diese in Java realisiert?
+
+</div><!-- .element style="font-size: 0.9em;" -->
+
+
+----
+### 10.2 Übungen
+
+> TODO
