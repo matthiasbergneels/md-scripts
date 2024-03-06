@@ -535,7 +535,53 @@ Testen Sie die Vergleichsmethode(n), indem Sie in einem Testprogramm ```TestVerg
 ----
 ### 10.2 Übungen
 
-> TODO
+<div>
+
+1. Entwickeln Sie einen Benutzerdialog zum Erfassen von Einwohnern in der Klasse ```EinwohnerMeldeamtUI``` analog des Screenshots.
+
+<img src="img/ex_chapter10ui.png" height=200px /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+
+Stellen Sie dabei zunächst nur die Eingabefelder für die Kontaktdaten, die Radiobuttons für den Familienstand und die Buttons zur Verfügung. Dabei ist zu beachten, dass die Auswahlliste für die Anrede die Werte Herr, Frau und Divers zur Verfügung stellen soll. Die Buttons sollen noch keine Funktionalität beinhalten, sondern nur angezeigt werden. Der Nachrichtentext (im Screenshot „Einwohner hinzugefügt“) wird erst zu einem späteren Zeitpunkt implementiert.
+Beim Schließen des Fensters soll die Anwendung beendet werden.
+
+</div><!-- .element style="font-size: 0.9em;" -->
+
+----
+### 10.2 Übungen
+
+<div>
+
+2. Entwickeln Sie die Klasse ```Einwohner```. Die Klasse ```Einwohner```soll das Interface ```Comparable``` implementieren. Stellen Sie einen Konstruktor und die entsprechenden Getter-Methoden für die privaten Attribute zur Verfügung. Die compareTo-Methode soll Objekte nach dem Namen und bei gleichen Namen nach dem Vornamen aufsteigend sortieren.
+
+<img src="img/ex_chapter10resident.png" height=200px /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+
+Über die Klasse ```Einwohner``` sollen später Einwohner-Objekte auf Basis der im Benutzerdialog gemachten Eingaben erzeugt und in einem TreeSet gespeichert werden.
+
+</div><!-- .element style="font-size: 0.9em;" -->
+
+----
+### 10.2 Übungen
+
+<div>
+
+3. Stellen Sie für die Radiobuttons und die Buttons je einen eigenen ActionListener zur Verfügung.
+
+    * Der ```ActionListener``` für die Radiobuttons soll folgende Funktionalität erfüllen. Wählt der Benutzer den Familienstand „ledig“ aus, so wird der Beschreibungstext für den Geburtsnamen ausgeblendet und das zugehörige Eingabefeld initialisiert und ausgeblendet. Wird ein anderer Familienstand angeklickt, so sollen die beiden Felder wieder eingeblendet werden.
+    * Die Methoden für die Umsetzung der Funktionalität sollen als Klassenmethoden in einer eigenen Klasse ```Listenoperationen``` zur Verfügung gestellt werden (s. UML-Diagramm).
+
+<img src="img/ex_chapter10listoperation.png" height=150px /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+
+* Der für die Buttons zuständige ```ActionListener``` übernimmt lediglich die Steuerung, welche Methode aufgerufen wird und er reagiert auf die Rückgabewerte der bool’schen Methoden, indem er den Nachrichtentext entsprechend aktualisiert. Die einzelnen Buttons bekommen folgende Funktionen zugewiesen
+    * Die Methode ```ermittleObjekt()``` der Klasse ```Listenoperationen``` durchsucht das TreeSet nach Einwohnerobjekten. Suchkriterien sind dabei der Name und Vorname des gesuchten Einwohners. Wird ein Objekt im TreeSet gefunden bei dem Name und Vorname mit den Suchkriterien übereinstimmen, wird das Objekt als Rückgabewert zurückgegeben, wird kein passendes Objekt gefunden, so gibt die Methode ```null``` zurück.
+    * **Hinzufügen** – ruft die Methode ```hinzufuegen()``` der Klasse```Listenoperationen``` auf, die wiederum auf Basis der übergebenen Parameter ein Einwohnerobjekt erzeugt und in das TreeSet einfügt. Der Erfolg oder Misserfolg des Einfügens soll im Nachrichtentext angezeigt werden (z.B. „Einwohner hinzugefügt“ oder „Einwohner existiert schon“)
+    * **Anzeigen** – ruft die Methode ```anzeigen()``` der Klasse ```Listenoperationen``` auf. Die Methode ermittelt zunächst das anzuzeigende Objekt mithilfe der Methode ```ermittleObjekt()```. Existiert ein entsprechendes Objekt im TreeSet, werden dessen Attribute auf der Konsole sowie ein entsprechender Nachrichtentext im Benutzerdialog ausgegeben. Wird kein passendes Objekt im TreeSet gefunden, so wird nur der Nachrichtentext im Benutzerdialog ausgegeben.
+    * **Suchen** – ruft die Methode ```suchen()``` der Klasse ```Listenoperationen``` auf. Die Methode durchsucht das TreeSet mithilfe der Methode ```ermittleObjekt()``` und meldet im Nachrichtentext zurück, ob der Einwohner gefunden wurde oder nicht.
+    * **Löschen** – ruft die Methode ```loeschen()``` der Klasse ```Listenoperationen``` auf. Mithilfe der Methode ```ermittleObjekt()``` wird zunächst geprüft, ob der zu löschende Einwohner im TreeSet vorhanden ist. Wird der zu löschende Einwohner im TreeSet gefunden, wird er aus dem TreeSet gelöscht. Der Erfolg bzw. Misserfolg des Löschens wird im Nachrichtentext des Benutzerdialogs angezeigt.
+    * **Liste anzeigen** – ruft die Methode ```listeAusgeben()``` der Klasse ```Listenoperationen``` auf, die wiederum alle Objekte (z.B. in Form der wesentlichen Attribute) aus dem TreeSet auf der Konsole ausgibt.
+
+4. Erweitern Sie Ihr Programm aus Übung 1 um ein geeignetes Menü (gleiche Funktionalitäten, wie die Buttons) und entsprechende Tooltips.
+
+</div><!-- .element style="font-size: 0.5em;" -->
           </textarea>
         </section>
       </div>
