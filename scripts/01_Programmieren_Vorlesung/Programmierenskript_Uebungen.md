@@ -8,7 +8,7 @@ center: false
 # Programmieren - Übungen
 ### Matthias Berg-Neels
 
-> [Download Übungen](../pdfdownloads/Programmierenskript_Uebungen.pdf)
+> [Download Übungen](../pdfdownloads/ProgrammierenSkript_Uebungen.pdf)
 
 ----
 ## Kapitelübersicht - Programmieren 1
