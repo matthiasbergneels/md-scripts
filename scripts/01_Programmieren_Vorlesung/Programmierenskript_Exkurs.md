@@ -582,7 +582,7 @@ public class OuterClass {
 * seit Java 8
 * reine Funktionen ohne eigene Klasse
 * Definition: ```()->{}```
-* implementieren ein funktionales Interface (Interface mit **einer** Methode)
+* implementieren ein funktionales Interface (Interface mit **einer** Methode, **ohne default** Implementierung)
   * ersetzen (unter dieser Voraussetzung) anonyme Klassen
 * haben Zugriff auf den umliegenden Kontext (finale / effektiv finale Variablen)
   * in diesem Zusammenhang auch als "Closure" bezeichnet
@@ -636,6 +636,48 @@ public class OuterClass {
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
 
+
+---
+# Streams
+
+----
+## Streams (<a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/io/package-summary.html>```java.io```</a>) VS Streams (<a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/stream/package-summary.html>```java.util.stream```</a>)
+
+<div>
+
+Stream - Grundkonzept
+* übertragen von Elementen (Daten / Objekten) zwischen einer Quelle und einem Ziel
+
+Stream (```java.util.stream```)
+* einfache (besser lesbare) Modifikation von Objekt(-Strömen)
+  * Ersatz (funktionales Paradigma) für sequentielle Abarbeitung wie z.B. Schleifen
+* Erweiterung des Collection Framework
+* Quelle von Interface Collection, Ziel von Interface Collection, einfache Datentypen, etc (abhängig von Funktion)
+
+Stream (```java.io```)
+* übertragen von Daten zu bzw. von externen Ressourcen
+* I/O --> Input / Output
+* Beispiele
+  * lesen aus Dateien
+  * Ausgabe auf der Konsole
+  * senden von Daten über das Netzwerk
+
+</div><!-- .element style="font-size: 0.6em;" -->
+
+----
+## Konzept
+
+* Aufbau
+    * Erzeugende-Operationen
+    * Zwischen-Operationen
+    * End-Operationen 
+* Trägheit (Laziness)
+* Nicht Inteferenz
+
+----
+## Zwischen-Operationen
+
+* ["🍆", "🍅", "🫛"].filter("🍆") --> 
 
 ---
 # Entwurfsmuster (Design Patterns)

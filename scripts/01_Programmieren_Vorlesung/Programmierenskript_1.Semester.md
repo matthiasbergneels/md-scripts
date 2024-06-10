@@ -2162,8 +2162,8 @@ class AutoTest {
 
     Tier[] x = new Tier[2];
 
-    x[0] = new Hund(); //Narrowing Cast
-    x[1] = new Vogel(); //Narrowing Cast
+    x[0] = new Hund(25.5f, "Bello", 15.8f, "Schäferhund");  //Narrowing Cast
+    x[1] = new Vogel(10.4f, "Tweety", 0.4f, true);          //Narrowing Cast
 
     x[0].atmen();
     x[1].atmen();
