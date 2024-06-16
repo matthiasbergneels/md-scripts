@@ -18,7 +18,7 @@ center: false
       <li>Exception Handling</li>
       <li>Collection Framework</li>
       <li>Swing</li>
-      <li>Optional: Input- & Output-Stream</li>
+      <li>Optional: Input- & Output-Streams</li>
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
 </ol>
@@ -43,7 +43,7 @@ center: false
       <li><b>Exception Handling</b></li>
       <li>Collection Framework</li>
       <li>Swing</li>
-      <li>Optional: Input- & Output-Stream</li>
+      <li>Optional: Input- & Output-Streams</li>
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
 </ol>
@@ -301,7 +301,7 @@ Assertions.assertDoesNotThrow(<Executable Interface> [, <Message>]);
       <li>Exception Handling</li>
       <li><b>Collection Framework</b></li>
       <li>Swing</li>
-      <li>Optional: Input- & Output-Stream</li>
+      <li>Optional: Input- & Output-Streams</li>
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
 </ol>
@@ -957,7 +957,7 @@ public class DemoMap {
       <li>Exception Handling</li>
       <li>Collection Framework</li>
       <li><b>Swing</b></li>
-      <li>Optional: Input- & Output-Stream</li>
+      <li>Optional: Input- & Output-Streams</li>
       <li>Datenstrukturen</li>
       <li>Algorithmen</li>
 </ol>
@@ -1643,7 +1643,7 @@ public class DemoToolTip {
 
 ---
 # Kapitel 11
-# Input- & Output-Streams (!)
+# Input- & Output-Streams
 
 ----
 ## Kapitelübersicht - Programmieren 2
@@ -1669,7 +1669,7 @@ public class DemoToolTip {
 * Sie können Anwendungen mit mehrsprachigen Texten implementieren
 
 ---
-## Umgang mit dem Dateisystem (!)
+## Umgang mit dem Dateisystem
 
 ----
 ## Windows Dateisystem
@@ -1858,7 +1858,7 @@ public class Dateien {
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ---
-## Input- & Output-Streams (!)
+## Input- & Output-Streams
 
 ----
 ## Streams (<a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/io/package-summary.html>```java.io```</a>) VS Streams (<a target=_blank href=https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/stream/package-summary.html>```java.util.stream```</a>)
@@ -2017,7 +2017,7 @@ public class EingabeTastaturString {
 ```
 
 ---
-## Streams und Dateien (!)
+## Streams und Dateien
 
 ----
 ## Fortgeschrittener Umgang mit Dateien
@@ -2199,7 +2199,7 @@ public class DateiKopierenMitPuffer2 {
 </div><!-- .element style="font-size: 0.65em;" -->
 
 ---
-## Serialisierung von Objekten (!)
+## Serialisierung von Objekten
 
 ----
 ## Übertragung von Objekten
@@ -2321,10 +2321,10 @@ public class PersonReadExample {
 </div><!-- .element style="font-size: 0.7em;" -->
 
 ---
-## Properties (!)
+## Properties
 
 ----
-## Texte in Java-Properties-Dateien auslagern (!)
+## Texte in Java-Properties-Dateien auslagern
 
 Vorteile der Properties
 * Ziel: Auslagerung von Texten in eigener Datei (.properties)
@@ -2338,7 +2338,7 @@ Umsetzung in Java
 * dynamische Texte mit variablen Parametern möglich
 
 ----
-## Texte in Java-Properties-Dateien speichern (!)
+## Texte in Java-Properties-Dateien speichern
 
 <div>
 
@@ -2379,7 +2379,7 @@ Language=Deutsch
 </div><!-- .element style="font-size: 0.6em;" -->
 
 ----
-## Texte aus Java-Properties-Dateien lesen (!)
+## Texte aus Java-Properties-Dateien lesen
 
 <div>
 
@@ -2424,7 +2424,7 @@ Sie bekommen die Texte in Deutsch angezeigt.
 </div><!-- .element style="font-size: 0.6em;" -->
 
 ----
-## Dynamische Texte mit variablen Parametern (!)
+## Dynamische Texte mit variablen Parametern
 
 <div>
 
@@ -2478,7 +2478,7 @@ Hallo!
 </div><!-- .element style="font-size: 0.55em;" -->
 
 ---
-## ResourceBundle (!)
+## ResourceBundle
 
 ----
 ## Internationalisierung über ResourceBundle
