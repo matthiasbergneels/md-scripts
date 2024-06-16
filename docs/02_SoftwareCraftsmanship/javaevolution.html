@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="./../css/highlight/base16/zenburn.css" />
 
     <link rel="stylesheet" href="./../_assets/scripts/_assets/style.css" />
-
   </head>
   <body>
     <div class="reveal">
@@ -394,6 +393,8 @@ public abstract sealed class Shape permits Circle, Rectangle, Square {
 
     <script src="./../dist/reveal.js"></script>
 
+    <script src="./../mermaid/dist/mermaid.min.js"></script>
+
     <script src="./../plugin/markdown/markdown.js"></script>
     <script src="./../plugin/highlight/highlight.js"></script>
     <script src="./../plugin/zoom/zoom.js"></script>
@@ -421,6 +422,9 @@ public abstract sealed class Shape permits Circle, Rectangle, Square {
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
         slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
         plugins: [
           RevealMarkdown,
           RevealHighlight,
@@ -441,6 +445,20 @@ public abstract sealed class Shape permits Circle, Rectangle, Square {
 
     <script>
       Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
     </script>
   </body>
 </html>
