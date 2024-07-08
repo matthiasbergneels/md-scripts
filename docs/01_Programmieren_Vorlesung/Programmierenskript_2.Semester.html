@@ -473,9 +473,9 @@ public class ListDemo {
 * Größe der Liste wird dynamisch beim Einfügen oder Löschen von Elementen angepasst
 * Duplikate sind nicht erlaubt (Vergleich über die equals-Methode)
 * die Reihenfolge, in der Elemente eingefügt werden, bleibt nicht erhalten
-* Sortieren nach der natürlichen Ordnung durch Implementierung des Comparable-Interface
-  * Das Comparable-Interface muss auf jeden Fall implementiert werden, wenn Objekte in ein TreeSet eingefügt werden
-  * Beliebige Sortierung durch Implementierung des Comparator- Interface
+* implementiert ```SortedSet```-Interface; sortiert nach einer vorgegebenen Ordnung
+  * natürliche Ordnung durch das ```Comparable```-Interface
+  * beliebige/externe Sortierung durch ein Objekt entsprechend dem ```Comparator```-Interface
 
 ----
 ## Beispiel für eine Menge mit Iteratoren
@@ -2719,7 +2719,7 @@ Methoden
 * insert(object)
 * [find(by search attribute)] (Nicht für generische Container)
 * contains(object)
-* Remove(object)
+* remove(object)
 * ...
 </div><!-- .element style="font-size: 0.8em;" -->
 
@@ -2728,9 +2728,9 @@ Methoden
 </div><!-- .element align="center" -->
 
 ----
-TODO: ALVTree
+AVLTree
 
-* ALV -> Adelson-Velsky and Landis (bennant nach den Erfindern)
+* AVL -> Adelson-Velsky and Landis (bennant nach den Erfindern)
 * selbstständig balancierende Binäre-Such-Bäume
 * [Visualisation](https://www.cs.usfca.edu/~galles/visualization/AVLtree.html)
 
