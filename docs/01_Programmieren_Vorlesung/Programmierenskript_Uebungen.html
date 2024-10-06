@@ -438,6 +438,203 @@ public class TankLeerDemo {
 
 </div><!-- .element style="font-size: 0.8em;" -->
 
+----
+### 8.3 Übungen
+Nur eines der folgenden Quellcodesnippets  (Snippet 1 - 7) funktioniert korrekt?
+
+Snippet 1: 
+
+<div>
+
+```Java
+import java. io.*;
+
+public class Snippet1 {
+
+  public static void main (String[] args) {
+    
+    FileReader f = new FileReader ("Snippet1.java");
+    while (true) {
+      int c=f. read ();
+      if (c<0)
+        return;
+      System.out.print ((char)c);
+      }
+  }
+}
+```
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+Snippet 2: 
+
+<div>
+
+```Java
+import java.io.*;
+
+public class Snippet2 {
+
+  public static void main(String[] args) {
+
+    FileReader f = new FileReader("Snippet2.java");
+    try {
+      while (true) {
+        int c=f.read();
+        if (c<0)
+          return;
+        System.out.print((char)c);
+      }
+    } catch(IOException e,FileNotFoundException f) {}
+  }
+}
+```
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+----
+#### 8.3 Übungen
+
+Snippet 3: 
+
+<div>
+
+```Java
+import java.io.*;
+
+public class Snippet3 {
+
+  public static void main(String[] args) {
+
+    FileReader f = new FileReader("Snippet3.java");
+    try {
+      while (true) {
+      int c=f.read();
+      if (c<0)
+        return;
+      System.out.print((char)c);
+      }
+    } catch(FileNotFoundException e) {
+    }catch(IOException e) {}
+  }
+}
+
+```
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+Snippet 4: 
+
+<div>
+
+```Java
+
+import java.io.*;
+
+public class Snippet4 {
+
+  public static void main(String[] args) throws FileNotFoundException,IOException {
+    
+    FileReader f = new FileReader("Snippet4.java");
+    try {
+      while (true) {
+        int c=f.read();
+        if (c<0)
+          return;
+      System.out.print((char)c);
+      }
+    }
+  }
+}
+
+```
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+----
+#### 8.3 Übungen
+
+Snippet 5: 
+
+<div>
+
+```Java
+import java.io.*;
+
+public class Snippet5 {
+
+  public static void main(String[] args) throws FileNotFoundException {
+
+    try {
+      FileReader f = new FileReader("Snippet5.java");
+      while (true) {
+        int c=f.read();
+        if (c<0)
+          return;
+        System.out.print((char)c);
+      }
+    } catch(IOException e) {
+    } catch(FileNotFoundException e) {}
+  }
+}
+
+```
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+Snippet 6: 
+
+<div>
+
+```Java
+import java.io.*;
+
+public class Snippet6 {
+  public static void main(String[] args) throws FileNotFoundException {
+
+    FileReader f = new FileReader("Snippet6.java");
+    try {
+      while (true) {
+        int c=f.read();
+        if (c<0)
+          return;
+      System.out.print((char)c);
+      }
+    } catch(IOException e) {}
+  }
+}
+
+```
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+----
+#### 8.3 Übungen
+
+Snippet 7: 
+
+<div>
+
+```Java
+import java.io.*;
+
+public class Snippet7 {
+  public static void main(String[] args) {
+    {
+      FileReader f=new FileReader("Snippet7.java");
+      while (true) {
+        int c=f.read();
+        if (c<0) 
+          return;
+        System.out.print((char)c);
+      }
+    } catch(IOException e) {}
+  }
+}
+
+```
+
+</div><!-- .element style="font-size: 0.7em;" -->
 
 ---
 # Kapitel 9
@@ -653,7 +850,10 @@ Beim Schließen des Fensters soll die Anwendung beendet werden.
       const mermaidOptions = extend({ startOnLoad: false }, {});
       mermaid.startOnLoad = false;
       mermaid.initialize(mermaidOptions);
-      const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
+      const cb = function (event) {
+        mermaid.init(mermaidOptions, '.stack.present > .present pre code.mermaid');
+        mermaid.init(mermaidOptions, '.slides > .present:not(.stack) pre code.mermaid');
+      }
       Reveal.addEventListener('ready', cb);
       Reveal.addEventListener('slidetransitionend', cb);
     </script>

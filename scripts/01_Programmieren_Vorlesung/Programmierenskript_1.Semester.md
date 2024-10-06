@@ -28,13 +28,44 @@ center: false
 * Guess what?
 
 
-----
+---
 ## Anmerkungen zur Vorlesung
 * Skript
-  * PDF in public Code Repository (Downloads/ProgrammierenSkript.pdf)
+  * PDF -> [Download Skript](../pdfdownloads/ProgrammierenSkript_1Semester.pdf)
 * **NICHT** klausurrelevante Folien sind mit "(!)" markiert (nicht zu viel Hoffnung machen!)
 
 ----
+## Anmerkung zum Inhalt
+> [Modulplan - Software Engineering](https://www.dhbw.de/fileadmin/user/public/SP/MA/Wirtschaftsinformatik/Software_Engineering.pdf)
+
+<div align="center" width="90%">
+<img src="img/00_01_SoftwareEngineering_Modulplan.png" width=80% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
+----
+## Anmerkung zum Inhalt - anderer Blickwinkel
+<table>
+<tr>
+<th>Vor dem 1. Semester</th>
+<th>➡️</th>
+<th>Nach dem 2. Semester</th>
+</tr>
+<tr>
+<td width=45%><img src="img/00_02_Java_WhatToLearn_Before.jpeg" width=90% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
+<td width=10% style="vertical-align:middle"></td>
+<td width=45%><img src="img/00_03_Java_WhatToLearn_After.jpeg" width=90% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
+</tr>
+</table>
+
+----
+## Quellen & Literaturverzeichnis
+
+<ul>
+<li>RATZ / SCHULMEISTER-ZIMOLONG / SEESE / WIESENBERGER<br>Grundkurs Programmieren in Java. Hanser, 8. Auflage, 2018. ISBN 978-3-446-45212-1</li><!-- .element style="font-size: 0.9em;" -->
+</ul>
+
+
+---
 ## Kapitelübersicht - Programmieren 1
 1. Einführung
 2. Grundlagen von Java
@@ -49,12 +80,6 @@ center: false
 * Implizite Typisierung mittels ```var```
 * Unit Testing
 
-----
-## Quellen & Literaturverzeichnis
-
-<ul>
-<li>RATZ / SCHULMEISTER-ZIMOLONG / SEESE / WIESENBERGER<br>Grundkurs Programmieren in Java. Hanser, 8. Auflage, 2018. ISBN 978-3-446-45212-1</li><!-- .element style="font-size: 0.9em;" -->
-</ul>
 
 ---
 # Kapitel 1
@@ -1670,6 +1695,32 @@ class Auto {
 }
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
+
+----
+### Variable Argumente - ```varargs```
+* können eine beliebige Anzahl von Werten als Argumente übergeben, einschließlich gar keiner.
+* intern behandelt Java die varargs-Parameter als Array des angegebenen Typs. Daher können Sie die Methoden auf Arrays anwenden (wie Schleifen oder Längenüberprüfung).
+* definition über ```datentyp... name``` in der Methodensignatur
+* müssen am Ende der Übergabeparameter stehen
+* nur ein variables Argument pro Methode
+
+```Java
+public class VarargsExample {
+    public static void sumOfNumbers(int... numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        System.out.println("Summe: " + sum);
+    }
+
+    public static void main(String[] args) {
+        printNumbers(1);          // Gibt: "Summe: 1"
+        printNumbers(1, 2, 3);    // Gibt: "Summe: 6"
+        printNumbers();           // Gibt: "Summe: 0"
+    }
+}
+```
 
 ---
 ## Klassenattribute und –methoden
