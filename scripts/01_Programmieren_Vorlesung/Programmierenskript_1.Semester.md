@@ -51,9 +51,9 @@ center: false
 <th>Nach dem 2. Semester</th>
 </tr>
 <tr>
-<td width=45%><img src="img/00_02_Java_WhatToLearn_Before.jpeg" width=90% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
+<td width=45%><img src="img/00_02_Java_WhatToLearn_Before.jpeg" height=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
 <td width=10% style="vertical-align:middle"></td>
-<td width=45%><img src="img/00_03_Java_WhatToLearn_After.jpeg" width=90% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
+<td width=45%><img src="img/00_03_Java_WhatToLearn_After.jpeg" height=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" --></td>
 </tr>
 </table>
 
@@ -71,7 +71,7 @@ center: false
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -91,7 +91,7 @@ center: false
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -107,13 +107,17 @@ center: false
 ## Ziel der Programmierung
 Umsetzung eines gegebenen oder selbstentwickelten Algorithmus in ein lauffähiges Computerprogramm
 
+<div align="center" width="90%">
 <img src="img/01einfuehrung_01ziel.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
 
 ----
 ## Algorithmus
+<div align="center" width="90%">
 <img src="img/01einfuehrung_01_1algorithm.jpeg" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-----
+</div>
 
+----
 ## Beispiele für Algorithmen
 <table>
 <tr style="vertical-align:middle">
@@ -401,7 +405,7 @@ Schleifen
 2. **Grundlagen von Java**
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -418,10 +422,12 @@ Schleifen
 ---
 ## Vorbereitung
 * [prüfen] Installieren Sie das Java Developer Kit, falls notwendig. [JDK Download von Oracle](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-  * ```
-  java --version
-  java -version
-  ```
+
+```
+java --version
+java -version
+```
+
 * Aktivieren Sie eine Studierenden-Lizens und installieren Sie IntelliJ [Jetbrains Free License for faculty members - DHBW-Email benötigt](https://www.jetbrains.com/student/)
 * Coding Beispiele in Repository >> "dhbwmawwi[YYYY]se[Kurs]" auf [github.com](https://github.com/)
 ---
@@ -474,7 +480,9 @@ Schleifen
 
 ----
 ### Compiler
+<div align="center" width="90%">
 <img src="img/02java_01Compiler.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
 
 ----
 ### Funktionsweise eines Compiler
@@ -537,11 +545,15 @@ Schleifen
 
 ----
 ### Platformunabhängigkeit durch Bytecode
+<div align="center" width="90%">
 <img src="img/02java_03JavaPlatforms.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
 
 ----
 ### Bytecode und virtual Machine
+<div align="center" width="90%">
 <img src="img/02java_04JavaKomilierung.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
 
 ----
 ### Wesentliche Java-Tools
@@ -737,7 +749,7 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 2. Grundlagen von Java
 3. **Datentypen**
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -875,8 +887,9 @@ Literale für Fließkommazahlen float und double
 * generelle Unterscheidung in erweiternde und einschränkende Konvertierung
 * es existiert keine Konvertierungsvorschrift für den Datentyp boolean und für die Konvertierung zwischen einfachen und Referenzdatentypen
 
+<div align="center" width="90%">
 <img src="img/03datentypen_02conversion.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-
+</div>
 
 
 ---
@@ -940,7 +953,7 @@ wuerfel[2][0][0] = 73;
 2. Grundlagen von Java
 3. Datentypen
 4. **Ausdrücke und Anweisungen**
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -1020,12 +1033,12 @@ wuerfel[2][0][0] = 73;
 
 |Operator|Bezeichnung|Bedeutung|
 |:------:|:----------|:--------|
-|!|Logisches NICHT|!a ergibt false, wenn a wahr ist, und true, wenn a falsch ist.|
-|&&|UND mit Short-Circuit-Evaluation|a && b ergibt true, wenn sowohl a als auch b wahr sind. Ist a bereits falsch, so wird false zurückgegeben und b nicht mehr ausgewertet.|
-| &#124;&#124; |ODER mit Short-Circuit-Evaluation|a &#124;&#124; b ergibt true, wenn mindestens einer der beiden Ausdrücke a oder b wahr ist. Ist a bereits wahr, so wird true zurückgegeben und b nicht mehr ausgewertet.|
-|&|UND ohne Short-Circuit-Evaluation|a & b ergibt true, wenn sowohl a als auch b wahr sind. Beide Teilausdrücke werden ausgewertet.|
-|&#124;|ODER ohne Short-Circuit-Evaluation|a &#124; b ergibt true, wenn mindestens einer der beiden Ausdrücke a oder b wahr ist. Beide Teilausdrücke werden ausgewertet.|
-|^|Exklusiv-ODER|a ^ b ergibt true, wenn beide Ausdrücke einen unterschiedlichen Wahrheitswert haben.|
+|! | Logisches NICHT | !a ergibt false, wenn a wahr ist, und true, wenn a falsch ist.|
+| && | UND mit Short-Circuit-Evaluation|a && b ergibt true, wenn sowohl a als auch b wahr sind. Ist a bereits falsch, so wird false zurückgegeben und b nicht mehr ausgewertet.|
+| \|\| | ODER mit Short-Circuit-Evaluation | a \|\| b ergibt true, wenn mindestens einer der beiden Ausdrücke a oder b wahr ist. Ist a bereits wahr, so wird true zurückgegeben und b nicht mehr ausgewertet. |
+| & | UND ohne Short-Circuit-Evaluation | a & b ergibt true, wenn sowohl a als auch b wahr sind. Beide Teilausdrücke werden ausgewertet. |
+| \| | ODER ohne Short-Circuit-Evaluation|a \| b ergibt true, wenn mindestens einer der beiden Ausdrücke a oder b wahr ist. Beide Teilausdrücke werden ausgewertet.|
+| ^ | Exklusiv-ODER | a ^ b ergibt true, wenn beide Ausdrücke einen unterschiedlichen Wahrheitswert haben. |
 
 </div><!-- .element style="font-size: 0.8em;" -->
 
@@ -1350,7 +1363,7 @@ anweisung4;
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. **Okjektorientierung**
+5. **Objektorientierung**
 6. Vererbung
 7. Interfaces
 
@@ -1987,7 +2000,7 @@ finalize();
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. **Vererbung**
 7. Interfaces
 
@@ -2255,7 +2268,7 @@ class AutoTest {
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. **Interfaces**
 

@@ -6,6 +6,11 @@ center: false
 
 ---
 
+> ACHTUNG: Bitte noch das alte Skript nutzen!!!
+
+
+---
+
 > Sie legen die Basis für den Weg als erfolgreicher Softwareengineer durch grundlegenden Programmierkenntnissen am Beispiel von ```Java```
 
 ----
@@ -40,7 +45,7 @@ center: false
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -66,7 +71,7 @@ center: false
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -376,7 +381,7 @@ Schleifen
 2. **Grundlagen von Java**
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -392,11 +397,13 @@ Schleifen
 
 ---
 ## Vorbereitung
-* [prüfen] Installieren Sie das Java Developer Kit, falls notwendig. [JDK Download von Oracle](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-  * ```
-  java --version
-  java -version
-  ```
+* [prüfen] Installieren Sie das Java Developer Kit, falls notwendig. [JDK Download von Oracle](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 
+
+```
+java --version
+java -version
+```
+ 
 * Aktivieren Sie eine Studierenden-Lizens und installieren Sie IntelliJ [Jetbrains Free License for faculty members - DHBW-Email benötigt](https://www.jetbrains.com/student/)
 * Coding Beispiele in Repository >> "dhbwmawwi[YYYY]se[Kurs]" auf [github.com](https://github.com/)
 ---
@@ -712,7 +719,7 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 2. Grundlagen von Java
 3. **Datentypen**
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -915,7 +922,7 @@ wuerfel[2][0][0] = 73;
 2. Grundlagen von Java
 3. Datentypen
 4. **Ausdrücke und Anweisungen**
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. Interfaces
 
@@ -1325,7 +1332,7 @@ anweisung4;
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. **Okjektorientierung**
+5. **Objektorientierung**
 6. Vererbung
 7. Interfaces
 
@@ -1936,7 +1943,7 @@ finalize();
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. **Vererbung**
 7. Interfaces
 
@@ -2204,7 +2211,7 @@ class AutoTest {
 2. Grundlagen von Java
 3. Datentypen
 4. Ausdrücke und Anweisungen
-5. Okjektorientierung
+5. Objektorientierung
 6. Vererbung
 7. **Interfaces**
 
