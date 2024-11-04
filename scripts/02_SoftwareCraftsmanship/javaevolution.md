@@ -308,6 +308,7 @@ java.lang.NullPointerException: Cannot invoke "String.length()" because "myClass
 
 
 * old
+
 <div>
 ```Java
 String html = "<html>\n" +
@@ -319,6 +320,7 @@ String html = "<html>\n" +
 </div><!-- .element style="font-size: 0.9em;" -->
 
 * new
+
 <div>
 ```Java
 String html = """

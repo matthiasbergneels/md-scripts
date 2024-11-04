@@ -882,6 +882,40 @@ Literale für Fließkommazahlen float und double
 ```java
 "Hier ist eine Zeichenkette"
 ```
+
+----
+## Text Blocks (seit Java 15)
+
+* bisher
+
+<div>
+
+```Java
+String html = "<html>\n" +
+              "\t<body>\n" +
+              "\t\t<p>Hello, world</p>\n" +
+              "\t</body>\n" +
+              "</html>";
+```
+
+</div><!-- .element style="font-size: 0.9em;" -->
+
+* neu
+
+<div>
+
+```Java
+String html = """
+<html>
+  <body>
+    <p>Hello, world</p>
+  </body>
+</html>
+""";
+```
+
+</div><!-- .element style="font-size: 0.9em;" -->
+
 ----
 ## Standard-Escape-Sequenzen
 * Zeichenliterale können Standard-Escape-Sequenzen zur Darstellung von Sonderzeichen beinhalten
@@ -1184,10 +1218,30 @@ switch (ausdruck) {
 * bietet die Möglichkeit der Mehrfachverzweigung
 * Ablauf
   * der *ausdruck* wird zunächst ausgewertet
-  * das Ergebnis wird mit den Konstanten der case-Label verglichen und bei Gleichheit die Anweisung und alle nachstehenden Anweisungen ausgeführt
+  * das Ergebnis wird mit den Konstanten der case-Label verglichen und bei Gleichheit die Anweisung und alle nachstehenden Anweisungen ausgeführt (Fall-Through-Logik)
   * dies kann durch Einsatz einer break-Anweisung verhindert werden
   * jede Konstante darf nur einmal auftauchen
   * gibt es keine passende Konstante, wird das optionale default-Label am Ende der switch-Anweisung angesprungen
+
+----
+#### Switch Expression (Seit Java 14)
+
+* Unterstützung von Rückgabe-Logik bei Zuweisung
+* keine Fall-Through-Logik
+* Einzelne Anweisung ODER Anweisungsblock pro Fall
+* Rückgabewert aus Anweisungsblock mit ```yield``` Anweisung
+
+```Java
+int numLetters = switch (day) {
+    case MONDAY, FRIDAY, SUNDAY -> 6;
+    case TUESDAY -> 7;
+    default -> {
+      String s = day.toString();
+      int result = s.length();
+      yield result;
+    }
+};
+```
 
 ---
 ### Schleifen
