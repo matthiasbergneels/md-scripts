@@ -1330,13 +1330,13 @@ for ( Typ Bezeicher : Feld )
 ----
 ### korrekter Code
 
-* schlecht lesbar (gar nicht eingerückt)*
+* schlecht lesbar (gar nicht eingerückt)
 
 ```Java
 ausdruck0; if(ausdruck1) anweisung1; else ausdruck2; ausdruck3;
 ```
 
-* besser lesbar (eingerückt)*
+* besser lesbar (eingerückt)
 
 
 ```Java
@@ -1353,7 +1353,7 @@ ausdruck3;
 ----
 ### korrekter Code
 
-* schlecht lesbar (falsch eingerückt)*
+* schlecht lesbar (falsch eingerückt)
 
 (dangaling-else)
 
@@ -1390,7 +1390,7 @@ if(ausdruck1){
 ----
 ### korrekter Code
 
-*schlecht lesbar (falsch eingerückt)*
+*schlecht lesbar (falsch eingerückt)
 
 ```JAVA
 while (ausdruck)
@@ -1962,11 +1962,12 @@ public class Car {
 * der Garbage Collector in Java startet, wenn die Virtual Machine für neue Objekte Speicherplatz benötigt
 * explizit kann der Garbage Collector auch über den Befehl System.gc(); gestartet werden
 * der Garbage Collector ruft den Destruktor eines Objektes
-* Destruktoren sind parameterlose Methoden mit dem Namen
+* (**Deprecated**) Destruktoren sind parameterlose Methoden mit dem Namen
 
 ```Java
-finalize();
+protected void finalize();
 ```
+
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ---

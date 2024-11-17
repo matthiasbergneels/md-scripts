@@ -291,32 +291,82 @@ Beispiel:
 ----
 ### 5.1 Kontrollfragen
 
-> Todo
+<div>
 
-----
-### 5.2 Übungen
-
-> Todo
-
-
-----
-### 5.2 Übungen
-
-1. Die Klasse ```java.lang.Math``` stellt eine Sammlung von mathematischen Stan- dardfunktionen dar, die allesamt als ```static``` definiert sind. Weil die Klasse über keine Instanzmethoden oder -variablen verfügt, wäre eine Erzeugung von Objekten dieser Klasse recht unsinnig. Um dies zu verhindern, haben ihre Programmie- rer einen Trick angewendet. Wie konnten sie eine Instanziierung verhindern, ohne die Klasse abstrakt zu definieren?
-2. Innerhalb eines Pakets ```mypackage``` werden zwei Klassen ```Vater``` und ```Sohn``` definiert. ```Sohn``` ist eine Subklasse der Klasse ```Vater```. Beide verfügen über eine Methode ```familienbande()```, die nur für Kindklassen innerhalb des Pakets zugänglich sein soll.
+1. Grenzen Sie die Begriffe Klasse und Objekt voneinander ab!
+2. Was beschreiben Attribute und Methoden?
+3. Wie werden Klassen in der UML dargestellt?
+4. Wie werden in Java Objekte erzeugt? Welche Rolle spielen dabei die Konstruktoren einer Klasse?
+5. Erläutern Sie den Begriff des Konstruktors!
+6. Beschreiben Sie das Konzept der Kapselung in der objektorientierten Programmierung!
+7. Welche unterschiedlichen Sichtbarkeitsmodifier sind Ihnen bekannt? Beschreiben Sie die Sichtbarkeit jedes Modifiers!
+8. Beschreiben Sie den Zugriff auf Instanzattribute und –methoden! Welche Rolle spielen dabei die Sichtbarkeitsmodifier?
+9. Unterscheiden Sie die Begriffe „call by value“ und „call by reference“!
+10. Was versteht man unter dem Begriff „überladen von Methoden“?
+11. Worin unterscheiden sich Klassenattribute und –methoden von Instanzattributen und -methoden?
+12. Wie können Klassenmethoden auf den Instanzenkontext zugreifen? 
+13. Erläutern Sie das Prinzip der Garbage Collection in Java!
+14. Was sind Destruktoren und wie werden Sie aufgerufen?
+15. Die Klasse ```java.lang.Math``` stellt eine Sammlung von mathematischen Stan- dardfunktionen dar, die allesamt als ```static``` definiert sind. Weil die Klasse über keine Instanzmethoden oder -variablen verfügt, wäre eine Erzeugung von Objekten dieser Klasse recht unsinnig. Um dies zu verhindern, haben ihre Programmierer einen Trick angewendet. Wie konnten sie eine Instanziierung verhindern, ohne die Klasse abstrakt zu definieren?
+16. Innerhalb eines Pakets ```mypackage``` werden zwei Klassen ```Vater``` und ```Sohn``` definiert. ```Sohn``` ist eine Subklasse der Klasse ```Vater```. Beide verfügen über eine Methode ```familienbande()```, die nur für Kindklassen innerhalb des Pakets zugänglich sein soll.
 * Welcher Modifikator ist also für die Methode zu nehmen: public, protected, private oder der Standardmodifikator?
 
+</div><!-- .element style="font-size: 0.7em;" -->
 
+----
+### 5.2 Übungen - ```Haus``` (1/2)
 
+* Gegeben ist folgendes UML-Diagramm einer Klasse ```Haus```:
+
+<img src="img/ex_chapter5Haus.png" height=350px /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+
+----
+### 5.2 Übungen - ```Haus``` (2/2)
+
+<div>
+
+* Übung 1
+  * Implementieren Sie die Klasse ```Haus``` unter folgenden Voraussetzungen: 
+    *  Bei den Setter-Methoden soll die Plausibilität der übergebenen Werte überprüft werden (z.B. keine leeren Strings, keine negativen Postleitzahlen, keine negative Anzahl an Türen, Fenstern oder Etagen, eine minimale Wohnfläche größer 100 und kleiner 500, usw.). --> Werden keine gültigen Werte übergeben, sollen selbstgewählte Default-Werte gesnutzt werden.
+    * Schreiben Sie zusätzlich eine Testklasse ```HausTest```, in der Sie 3 Hausobjekte erzeugen und in einem Array speichern. Geben Sie alle Hauseigenschaften der im Array gespeicherten Hausobjekte innerhalb einer For-Schleife aus.
+* Übung 2
+  * Erweitern Sie die Klasse ```Haus``` um weitere Konstruktoren. Es soll zu jedem Attribut ein eigener Konstruktor zur Verfügung gestellt werden. Außerdem soll ein Konstruktor zur Verfügung stehen, der alle Attribute entgegen nimmt.
+* Übung 3
+  * Erweitern Sie die Klasse ```Haus``` aus Übung 1 um ein statisches Attribut objCnt vom Typ Integer mit dem Initialwert 0 und die statische Methode getObjCnt() vom Typ Integer. Ändern Sie Ihren Konstruktor so ab, dass objCnt um 1 erhöht wird, sobald ein neues Objekt erzeugt wird. Geben Sie in der Klasse HausTest nach der Ausgabe der Eigenschaften der Hausobjekte die Anzahl der erzeugten Objekte aus.
+* Übung 4
+  * Erweitern Sie Ihre Klasse ```Haus``` um die finalize()-Methode. Dekrementieren Sie objCnt um 1, wenn ein Objekt gelöscht wird. Löschen Sie zum Test am Ende Ihrer Klasse ```HausTest``` ein.
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+----
+### 5.2 Übungen - ```Bahnhof``` (1/x)
+
+> TODO
 
 ---
 # Kapitel 6
 # Vererbung
 
 ----
-### 6.1Kontrollfragen
+### 6.1 Kontrollfragen
 
-> Todo
+<div>
+
+1. Beschreiben Sie das objektorientierte Konzept der Vererbung.
+2. Erläutern Sie die Begriffe Superklasse, Subklasse und Vererbungshierarchie.
+3. Beschreiben Sie die Darstellung der Vererbung in der UML mithilfe eines kleinen Beispiels.
+4. Was ist die Besonderheit in der Vererbung bei Java und wie ist die Vererbung syntaktisch in Java realisiert?
+5. Beschreiben Sie die wesentlichen Eigenschaften der Klasse Object und ihre besondere Rolle in der Vererbungshierarchie in Java?
+6. Beschreiben Sie das Konzept des Überschreibens von Methoden!
+7. Was bewirken die Modifier abstract und final in Bezug auf Klassen?
+8. Welche Auswirkungen haben die Modifier abstract und final bei Methoden?
+9. Wozu wird der Ausdruck super in der Vererbung benötigt?
+10. Was stellt der Ausdruck this dar?
+11. Beschreiben Sie das Konzept des narrowing und widening Cast!
+12. Beschreiben Sie das Konzept des Polymorphismus in der objektorientierten Programmierung anhand eines einfachen Beispiels!
+13. Welche Möglichkeiten haben Sie, um in Java Objekte zu kopieren? Worin besteht der Unterschied in den beiden Verfahren?
+
+</div><!-- .element style="font-size: 0.7em;" -->
 
 ----
 ### 6.2 Übungen
