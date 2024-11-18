@@ -307,11 +307,9 @@ Beispiel:
 12. Wie können Klassenmethoden auf den Instanzenkontext zugreifen? 
 13. Erläutern Sie das Prinzip der Garbage Collection in Java!
 14. Was sind Destruktoren und wie werden Sie aufgerufen?
-15. Die Klasse ```java.lang.Math``` stellt eine Sammlung von mathematischen Stan- dardfunktionen dar, die allesamt als ```static``` definiert sind. Weil die Klasse über keine Instanzmethoden oder -variablen verfügt, wäre eine Erzeugung von Objekten dieser Klasse recht unsinnig. Um dies zu verhindern, haben ihre Programmierer einen Trick angewendet. Wie konnten sie eine Instanziierung verhindern, ohne die Klasse abstrakt zu definieren?
-16. Innerhalb eines Pakets ```mypackage``` werden zwei Klassen ```Vater``` und ```Sohn``` definiert. ```Sohn``` ist eine Subklasse der Klasse ```Vater```. Beide verfügen über eine Methode ```familienbande()```, die nur für Kindklassen innerhalb des Pakets zugänglich sein soll.
-* Welcher Modifikator ist also für die Methode zu nehmen: public, protected, private oder der Standardmodifikator?
+15. Die Klasse ```java.lang.Math``` stellt eine Sammlung von mathematischen Standardfunktionen dar, die allesamt als ```static``` definiert sind. Weil die Klasse über keine Instanzmethoden oder -variablen verfügt, wäre eine Erzeugung von Objekten dieser Klasse recht unsinnig. Um dies zu verhindern, haben ihre Programmierer einen Trick angewendet. Wie konnten sie eine Instanziierung verhindern, ohne die Klasse abstrakt zu definieren?
 
-</div><!-- .element style="font-size: 0.7em;" -->
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ----
 ### 5.2 Übungen - ```Haus``` (1/2)
@@ -336,12 +334,30 @@ Beispiel:
 * Übung 4
   * Erweitern Sie Ihre Klasse ```Haus``` um die finalize()-Methode. Dekrementieren Sie objCnt um 1, wenn ein Objekt gelöscht wird. Löschen Sie zum Test am Ende Ihrer Klasse ```HausTest``` ein.
 
-</div><!-- .element style="font-size: 0.7em;" -->
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ----
-### 5.2 Übungen - ```Bahnhof``` (1/x)
+### 5.2 Übungen - ```Bahnhof``` (1/2)
 
-> TODO
+* Gegeben ist das folgende Diagramm, dass die Assoziationen, Aggregationen und Kompositionen zwischen den Klassen abbildet.
+
+<img src="img/ex_chapter5Bahnhof.png" height=400px /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+
+----
+### 5.2 Übungen - ```Bahnhof``` (2/2)
+
+<div>
+
+* Übung 1
+  * Nennen Sie die Beziehungsarten, die zwischen den Klassen vorherrschen.
+* Übung 2
+  * Wie können die Beziehungen sinnvoll realisiert werden? Erweitern Sie die nachstehenden Klassendiagramme um fehlenden Attribute oder Methoden!
+* Übung 3
+  * Implementieren Sie die einzelnen Klassen und berücksichtigen Sie dabei die Beziehungsarten.
+* Übung 4
+  * Implementieren Sie eine Testklasse ```Bahnhof```, um einen ```Güterzug``` zu erstellen, ihm einen Fahrer zuzuordnen und die ```Güterwagons``` mit ```Fracht``` zu beladen. Geben Sie anschließend über die jeweiligen Getter-Methoden die Informationen zum Fahrer, dem Güterzug und der geladenen Fracht aus.
+
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ---
 # Kapitel 6
@@ -365,13 +381,33 @@ Beispiel:
 11. Beschreiben Sie das Konzept des narrowing und widening Cast!
 12. Beschreiben Sie das Konzept des Polymorphismus in der objektorientierten Programmierung anhand eines einfachen Beispiels!
 13. Welche Möglichkeiten haben Sie, um in Java Objekte zu kopieren? Worin besteht der Unterschied in den beiden Verfahren?
+14. Innerhalb eines Pakets ```mypackage``` werden zwei Klassen ```Vater``` und ```Sohn``` definiert. ```Sohn``` ist eine Subklasse der Klasse ```Vater```. Beide verfügen über eine Methode ```familienbande()```, die nur für Kindklassen innerhalb des Pakets zugänglich sein soll.
+* Welcher Modifikator ist also für die Methode zu nehmen: public, protected, private oder der Standardmodifikator?
 
-</div><!-- .element style="font-size: 0.7em;" -->
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ----
-### 6.2 Übungen
+### 6.2 Übungen - ```Bahnhof``` (1/2)
 
-> Todo
+* Das nachstehende Vererbungsdiagramm erweitert das Modell aus der Übung 5 aus dem Übungsteil 5.2 ```Bahnhof```.
+
+<img src="img/ex_chapter6Bahnhof_Fracht.png" height=300px /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+
+----
+### 6.2 Übungen - ```Bahnhof``` (2/2)
+
+<div>
+
+* Übung 1
+  * Erweitern Sie die Klasse Fracht um das Attribut Volumen und die entsprechende Getter-Methode für dieses Attribut. Implementieren Sie anschließend die beiden Subklassen Kiste und Tonne.
+* Übung 2
+  * Beim Aufruf der Konstruktoren der Sub-Klassen soll zunächst der Konstruktor der Super-Klasse gerufen werden, um die allgemeinen Attribute zu setzen. Die Bezeichnung der Verpackung soll dabei als konstanter Wert „Kiste“ oder „Tonne“ gesetzt werden. Berechnen Sie innerhalb des Konstruktors das Volumen der Fracht.
+* Übung 3
+  * In den Subklassen sollen lediglich die Getter- und Setter-Methoden für die subklassenspezifischen Attribute zur Verfügung gestellt werden.
+* Übung 3
+  * Erweitern Sie Ihre Testklasse ```Bahnhof``` aus der Übung 5. aus dem Übungsteil 5.2., indem Sie unterschiedliche Objekte der Klassen Kiste und Tonne erzeugen und als Fracht in die Güterwagons laden. Nutzen Sie dazu das Konzept der Polymorphie. Geben Sie die Informationen zu Ihren Frachtobjekten über eine polymorphe Implementierung aus.
+
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ---
 # Kapitel 7
