@@ -360,6 +360,86 @@ Beispiel:
 
 </div><!-- .element style="font-size: 0.8em;" -->
 
+----
+### 5.2 Übungen - ```Smartphone```
+
+<div>
+
+1. Übung
+* Erstellen Sie ein Klassendiagram für die Klasse ```Smartphone``` (und möglicher weiterer notwendigen Klassen) nach folgenden Anforderungen
+    * Attribute: 
+      * brand (Marke) – String.
+      * model (Modell) – String.
+      * price (Preis) – Double.
+      * type (Typ) – SmartphoneType (Werte: ANDROID, IOS)
+    * Methoden:
+      * Konstruktor mit allen Attributen
+      * Getter und Setter für alle Attribute
+2. Übung
+* Implementieren Sie die Klassen ```Smartphone```
+    * Implementieren Sie die Setter-Methoden mit Plausibilitätsprüfungen:
+      * brand und model dürfen keine leeren Strings sein. Falls ungültige Werte übergeben werden, setzen Sie "Unknown"
+      * type darf nicht ```null``` sein und soll auf einen passenden Standardwert gesetzt werden
+      * price darf nicht negativ sein. Bei ungültigen Werten wird der Standardwert 0.0 gesetzt
+3. Übung
+* Fügen Sie die Methode printDetails() hinzu, die die Eigenschaften des ```Smartphones``` ausgibt
+    * Überladen Sie die Methode, sodass optional eine zusätzliche Nachricht (z. B. "Special offer!") ausgegeben werden kann
+    * Erweitern Sie hierzu auch das Klassendiagram
+4. Übung
+* Schreiben Sie eine Testklasse ```SmartphoneTest```
+    * Erzeugen Sie drei Smartphone-Objekte mit unterschiedlichen Werten
+    * Rufen Sie die Methode printDetails() für jedes Smartphone auf – einmal ohne Nachricht und einmal mit einer Nachricht
+
+</div><!-- .element style="font-size: 0.6em;" -->
+
+----
+### 5.2 Übungen - ```Laptop```
+
+* Gegeben ist folgendes UML-Diagramm einer Klasse ```Laptop```:
+
+<img src="img/ex_chapter5Laptop.png" height=200px /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+
+<div>
+
+1. Übung
+* Implementieren Sie die Klasse ```Laptop``` und weitere notwendige Klassen
+  * Implementieren Sie Konstruktoren:
+      * Einen Standard-Konstruktor, der brand und processor auf "Unknown" setzt und memory auf 0
+      * Einen Konstruktor, der brand und processor entgegennimmt
+      * Einen Konstruktor, der alle Attribute initialisiert
+  * Implementieren Sie die Methode printDetails() die alle Attribute ausgibt
+2. Übung
+* Schreiben Sie eine Testklasse LaptopTest:
+    * Erzeugen Sie mindestens drei Laptop-Objekte mit verschiedenen Konstruktoren
+    * Geben Sie die Details aller Laptops aus
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+----
+### 5.2 Übungen - ```Book```
+
+<div>
+
+1. Übung
+* Erstellen Sie ein Klassendiagram mit der Klasse ```Book``` für folgende Anforderungen:
+    * title (Titel) – String.
+    * author (Autor) – String.
+    * pages (Seitenanzahl) – Integer.
+    * price (Preis) – Double.
+* Fügen Sie ein statisches Attribut bookCount und eine entsprechende Methode zum auslesen dieses Attributs hinzu
+    * Dieses Attribut soll die Anzahl der erstellten Bücher mitzählen
+2. Übung
+* Implementieren Sie die Klasse ```Book```
+3. Übung
+* Erweitern Sie das Klassendiagram um eine Methode printDetails(), die die Attribute eines Buchs ausgibt, und implementieren Sie diese
+4. Übung
+* Schreiben Sie eine Testklasse BookTest:
+    * Erzeugen Sie mehrere Buch-Objekte
+    * Geben Sie die Details aller Bücher aus
+    * Geben Sie die Gesamtanzahl der erstellten Bücher mithilfe von bookCount aus
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
 ---
 # Kapitel 6
 # Vererbung
@@ -418,12 +498,65 @@ Beispiel:
 ----
 ### 7.1 Kontrollfragen
 
-> Todo
+1.	Was ist ein Interface in Java, und warum wird es verwendet?
+2.	Wie unterscheiden sich Interfaces von abstrakten Klassen in Java?
+3.	Was passiert, wenn eine Klasse ein Interface implementiert, aber nicht alle Methoden definiert?
+4.	Kann ein Interface Konstanten enthalten? Wenn ja, wie werden sie definiert?
+5.	Wie kann eine Klasse mehrere Interfaces implementieren, und was passiert bei Namenskonflikten?
+7.	Können Interfaces andere Interfaces erweitern? Wenn ja, wie funktioniert das?
+8.	Was passiert, wenn eine Klasse ein Interface implementiert, das Methoden mit der gleichen Signatur wie eine geerbte Klasse definiert?
+9.	Kann eine abstrakte Klasse ein Interface implementieren, ohne dessen Methoden zu definieren?
+10.	Kann eine Klasse ein Interface und eine Klasse gleichzeitig erben?
+11.	Können Interfaces Konstruktoren enthalten?
 
 ----
-### 7.2 Übungen
+### 7.2 Übungen - ```Smarthome``` (1/2)
 
-> Todo
+Entwickeln Sie ein Programm zur einfachen und zentralen Steuerung eines Smarthomes. Ziel ist es, eine zentrale Verwaltung für alle steuerbaren Geräte zu schaffen. Dazu sollen folgende **Anforderungen** umgesetzt werden:
+
+<div>
+
+1.	Das Interface ```HomeControllable```:
+  * Das Interface ```HomeControllable``` soll die grundlegende Steuerung der Geräte ermöglichen:
+  * turnOn(): Schaltet das Gerät ein.
+  * turnOff(): Schaltet das Gerät aus.
+2.	Die Haushaltsgeräte:
+  * Es werden für den Anfang vier Haushaltsgerätetypen angeboten:
+  * ```CeilingLamp``` (Deckenlampe):
+  * Diese Klasse soll ein Attribut ```room``` besitzen, das den Raum angibt, in dem sich die Lampe befindet (z. B. "Wohnzimmer", "Schlafzimmer"). Dieses Attribut wird über den Konstruktor befüllt.
+  * Die Methoden ```turnOn()``` und ```turnOff()``` sollen Ausgaben, entsprechend der jeweiligen Methode, wie "Die Lampe im Wohnzimmer wurde angeschaltet" enthalten, wobei der Raumname dynamisch ist.
+  * ```VacuumCleaner``` (Staubsauger):
+  * Gibt beim Einschalten "Der Staubsauger wurde angeschaltet." und beim Ausschalten "Der Staubsauger wurde ausgeschaltet" aus.
+  * ```CoffeeMachine``` (Kaffeemaschine):
+  * Gibt beim Einschalten "Die Kaffeemaschine wurde angeschaltet." und beim Ausschalten "Die Kaffeemaschine wurde ausgeschaltet." aus.
+  * ```Television``` (Fernseher):
+  * Gibt beim Einschalten "Der Fernseher wurde angeschaltet." und beim Ausschalten "Der Fernseher wurde ausgeschaltet." aus.
+3.	Zentrale Steuerung: ```HomeManager```:
+  * Die Klasse ```HomeManager``` ist für die zentrale Verwaltung der Geräte verantwortlich
+  * Die Methode ```shutdown()``` soll alle Geräte im Haushalt ausschalten
+
+</div><!-- .element style="font-size: 0.6em;" -->
+
+----
+### 7.2 Übungen - ```Smarthome``` (2/2)
+
+Setzen Sie die folgenden **Aufgaben** um:
+
+<div>
+
+1. Übung
+    * Erstellen Sie ein Klassendiagram passend zu den Anforderungen.
+2. Übung
+    * Implementieren Sie das Interface, die Haushaltsgeräte und die Klasse ```HomeManager```
+3. Übung
+    * Interaktive Simulation:
+      * Erstellen Sie eine Main-Methode in der Klasse ```HomeManager``` in der mehrere Haushaltsgeräte erzeugt werden
+      * Demonstrieren Sie das Einschalten aller Geräte, gefolgt von der zentralen Steuerung durch den HomeManager, der alle Geräte ausschaltet.
+4. Übung
+    * **Zusatzaufgabe**: Ändern Sie die Klasse ```CeilingLamp``` so ab, dass nur vorbestimmte Werte im Attribut ```room``` angegeben werden können. Bei Bedarf erweitern Sie hierzu auch das Klassendiagramm. (Wiederholung zu Kapitel 5)
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
 
 ---
 # Kapitel 8

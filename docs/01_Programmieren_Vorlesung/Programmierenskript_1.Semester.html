@@ -1787,7 +1787,7 @@ class Auto {
 
 ```Java
 public class VarargsExample {
-    public static void sumOfNumbers(int... numbers) {
+    public void sumOfNumbers(int... numbers) {
         int sum = 0;
         for (int number : numbers) {
             sum += number;
@@ -1796,9 +1796,11 @@ public class VarargsExample {
     }
 
     public static void main(String[] args) {
-        printNumbers(1);          // Gibt: "Summe: 1"
-        printNumbers(1, 2, 3);    // Gibt: "Summe: 6"
-        printNumbers();           // Gibt: "Summe: 0"
+        VarargsExample sumUp = new VarargsExample();
+
+        sumUp.sumOfNumbers(1);          // Gibt: "Summe: 1"
+        sumUp.sumOfNumbers(1, 2, 3);    // Gibt: "Summe: 6"
+        sumUp.sumOfNumbers();           // Gibt: "Summe: 0"
     }
 }
 ```
@@ -2011,24 +2013,25 @@ protected void finalize();
 <br/>
 
 <div>
-<table>
+
+<table border = 2>
 <tr>
+  <td>  
+    <img src="img/05objektorientierung_06Kardinalitaeten.png" width=80% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+  </td>
   <td>
-    <table>
-    <tr><td align=center><b>Kardinalität</b></td><td><b>Beschreibung</b></td></tr>
-    <tr><td align=center>1</td><td>Ein Objekt muss genau einem anderen Objekt zugeordnet sein (MUSS-Beziehung, siehe Komposition)</td></tr>
-    <tr><td align=center>0..1</td><td>Es kann ein oder kein Objekt dem anderen zugeordnet sein (Kann-Beziehung)</td></tr>
-    <tr><td align=center>0..n</td><td>Es können beliebig viele Objekte einem anderen Objekt zugeordnet sein (Kann-Beziehung)</td></tr>
-    <tr><td align=center>1..n</td><td>Es muss mindestens ein Objekt bis beliebig viele Objekte einem anderen Objekt zugeordnet sein (MUSS-Beziehung, siehe Komposition)</td></tr>
+    <table border = 2>
+      <tr><td align=center><b>Kardinalität</b></td><td><b>Beschreibung</b></td></tr>
+      <tr><td align=center>1</td><td>Ein Objekt muss genau einem anderen Objekt zugeordnet sein (MUSS-Beziehung, siehe Komposition)</td></tr>
+      <tr><td align=center>0..1</td><td>Es kann ein oder kein Objekt dem anderen zugeordnet sein (Kann-Beziehung)</td></tr>
+      <tr><td align=center>0..n</td><td>Es können beliebig viele Objekte einem anderen Objekt zugeordnet sein (Kann-Beziehung)</td></tr>
+      <tr><td align=center>1..n</td><td>Es muss mindestens ein Objekt bis beliebig viele Objekte einem anderen Objekt zugeordnet sein (MUSS-Beziehung, siehe Komposition)</td></tr>
     </table>
   </td>
-  <td>
-    <div align="center">
-    <img src="img/05objektorientierung_06Kardinalitaeten.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
-    </div>
-  </td>
+  
 </tr>
 </table>
+
 </div><!-- .element style="font-size: 0.7em;" -->
 
 
