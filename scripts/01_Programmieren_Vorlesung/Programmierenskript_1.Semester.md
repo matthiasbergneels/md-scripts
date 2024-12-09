@@ -2021,33 +2021,6 @@ protected void finalize();
 </div><!-- .element style="font-size: 0.7em;" -->
 
 
-
----
-# Kapitel 5
-# Objektorientierung
-## Kontrollfragen
-
-----
-### Kontrollfragen I
-1. Grenzen Sie die Begriffe Klasse und Objekt voneinander ab!
-2. Was beschreiben Attribute und Methoden?
-3. Wie werden Klassen in der UML dargestellt?
-4. Wie werden in Java Objekte erzeugt? Welche Rolle spielen dabei die Konstruktoren einer Klasse?
-5. Erläutern Sie den Begriff des Konstruktors!
-6. Beschreiben Sie das Konzept der Kapselung in der objektorientierten Programmierung!
-7. Welche unterschiedlichen Sichtbarkeitsmodifier sind Ihnen bekannt? Beschreiben Sie die Sichtbarkeit jedes Modifiers!
-8. Beschreiben Sie den Zugriff auf Instanzattribute und –methoden! Welche Rolle spielen dabei die Sichtbarkeitsmodifier?
-9. Unterscheiden Sie die Begriffe „call by value“ und „call by reference“!
-
-----
-### Kontrollfragen II
-
-10. Was versteht man unter dem Begriff „überladen von Methoden“?
-11. Worin unterscheiden sich Klassenattribute und –methoden von Instanzattributen und –methoden?
-12. Erläutern Sie das Prinzip der Garbage Collection in Java!
-13. Was ist der Destruktor und wie wird dieser aufgerufen?
-14. Erläutern Sie die Begriffe Assoziation, Aggregation und Komposition! Wie werden die unterschiedlichen Beziehungen in der UML dargestellt?
-
 ---
 # Kapitel 6
 # Vererbung
@@ -2213,8 +2186,8 @@ public enum CarBrand {
 
 **final**
 * Klassen, die mit dem Modifier final versehen sind, dürfen nicht weiter abgeleitet werden
-* Methoden mit dem Modifier final dürfen nicht überschrieben werden
-final-Attribute sind Konstanten, deren Wert sich nicht verändern darf
+* Methoden mit dem Modifier final dürfen nicht überschrieben werden final-Attribute sind Konstanten, deren Wert sich nicht verändern darf
+
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ---
@@ -2241,20 +2214,22 @@ final-Attribute sind Konstanten, deren Wert sich nicht verändern darf
 
 ----
 ### Widening Cast
+
 <div>
 
 * stellt die Umkehrung des narrowing cast dar
 * Referenzen auf Objekte, die in einer Referenzvariable vom Typ der Superklasse gespeichert sind, sollen in einer Referenzvariable vom Typ der Subklasse gespeichert werden
 * es handelt sich dabei um eine unsichere Konvertierung
   * es muss sichergestellt werden, dass es sich bei den Referenzen um Referenzen auf Objekte der Subklasse handelt
-  * vor der Umwandlung muss der Typ der Referenz mit dem Operator instanceof überprüft werden &#8658; referenzvariable instanceof Subklasse muss true ergeben
+  * vor der Umwandlung muss der Typ der Referenz mit dem Operator instanceof überprüft werden &#8658; ```referenzvariable instanceof Subklasse``` muss true ergeben
   * bei der Durchführung muss ein expliziter Cast auf den Typ der Subklasse durchgeführt werden
 
-  ```Java
+```Java
 refSubklasse = (Subklasse)referenzdatentyp;
-  ```
+```
 
 * der widening cast wechselt von einer Sicht mit weniger auf eine Sicht mit mehr Details und blendet die subklassen-spezifischen Attribute und Methoden wieder ein
+
 </div><!-- .element style="font-size: 0.8em;" -->
 
 
@@ -2294,28 +2269,6 @@ class AutoTest {
 ```
 
 ---
-# Kapitel 6
-# Vererbung
-## Kontrollfragen & Übungen
-
-----
-### Kontrollfragen I
-1. Beschreiben Sie das objektorientierte Konzept der Vererbung!
-2. Erläutern Sie die Begriffe Superklasse, Subklasse und Vererbungshierarchie!
-3. Beschreiben Sie die Darstellung der Vererbung in der UML mithilfe eines kleinen Beispiels!
-4. Was ist die Besonderheit in der Vererbung bei Java und wie ist die Vererbung syntaktisch in Java realisiert?
-5. Beschreiben Sie die wesentlichen Eigenschaften der Klasse Object und ihre besondere Rolle in der Vererbungshierarchie in Java?
-6. Beschreiben Sie das Konzept des Überschreibens von Methoden!
-7. Was bewirken die Modifier abstract und final in Bezug auf Klassen?
-8. Welche Auswirkungen haben die Modifier abstract und final bei Methoden?
-----
-### Kontrollfragen II
-9. Wozu wird der Ausdruck super in der Vererbung benötigt?
-10. Was stellt der Ausdruck this dar?
-11. Beschreiben Sie das Konzept des narrowing und widening Cast!
-12. Beschreiben Sie das Konzept des Polymorphismus in der objektorientierten Programmierung anhand eines einfachen Beispiels!
-
----
 
 # Kapitel 7
 # Interfaces
@@ -2346,20 +2299,22 @@ class AutoTest {
 
 * Interfaces stellen eine besondere Form der Klassen dar
 * sie definieren lediglich den Aufbau der Schnittstelle
-  * Name von Mehtoden
+  * Name von Methoden
   * Signaturen der Methoden
   * Attribute
-* ~~Interfaces beinhalten keine eigene Funktionalität~~ (Standard-Implementierungen seit Java 8)
+* Interfaces sollen keine eigene Funktionalität beinhalten (Standard-Implementierungen seit Java 8 möglich)
 * die Funktionalität wird in Klassen implementiert, die das Interface nutzen wollen
-* sie beinhalten ausschließlich abstrakte öffentliche Methoden
+* sie beinhalten ausschließlich abstrakte, öffentliche Methoden
 * alle Attribute sind als Konstanten festgelegt
 * Deklaration von Interfaces mit dem Schlüsselwort interface
 * Interfaces können von anderen Interfaces mit extends abgeleitet (vererbt) werden
 * Interfaces können genau wie Klassen als Datentyp für Referenzvariablen genutzt werden
+
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ----
 ### Implementierung von Interfaces
+
 <div>
 
 * um zu einem Interface die Funktionalität zur Verfügung zu stellen, muss eine Klasse das Interface implementieren
