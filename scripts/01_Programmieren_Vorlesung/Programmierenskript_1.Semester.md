@@ -2226,7 +2226,9 @@ public enum CarBrand {
 
 ```Java
 refSubklasse = (Subklasse)referenzdatentyp;
+
 ```
+
 
 * der widening cast wechselt von einer Sicht mit weniger auf eine Sicht mit mehr Details und blendet die subklassen-spezifischen Attribute und Methoden wieder ein
 
