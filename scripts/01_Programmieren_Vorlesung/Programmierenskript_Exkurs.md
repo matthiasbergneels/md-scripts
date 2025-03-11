@@ -16,6 +16,7 @@ center: false
 * Naming conventions
 * Implizite Typisierung mittels ```var```
 * Unit Tests
+* Build & Deliver
 * Innere Klassen
 * Entwurfsmuster (Design Patterns)
 * (Die Evolution von Java)
@@ -406,6 +407,47 @@ class CalculatorTest {
 * **Repeatable**: Führt man einen Unit-Test mehrfach aus, muss er immer das gleiche Ergebnis liefern.
 * **Self-Validating**: Ein Unit-Test soll entweder fehlschlagen oder gut gehen. Diese Entscheidung muss der Test treffen und als Ergebnis liefern. Es dürfen keine manuellen Prüfungen nötig sein.
 * **Timely**: Man soll Unit-Tests vor der Entwicklung des Produktivcodes schreiben.
+
+---
+
+# Build & Deliver
+
+> Bauen & Ausliefern
+
+----
+
+## Was sind JAR-Dateien?
+
+Eine **JAR-Datei** (Java Archive) ist ein komprimiertes Archiv, das Java-Klassen, Ressourcen und Metadaten zusammenfasst. Es wird häufig verwendet, um Java-Anwendungen zu verpacken und bereitzustellen. Eine JAR-Datei basiert auf dem **ZIP-Dateiformat** und wird von der Java-Plattform unterstützt.
+
+### Zweck von JAR-Dateien
+- **Bereitstellung von Anwendungen**: 
+  - JAR-Dateien fassen alle notwendigen Dateien zusammen, um Java-Anwendungen einfach zu verteilen und auszuführen.
+- **Wiederverwendbare Bibliotheken**:
+  - Entwickler können Java-Bibliotheken als JAR-Dateien bereitstellen, die andere Projekte einbinden können.
+- **Kompaktheit**:
+  - Durch Kompression sparen JAR-Dateien Speicherplatz und reduzieren die Anzahl der Dateien, die verwaltet werden müssen.
+
+[text](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jar.html)
+
+----
+
+### Aufbau einer JAR-Datei
+Eine JAR-Datei enthält:
+1. **Java-Klassen**: Kompilierte `.class`-Dateien.
+2. **Ressourcen**: Dateien wie Bilder, Konfigurationsdateien oder Texte.
+3. **Manifest-Datei**: Eine spezielle Datei (`META-INF/MANIFEST.MF`), die Metadaten über die JAR-Datei enthält. Sie kann unter anderem die Hauptklasse definieren, die beim Start ausgeführt werden soll.
+
+----
+
+## Erstellen einer JAR-Datei
+
+### Manuelles Erstellen mit `javac` und `jar`:
+1. **Kompilieren der Klassen**:
+   ```bash
+   javac MyApp.java
+   ```
+
 
 ---
 

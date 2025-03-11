@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/matthiasbergneels/md-scripts#readme",
   "dependencies": {
-    "reveal-md": "^6.0.1",
+    "reveal-md": "^2.0.0",
     "reveal-plantuml": "^1.0.2"
   }
 }

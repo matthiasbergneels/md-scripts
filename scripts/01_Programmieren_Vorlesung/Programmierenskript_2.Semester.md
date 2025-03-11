@@ -852,7 +852,7 @@ public class Haustier {
 ----
 ## Was hat das mit ```Comparable``` zu tun?
 
-* ```comapreTo()``` sortiert Objekte nach einer "natürlichen" Ordnung
+* ```compareTo()``` sortiert Objekte nach einer "natürlichen" Ordnung
   * Rückgabe Wert 0: die Objekte sind gleich
   * damit sollte der Rückgabewert 0 für zwei Objekte einem Rückgabewert von true beim vergleich mit ```equals()``` entsprechenden (<a target=_blank href='https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Comparable.html'>Comparable-Contract</a>)
 
