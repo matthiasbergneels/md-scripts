@@ -819,16 +819,18 @@ public class Hund extends Haustier {
 
 <div>
 
-|Typ|Zugeordneter Integer Wert|
-|---|-------------------------|
-|Boolean|```(field ? 0 : 1)```|
-|byte, char, short, int|```(int) field```|
-|long|```(int)(field>>>32) ^ (int)(field & 0xFFFFFFFF)```|
-|float|```((x==0.0F) ? 0 : Float.floatToIntBits(field))```|
-|double|```((x==0.0) ? 0L : Double.doubleToLongBits(field))``` [anschliessende Behandlung wie bei long]|
-|Referenz|```((field==null) ? 0 : field.hashCode())```|
+|Typ|Zugeordneter Integer Wert|einfaches Leben|
+|---|-------------------------|---------------|
+|Boolean|```(value ? 0 : 1)```|```Boolean.hashCode(value)```|
+|byte, char, short, int|```(int)value```||
+|long|```(int)(value ^ (value >>> 32))```|```Long.hashCode(value)```|
+|float|```Float.floatToIntBits(value)```|```Float.hashCode(value)```|
+|double|```Double.doubleToLongBits(value)``` [anschliessende Behandlung wie bei long]|```Double.hashCode(value)```|
+|Referenz|```((value==null) ? 0 : value.hashCode())```|```Objects.hashCode(value)```|
 
 </div><!-- .element style="font-size: 0.8em;" -->
+
+
 
 ----
 ## ```hashCode()``` – Alternative Implementierung
