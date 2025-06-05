@@ -1,3 +1,0 @@
-{
-    "scripts": "lib/mermaid.min.js,lib/reveal-mermaid.js,lib/reveal-mermaid-animation.js,reveal-mermaid-animation-handlers.js"
-}
