@@ -6,7 +6,7 @@
     "start": "reveal-md scripts/ --css scripts/_assets/style.css",
     "publishHtml": "npm run cleanAndGeneratePdfs && npm run cleanAndGenerateHtml",
     "cleanAndGenerateHtml": "rm -rf docs && mkdir docs && reveal-md scripts/ --static docs --static-dirs=scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img --css scripts/_assets/style.css && touch docs/.nojekyll",
-    "cleanAndGeneratePdfs": "rm -rf scripts/pdfdownloads/* && mkdir scripts/pdfdownloads && npm run generateLecturePdfs && npm run generateSoftwareCraftsmanshipPdfs && npm run generateOtherStuffPdfs",
+    "cleanAndGeneratePdfs": "rm -rf scripts/pdfdownloads && mkdir scripts/pdfdownloads && npm run generateLecturePdfs && npm run generateSoftwareCraftsmanshipPdfs && npm run generateOtherStuffPdfs",
     "generateLecturePdfs": "npm run pdf1semester && npm run pdf2semester && npm run pdfexkurs && npm run pdfuebungen",
     "pdf1semester": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_1.Semester.md --print scripts/pdfdownloads/ProgrammierenSkript_1Semester.pdf --print-size 297x210mm --css scripts/_assets/style.css",
     "pdf2semester": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_2.Semester.md --print scripts/pdfdownloads/ProgrammierenSkript_2Semester.pdf --print-size 297x210mm --css scripts/_assets/style.css",
