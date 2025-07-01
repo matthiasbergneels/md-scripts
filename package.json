@@ -12,10 +12,11 @@
     "pdf2semester": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_2.Semester.md --print scripts/pdfdownloads/ProgrammierenSkript_2Semester.pdf --print-size 297x210mm --css scripts/_assets/style.css",
     "pdfexkurs": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_Exkurs.md --print scripts/pdfdownloads/ProgrammierenSkript_Exkurs.pdf --print-size 297x210mm --css scripts/_assets/style.css",
     "pdfuebungen": "reveal-md scripts/01_Programmieren_Vorlesung/Programmierenskript_Uebungen.md --print scripts/pdfdownloads/ProgrammierenSkript_Uebungen.pdf --print-size 297x210mm --css scripts/_assets/style.css",
-    "generateSoftwareCraftsmanshipPdfs": "npm run pdf2java && npm run pdf2junit && npm run pdf2thereader",
+    "generateSoftwareCraftsmanshipPdfs": "npm run pdf2java && npm run pdf2junit && npm run pdf2thereader && npm run pdf2SmallBugBigImpact",
     "pdf2java": "reveal-md scripts/02_SoftwareCraftsmanship/javaevolution.md --print scripts/pdfdownloads/SCSC@IoT_Java9-16.pdf --print-size 297x210mm --css scripts/_assets/style.css",
     "pdf2junit": "reveal-md scripts/02_SoftwareCraftsmanship/junit5.md --print scripts/pdfdownloads/SCSC@IoT_JUnit5.pdf --print-size 297x210mm --css scripts/_assets/style.css",
     "pdf2thereader": "reveal-md scripts/02_SoftwareCraftsmanship/thereader.md --print scripts/pdfdownloads/SCSC@IoT_Bedtime_stories.pdf --print-size 297x210mm --css scripts/_assets/style.css",
+    "pdf2SmallBugBigImpact": "reveal-md scripts/02_SoftwareCraftsmanship/SmallBugBigImpact.md --print scripts/pdfdownloads/SmallBugBigImpact.pdf --print-size 297x210mm --css scripts/_assets/style.css",
     "generateOtherStuffPdfs": "npm run pdf23dprint",
     "pdf23dprint": "reveal-md scripts/03_OtherStuff/3D_Druck_Hands_On.md --print scripts/pdfdownloads/3D_Druck_Hands_On.pdf --print-size 297x210mm --css scripts/_assets/style.css"
   },
