@@ -38,6 +38,14 @@ You litteraly could say:
 
 > “The following code has actually taken down rockets, banks, and billions.” 💥
 
+----
+
+### Disclaimer
+
+> Yes, this is exaggerated. No, it’s not that unrealistic.
+
+> Some examples were intentionally created or adapted for this presentation to illustrate real-world issues. In some cases, the original incidents are not publicly documented or are under NDA.
+
 ---
 
 # 💻 Quiz
@@ -66,6 +74,8 @@ if ((err = SSLVerify(...)) != 0)
 - Affected iOS and macOS
 - Allowed MitM attacks over HTTPS
 - Shook public trust in Apple security
+
+[Source](https://www.blackduck.com/blog/understanding-apple-goto-fail-vulnerability-2.html)
 
 ---
 
@@ -102,6 +112,8 @@ read -p "Confirm cluster: $CLUSTER_NAME? (yes/no): " ans
 - Took down major platforms: GitHub, Slack, Trello
 - Estimated economic loss in the hundreds of millions
 
+[Source](https://aws.amazon.com/de/message/41926/)
+
 ---
 
 # 💥 Quiz
@@ -126,6 +138,8 @@ double time = ticks * 0.1;  // use precise conversion
 - Caused missile defense failure
 - 28 soldiers killed in attack
 
+[Source](https://www-users.cse.umn.edu/~arnold/disasters/patriot.html)
+
 ---
 
 # 💼 Quiz
@@ -148,6 +162,10 @@ int balanceCents = depositCents - withdrawalCents;
 - 700+ postmasters falsely accused and convicted
 - Based on flawed accounting system
 - Legal battle, reputational damage, ruined lives
+
+> to be fair: this was just one small issue - there were over 28 financial relevant bugs in the software!
+
+[Source](https://en.wikipedia.org/wiki/British_Post_Office_scandal)
 
 ---
 
@@ -173,8 +191,11 @@ if not config.database_url:
 - Due to unvalidated critical config fields (null / empty check)
 - Highlighted fragility of cloud infrastructure
 
----
+[Source](http://centralit.accounts.ondemand.com/saml2/idp/acs/centralit.accounts.ondemand.com)
 
+> Google Incident Report: "The issue with this change was that it did not have appropriate error handling nor was it feature flag protected. Without the appropriate error handling, the null pointer caused the binary to crash."
+
+---
 # ✈️ Quiz
 ```text
 CATIA V4 (german team)
@@ -203,6 +224,8 @@ CATIA V5: required = 1001 mm
 - 530 km of cabling incorrect
 - Massive rework, 2-year delay
 - Billions of euros in cost
+
+[Source](https://simpleflying.com/airbus-a380-computer-design-delay/)
 
 ---
 
@@ -262,6 +285,8 @@ try (Connection conn = dataSource.getConnection()) {
 - Crash occurred after ~15 min of runtime
 - Required debug analysis across services and logs
 - several ours of service outage for customers
+
+[Source - Matthias memories]
 
 ---
 
