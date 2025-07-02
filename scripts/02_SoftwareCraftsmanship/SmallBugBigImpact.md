@@ -168,23 +168,45 @@ int balanceCents = depositCents - withdrawalCents;
 [Source](https://en.wikipedia.org/wiki/British_Post_Office_scandal)
 
 ---
+<!-- Google Cloud Inspired Example (Java) -->
 
 # ☁️ Quiz
-```yaml
-database_url: ""
+### (Fictional Java Example)
+```java
+public class Config {
+    private String databaseUrl;
+    public String getDatabaseUrl() {
+        return databaseUrl;
+    }
+}
+
+public class App {
+    public static void main(String[] args) {
+        Config config = new Config();
+        System.out.println("DB: " + config.getDatabaseUrl().toLowerCase());
+    }
+}
 ```
-> ❓ Why did this config cause massive failure?
+> ❓ What might happen during the execution?
 
 ----
-
 ### ✅ Fix
-```python
-if not config.database_url:
-    raise ConfigError("Missing database URL")
+```java
+public class App {
+    public static void main(String[] args) {
+        Config config = new Config();
+
+        if (config.getDatabaseUrl() == null || config.getDatabaseUrl().isEmpty()) {
+            throw new IllegalArgumentException("Missing database URL");
+        }
+
+        System.out.println("DB: " + config.getDatabaseUrl().toLowerCase());
+    }
+}
 ```
 
 ----
-# ☁️ Quiz: Google Cloud Config Outage (2025)
+# ☁️ Quiz: Google Cloud Outage (2025)
 
 ### ⚠️ Impact
 - Global services went offline
@@ -299,7 +321,7 @@ try (Connection conn = dataSource.getConnection()) {
 ✅ Legacy code reuse must be validated in new contexts  
 ✅ Edge-case awareness (overflows, precision, units) is vital  
 ✅ Communication across teams and systems prevents disasters  
-✅ Float ≠ money or time — use precise datatypes
+✅ Float ≠ money or time — use precise datatypes (Java)
 
 ----
 
