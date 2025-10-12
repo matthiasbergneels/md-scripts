@@ -22,6 +22,12 @@
 # Programmieren - Übungen
 ### Matthias Berg-Neels
 
+> [zum Skript: https://matthiasbergneels.github.io/md-scripts/](https://matthiasbergneels.github.io/md-scripts/)
+
+<div align="center">
+<img src="img/00_00_skripturl.png" height=20% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
 > [Download Übungen](../pdfdownloads/ProgrammierenSkript_Uebungen.pdf)
 
 ----
@@ -44,71 +50,142 @@
 13. Algorithmen
 
 ---
+
 # Kapitel 1
+
 # Einführung
+
 ## Kontrollfragen & Übungen
 
-----
+---
+
 ### 1.1 Kontrollfragen
+
 1. Nennen Sie die Definition für den Begriff des Algorithmus im Kontext der Informatik.
 2. Beschreiben Sie die Bestandteile sowie die Eigenschaften von Algorithmen.
 3. Nennen Sie fünf Grundelemente der Programmierung.
-4. Welche Möglichkeiten stehen Ihnen zur Verfügung, um Algorithmen grafisch
-darzustellen?
+4. Welche Möglichkeiten stehen Ihnen zur Verfügung, um Algorithmen grafisch darzustellen?
 5. Was ist ein wesentlicher Nachteil der Programmablaufpläne?
-6. Beschreiben Sie die Darstellungsform „Pseudocode“!
+6. Beschreiben Sie die Darstellungsform "Pseudocode".
 
-----
+---
+
 ### 1.2 Übungen
-1. Beschreiben Sie den euklidschen Algorithmus zur Berechnung des größten
-gemeinsamen Teilers als Struktogramm und Programmablaufplan!
-2. Beschreiben Sie einen Algorithmus zur Berechnung der Fakultät! Nutzen Sie dazu
-den Pseudocode.
-3. Beschreiben Sie im Pseudocode einen Algorithmus zur Bestimmung der Fibonacci Folge
-1 – 1 – 2 – 3 – 5 – 8 – 13 – 21!
-4. Beschreiben Sie in einem Struktogramm das Sieb des Eratosthenes zur Bestimmung
-von Primzahlen.
+
+1. Beschreiben Sie den euklidischen Algorithmus zur Berechnung des größten gemeinsamen Teilers als Struktogramm und Programmablaufplan.
+2. Beschreiben Sie einen Algorithmus zur Berechnung der Fakultät mithilfe von Pseudocode.
+3. Beschreiben Sie in Pseudocode einen Algorithmus zur Berechnung der Fibonacci-Folge:\
+   `1 – 1 – 2 – 3 – 5 – 8 – 13 – 21`
+4. Erstellen Sie ein Struktogramm für das Sieb des Eratosthenes zur Bestimmung von Primzahlen.
 
 ---
+
 # Kapitel 2
-# Grundlagen von Java
-## Kontrollfragen
 
-----
-### 2.1 Kontrollfragen
-1. Beschreiben Sie die wesentlichen Eigenschaften von Java!
-2. Beschreiben Sie die Funktionsweise eines Compilers!
-3. Welche Aufgaben übernimmt der Linker?
-4. Nennen Sie unterschiedliche Interpreter-Arten!
-5. Welche Rolle spielen Compiler und Interpreter im Umfeld der Programmiersprache Java?
-6. Beschreiben Sie den Prozess von der Erstellung des Quellcodes bis zur Ausführung des Programms in der Programmiersprache Java!
-7. Nennen Sie drei wesentliche Java-Tools und beschreiben Sie kurz deren Aufgaben!
-8. Beschreiben Sie das Paketkonzept der Programmiersprache Java!
-9. Welche wesentlichen Systemvariablen kennen Sie im Java-Umfeld?
-10. Beschreiben Sie die wesentlichen Unterschiede der verschiedenen Editionen im Rahmen der Java 2™ Platform!
-11. Wozu werden die einzelnen Systemvariablen benötigt?
+# Grundlagen von Java
+
+## Kontrollfragen
 
 ---
+
+### 2.1 Kontrollfragen
+
+1. Beschreiben Sie die wesentlichen Eigenschaften von Java.
+2. Beschreiben Sie die Funktionsweise eines Compilers.
+3. Welche Aufgaben übernimmt der Linker?
+4. Nennen Sie verschiedene Typen von Interpretern.
+5. Welche Rolle spielen Compiler und Interpreter im Zusammenhang mit der Programmiersprache Java?
+6. Beschreiben Sie den Prozess von der Erstellung des Quellcodes bis zur Ausführung eines Java-Programms.
+7. Nennen Sie drei wichtige Java-Tools und beschreiben Sie deren Aufgaben kurz.
+8. Erklären Sie das Paketkonzept der Programmiersprache Java.
+9. Welche wichtigen Systemvariablen kennen Sie im Java-Umfeld?
+10. Beschreiben Sie die Unterschiede zwischen den verschiedenen Editionen der Java 2™ Platform.
+11. Wofür werden die einzelnen Systemvariablen benötigt?
+
+---
+
+### 2.2 Übung
+
+Implementieren Sie ein einfaches Java-Programm mit folgenden Eigenschaften:
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        // Print greeting to the console
+        System.out.println("Hello, world!");
+    }
+}
+```
+
+- Ändern Sie den Klassennamen zu `GreetingApp`.
+- Ersetzen Sie die Ausgabe durch: `Willkommen zur Java-Programmierung!`
+- Kompilieren und starten Sie das Programm.
+
+```
+javac GreetingApp.java
+java GreetingApp
+```
+
+- Erklären Sie, was bei jedem Schritt passiert.
+
+---
+
 # Kapitel 3
+
 # Datentypen
+
 ## Kontrollfragen
 
-----
+---
+
 ### 3.1 Kontrollfragen
+
 1. Welche unterschiedlichen Datentypen kennen Sie in Java?
 2. Wie lassen sich diese Datentypen klassifizieren?
-3. Nennen Sie die numerischen Datentypen der Programmiersprache Java! Worin liegt der wesentliche Unterschied im Wertebereich?
-4. Wie können Variablen und Konstanten in Java deklariert initialisiert werden?
+3. Nennen Sie die numerischen Datentypen der Programmiersprache Java. Worin liegt der wesentliche Unterschied im Wertebereich?
+4. Wie können Variablen und Konstanten in Java deklariert und initialisiert werden?
 5. Was ist der Unterschied zwischen einer Konstanten und einer Variablen?
-6. Erläutern Sie den Begriff „Literal“ am Beispiel der numerischen Literale!
+6. Erläutern Sie den Begriff „Literal“ am Beispiel der numerischen Literale.
 7. Was sind Escape-Sequenzen?
-8. Beschreiben Sie die Konvertierungsregeln in Java bzgl. Erweiternder und einschränkender Konvertierungen für einfache Datentypen!
+8. Beschreiben Sie die Konvertierungsregeln in Java bzgl. erweiternder und einschränkender Konvertierungen für einfache Datentypen.
 9. Was ist ein Array und wie ist dieses aufgebaut?
-10. Welche Aufgabe erfüllt das Attribut length bei einem Array?
+10. Welche Aufgabe erfüllt das Attribut `length` bei einem Array?
 11. Worin unterscheidet sich die Deklaration eines Arrays von der Deklaration einer einfachen Variablen?
 12. Was sind Referenzdatentypen?
 
 ---
+
+### 3.2 Übung
+
+Deklarieren und initialisieren Sie die folgenden Variablen in Java:
+
+```java
+public class DataTypesDemo {
+    public static void main(String[] args) {
+        // Declare and initialize primitive data types
+        int age = 25;
+        double price = 19.99;
+        boolean isAvailable = true;
+        char grade = 'A';
+
+        // Declare and initialize a reference data type (array)
+        int[] numbers = {1, 2, 3, 4, 5};
+
+        // Output values to console
+        System.out.println("Alter: " + age);
+        System.out.println("Preis: " + price);
+        System.out.println("Verfügbar: " + isAvailable);
+        System.out.println("Note: " + grade);
+        System.out.println("Zahlen: " + numbers.length + " Elemente");
+    }
+}
+```
+
+- Erklären Sie die Bedeutung und Verwendung der einzelnen Datentypen.
+- Ändern Sie die Array-Werte und geben Sie die Werte der Indizes 0, 1 und 3 mit Hilfe von ```System.println()``` nacheinander aus.
+
+---
+
 # Kapitel 4
 # Ausdrücke und Anweisungen
 ## Kontrollfragen & Übungen
