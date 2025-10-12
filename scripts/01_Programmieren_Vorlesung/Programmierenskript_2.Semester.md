@@ -9,6 +9,12 @@ center: false
 # Programmieren II
 ### Matthias Berg-Neels
 
+> [zum Skript: https://matthiasbergneels.github.io/md-scripts/](https://matthiasbergneels.github.io/md-scripts/)
+
+<div align="center">
+<img src="img/00_00_skripturl.png" height=20% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
 > [Download Skript](../pdfdownloads/ProgrammierenSkript_2Semester.pdf)
 
 ----
