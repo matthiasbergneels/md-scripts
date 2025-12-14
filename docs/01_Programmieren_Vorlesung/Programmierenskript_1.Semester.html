@@ -2319,26 +2319,46 @@ class AutoTest {
 * Sie können Objekte kopieren
 
 ---
-## Eigenschaften von Interfaces
+## Grundlagen: Interfaces
+
+----
+### Eigenschaften von Interfaces
 <div>
 
 * Interfaces stellen eine besondere Form der Klassen dar
 * sie definieren lediglich den Aufbau der Schnittstelle
-  * Name von Methoden
-  * Signaturen der Methoden
-  * Attribute
-* Interfaces sollen keine eigene Funktionalität beinhalten (Standard-Implementierungen seit Java 8 möglich)
+  * Name & Signaturen der Methoden
+  * konstante Attribute (***MÜSSEN*** im Interface mit einem Wert initialisiert werden)
+* Interfaces beinhalten keine eigene Funktionalität (Standard-Implementierungen seit Java 8 möglich)
 * die Funktionalität wird in Klassen implementiert, die das Interface nutzen wollen
-* sie beinhalten ausschließlich abstrakte, öffentliche Methoden
-* alle Attribute sind als Konstanten festgelegt
-* Deklaration von Interfaces mit dem Schlüsselwort interface
+* sie beinhalten ausschließlich abstrakte, öffentliche Methoden (```public abstract```)
+* alle Attribute sind als öffentliche, statische Konstanten festgelegt (```public static final```)
+* Deklaration von Interfaces mit dem Schlüsselwort ```interface```
 * Interfaces können von anderen Interfaces mit extends abgeleitet (vererbt) werden
 * Interfaces können genau wie Klassen als Datentyp für Referenzvariablen genutzt werden
+* Häufig genutzte Namenskonvention ```<Verb>able```
+  * Beispiel: ```Bookable```, ```Compareable```, ```Serializable```, ```Cloneable```, ...
 
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ----
-### Implementierung von Interfaces
+### Beispiel Interface ```Bookable```
+
+```Java
+public interface Bookable {
+
+  // implicit: public static final
+  int MAX_BOOKING_COUNT = 20;
+
+  // implicit: public abstract
+  int freeSlots();
+  boolean book(int slots);
+
+}
+```
+
+----
+### Implementierung von Interfaces in Klassen
 
 <div>
 
@@ -2346,25 +2366,25 @@ class AutoTest {
 * dies erfolgt durch den Zusatz implements zur class-Anweisung z.B.
 
 ```Java
-class xyz implements abc { }
+class Xyz implements Aable { }
 ```
 
 * die Klasse muss alle Methoden des Interfaces implementieren oder als abstrakte Klasse deklariert werden
 * Klassen können im Gegensatz zur Vererbung mehrere Interfaces implementieren z.B.
 
 ```Java
-class xyz implements abc, def { }
+class Xyz implements Aable, Bable { }
 ```
 
 * durch die Implementierung mehrerer Interfaces wird eine Art von Mehrfachvererbung realisiert
-* Objekte einer Klasse sind zu allen Interface-Datentypen kompatibel, sobald die Klasse das Interface implementiert z.B. alle Objekte der Klasse xyz könnten in Referenzvariablen vom Typ abc oder def gespeichert werden
+* Objekte einer Klasse sind zu allen Interface-Datentypen kompatibel, sobald die Klasse das Interface implementiert z.B. alle Objekte der Klasse Xyz könnten in Referenzvariablen vom Typ ```Aable``` oder ```Bable``` gespeichert werden
 </div><!-- .element style="font-size: 0.8em;" -->
 
----
-## Darstellung in UML
+----
+### Darstellung von Interfaces in UML
 
 <div align="center">
-<img src="img/07interfaces_01tiere.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+<img src="img/07interfaces_03Bookable.png" width=100% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 </div>
 
 ---
@@ -2377,27 +2397,191 @@ class xyz implements abc, def { }
   * Polymorphie durch Interfaces: Objekte der implementierenden Klasse werden in Referenzvariablen vom Typ des implementierten Interfaces gespeichert
 * Beispiel:
 
-<img src="img/07interfaces_02polymorphie.png" width=25% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+```Java
+void main(){
 
-</div><!-- .element style="font-size: 0.7em;" -->
-----
-### Beispiel Quellcode
+  Bookable[] travelAgencyBooking = new Bookable[2];
+
+  travelAgencyBooking[0] = new Hotel(150);      //Narrowing Cast		
+  travelAgencyBooking[1] = new Airplane(245);   //Narrowing Cast
+
+  for(Bookable currentBookingEntity : travelAgencyBooking){
+    currentBookingEntity.book(10);
+    IO.println("Verbleibende freie Plätze: " + currentBookingEntity.freeSlots());
+  }
+
+}
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+---
+## ```default```-Implementierung von Methoden in Interfaces
+
+<div>
+
+* seit Java 8 sind Implementierungen von Methoden in Interfaces erlaubt
+* Schlüsselwort zum Implementierung um ```abstract``` aufzuheben ist ```default```
+* ***ACHTUNG***: implementierte Methoden in Interfaces widerspricht dem Sinn des Interface Konzept
+  * Innerhalb eines Interfaces besteht kein Zugriff auf Instanz-Attribute bzw. Instanz-Methoden welche die nicht im Interface definiert wurden --> sinnvolle Implemntierungen für Methoden sind sehr eingeschränkt
+* Nutzen der ```default```-Implementierung:
+  * Abwärtskompatibilität: Nutzer des Interfaces werden durch die ```default```-Implementierung nicht sofort zur Anpassung an die Änderungen gezwungen --> Dummy-Implementierung ohne richtige Funktionalität
+  * Unter der Voraussetzung, dass die ```default```-Implementierung sich nur auf bekannte Methoden aus dem Interface oder anderen bekannten Funktionalitäten aus den Projektressourcen bezieht kann eine sinnvolle Implementierung möglich sein - Beispiel: Filtern von Ergebnissen aus einer anderen Interface-Methode
 
 ```Java
-package prog1.demos.objekt;
-class AutoTest {
-  public static void main(String[] args) {
+public interface Bookable {
 
-    Tier[] x = new Tier[2];
+  int MAX_BOOKABLE_SLOTS = 20;
 
-    x[0] = new Hund();    //Narrowing Cast		
-    x[1] = new Vogel();   //Narrowing Cast
+  int freeSlots();
+  boolean book(int slots);
 
-    x[0].atmen();
-    x[1].atmen();
+  default boolean reserve(int slots){
+    return false;
   }
 }
 ```
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+----
+## ```default```-Implementierung am Beispiel
+
+<div>
+
+* ```Hotel```, ```Àirplane```, ```Bus``` und ```Opera``` implementieren ```Bookable```
+* die Klassen müssen die Methode nicht selbst implementieren, das die ```default```-Implementierung weitergegeben wird (siehe zur Vererbung)
+* die Klassen können die neue Methode mit spezifischer Funktionalität überschreiben
+* die ```default```-Implementierung im Interface ist inversiv für Klassen die diese Methode noch nicht überschrieben haben (Im Beispiel: ```return false;``` gibt immer an, dass Nichts reserviert werden konnte)
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+<div align="center">
+<img src="img/07interfaces_05BookableWithDefault.png" width=80% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
+----
+### Namenskonflikte durch ```default```-Implementierungen
+
+<div>
+
+* durch die ```default```-Implementierung können Implementierungskonflikte in Klassen auftreten
+* eine Klasse implementiert mehrere Interfaces die identische ```default```-Methoden implementiert haben
+  * die Klasse ***MUSS*** die betreffende Methode überschreiben
+* Namenskonflikte bei Konstanten
+  * auf die Konstante kann nur über das jeweilige Interface zugegriffen werden
+  * greift man über die implementierende Klasse oder ein Objekt der Klasse auf die Konstante zu gibt es einen Syntaxfehler
+  * Namenskonflikte bei Konstanten können durch eine erneute Deklaration in der Klasse aufgelöst werden
+
+```Java
+// ********************************************** Aable-Interface
+public interface Aable {
+  String STUPID_CONSTANT = "Very Stupid";
+
+  default void printStupidThings(){
+    IO.println("Aable stupid stuff: " + STUPID_CONSTANT);
+  }
+}
+// ********************************************** Bable-Interface
+public interface Bable {
+  String STUPID_CONSTANT = "Very very Stupid";
+
+  default void printStupidThings(){
+    IO.println("Bable stupid stuff: " + STUPID_CONSTANT);
+  }
+}
+// ********************************************** Implementing Class
+public class ConflictingClass implements Aable, Bable{
+
+  public static void main(String[] args) {
+    ConflictingClass conflictingClass = new ConflictingClass();
+
+    IO.println("Aable Konstante: " + Aable.STUPID_CONSTANT);
+    IO.println("Bable Konstante: " + Bable.STUPID_CONSTANT);
+    //IO.println("ConflictingClass Konstante: " + conflictingClass.STUPID_CONSTANT); --> Syntax Error because of naming conflict
+
+    conflictingClass.printStupidThings();
+  }
+
+  // Must be implemented to resolve default method conflict between Aable and Bable
+  @Override
+  public void printStupidThings() {
+    Aable.super.printStupidThings();
+    Bable.super.printStupidThings();
+  }
+}
+
+```
+
+</div><!-- .element style="font-size: 0.6em;" -->
+
+
+---
+## Vererbung von Interfaces
+
+* Interfaces können, wie Klassen, durch ```extends``` von einander Erben
+* das Sub-Interface bekommt alle Konstanten und Methoden aus dem Super-Interface vererbt
+* das Sub-Interace kann erweitert (spezialisiert) werden
+  * zusätzliche Konstanten
+  * zusätzliche abstrakte Methoden
+* Klassen, die das Sub-Interface implementieren, entsprechen auf immer dem Super-Interface
+* ***Anmerkung***: Bessere Variante zum Erweitern von Interfaces ohne inkompatible Änderungen zu verursachen
+
+```Java
+
+public interface PriorityBookable extends Bookable {
+
+  byte PRIORITY_LEVEL_1 = 1;
+  byte PRIORITY_LEVEL_2 = 2;
+  byte PRIORITY_LEVEL_3 = 3;
+
+  boolean priorityBooking(int slots);
+
+}
+
+```
+
+----
+### Darstellung der Vererbung von Interfaces in UML
+
+<div align="center">
+<img src="img/07interfaces_04BookableWithInheritance.png" width=80% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
+</div>
+
+
+----
+## Polymorphie & Widening-Cast mit Interfaces
+<div>
+
+* Objekte können entsprechend der Vererbungshirarchie der Interfaces auch gecastet werden
+* der Cast eines konkreten Objektes zu einer Interface Referenz ist immer ein narrowing Cast (Sichtbarkeit auf das tatsächliche Objekt wird eingeschränkt)
+* wird aus einer Interfacereferenz in eine Referenz einer konkreten Klasse oder in eine Referenz eines Subinterfaces gecastet handelt es sich um einen widening Cast (Sichtbarkeit auf das tatsächliche Objekt wird erweitert)
+* der widening Cast ist unsicher und sollte abgesichert werden (zum Beispiel über ```instanceof```)
+* Beispiel:
+
+```Java
+void main(){
+
+  Bookable[] travelAgencyBooking = new Bookable[2];
+
+  travelAgencyBooking[0] = new Hotel(150);      //Narrowing Cast		
+  travelAgencyBooking[1] = new Airplane(245);   //Narrowing Cast
+
+  for(Bookable currentBookingEntity : travelAgencyBooking){
+    boolean successullBooking = currentBookingEntity.book(10);
+    // instanceof-Check and widening cast
+    if(!successfullBooking && currentBookingEntity instanceof PriorityBookable currentPriorityBookingEntity){
+      currentPriorityBookingEntity.priorityBook(10);
+    }
+    IO.println("Verbleibende freie Plätze: " + currentBookingEntity.freeSlots());
+  }
+}
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+
+
 
 ---
 ## Exkurs: kopieren von Objekten (!)
