@@ -1,5 +1,5 @@
 ---
-title: Java 9 - 16
+title: Java 9 - 17 (to 25 in progress)
 theme: simple
 center: false
 data-separator-notes: '^Note:'
@@ -19,8 +19,8 @@ data-separator-notes: '^Note:'
   }
 </style>
 
-# Java 9 - 16
-## What happened the last 7 years
+# Java 9 - 17 (to 25 in progress)
+## What happened the last ~11 years
 ### Matthias
 
 ----
@@ -445,3 +445,9 @@ switch(currentAnimal){
 ### UTF-8 by default (in Java APIs) [JEP400](https://openjdk.org/jeps/400)
 ### Simple WebServer for testing [JEP408](https://openjdk.org/jeps/408)
 ### Code snippets in JavaDoc [JEP413](https://openjdk.org/jeps/413)
+
+
+---
+# UP TO YOU 🫵
+
+> Whats your favorit new Java feature?
