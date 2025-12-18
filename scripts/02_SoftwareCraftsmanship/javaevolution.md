@@ -147,10 +147,11 @@ var myName = "Volker"
 * ```repeat()```, ```isBlank()```, ```strip()```, ```lines()```
 
 ```Java
-"".isBlank();                           // -> true
+"".isBlank(); // -> true
 "Each\nline\ncounts".lines().toList();  // -> Stream of lines
-"   we messed ist up  ".strip();        // -> "we messed it up"
-"Hello".repeat(3)                       // -> "HelloHelloHello"
+"   we messed ist up  ".strip();  // -> "we messed it up"
+"Hello".repeat(3) // -> "HelloHelloHello"
+
 ```
 
 ## ```var``` supported by lambda parameters
@@ -163,6 +164,7 @@ var myName = "Volker"
 ## HTTPClient (Preview >= 9)
 
 <div>
+
 ```Java
 import java.io.IOException;
 import java.net.http.HttpClient;
@@ -233,8 +235,8 @@ public class HttpClientExample {
 ```Java
 int numLetters = switch (day) {
     case MONDAY, FRIDAY, SUNDAY -> 6;
-    case TUESDAY                -> 7;
-    default      -> {
+    case TUESDAY -> 7;
+    default -> {
       String s = day.toString();
       int result = s.length();
       yield result;
@@ -251,6 +253,7 @@ int numLetters = switch (day) {
 ## Helpfull NullPointerException message
 
 <div>
+
 ```Java
 public class NullPointerExample {
 
@@ -279,10 +282,8 @@ public class NullPointerExample {
     }
 }
 ```
-</div><!-- .element style="font-size: 0.4em;" -->
 
 * old
-<div>
 ```
 NullPointer Exception message:
 java.lang.NullPointerException: null
@@ -290,10 +291,8 @@ java.lang.NullPointerException: null
 java.lang.NullPointerException: null
   	at de.mubn.java15.NullPointerExample.main(NullPointerExample.java:20)
 ```
-</div><!-- .element style="font-size: 0.8em;" -->
 
 * new
-<div>
 ```
 NullPointer Exception message:
 java.lang.NullPointerException: Cannot read field "myName" because "myClass" is null
@@ -301,15 +300,14 @@ java.lang.NullPointerException: Cannot read field "myName" because "myClass" is 
 java.lang.NullPointerException: Cannot invoke "String.length()" because "myClass.myName" is null
   	at de.mubn.java15.NullPointerExample.main(NullPointerExample.java:20)
 ```
-</div><!-- .element style="font-size: 0.8em;" -->
+</div><!-- .element style="font-size: 0.6em;" -->
 
 ----
 ## Text Blocks (Preview: 13, 14)
 
+<div>
 
 * old
-
-<div>
 ```Java
 String html = "<html>\n" +
               " <body>\n" +
@@ -317,19 +315,15 @@ String html = "<html>\n" +
               " </body>\n" +
               "</html>";
 ```
-</div><!-- .element style="font-size: 0.9em;" -->
-
 * new
-
-<div>
 ```Java
 String html = """
-            <html>
-              <body>
-                <p>Hello, world</p>
-              </body>
-            </html>
-            """;
+<html>
+  <body>
+    <p>Hello, world</p>
+  </body>
+</html>
+""";
 ```
 </div><!-- .element style="font-size: 0.9em;" -->
 
@@ -359,16 +353,95 @@ record Point(int x, int y){ }
 
 Point myPoint = new Point(10, 15);
 
-myPoint.x();                  // -> 10
+myPoint.x();  // -> 10
 System.out.println(myPoint);  // -> "Point[x=10, y=15]"
 
 ```
 
+
+---
+# Java 17
+
+> [OpenJDK 17](https://openjdk.java.net/projects/jdk/17/)
+
 ----
-## Sealed Classes (still PREVIEW)
+## Sealed Classes (PREVIEW 16)
+
+* Control over inheritance - only explicitly permitted sub-classes 
+* permitted sub-classes must exist
+* permitted sub-classes must decide to seal again (```sealed```), be ```final``` or open again with open up (```non-sealed```)
 
 ```Java
-public abstract sealed class Shape permits Circle, Rectangle, Square {
+public abstract sealed class Animal permits Dog, Bird, Fish {
   // ...
 }
+
+public final class Dog extends Animal {
+  // ...
+}
+
+public non-sealed class Bird extends Animal {
+  // ...
+}
+
+public sealed class Fish extends Animal permits SaltWaterFish {
+  // ...
+}
+
+public final class SaltWaterFish extends Fish {
+  // ...
+}
+
 ```
+
+----
+## Sealed Interfaces (PREVIEW 16)
+
+* Control over implementation - only explicitly permitted classes can implement
+* permitted classes must exist
+* permitted classes must decide to seal again (```sealed```), be ```final``` or open again with open up (```non-sealed```)
+
+```Java
+sealed interface Payable permits Revolut, Wero, Paypal {
+  // ...
+}
+
+public final class Revolut implements Payable {
+    // ...
+}
+
+public non-sealed class Paypal implements Payable {
+    // ...
+}
+
+public sealed class Wero implements Payable permits WeroLight {
+      // ...
+}
+
+public final class WeroLight extends WeroLight {
+      // ...
+}
+
+```
+
+----
+## Switch-Case with pattern Matching
+
+```Java
+
+switch(currentAnimal){
+  case Dog currentDog -> currentDog.bark();
+  case Bird currentBird -> currentBird.tweet();
+  case Fish currentFish -> currentFish.bubble();
+}
+
+```
+
+---
+# Java 18
+
+> [OpenJDK 18](https://openjdk.org/projects/jdk/18/)
+
+### UTF-8 by default (in Java APIs) [JEP400](https://openjdk.org/jeps/400)
+### Simple WebServer for testing [JEP408](https://openjdk.org/jeps/408)
+### Code snippets in JavaDoc [JEP413](https://openjdk.org/jeps/413)
