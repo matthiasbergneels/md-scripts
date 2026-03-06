@@ -1061,31 +1061,301 @@ Stream (```java.io```)
 
 * Lösungsschablonen für wiederkehrende Probleme im Software-Entwurf
 * zur Verbesserung der Softwarearchitektur, Strukturierung des Code und bessere Lesbarkeit
-* verschiedene Arten: Erzeugungs-, Struktur- und Verhaltensmuster
 * stellen keine starren Regeln, sondern flexible Richtlinien, die an die jeweilige Situation angepasst werden können
+* geprägt durch die **Gang of Four (GoF)** – Buch: *Design Patterns* (Gamma et al., 1994)
+
+----
+## Übersicht: Kategorien von Entwurfsmustern
+
+| Kategorie | Zweck | Beispiele |
+|---|---|---|
+| **Erzeugungs-Muster** (Creational) | Objekterzeugung flexibel gestalten | Singleton, Factory Method, Builder |
+| **Struktur-Muster** (Structural) | Beziehungen zwischen Klassen/Objekten strukturieren | Facade, Adapter, Composite |
+| **Verhaltens-Muster** (Behavioral) | Kommunikation und Verantwortlichkeiten zwischen Objekten | Strategy, Observer, Command |
 
 ----
 ## Erzeugungs-Muster (Creational Patterns)
 
-* Erzeugung von Objekten
-* entkoppeln die Konstruktion eines Objekts von seiner Repräsentation
-* ermöglichen z.B. eine flexible Auswahl der konkreten Klassen zur Laufzeit
-* Beispiele: factory method, Factory, Singleton, Builder
+* steuern die **Erzeugung von Objekten**
+* entkoppeln die Konstruktion eines Objekts von seiner konkreten Klasse
+* ermöglichen flexible Auswahl der Implementierung zur Laufzeit
+* Beispiele: **Singleton**, **Factory Method**, **Builder**
+
+----
+## Creational Pattern: Singleton
+
+> Stellt sicher, dass von einer Klasse **genau eine Instanz** existiert und bietet einen globalen Zugriffspunkt darauf.
+
+<div style="font-size: 0.75em;">
+
+```Java
+public class DatabaseConnection {
+
+    private static DatabaseConnection instance;
+
+    private DatabaseConnection() {
+        // privater Konstruktor verhindert direkte Instanziierung
+    }
+
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+        }
+        return instance;
+    }
+
+    public void query(String sql) { /* ... */ }
+}
+
+// Verwendung:
+DatabaseConnection db = DatabaseConnection.getInstance();
+```
+
+</div>
+
+----
+## Creational Pattern: Factory Method
+
+> Definiert eine Schnittstelle zur Objekterzeugung, überlässt aber **Subklassen** die Entscheidung, welche Klasse instanziiert wird.
+
+<div style="font-size: 0.75em;">
+
+```Java
+public interface Notification {
+    void send(String message);
+}
+
+public class EmailNotification implements Notification {
+    public void send(String message) { System.out.println("E-Mail: " + message); }
+}
+
+public class SmsNotification implements Notification {
+    public void send(String message) { System.out.println("SMS: " + message); }
+}
+
+public class NotificationFactory {
+    public static Notification create(String type) {
+        return switch (type) {
+            case "email" -> new EmailNotification();
+            case "sms"   -> new SmsNotification();
+            default      -> throw new IllegalArgumentException("Unbekannter Typ: " + type);
+        };
+    }
+}
+
+// Verwendung:
+Notification n = NotificationFactory.create("email");
+n.send("Willkommen!");
+```
+
+</div>
+
+----
+## Creational Pattern: Builder
+
+> Trennt die **schrittweise Konstruktion** eines komplexen Objekts von seiner Repräsentation.
+
+<div style="font-size: 0.75em;">
+
+```Java
+public class Pizza {
+    private final String size;
+    private final boolean cheese;
+    private final boolean pepperoni;
+
+    private Pizza(Builder builder) {
+        this.size      = builder.size;
+        this.cheese    = builder.cheese;
+        this.pepperoni = builder.pepperoni;
+    }
+
+    public static class Builder {
+        private final String size;
+        private boolean cheese    = false;
+        private boolean pepperoni = false;
+
+        public Builder(String size)       { this.size = size; }
+        public Builder cheese()           { this.cheese = true; return this; }
+        public Builder pepperoni()        { this.pepperoni = true; return this; }
+        public Pizza build()              { return new Pizza(this); }
+    }
+}
+
+// Verwendung:
+Pizza pizza = new Pizza.Builder("Large").cheese().pepperoni().build();
+```
+
+</div>
 
 ----
 ## Struktur-Muster (Structural Patterns)
 
-* erleichtern den Software Entwurf und die Strukturierung durch herstellen von Beziehungen zwischen Entitäten
-* nutzen Abstraktion um komplexe, kombinierte Objekte zu erzeugen und die einzelnen Bestandteile und Strukturen flexibel zu halten
-* Beispiele: Facade (Einfache Schnittstelle für komplexe Objekte), Adapter (Verbinden von inkompatiblen Schnittstellen) Kompositum, das eine Hierarchie von Objekten bildet, die als Einheit behandelt werden können
+* beschreiben, wie Klassen und Objekte zu größeren Strukturen **zusammengesetzt** werden
+* nutzen Abstraktion, um komplexe Strukturen flexibel und erweiterbar zu halten
+* ermöglichen die Wiederverwendung von Klassen mit inkompatiblen Schnittstellen
+* Beispiele: **Facade**, **Adapter**, **Composite**
 
+----
+## Structural Pattern: Facade
+
+> Bietet eine **vereinfachte Schnittstelle** zu einem komplexen Subsystem.
+
+<div style="font-size: 0.75em;">
+
+```Java
+// Komplexes Subsystem
+class CpuSubsystem    { void start() { System.out.println("CPU gestartet"); } }
+class MemorySubsystem { void load()  { System.out.println("Speicher geladen"); } }
+class DiskSubsystem   { void read()  { System.out.println("Disk gelesen"); } }
+
+// Facade: einfache Schnittstelle nach außen
+public class ComputerFacade {
+    private final CpuSubsystem    cpu    = new CpuSubsystem();
+    private final MemorySubsystem memory = new MemorySubsystem();
+    private final DiskSubsystem   disk   = new DiskSubsystem();
+
+    public void startComputer() {
+        cpu.start();
+        memory.load();
+        disk.read();
+        System.out.println("Computer gestartet!");
+    }
+}
+
+// Verwendung:
+ComputerFacade computer = new ComputerFacade();
+computer.startComputer();  // Details des Subsystems verborgen
+```
+
+</div>
+
+----
+## Structural Pattern: Adapter
+
+> Passt die **Schnittstelle einer Klasse** an eine andere, vom Client erwartete Schnittstelle an.
+
+<div style="font-size: 0.75em;">
+
+```Java
+// Vorhandene, inkompatible Klasse (z.B. Drittanbieter)
+public class EuroSocket {
+    public void plugIn220V() { System.out.println("220V Strom"); }
+}
+
+// Zielschnittstelle, die der Client erwartet
+public interface UsbCharger {
+    void charge();
+}
+
+// Adapter: verbindet EuroSocket mit UsbCharger
+public class SocketAdapter implements UsbCharger {
+    private final EuroSocket socket;
+
+    public SocketAdapter(EuroSocket socket) { this.socket = socket; }
+
+    @Override
+    public void charge() {
+        socket.plugIn220V();      // ruft inkompatible Methode intern auf
+        System.out.println("-> Konvertiert zu USB");
+    }
+}
+
+// Verwendung:
+UsbCharger charger = new SocketAdapter(new EuroSocket());
+charger.charge();
+```
+
+</div>
 
 ----
 ## Verhaltens-Muster (Behavioral Patterns)
 
-* beschreiben die Kommunikation und Zusammenarbeit zwischen Objekten zur Laufzeit
+* beschreiben die **Kommunikation und Zusammenarbeit** zwischen Objekten zur Laufzeit
 * legen fest, wie Verantwortlichkeiten zwischen Objekten verteilt werden
-* Beispiele: Strategy (austauschbare Algorithmen hinter einer gemeinsamen Schnittstelle), Observer (Benachrichtigung abhängiger Objekte bei Zustandsänderung), Command (Kapselung einer Anfrage als Objekt), Iterator (sequenzieller Zugriff auf Elemente einer Sammlung)
+* erhöhen die Flexibilität bei der Ausführung von Algorithmen und der Reaktion auf Ereignisse
+* Beispiele: **Strategy**, **Observer**, **Command**
+
+----
+## Behavioral Pattern: Strategy
+
+> Definiert eine Familie von Algorithmen, kapselt sie und macht sie **austauschbar** – ohne den nutzenden Code zu ändern.
+
+<div style="font-size: 0.75em;">
+
+```Java
+// Strategy-Interface
+public interface SortStrategy {
+    void sort(int[] data);
+}
+
+// Konkrete Strategien
+public class BubbleSort implements SortStrategy {
+    public void sort(int[] data) { System.out.println("BubbleSort ausgeführt"); }
+}
+
+public class QuickSort implements SortStrategy {
+    public void sort(int[] data) { System.out.println("QuickSort ausgeführt"); }
+}
+
+// Context: nutzt eine Strategy
+public class Sorter {
+    private SortStrategy strategy;
+
+    public Sorter(SortStrategy strategy) { this.strategy = strategy; }
+
+    public void setStrategy(SortStrategy strategy) { this.strategy = strategy; }
+
+    public void sort(int[] data) { strategy.sort(data); }
+}
+
+// Verwendung:
+Sorter sorter = new Sorter(new BubbleSort());
+sorter.sort(new int[]{3, 1, 2});
+sorter.setStrategy(new QuickSort());  // Strategie zur Laufzeit wechseln
+sorter.sort(new int[]{3, 1, 2});
+```
+
+</div>
+
+----
+## Behavioral Pattern: Observer
+
+> Definiert eine **1-zu-n Abhängigkeit**: bei Zustandsänderung eines Objekts werden alle abhängigen Objekte automatisch benachrichtigt.
+
+<div style="font-size: 0.75em;">
+
+```Java
+import java.util.ArrayList;
+import java.util.List;
+
+public interface Observer {
+    void update(String event);
+}
+
+public class EventSystem {
+    private final List<Observer> observers = new ArrayList<>();
+
+    public void subscribe(Observer o)   { observers.add(o); }
+    public void unsubscribe(Observer o) { observers.remove(o); }
+
+    public void notifyObservers(String event) {
+        for (Observer o : observers) {
+            o.update(event);
+        }
+    }
+}
+
+// Verwendung:
+EventSystem events = new EventSystem();
+events.subscribe(e -> System.out.println("Logger: " + e));
+events.subscribe(e -> System.out.println("UI-Update: " + e));
+
+events.notifyObservers("Datei gespeichert");
+// Logger: Datei gespeichert
+// UI-Update: Datei gespeichert
+```
+
+</div>
 
 ---
 # Optionals
