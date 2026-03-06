@@ -473,6 +473,115 @@ java -jar MyApp.jar
 
 ----
 
+## IntelliJ IDEA als Build-Umgebung
+
+> IntelliJ IDEA ist eine **Integrated Development Environment (IDE)** von JetBrains. Sie übernimmt intern den Build-Prozess und verbirgt die Komplexität von `javac` und `jar` hinter einer grafischen Oberfläche.
+
+**Was IntelliJ automatisch erledigt:**
+- Kompiliert den Code im Hintergrund bei jeder Änderung (**Auto-Build**)
+- Verwaltet den Classpath (welche Klassen / Bibliotheken verfügbar sind)
+- Zeigt Fehler sofort im Editor an – noch vor dem eigentlichen Build
+- Führt Programme mit einem Klick oder Tastenkürzel aus (`Shift + F10`)
+
+----
+
+## IntelliJ – Projektstruktur
+
+<div>
+
+IntelliJ verwaltet Projekte über eine eigene Konfiguration (`.idea/`-Ordner + `.iml`-Dateien):
+
+```
+mein-projekt/
+├── .idea/                  ← IntelliJ-Projektkonfiguration (nicht ins Git!)
+│   ├── workspace.xml
+│   └── modules.xml
+├── mein-projekt.iml        ← Modul-Konfiguration (Quellordner, Dependencies)
+└── src/
+    └── de/mbn/myapp/
+        └── MyApp.java
+```
+
+**Wichtige Einstellungen in IntelliJ:**
+- `File → Project Structure` (Strg+Alt+Shift+S): SDK, Quellordner, Ausgabeordner
+- **Source Root**: Ordner, der als Ausgangspunkt für Packages gilt (blau markiert)
+- **Output path**: Wohin `.class`-Dateien kompiliert werden (Standard: `out/`)
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+----
+
+## IntelliJ – Build & Run
+
+<div>
+
+**Bauen:**
+
+| Aktion | Menü | Tastenkürzel |
+|:-------|:-----|:-------------|
+| Projekt bauen | `Build → Build Project` | `Strg + F9` |
+| Einzelne Datei bauen | `Build → Recompile` | `Strg + Shift + F9` |
+| Artefakt (JAR) erzeugen | `Build → Build Artifacts` | – |
+
+**Ausführen:**
+
+| Aktion | Menü | Tastenkürzel |
+|:-------|:-----|:-------------|
+| Programm starten | `Run → Run` | `Shift + F10` |
+| Debugger starten | `Run → Debug` | `Shift + F9` |
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+> IntelliJ kompiliert automatisch, bevor ein Programm ausgeführt wird!
+
+----
+
+## IntelliJ – JAR-Datei erzeugen
+
+<div>
+
+IntelliJ kann JAR-Dateien über sogenannte **Artefakte** erzeugen:
+
+1. `File → Project Structure → Artifacts → + → JAR → From modules with dependencies`
+2. Hauptklasse (`Main Class`) auswählen
+3. `Build → Build Artifacts → Build`
+4. JAR liegt im konfigurierten Ausgabeordner (z.B. `out/artifacts/`)
+
+```
+out/artifacts/mein-projekt_jar/
+└── mein-projekt.jar
+```
+
+5. Ausführen:
+```bash
+java -jar out/artifacts/mein-projekt_jar/mein-projekt.jar
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
+
+## IntelliJ – Grenzen & Einordnung
+
+<div>
+
+**IntelliJ eignet sich gut für:**
+- Einzelne Entwickler / kleine Projekte
+- Schnelles Ausprobieren und Lernen
+- Einfache Projekte ohne viele externe Bibliotheken
+
+**Nachteile gegenüber dedizierten Build-Tools (Maven, Gradle):**
+- Build ist **nicht reproduzierbar** ohne IntelliJ (andere Entwickler, Server, CI/CD)
+- Kein standardisiertes **Dependency Management** (Bibliotheken müssen manuell als JAR heruntergeladen werden)
+- **Keine Kommandozeilen-Automatisierung** möglich
+- Projektkonfiguration ist IDE-spezifisch → nicht portabel
+
+> In professionellen Projekten ersetzt IntelliJ **keine** Build-Tools – es integriert sie! IntelliJ hat eingebaute Unterstützung für Maven und Gradle und delegiert den eigentlichen Build an diese.
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+----
+
 ## Warum Build-Tools?
 
 **Probleme ohne Build-Tool:**
