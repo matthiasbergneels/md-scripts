@@ -2050,19 +2050,19 @@ Schreiben in Dateien
 ```Java
 import java.io.*;
 
-public class LesenAusDatei {
+public class ReadFromFile {
   public static void main(String[] args) {
-    File datei = new File(System.getProperty("user.dir") + "\\DemoLesen.txt");
+    File file = new File(System.getProperty("user.dir") + "\\DemoLesen.txt");
 
     String text = new String();
 
     try {
-      FileReader leser = new FileReader(datei);
-      BufferedReader lesePuffer = new BufferedReader(leser);
+      FileReader reader = new FileReader(file);
+      BufferedReader readBuffer = new BufferedReader(reader);
 
       String line;
 
-      while ((line = lesePuffer.readLine()) != null) {
+      while ((line = readBuffer.readLine()) != null) {
         System.out.println(line);
       }
 
@@ -2085,20 +2085,20 @@ public class LesenAusDatei {
 ```Java
 import java.io.*;
 
-public class SchreibenInDatei {
+public class WriteToFile {
   public static void main(String[] args) {
-    File datei = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
-    FileWriter schreiber = null;
+    File file = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
+    FileWriter writer = null;
 
     try {
-      schreiber = new FileWriter(datei);
-      datei.createNewFile();
-      schreiber.write("Dies ist eine Schreibdemo.");
-      schreiber.write("Es werden mehrere Zeilen geschrieben.");
+      writer = new FileWriter(file);
+      file.createNewFile();
+      writer.write("This is a write demo.");
+      writer.write("Multiple lines are being written.");
     } catch (IOException e) { e.printStackTrace();
     } finally {
       try {
-        schreiber.close();
+        writer.close();
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -2119,14 +2119,14 @@ public class SchreibenInDatei {
 ```Java
 import java.io.*;
 
-public class SchreibenInDatei {
+public class WriteToFile {
   public static void main(String[] args) {
-    File datei = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
+    File file = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
 
-    try (FileWriter schreiber = new FileWriter(datei)) {
-      datei.createNewFile();
-      schreiber.write("Dies ist eine Schreibdemo.");
-      schreiber.write("Es werden mehrere Zeilen geschrieben.");
+    try (FileWriter writer = new FileWriter(file)) {
+      file.createNewFile();
+      writer.write("This is a write demo.");
+      writer.write("Multiple lines are being written.");
     } catch (IOException e) {
       e.printStackTrace();
     }

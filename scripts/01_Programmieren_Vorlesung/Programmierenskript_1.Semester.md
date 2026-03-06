@@ -1159,8 +1159,8 @@ Anweisungen sind elementare Arbeitsschritte
 **die einfache if-Anweisung**
 
 ```java
-if (ausdruck)
-  anweisung;
+if (expression)
+  statement;
 ```
   * ausdruck kann aus einem relationalen Operator oder aus mehreren relationalen Operatoren bestehen, die mit logischen Operatoren verknüpft sind
   * *anweisung* wird genau dann ausgeführt, wenn ausdruck true ist
@@ -1170,10 +1170,10 @@ if (ausdruck)
 **die if-else-Anweisung**
 
 ```java
-if (ausdruck)
-  anweisung1;
+if (expression)
+  statement1;
 else
-  anweisung2;
+  statement2;
 ```
   * *anweisung1* wird ausgeführt, wenn *ausdruck* true ist
   * ist *ausdruck* false, wird *anweisung2* ausgeführt
@@ -1183,12 +1183,12 @@ else
 **die if-else if-Anweisung**
 
 ```java
-if (ausdruck1)
-  anweisung1;
-else if (ausdruck2)
-  anweisung2;
+if (expression1)
+  statement1;
+else if (expression2)
+  statement2;
 else
-  anweisung3;
+  statement3;
 ```
 
 * *anweisung1* wird ausgeführt, wenn *ausdruck1* true ist
@@ -1200,14 +1200,14 @@ else
 #### Verzweigungen mit der switch-Anweisung
 
 ```JAVA
-switch (ausdruck) {
+switch (expression) {
   case constant1:
-    anweisung1;
+    statement1;
   case constant2:
-    anweisung2;
+    statement2;
   // …
   default:
-    default_anweisung;}
+    defaultStatement;}
 ```
 
 * bietet die Möglichkeit der Mehrfachverzweigung
