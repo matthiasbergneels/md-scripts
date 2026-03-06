@@ -780,7 +780,7 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 <img src="img/03datentypen_01datentypen.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 ----
 ## Arten von Datentypen
-* bool‘sche Typen sind Wahrheitswerte: True und False
+* bool’sche Typen sind Wahrheitswerte: `true` und `false`
 
 * numerische Typen
   * Byte, Short, Integer und Long: Menge der ganzen Zahlen
@@ -1959,11 +1959,13 @@ public class Car {
 * der Garbage Collector in Java startet, wenn die Virtual Machine für neue Objekte Speicherplatz benötigt
 * explizit kann der Garbage Collector auch über den Befehl System.gc(); gestartet werden
 * der Garbage Collector ruft den Destruktor eines Objektes
-* (**Deprecated**) Destruktoren sind parameterlose Methoden mit dem Namen
+* (**Deprecated seit Java 9, entfernt in Java 18**) Destruktoren sind parameterlose Methoden mit dem Namen
 
 ```Java
 protected void finalize();
 ```
+
+> **Hinweis:** `finalize()` ist seit Java 9 deprecated und wurde in Java 18 entfernt. Moderne Alternative: `AutoCloseable` mit `try-with-resources`.
 
 </div><!-- .element style="font-size: 0.8em;" -->
 
@@ -2121,7 +2123,7 @@ private
 * stärkste Form der Kapselung, da auf die Attribute und Methoden nur innerhalb der Klasse zugegriffen werden kann
 
 **protected**
-* **nur innerhalb eines Paketes und in Subklassen (siehe Kapitel 6: Vererbung) sichtbar**
+* **innerhalb des Paketes (auch für Nicht-Subklassen) und in Subklassen (auch paketübergreifend) sichtbar (siehe Kapitel 6: Vererbung)**
 
 default
 * nur innerhalb des Paketes sichtbar
@@ -2555,7 +2557,7 @@ void main(){
 
   for(Bookable currentBookingEntity : travelAgencyBooking){
     boolean successullBooking = currentBookingEntity.book(10);
-    // instanceof-Check and downcast (narrowing reference conversion)
+    // instanceof-Check and downcast (narrowing reference conversion) - Pattern Matching seit Java 16 (Preview) / Java 17 (final)
     if(!successfullBooking && currentBookingEntity instanceof PriorityBookable currentPriorityBookingEntity){
       currentPriorityBookingEntity.priorityBook(10);
     }
