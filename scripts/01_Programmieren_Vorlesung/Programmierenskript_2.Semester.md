@@ -789,33 +789,33 @@ public class Dog extends Pet {
 ## Überschreiben von ```hashCode()```
 
 ```Java
-public class Haustier {
-  private String art;
-  private int gewicht;
+public class Pet {
+  private String species;
+  private int weight;
   //...
 
-  // Getter- und Setter-Methoden
-  public boolean equals(Object objekt) {
+  // getter and setter methods
+  public boolean equals(Object object) {
     //...
   }
 
   public int hashCode() {
-    return this.getArt().hashCode() ^ this.getGewicht();
+    return this.getSpecies().hashCode() ^ this.getWeight();
   }
 }
 ```
 
 ```Java
-public class Hund extends Haustier {
-  private String rasse;
+public class Dog extends Pet {
+  private String breed;
   //...
 
-  public boolean equals(Object objekt) {
+  public boolean equals(Object object) {
     //...
   }
 
   public int hashCode() {
-    return super.hashCode() ^ this.rasse.hashCode();
+    return super.hashCode() ^ this.breed.hashCode();
   }
 }
 ```
@@ -842,16 +842,16 @@ public class Hund extends Haustier {
 ## ```hashCode()``` – Alternative Implementierung
 
 ```Java
-public class Haustier {
-  private String art;
-  private int gewicht;
+public class Pet {
+  private String species;
+  private int weight;
 
   // ...
   public int hashCode() {
-    int hc = 17;              // beliebiger Initialwert
-    int hashMultiplier = 59;  // beliebige (kleine) Primzahl
+    int hc = 17;              // arbitrary initial value
+    int hashMultiplier = 59;  // arbitrary (small) prime number
 
-    hc = hc * hashMultiplier + ((art==null) ? 0 : art.hashCode()) + gewicht;
+    hc = hc * hashMultiplier + ((species==null) ? 0 : species.hashCode()) + weight;
     return hc;
   }
 }
@@ -914,22 +914,22 @@ import java.util.TreeMap;
 
 public class DemoMap {
   public static void main(String[] args) {
-    TreeMap paar = new TreeMap();
-    paar.put(new Integer(130),new Hund(20, "Collie"));
-    paar.put(new Integer(110),new Hund(50, "Bernhardiner"));
-    paar.put(new Integer(100),new Hund(18, "Labrador"));
-    paar.put(new Integer(120),new Hund(30, "Schäferhund"));
-    paar.put(new Integer(130),new Hund(20, "Cocker"));
+    TreeMap map = new TreeMap();
+    map.put(new Integer(130),new Dog(20, "Collie"));
+    map.put(new Integer(110),new Dog(50, "Saint Bernard"));
+    map.put(new Integer(100),new Dog(18, "Labrador"));
+    map.put(new Integer(120),new Dog(30, "German Shepherd"));
+    map.put(new Integer(130),new Dog(20, "Cocker"));
 
-    Set schluessel = paar.keySet();
-    Iterator i = schluessel.iterator();
+    Set keys = map.keySet();
+    Iterator i = keys.iterator();
     while (i.hasNext()) {
       Integer a = (Integer) i.next();
-      Hund dog = (Hund) paar.get(a);
-      System.out.println("Schlüssel: " + a + " Wert: " + dog.getRasse());
+      Dog dog = (Dog) map.get(a);
+      System.out.println("Key: " + a + " Value: " + dog.getBreed());
     }
 
-    System.out.println(paar.size());
+    System.out.println(map.size());
   }
 }
 ```
@@ -1084,16 +1084,16 @@ import javax.swing.*;
 
 public class DemoFlow {
   public static void main(String[] args) {
-    JFrame fenster = new JFrame("Flow");
-    fenster.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    JFrame window = new JFrame("Flow");
+    window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     JPanel p = new JPanel(new FlowLayout(0));
-    p.add(new JLabel("Beschreibung"));
+    p.add(new JLabel("Description"));
     p.add(new JTextField(20));
 
-    fenster.getContentPane().add(p);
-    fenster.pack();
-    fenster.setVisible(true);
+    window.getContentPane().add(p);
+    window.pack();
+    window.setVisible(true);
   }
 }
 ```
@@ -1157,20 +1157,20 @@ import javax.swing.border.Border;
 
 public class DemoLogonScreen {
   public DemoLogonScreen() { ...
-    Border rahmen1 = BorderFactory.createEtchedBorder();
-    Border rahmen2 = BorderFactory.createTitledBorder(rahmen1, "Verbindung");
-    Border rahmen3 = BorderFactory.createTitledBorder(rahmen1, "Dateien");
-    Border rahmen4 = BorderFactory.createTitledBorder(rahmen1, "Berechtigungen");
-    Border rahmen5 = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
-    linkeEingabe.setBorder(rahmen2);
-    rechteEingabe1.setBorder(rahmen3);
-    rechteEingabe2.setBorder(rahmen4);
-    mainPanel.setBorder(rahmen5);
+    Border border1 = BorderFactory.createEtchedBorder();
+    Border border2 = BorderFactory.createTitledBorder(border1, "Connection");
+    Border border3 = BorderFactory.createTitledBorder(border1, "Files");
+    Border border4 = BorderFactory.createTitledBorder(border1, "Permissions");
+    Border border5 = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
+    leftInput.setBorder(border2);
+    rightInput1.setBorder(border3);
+    rightInput2.setBorder(border4);
+    mainPanel.setBorder(border5);
     // ...
   }
 
   public static void main(String[] args) {
-    DemoLogonScreen fenster = new DemoLogonScreen();
+    DemoLogonScreen window = new DemoLogonScreen();
   }
 }
 ```
@@ -1204,13 +1204,13 @@ import javax.swing.*;
 
 public class DemoLabelGrafik {
   public static void main(String[] args) {
-    JFrame fenster = new JFrame("Bild und Label"); fenster.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); fenster.setLayout(new GridLayout(2,1));
-    JLabel text = new JLabel("Hier kommt eine Grafik:");
-    ImageIcon img = new ImageIcon("G:/BA/Vorlesungen/Programmierung/Demos Vorlesung/Eclipse.jpg"); JLabel bild = new JLabel(img);
-    fenster.getContentPane().add(text);
-    fenster.getContentPane().add(bild);
-    fenster.pack();
-    fenster.setVisible(true);
+    JFrame window = new JFrame("Image and Label"); window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); window.setLayout(new GridLayout(2,1));
+    JLabel text = new JLabel("Here comes a graphic:");
+    ImageIcon img = new ImageIcon("G:/BA/Vorlesungen/Programmierung/Demos Vorlesung/Eclipse.jpg"); JLabel image = new JLabel(img);
+    window.getContentPane().add(text);
+    window.getContentPane().add(image);
+    window.pack();
+    window.setVisible(true);
   }
 }
 
@@ -1353,28 +1353,28 @@ public class DemoJComboBox {
   // ...
   public DemoJComboBox() {
     // ...
-    ItemListener zuhoerer = new ItemListener() {
+    ItemListener listener = new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
-        JComboBox auswahl = (JComboBox)e.getSource();
-        if(auswahl.getSelectedItem().equals("sonstiges")) {
-          sonstLabel.setVisible(true);
-          sonst.setVisible(true);
+        JComboBox selection = (JComboBox)e.getSource();
+        if(selection.getSelectedItem().equals("other")) {
+          otherLabel.setVisible(true);
+          other.setVisible(true);
         } else {
-          sonstLabel.setVisible(false);
-          sonst.setVisible(false);
+          otherLabel.setVisible(false);
+          other.setVisible(false);
         }
       }
     };
 
-    Object[] werte = {"DVD", "VCD", "VHS", "SVCD", "sonstiges"};
+    Object[] values = {"DVD", "VCD", "VHS", "SVCD", "other"};
 
-    JComboBox medium = new JComboBox(werte);
-    medium.addItemListener(zuhoerer);
+    JComboBox medium = new JComboBox(values);
+    medium.addItemListener(listener);
     //...
   }
 
   public static void main(String[] args) {
-    DemoJComboBox fenster = new DemoJComboBox();
+    DemoJComboBox window = new DemoJComboBox();
   }
 }
 ```
@@ -1416,11 +1416,11 @@ import javax.swing.JButton;
 public class DemoButton {
   public DemoButton() {
     // ...
-    ActionListener zuhoerer = new ActionListener() {
+    ActionListener listener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        String ereignis = e.getActionCommand();
-        if (ereignis.equals("OK")) {
-          System.out.println("Es wurde OK gedrückt.");
+        String event = e.getActionCommand();
+        if (event.equals("OK")) {
+          System.out.println("OK was pressed.");
         } else {
           System.exit(0);
         }
@@ -1428,14 +1428,14 @@ public class DemoButton {
     };
 
     JButton ok = new JButton("OK");
-    ok.addActionListener(zuhoerer);
+    ok.addActionListener(listener);
     JButton exit = new JButton("Exit");
-    exit.addActionListener(zuhoerer);
+    exit.addActionListener(listener);
     //...
   }
 
   public static void main(String[] args) {
-    DemoButton fenster = new DemoButton(); }
+    DemoButton window = new DemoButton(); }
   }
 }
 ```
@@ -1470,12 +1470,12 @@ public class DemoJCheckBox {
   // ...
 
 
-  private ItemListener hoerer1 = new ItemListener() {
+  private ItemListener listener1 = new ItemListener() {
     public void itemStateChanged(ItemEvent e) {
       if (e.getStateChange() == ItemEvent.SELECTED) {
-        ueber.setText("Datei wird überschrieben");
+        overwrite.setText("File will be overwritten");
       } else {
-        ueber.setText("Datei wird nicht überschrieben");
+        overwrite.setText("File will not be overwritten");
       }
     }
   };
@@ -1483,13 +1483,13 @@ public class DemoJCheckBox {
 
   public DemoJCheckBox() {
     // ...
-    JCheckBox ueber = new JCheckBox("Datei wird nicht überschrieben", false);
-    ueber.addItemListener(hoerer1);
+    JCheckBox overwrite = new JCheckBox("File will not be overwritten", false);
+    overwrite.addItemListener(listener1);
     // ...
   }
 
   public static void main(String[] args) {
-    DemoJCheckBox fenster = new DemoJCheckBox(); }
+    DemoJCheckBox window = new DemoJCheckBox(); }
   }
 }
 
@@ -1526,14 +1526,14 @@ import java.awt.event.ActionListener;
 
 public class DemoRadioButton {
 
-  private ActionListener hoerer2 = new ActionListener() {
+  private ActionListener listener2 = new ActionListener() {
     public void actionPerformed(ActionEvent e) {
       if (opt1 == e.getSource()) {
-        System.out.println("Datei kann nur gelesen werden");
+        System.out.println("File can only be read");
       } else if (opt2 == e.getSource()) {
-        System.out.println("Datei kann nur geschrieben werden");
+        System.out.println("File can only be written");
       } else if (opt3 == e.getSource()) {
-        System.out.println("Datei kann gelesen und geschrieben werden");
+        System.out.println("File can be read and written");
       }
     }
   };
@@ -1541,10 +1541,10 @@ public class DemoRadioButton {
 
   public DemoRadioButton() {
     // ...
-    opt1 = new JRadioButton("Nur Lesen",true);
-    opt1.addActionListener(hoerer2);
-    opt2 = new JRadioButton("Nur Schreiben",false);
-    opt2.addActionListener(hoerer2);
+    opt1 = new JRadioButton("Read only",true);
+    opt1.addActionListener(listener2);
+    opt2 = new JRadioButton("Write only",false);
+    opt2.addActionListener(listener2);
     optGroup = new ButtonGroup();
     optGroup.add(opt1);
     optGroup.add(opt2);
@@ -1553,7 +1553,7 @@ public class DemoRadioButton {
   }
 
   public static void main(String[] args) {
-    DemoRadioButton fenster = new DemoRadioButton();
+    DemoRadioButton window = new DemoRadioButton();
   }
 }
 
@@ -1586,27 +1586,27 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class DemoJMenuBar {
-  private ActionListener hoerer = new ActionListener() {
+  private ActionListener listener = new ActionListener() {
     public void actionPerformed(ActionEvent e) {
-      String ereignis = e.getActionCommand();
-      if (ereignis.equals("Beenden")){
-        System.exit(0);  
+      String event = e.getActionCommand();
+      if (event.equals("Quit")){
+        System.exit(0);
       } else {
-        System.out.println(ereignis);
+        System.out.println(event);
       }
     }
   };
 
   public DemoJMenuBar() { ...
-    JMenuBar menue = new JMenuBar();
+    JMenuBar menuBar = new JMenuBar();
     // ...
-    JMenu bea = new JMenu("Bearbeiten");
-    JMenuItem aus = new JMenuItem("Ausschneiden"); ...
-    aus.addActionListener(hoerer); bea.add(aus);
+    JMenu edit = new JMenu("Edit");
+    JMenuItem cut = new JMenuItem("Cut"); ...
+    cut.addActionListener(listener); edit.add(cut);
     // ...
-    menue.add(bea);
+    menuBar.add(edit);
     // ...
-    fenster.setJMenuBar(menue);
+    window.setJMenuBar(menuBar);
   }
   // ...
 }
@@ -1635,13 +1635,13 @@ public class DemoToolTip {
   public DemoToolTip() {
     //...
     JButton ok = new JButton("OK");
-    ok.addActionListener(zuhoerer);
-    ok.setToolTipText("Führt die Funktion aus");
+    ok.addActionListener(listener);
+    ok.setToolTipText("Executes the function");
     // ...
   }
 
   public static void main(String[] args) {
-    DemoToolTip fenster = new DemoToolTip();
+    DemoToolTip window = new DemoToolTip();
   }
 }
 ```
@@ -1706,14 +1706,14 @@ Wichtige Methoden der Klasse File
 ```Java
 import java.io.File;
 
-public class AusgabeVerzeichnis {
+public class PrintDirectory {
   public static void main(String[] args) {
 
-    File[] laufwerke = File.listRoots();
+    File[] drives = File.listRoots();
 
-    for (int i = 0; i < laufwerke.length; i++) {
-      System.out.println(laufwerke[i].getPath()
-        + (laufwerke[i].exists() ? " ist aktiviert" : " ist deaktiviert"));
+    for (int i = 0; i < drives.length; i++) {
+      System.out.println(drives[i].getPath()
+        + (drives[i].exists() ? " is active" : " is inactive"));
       }
     }
 }
@@ -1728,18 +1728,18 @@ public class AusgabeVerzeichnis {
 ```Java
 import java.io.File;
 
-public class VerzeichnisEigenschaften {
+public class DirectoryProperties {
   public static void main(String[] args) {
-    File verzeichnis = new File("G:/BA/Vorlesungen/Programmierung/Skript");
+    File directory = new File("G:/BA/Vorlesungen/Programmierung/Skript");
 
-    if (verzeichnis.exists() && verzeichnis.isDirectory()) {
-      System.out.println("Vorgänger:\t" + verzeichnis.getParent());
-      System.out.println("Pfad:\t\t" + verzeichnis.getPath());
-      System.out.println("Name:\t\t" + verzeichnis.getName());
-      File[] liste = verzeichnis.listFiles();
+    if (directory.exists() && directory.isDirectory()) {
+      System.out.println("Parent:\t" + directory.getParent());
+      System.out.println("Path:\t\t" + directory.getPath());
+      System.out.println("Name:\t\t" + directory.getName());
+      File[] list = directory.listFiles();
     } else {
-      System.out.println(" Das Verzeichnis "
-                      + verzeichnis.getPath() + " existiert nicht.");
+      System.out.println(" The directory "
+                      + directory.getPath() + " does not exist.");
     }
   }
 }
@@ -1764,20 +1764,20 @@ public class VerzeichnisEigenschaften {
 ```Java
 import java.io.File;
 
-public class DateiEigenschaften {
+public class FileProperties {
   public static void main(String[] args) throws Exception {
 
-    File datei = new File("G:/BA/Vorlesungen/Programmierung/Skript/Programmierung 1.ppt");
+    File file = new File("G:/BA/Vorlesungen/Programmierung/Skript/Programmierung 1.ppt");
 
-    if (datei.exists() && datei.isFile()) {
-      System.out.println("Name der Datei:\t\t" + datei.getName()
-                          + "\nSpeicherort der Datei:\t" + datei.getPath()
-                          + "\nPfad der Datei:\t\t" + datei.getParent()
-                          + "\nGrösse der Datei:\t" + datei.length() + " Byte"
-                          + "\nBerechtigung (r/w):\t" + datei.canRead() + " " + datei.canWrite()
-                          + "\nZuletzt geändert:\t" + datei.lastModified());
+    if (file.exists() && file.isFile()) {
+      System.out.println("File name:\t\t" + file.getName()
+                          + "\nFile location:\t" + file.getPath()
+                          + "\nFile path:\t\t" + file.getParent()
+                          + "\nFile size:\t" + file.length() + " Byte"
+                          + "\nPermissions (r/w):\t" + file.canRead() + " " + file.canWrite()
+                          + "\nLast modified:\t" + file.lastModified());
     } else {
-      System.out.println(" Die Datei " + datei.getName() + " existiert nicht.");
+      System.out.println(" The file " + file.getName() + " does not exist.");
     }
   }
 }
@@ -1801,26 +1801,26 @@ public class DateiEigenschaften {
 ```Java
 import java.io.File;
 
-public class Verzeichnis {
+public class Directory {
   public static void main(String[] args) {
 
-    File verzeichnis = new File(System.getProperty("user.dir"));
-    File neuerOrdner = new File(verzeichnis.getPath() + "/demoPfad/");
-    File neuerOrdner2 = new File(verzeichnis.getPath() + "/demoPfad2/");
+    File directory = new File(System.getProperty("user.dir"));
+    File newFolder = new File(directory.getPath() + "/demoPfad/");
+    File newFolder2 = new File(directory.getPath() + "/demoPfad2/");
 
-    if (!neuerOrdner.exists()) {
-      neuerOrdner.mkdir();
-      System.out.println("Der Pfad wurde angelegt.");
+    if (!newFolder.exists()) {
+      newFolder.mkdir();
+      System.out.println("The path was created.");
     }
 
-    if (!neuerOrdner2.exists()) {
-      neuerOrdner.renameTo(neuerOrdner2);
-      System.out.println("Der Pfad wurde umbenannt.");
+    if (!newFolder2.exists()) {
+      newFolder.renameTo(newFolder2);
+      System.out.println("The path was renamed.");
     }
 
-    if (neuerOrdner2.exists()) {
-      neuerOrdner2.delete(); // Setzt voraus, dass der Ordner leer ist
-      System.out.println("Der Pfad wurde gelöscht.");
+    if (newFolder2.exists()) {
+      newFolder2.delete(); // requires the folder to be empty
+      System.out.println("The path was deleted.");
     }
   }
 }
@@ -1838,26 +1838,26 @@ public class Verzeichnis {
 import java.io.File;
 import java.io.IOException;
 
-public class Dateien {
+public class Files {
   public static void main(String[] args) {
-    File verzeichnis = new File(System.getProperty("user.dir"));
-    File neueDatei = new File(verzeichnis.getParent() + "/MeineDatei.txt");
-    File neueDatei2 = new File(verzeichnis.getParent() + "/MeineDatei2.txt");
+    File directory = new File(System.getProperty("user.dir"));
+    File newFile = new File(directory.getParent() + "/MyFile.txt");
+    File newFile2 = new File(directory.getParent() + "/MyFile2.txt");
 
     try {
-      if (!neueDatei.exists()) {
-        neueDatei.createNewFile();
+      if (!newFile.exists()) {
+        newFile.createNewFile();
       }
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    if (!neueDatei2.exists()) {
-      neueDatei.renameTo(neueDatei2);
+    if (!newFile2.exists()) {
+      newFile.renameTo(newFile2);
     }
 
-    if (neueDatei2.exists()) {
-      neueDatei2.delete();
+    if (newFile2.exists()) {
+      newFile2.delete();
     }
   }
 }
@@ -1976,20 +1976,20 @@ Konvertierung der Übergabeparameter
 ```Java
 import java.io.IOException;
 
-public class EingabeTastatur {
+public class KeyboardInput {
   public static void main(String[] args) {
-    byte[] eingabe = new byte[255];
+    byte[] input = new byte[255];
 
-    System.out.print("Geben Sie einen Text ein:");
+    System.out.print("Enter a text:");
 
     try {
-      System.in.read(eingabe, 0, 255);
+      System.in.read(input, 0, 255);
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    System.out.println(eingabe);
-    System.out.println(new String(eingabe));
+    System.out.println(input);
+    System.out.println(new String(input));
   }
 }
 ```
@@ -2001,23 +2001,23 @@ public class EingabeTastatur {
 ```Java
 import java.io.*;
 
-public class EingabeTastaturString {
+public class KeyboardInputString {
   public static void main(String[] args) {
 
     InputStreamReader strRead = new InputStreamReader(System.in);
-    BufferedReader bufString = new BufferedReader(strRead);
+    BufferedReader readBuffer = new BufferedReader(strRead);
 
-    String eingabe = "";
+    String input = "";
 
-    System.out.println("Geben Sie Ihren Text ein: ");
+    System.out.println("Enter your text: ");
 
     try {
-      eingabe = bufString.readLine();
+      input = readBuffer.readLine();
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    System.out.println(new String(eingabe));
+    System.out.println(new String(input));
   }
 }
 ```

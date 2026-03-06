@@ -237,16 +237,16 @@ public class ThingModelBasedDataObjectRepository extends HashOperationsRepositor
 
 **Beispiele**
 ```Java
-var numberA = 10;                     // numberA wird zu Integer Variable deklariert
-var numberB = 42.0;                   // numberB wird zu Double Variable deklariert
-var textA = "Welcome";                // textA wird zu String Variable deklariert
-var myAnimal = new Dog(...);          // myAnimal wird zu Dog Variable deklariert
+var numberA = 10;                     // numberA is declared as Integer variable
+var numberB = 42.0;                   // numberB is declared as Double variable
+var textA = "Welcome";                // textA is declared as String variable
+var myAnimal = new Dog(...);          // myAnimal is declared as Dog variable
 
-var test;                             // Compiler Fehler!
+var test;                             // Compiler error!
 
 int numberC = 100;
 
-var numberD = numberC;                // numberD wird zu Integer Variable deklariert
+var numberD = numberC;                // numberD is declared as Integer variable
 ```
 
 **Besser lesbarer (kürzerer) Code** durch Vermeidung von Redundanzen
@@ -493,10 +493,10 @@ IntelliJ verwaltet Projekte über eine eigene Konfiguration (`.idea/`-Ordner + `
 
 ```
 mein-projekt/
-├── .idea/                  ← IntelliJ-Projektkonfiguration (nicht ins Git!)
+├── .idea/                  ← IntelliJ project configuration (not in Git!)
 │   ├── workspace.xml
 │   └── modules.xml
-├── mein-projekt.iml        ← Modul-Konfiguration (Quellordner, Dependencies)
+├── mein-projekt.iml        ← Module configuration (source folders, dependencies)
 └── src/
     └── de/mbn/myapp/
         └── MyApp.java
@@ -618,16 +618,16 @@ java -jar out/artifacts/mein-projekt_jar/mein-projekt.jar
 
 ```
 mein-projekt/
-├── pom.xml                  ← Projektkonfiguration
+├── pom.xml                  ← project configuration
 └── src/
     ├── main/
     │   └── java/
     │       └── de/mbn/myapp/
-    │           └── MyApp.java    ← Produktiv-Code
+    │           └── MyApp.java    ← production code
     └── test/
         └── java/
             └── de/mbn/myapp/
-                └── MyAppTest.java ← Test-Code
+                └── MyAppTest.java ← test code
 ```
 
 > Maven erwartet diese Struktur – kein manuelles Konfigurieren nötig!
@@ -646,11 +646,11 @@ mein-projekt/
              http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Projekt-Koordinaten (eindeutige Identifikation) -->
-    <groupId>de.mbn.myapp</groupId>      <!-- Organisation / Domäne -->
-    <artifactId>mein-projekt</artifactId> <!-- Projektname -->
-    <version>1.0.0</version>             <!-- Version -->
-    <packaging>jar</packaging>           <!-- Ausgabeformat -->
+    <!-- Project coordinates (unique identification) -->
+    <groupId>de.mbn.myapp</groupId>      <!-- organization / domain -->
+    <artifactId>mein-projekt</artifactId> <!-- project name -->
+    <version>1.0.0</version>             <!-- version -->
+    <packaging>jar</packaging>           <!-- output format -->
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -658,7 +658,7 @@ mein-projekt/
     </properties>
 
     <dependencies>
-        <!-- Hier kommen externe Bibliotheken -->
+        <!-- External libraries go here -->
     </dependencies>
 
 </project>
@@ -677,15 +677,15 @@ mein-projekt/
 ```xml
 <dependencies>
 
-    <!-- JUnit 5 für Unit Tests -->
+    <!-- JUnit 5 for unit tests -->
     <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter</artifactId>
         <version>5.11.0</version>
-        <scope>test</scope>    <!-- nur für Tests, nicht im Produktiv-JAR -->
+        <scope>test</scope>    <!-- for tests only, not in production JAR -->
     </dependency>
 
-    <!-- Beispiel: Logging-Bibliothek -->
+    <!-- Example: logging library -->
     <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-simple</artifactId>
@@ -729,25 +729,25 @@ Maven kennt einen **Standard-Lifecycle** mit festen Phasen (Auswahl):
 ## Maven – Wichtige Befehle
 
 ```bash
-# Projekt kompilieren
+# Compile project
 mvn compile
 
-# Tests ausführen
+# Run tests
 mvn test
 
-# JAR-Datei erzeugen (in target/)
+# Generate JAR file (in target/)
 mvn package
 
-# JAR-Datei ins lokale Repository installieren
+# Install JAR file into local repository
 mvn install
 
-# Build-Artefakte löschen (target/-Ordner)
+# Delete build artifacts (target/ folder)
 mvn clean
 
-# Sauber neu bauen und JAR erzeugen (häufigster Workflow!)
+# Clean rebuild and generate JAR (most common workflow!)
 mvn clean package
 
-# Tests überspringen (z.B. bei bekannten Fehlern – nicht empfohlen!)
+# Skip tests (e.g. with known failures – not recommended!)
 mvn clean package -DskipTests
 ```
 
@@ -760,18 +760,18 @@ mvn clean package -DskipTests
 <div>
 
 ```
-Entwickler schreibt Code
+Developer writes code
         ↓
     mvn clean package
         ↓
   ┌─────────────────────────────────────────────┐
   │ validate → compile → test → package         │
   │                                             │
-  │  pom.xml wird gelesen                       │
-  │  Dependencies werden geladen (Maven Central)│
-  │  Quellcode wird kompiliert                  │
-  │  Unit-Tests werden ausgeführt               │
-  │  JAR-Datei wird erzeugt                     │
+  │  pom.xml is read                            │
+  │  Dependencies are loaded (Maven Central)    │
+  │  Source code is compiled                    │
+  │  Unit tests are executed                    │
+  │  JAR file is generated                      │
   └─────────────────────────────────────────────┘
         ↓
   target/mein-projekt-1.0.0.jar
@@ -1496,7 +1496,7 @@ city.ifPresentOrElse(
 
 <div>
 
-**Ohne Optional:**
+**Without Optional:**
 ```Java
 public String getStudentCity(Student student) {
     if (student != null) {
@@ -1508,18 +1508,18 @@ public String getStudentCity(Student student) {
             }
         }
     }
-    return "Unbekannt";
+    return "Unknown";
 }
 ```
 
-**Mit Optional:**
+**With Optional:**
 ```Java
 public String getStudentCity(Student student) {
     return Optional.ofNullable(student)
                    .map(Student::getAddress)
                    .map(Address::getCity)
                    .filter(city -> !city.isBlank())
-                   .orElse("Unbekannt");
+                   .orElse("Unknown");
 }
 ```
 
@@ -1541,11 +1541,11 @@ public String getStudentCity(Student student) {
 * für **Collections** – eine leere Collection ist besser als ```Optional<List<...>>```
 
 ```Java
-// Gut:
+// Good:
 public Optional<String> findEmail(int userId) { ... }
 
-// Vermeiden:
-public void sendMail(Optional<String> email) { ... }  // Nicht gut
+// Avoid:
+public void sendMail(Optional<String> email) { ... }  // Not recommended
 ```
 
 > **Faustregel**: ```Optional``` macht das **Fehlen eines Rückgabewertes explizit** – nicht mehr und nicht weniger.

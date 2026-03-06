@@ -811,7 +811,7 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 ## Deklaration von Variablen
 * Variablen werden durch Datentyp und Variablennamen deklariert
 ```java
-Typname Variablenname;
+TypeName variableName;
 ```
 * Beispiele für Variablendeklarationen
 ```java
@@ -828,7 +828,7 @@ long number = 45768;
 * Konstanten werden ähnlich wie Variablen deklariert
 vor den Typnamen wird das Schlüsselwort
 ```java
-final gesetzt final Typname Konstantenname;
+final set final TypeName constantName;
 ```
 * Konstanten können nach der Deklaration einmalig mit einem Wert initialisiert werden
 ```java
@@ -1485,8 +1485,8 @@ anweisung4;
 * die Deklaration von Methoden erfolgt nach folgender Syntax
 
 ```Java
-[Modifier] Typ Name ([Übergabeparameter]) {
-  Anweisungen;
+[Modifier] Type Name ([Parameters]) {
+  Statements;
 }
 ```
 
@@ -1651,8 +1651,8 @@ class Car {
 * auf Methoden und Attribute wird in der Punktnotation zugegriffen
 
 ```Java
-objektname.methode(Übergabeparameter);
-objektname.attribut;
+objectName.method(parameters);
+objectName.attribute;
 ```
 
 * Voraussetzung: die Sichtbarkeit der Methoden und Attribute lässt den direkten Zugriff zu
@@ -1787,15 +1787,15 @@ public class VarargsExample {
         for (int number : numbers) {
             sum += number;
         }
-        System.out.println("Summe: " + sum);
+        System.out.println("Sum: " + sum);
     }
 
     public static void main(String[] args) {
         VarargsExample sumUp = new VarargsExample();
 
-        sumUp.sumOfNumbers(1);          // Gibt: "Summe: 1"
-        sumUp.sumOfNumbers(1, 2, 3);    // Gibt: "Summe: 6"
-        sumUp.sumOfNumbers();           // Gibt: "Summe: 0"
+        sumUp.sumOfNumbers(1);          // Output: "Sum: 1"
+        sumUp.sumOfNumbers(1, 2, 3);    // Output: "Sum: 6"
+        sumUp.sumOfNumbers();           // Output: "Sum: 0"
     }
 }
 ```
@@ -1815,30 +1815,30 @@ public class VarargsExample {
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-//	Deklaration der gekapselten Attribute
-	private int ps;
+//	Declaration of encapsulated attributes
+	private int hp;
 	private float kmh;
-	private String kfzKZ;
-	private String marke;
-	private static int autoZaehler = 0;
+	private String licensePlate;
+	private String brand;
+	private static int carCount = 0;
 
-//	Getter- und Setter-Methoden
-	Auto(){
-		autoZaehler++;
-		ps = 75;
+//	Getter and setter methods
+	Car(){
+		carCount++;
+		hp = 75;
 		kmh = 0;
-		kfzKZ = "XX-XX 0000";
-		marke = "Eigenbau";
+		licensePlate = "XX-XX 0000";
+		brand = "Custom";
 	}
 
-	public static int getAutoZaehler() {
-		return autoZaehler;
+	public static int getCarCount() {
+		return carCount;
 	}
 
-	public static void setAutoZaehler(int autoZaehler) {
-		Auto.autoZaehler = autoZaehler;
+	public static void setCarCount(int carCount) {
+		Car.carCount = carCount;
 	}
 }
 
@@ -1851,26 +1851,26 @@ class Auto {
 
 ```Java
 package prog1.demos.objekt;
-class AutoTest {
+class CarTest {
 	public static void main(String[] args) {
 
-		System.out.println(Auto.getAutoZaehler());
+		System.out.println(Car.getCarCount());
 
-		Auto bmw = new Auto();
-		Auto audi = new Auto();
+		Car bmw = new Car();
+		Car audi = new Car();
 
-		System.out.println(Auto.getAutoZaehler());
+		System.out.println(Car.getCarCount());
 
-		bmw.tueren = 5;
-		audi.tueren = 3;
+		bmw.doors = 5;
+		audi.doors = 3;
 
-		bmw.setKfzKZ("HD-XX 321");
+		bmw.setLicensePlate("HD-XX 321");
 		audi.setKmh(135.7f);
 
-		System.out.println("Der BMW hat das
-			Kennzeichen: " + bmw.getKfzKZ());
+		System.out.println("The BMW has the" +
+			" license plate: " + bmw.getLicensePlate());
 
-		System.out.println("Der Audi fährt: " +
+		System.out.println("The Audi is driving at: " +
 			audi.getKmh());
 	}
 }
@@ -2089,7 +2089,7 @@ protected void finalize();
 * die Vererbung ist durch folgende Syntax definiert:
 
 ```JAVA
-class Subklasse extends Superklasse { }
+class SubClass extends SuperClass { }
 ```
 
 * mit extends verweist die Subklasse auf ihre Superklasse
@@ -2232,11 +2232,11 @@ public enum CarBrand {
 * Referenzen auf Objekte, die in einer Referenzvariable vom Typ der Superklasse gespeichert sind, sollen in einer Referenzvariable vom Typ der Subklasse gespeichert werden
 * es handelt sich dabei um eine unsichere Konvertierung
   * es muss sichergestellt werden, dass es sich bei den Referenzen um Referenzen auf Objekte der Subklasse handelt
-  * vor der Umwandlung muss der Typ der Referenz mit dem Operator instanceof überprüft werden &#8658; ```referenzvariable instanceof Subklasse``` muss true ergeben
+  * vor der Umwandlung muss der Typ der Referenz mit dem Operator instanceof überprüft werden &#8658; ```referenceVariable instanceof SubClass``` muss true ergeben
   * bei der Durchführung muss ein expliziter Cast auf den Typ der Subklasse durchgeführt werden
 
 ```Java
-refSubklasse = (Subklasse)referenzdatentyp;
+refSubClass = (SubClass)referenceType;
 
 ```
 
@@ -2267,16 +2267,16 @@ refSubklasse = (Subklasse)referenzdatentyp;
 ```Java
 package prog1.demos.objekt;
 
-class AutoTest {
+class AnimalTest {
   public static void main(String[] args) {
 
-    Tier[] x = new Tier[2];
+    Animal[] x = new Animal[2];
 
-    x[0] = new Hund(25.5f, "Bello", 15.8f, "Schäferhund");  //Upcast
-    x[1] = new Vogel(10.4f, "Tweety", 0.4f, true);          //Upcast
+    x[0] = new Dog(25.5f, "Bello", 15.8f, "German Shepherd");  //Upcast
+    x[1] = new Bird(10.4f, "Tweety", 0.4f, true);              //Upcast
 
-    x[0].atmen();
-    x[1].atmen();
+    x[0].breathe();
+    x[1].breathe();
   }
 }
 ```
@@ -2395,7 +2395,7 @@ void main(){
 
   for(Bookable currentBookingEntity : travelAgencyBooking){
     currentBookingEntity.book(10);
-    IO.println("Verbleibende freie Plätze: " + currentBookingEntity.freeSlots());
+    IO.println("Remaining free slots: " + currentBookingEntity.freeSlots());
   }
 
 }
@@ -2561,7 +2561,7 @@ void main(){
     if(!successfullBooking && currentBookingEntity instanceof PriorityBookable currentPriorityBookingEntity){
       currentPriorityBookingEntity.priorityBook(10);
     }
-    IO.println("Verbleibende freie Plätze: " + currentBookingEntity.freeSlots());
+    IO.println("Remaining free slots: " + currentBookingEntity.freeSlots());
   }
 }
 ```
