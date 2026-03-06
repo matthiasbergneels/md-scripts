@@ -193,7 +193,7 @@ public class TankLeerDemo {
 
 * vermeiden unschöner Schachtelung von try-Blöcken
   * ABER: andere Reihenfolge im Vergleich zur ```finally``` Ausführung
-* Voraussetzung: Resource implementiert ```Closable``` Interface
+* Voraussetzung: Resource implementiert ```Closeable``` Interface
 * automatisches schließen der Resourcen nach try-Block
   * Exceptions beim schließen werden innerhalb der Catch-Blöcke mit abgefangen
 
@@ -851,7 +851,7 @@ public class Haustier {
     int hc = 17;              // beliebiger Initialwert
     int hashMultiplier = 59;  // beliebige (kleine) Primzahl
 
-    hc = hc * hashMultiplier + (field==null) ? 0 : field.hashCode()) + gewicht;
+    hc = hc * hashMultiplier + ((art==null) ? 0 : art.hashCode()) + gewicht;
     return hc;
   }
 }
@@ -1331,7 +1331,7 @@ public class DemoLabelGrafik {
 * der ItemListener ist als Interface implementiert
 * das Interface gibt die abstrakte Methode ```itemStateChanged(ItemEvent e)``` vor
 * das Interface wird von Objekten implementiert, die an einem Auswahlereignis interessiert sind
-* Auswahlereignisse können von Objekten folgender Klassen ausgelöst werden: ```JComboBox```, ```JCkeckBox```, ```JList``` oder ```JCheckBoxMenuItem```
+* Auswahlereignisse können von Objekten folgender Klassen ausgelöst werden: ```JComboBox```, ```JCheckBox```, ```JList``` oder ```JCheckBoxMenuItem```
 * die Zuordnung zu einem ItemListener erfolgt über die jeweiligen Objekt-Methoden ```addItemListener()``` oder ```removeItemListener()```
 * wird ein Eintrag bei o.g. Objekten ausgewählt, wird implizit die Methode ```itemStateChanged(ItemEvent e)``` bei allen bei dem Objekt registrierten ```ItemListenern``` ausgeführt
 * Beispiel: beim Setzen des Hakens wird ein zusätzliches Feld eingeblendet
@@ -1413,7 +1413,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 // ...
 
-public class DemoButton { public DemoButton() {
+public class DemoButton {
   public DemoButton() {
     // ...
     ActionListener zuhoerer = new ActionListener() {
@@ -1458,7 +1458,7 @@ public class DemoButton { public DemoButton() {
 </div><!-- .element style="font-size: 0.9em;" -->
 
 ----
-## Beispiel: ```JCkeckBox``` mit ```ItemListener```
+## Beispiel: ```JCheckBox``` mit ```ItemListener```
 
 <div>
 
@@ -1932,8 +1932,7 @@ Ausgabestrom
 |:---------------------------------|:-------------------------------------|:-----------|
 |```OutputStream```|```Writer```|Abstrakte Klasse für Zeichenausgabe oder Byte-Ausgabe|
 |```BufferedOutputStream```|```BufferedWriter```|Puffert die Eingabe|
-|```ByteArrayOutputStream```|```LineNumberReader```|Ausgabe des Puffers, nutzt passendes Zeilenendezeichen|
-|```ByteArrayInputStream```|```CharArrayWriter```|Schreibt Arrays|
+|```ByteArrayOutputStream```|```CharArrayWriter```|Schreibt in ein Byte-Array bzw. Char-Array|
 |(keine Entsprechung)|```OutputStreamWriter```|Übersetzt Zeichen-Stream in Byte-Stream|
 |```FileOutputStream```|```FileWriter```|Schreibt in eine Datei|
 
@@ -1947,7 +1946,7 @@ Vordefinierte In- und Outputstreams in der Klasse ```System```
 
 Besondere Stream-Klassen für Standardgeräte
 * ```System.in``` für die Tastatur
-  * Vom Typ ```BufferedInputStream```
+  * Vom Typ ```InputStream```
   * Vorsicht: Checked Exception
 * ```System.out``` für den Monitor
 
@@ -2063,7 +2062,7 @@ public class LesenAusDatei {
 
       String line;
 
-      while ((line = bufferedRenameFileReader.readLine()) != null) {
+      while ((line = lesePuffer.readLine()) != null) {
         System.out.println(line);
       }
 
@@ -2114,7 +2113,7 @@ public class SchreibenInDatei {
 ## Rückblick - Exception Handling: try-with-Resource
 
 * vermeiden unschöner Schachtelung von try-Blöcken
-* Voraussetzung: Resource implementiert ```Closable```
+* Voraussetzung: Resource implementiert ```Closeable```
 * automatisches schließen der Resourcen nach try-Block, Exceptions beim schließen werden innerhalb der Catch-Blöcke mit abgefangen
 
 ```Java
@@ -2620,7 +2619,7 @@ alias=This is the english version.
   * (Warte-)Schlange (Queue)
   * Binärbaum (Binary Tree)
 * Sie können Iteration und Rekursion unterscheiden und passend anwenden
-* Sie können Angaben zu Komplixitäten von Algorithmen (Funktionen) auf den Datenstrukturen machen
+* Sie können Angaben zu Komplexitäten von Algorithmen (Funktionen) auf den Datenstrukturen machen
 
 ---
 ## Listen
