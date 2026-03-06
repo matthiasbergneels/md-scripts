@@ -1083,11 +1083,9 @@ Stream (```java.io```)
 ----
 ## Verhaltens-Muster (Behavioral Patterns)
 
-* erleichtern den Software Entwurf und die Strukturierung durch herstellen von Beziehungen zwischen Entitäten
-* nutzen Abstraktion 
-Sie ermöglichen eine Abstraktion, die mit anderen Lösungsansätzen kommunizieren kann2
-Sie können in verschiedene Arten eingeteilt werden, wie zum Beispiel Adapter, Brücke, Dekorierer, Fassade, Fliegengewicht, Kompositum oder Proxy3
-Beispiele für Strukturmuster sind: Fassade, die eine vereinfachte Schnittstelle zu einem komplexen System bietet4; Adapter, der zwei inkompatible Schnittstellen verbindet; Kompositum, das eine Hierarchie von Objekten bildet, die als Einheit behandelt werden können
+* beschreiben die Kommunikation und Zusammenarbeit zwischen Objekten zur Laufzeit
+* legen fest, wie Verantwortlichkeiten zwischen Objekten verteilt werden
+* Beispiele: Strategy (austauschbare Algorithmen hinter einer gemeinsamen Schnittstelle), Observer (Benachrichtigung abhängiger Objekte bei Zustandsänderung), Command (Kapselung einer Anfrage als Objekt), Iterator (sequenzieller Zugriff auf Elemente einer Sammlung)
 
 ---
 # Optionals
