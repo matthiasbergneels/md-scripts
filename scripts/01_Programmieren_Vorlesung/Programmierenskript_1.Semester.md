@@ -2055,7 +2055,7 @@ protected void finalize();
 * Sie können Methoden überschreiben.
 * Sie kennen die Bedeutung der Modifier abstract und final.
 * Sie können die Bedeutung von this und super erklären.
-* Sie kennen die Konzepte des narrowing und widening casts.
+* Sie kennen die Konzepte des Upcasts (widening reference conversion) und Downcasts (narrowing reference conversion).
 * Sie können den Begriff der Polymorphie erklären.
 
 ---
@@ -2110,7 +2110,7 @@ class Subklasse extends Superklasse { }
   * hashCode() – berechnet den Hashwert eines Objektes
   * clone() – kopiert zwei Objekte
   * finalize() – ist der Destruktor
-* in Referenzvariablen vom Typ Object können alle beliebigen Objektreferenzen gespeichert werden (vgl. Narrowing cast)
+* in Referenzvariablen vom Typ Object können alle beliebigen Objektreferenzen gespeichert werden (vgl. Upcast / widening reference conversion)
 
 ----
 ### Sichtbarkeit von Methoden und Attributen
@@ -2213,20 +2213,20 @@ public enum CarBrand {
 ## Casting von Referenztypen
 
 ----
-### Narrowing Cast
+### Upcast (widening reference conversion)
 * Objekte von Subklassen können in Referenzvariablen gespeichert werden, die vom Typ ihrer Superklasse sind
 * dabei wird nur die Sicht auf die Objekte beschränkt, d.h. es sind nur noch die Attribute und Methoden sichtbar, die in der Superklasse deklariert sind
 * die subklassen-spezifischen Attribute und Methoden sind noch vorhanden, aber vorübergehend ausgeblendet
-* der narrowing cast beschreibt also den Wechsel von einer Sicht mit mehr auf eine Sicht mit weniger Details bei einem Objekt
-* der narrowing cast ist ein wesentliches Prinzip im Vererbungskonzept von Java
-* der narrowing cast ist eine wesentliche Voraussetzung für die Polymorphie
+* der Upcast (widening reference conversion) beschreibt also den Wechsel von einer Sicht mit mehr auf eine Sicht mit weniger Details bei einem Objekt
+* der Upcast ist ein wesentliches Prinzip im Vererbungskonzept von Java
+* der Upcast ist eine wesentliche Voraussetzung für die Polymorphie
 
 ----
-### Widening Cast
+### Downcast (narrowing reference conversion)
 
 <div>
 
-* stellt die Umkehrung des narrowing cast dar
+* stellt die Umkehrung des Upcasts dar
 * Referenzen auf Objekte, die in einer Referenzvariable vom Typ der Superklasse gespeichert sind, sollen in einer Referenzvariable vom Typ der Subklasse gespeichert werden
 * es handelt sich dabei um eine unsichere Konvertierung
   * es muss sichergestellt werden, dass es sich bei den Referenzen um Referenzen auf Objekte der Subklasse handelt
@@ -2239,7 +2239,7 @@ refSubklasse = (Subklasse)referenzdatentyp;
 ```
 
 
-* der widening cast wechselt von einer Sicht mit weniger auf eine Sicht mit mehr Details und blendet die subklassen-spezifischen Attribute und Methoden wieder ein
+* der Downcast (narrowing reference conversion) wechselt von einer Sicht mit weniger auf eine Sicht mit mehr Details und blendet die subklassen-spezifischen Attribute und Methoden wieder ein
 
 </div><!-- .element style="font-size: 0.8em;" -->
 
@@ -2270,8 +2270,8 @@ class AutoTest {
 
     Tier[] x = new Tier[2];
 
-    x[0] = new Hund(25.5f, "Bello", 15.8f, "Schäferhund");  //Narrowing Cast
-    x[1] = new Vogel(10.4f, "Tweety", 0.4f, true);          //Narrowing Cast
+    x[0] = new Hund(25.5f, "Bello", 15.8f, "Schäferhund");  //Upcast
+    x[1] = new Vogel(10.4f, "Tweety", 0.4f, true);          //Upcast
 
     x[0].atmen();
     x[1].atmen();
@@ -2388,8 +2388,8 @@ void main(){
 
   Bookable[] travelAgencyBooking = new Bookable[2];
 
-  travelAgencyBooking[0] = new Hotel(150);      //Narrowing Cast		
-  travelAgencyBooking[1] = new Airplane(245);   //Narrowing Cast
+  travelAgencyBooking[0] = new Hotel(150);      //Upcast
+  travelAgencyBooking[1] = new Airplane(245);   //Upcast
 
   for(Bookable currentBookingEntity : travelAgencyBooking){
     currentBookingEntity.book(10);
@@ -2536,13 +2536,13 @@ public interface PriorityBookable extends Bookable {
 
 
 ----
-## Polymorphie & Widening-Cast mit Interfaces
+## Polymorphie & Downcast mit Interfaces
 <div>
 
 * Objekte können entsprechend der Vererbungshirarchie der Interfaces auch gecastet werden
-* der Cast eines konkreten Objektes zu einer Interface Referenz ist immer ein narrowing Cast (Sichtbarkeit auf das tatsächliche Objekt wird eingeschränkt)
-* wird aus einer Interfacereferenz in eine Referenz einer konkreten Klasse oder in eine Referenz eines Subinterfaces gecastet handelt es sich um einen widening Cast (Sichtbarkeit auf das tatsächliche Objekt wird erweitert)
-* der widening Cast ist unsicher und sollte abgesichert werden (zum Beispiel über ```instanceof```)
+* der Cast eines konkreten Objektes zu einer Interface Referenz ist immer ein Upcast (widening reference conversion) (Sichtbarkeit auf das tatsächliche Objekt wird eingeschränkt)
+* wird aus einer Interfacereferenz in eine Referenz einer konkreten Klasse oder in eine Referenz eines Subinterfaces gecastet handelt es sich um einen Downcast (narrowing reference conversion) (Sichtbarkeit auf das tatsächliche Objekt wird erweitert)
+* der Downcast ist unsicher und sollte abgesichert werden (zum Beispiel über ```instanceof```)
 * Beispiel:
 
 ```Java
@@ -2550,12 +2550,12 @@ void main(){
 
   Bookable[] travelAgencyBooking = new Bookable[2];
 
-  travelAgencyBooking[0] = new Hotel(150);      //Narrowing Cast		
-  travelAgencyBooking[1] = new Airplane(245);   //Narrowing Cast
+  travelAgencyBooking[0] = new Hotel(150);      //Upcast
+  travelAgencyBooking[1] = new Airplane(245);   //Upcast
 
   for(Bookable currentBookingEntity : travelAgencyBooking){
     boolean successullBooking = currentBookingEntity.book(10);
-    // instanceof-Check and widening cast
+    // instanceof-Check and downcast (narrowing reference conversion)
     if(!successfullBooking && currentBookingEntity instanceof PriorityBookable currentPriorityBookingEntity){
       currentPriorityBookingEntity.priorityBook(10);
     }

@@ -522,7 +522,7 @@ Beispiel:
 8. Welche Auswirkungen haben die Modifier abstract und final bei Methoden?
 9. Wozu wird der Ausdruck super in der Vererbung benötigt?
 10. Was stellt der Ausdruck this dar?
-11. Beschreiben Sie das Konzept des narrowing und widening Cast!
+11. Beschreiben Sie die Konzepte des Upcasts (widening reference conversion) und Downcasts (narrowing reference conversion)!
 12. Beschreiben Sie das Konzept des Polymorphismus in der objektorientierten Programmierung anhand eines einfachen Beispiels!
 13. Welche Möglichkeiten haben Sie, um in Java Objekte zu kopieren? Worin besteht der Unterschied in den beiden Verfahren?
 14. Innerhalb eines Pakets ```mypackage``` werden zwei Klassen ```Vater``` und ```Sohn``` definiert. ```Sohn``` ist eine Subklasse der Klasse ```Vater```. Beide verfügen über eine Methode ```familienbande()```, die nur für Kindklassen innerhalb des Pakets zugänglich sein soll.
