@@ -643,10 +643,10 @@ public class DemoSet1 {
 * Listen (```Vector```, ```ArrayList```, ...) sind normalerweise unsortiert
 * die Klasse ```Collections``` bietet eine überladene Sortiermethode zum Sortieren von List-Objekten an
 * folgende Sortiermöglichkeiten werden angeboten
-  * ```static void sort(List liste)```
+  * ```static void sort(List list)```
     * sortiert die Liste nach der natürlichen Ordnung
     * dazu müssen die Klassen das Interface Comparable implementieren, deren Instanzen in der Liste gespeichert sind
-  * ```static void sort(List liste, Comparator c)```
+  * ```static void sort(List list, Comparator c)```
     * übersteuert die natürliche Ordnung und sortiert die Objekte der Liste über den entsprechenden Comparator c
 
 ---
@@ -1805,8 +1805,8 @@ public class Directory {
   public static void main(String[] args) {
 
     File directory = new File(System.getProperty("user.dir"));
-    File newFolder = new File(directory.getPath() + "/demoPfad/");
-    File newFolder2 = new File(directory.getPath() + "/demoPfad2/");
+    File newFolder = new File(directory.getPath() + "/demoPath/");
+    File newFolder2 = new File(directory.getPath() + "/demoPath2/");
 
     if (!newFolder.exists()) {
       newFolder.mkdir();
