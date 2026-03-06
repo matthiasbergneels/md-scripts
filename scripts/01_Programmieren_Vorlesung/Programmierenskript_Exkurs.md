@@ -446,14 +446,231 @@ Eine JAR-Datei enthält:
 
 ----
 
-## Erstellen einer JAR-Datei
+## Erstellen einer JAR-Datei (manuell)
 
-### Manuelles Erstellen mit `javac` und `jar`:
-1. **Kompilieren der Klassen**:
-   ```bash
-   javac MyApp.java
-   ```
+### Schritt 1: Kompilieren der Quellcode-Dateien
+```bash
+javac -d out src/MyApp.java src/Helper.java
+```
 
+### Schritt 2: Manifest-Datei erstellen (`MANIFEST.MF`)
+```
+Manifest-Version: 1.0
+Main-Class: MyApp
+```
+
+### Schritt 3: JAR-Datei erzeugen
+```bash
+jar cfm MyApp.jar MANIFEST.MF -C out .
+```
+
+### Schritt 4: JAR-Datei ausführen
+```bash
+java -jar MyApp.jar
+```
+
+> Sobald ein Projekt wächst (viele Klassen, externe Bibliotheken), wird dieser manuelle Prozess schnell unhandlich → **Build-Tools** schaffen Abhilfe!
+
+----
+
+## Warum Build-Tools?
+
+**Probleme ohne Build-Tool:**
+- Viele Klassen → komplexe `javac`-Aufrufe
+- Externe Bibliotheken müssen manuell heruntergeladen und verwaltet werden
+- Kein einheitlicher Prozess → „Works on my machine"
+- Testen, Kompilieren, Paketieren muss manuell koordiniert werden
+
+**Build-Tools lösen diese Probleme:**
+- **Automatisierung**: Kompilieren, Testen, Paketieren in einem Befehl
+- **Dependency Management**: Bibliotheken werden automatisch heruntergeladen
+- **Standardisierung**: Einheitliche Projektstruktur und Prozesse
+- **Reproduzierbarkeit**: Gleiche Ergebnisse auf jedem Rechner
+
+----
+
+## Apache Maven – Einführung
+
+> Apache Maven ist das meistverbreitete Build-Tool im Java-Ökosystem.
+
+<div>
+
+- **Convention over Configuration**: Standardisierte Projektstruktur
+- **Dependency Management**: Bibliotheken aus dem [Maven Central Repository](https://central.sonatype.com/) werden automatisch geladen
+- **Build Lifecycle**: Vordefinierter Ablauf von Build-Phasen
+- **Plugins**: Erweiterbar durch hunderte von Plugins
+- Konfiguration über eine einzige Datei: **`pom.xml`** (Project Object Model)
+
+</div><!-- .element style="font-size: 0.85em;" -->
+
+----
+
+## Maven – Standard-Projektstruktur
+
+```
+mein-projekt/
+├── pom.xml                  ← Projektkonfiguration
+└── src/
+    ├── main/
+    │   └── java/
+    │       └── de/mbn/myapp/
+    │           └── MyApp.java    ← Produktiv-Code
+    └── test/
+        └── java/
+            └── de/mbn/myapp/
+                └── MyAppTest.java ← Test-Code
+```
+
+> Maven erwartet diese Struktur – kein manuelles Konfigurieren nötig!
+
+----
+
+## Maven – pom.xml (Aufbau)
+
+<div>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Projekt-Koordinaten (eindeutige Identifikation) -->
+    <groupId>de.mbn.myapp</groupId>      <!-- Organisation / Domäne -->
+    <artifactId>mein-projekt</artifactId> <!-- Projektname -->
+    <version>1.0.0</version>             <!-- Version -->
+    <packaging>jar</packaging>           <!-- Ausgabeformat -->
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Hier kommen externe Bibliotheken -->
+    </dependencies>
+
+</project>
+```
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+----
+
+## Maven – Dependency Management
+
+> Externe Bibliotheken werden über **Koordinaten** (groupId, artifactId, version) eingebunden. Maven lädt sie automatisch aus dem **Maven Central Repository** herunter.
+
+<div>
+
+```xml
+<dependencies>
+
+    <!-- JUnit 5 für Unit Tests -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.11.0</version>
+        <scope>test</scope>    <!-- nur für Tests, nicht im Produktiv-JAR -->
+    </dependency>
+
+    <!-- Beispiel: Logging-Bibliothek -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>2.0.13</version>
+    </dependency>
+
+</dependencies>
+```
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+**Dependency Scopes:**
+- `compile` (Standard): im Classpath beim Kompilieren und Ausführen
+- `test`: nur beim Testen verfügbar
+- `provided`: wird zur Laufzeit von der Umgebung bereitgestellt (z.B. Servlet-API)
+
+----
+
+## Maven – Build Lifecycle
+
+Maven kennt einen **Standard-Lifecycle** mit festen Phasen (Auswahl):
+
+<div>
+
+| Phase | Beschreibung |
+|:------|:-------------|
+| `validate` | Prüft, ob das Projekt korrekt konfiguriert ist |
+| `compile` | Kompiliert den Quellcode nach `target/classes/` |
+| `test` | Führt Unit-Tests aus (schlägt fehl → Build schlägt fehl) |
+| `package` | Paketiert den Code als JAR/WAR in `target/` |
+| `verify` | Führt Integrationstests und Qualitätsprüfungen aus |
+| `install` | Installiert das Paket in das lokale Maven-Repository (`~/.m2/`) |
+| `deploy` | Veröffentlicht das Paket in ein entferntes Repository |
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+> Jede Phase schließt alle vorherigen Phasen ein: `mvn package` führt auch `validate`, `compile` und `test` aus!
+
+----
+
+## Maven – Wichtige Befehle
+
+```bash
+# Projekt kompilieren
+mvn compile
+
+# Tests ausführen
+mvn test
+
+# JAR-Datei erzeugen (in target/)
+mvn package
+
+# JAR-Datei ins lokale Repository installieren
+mvn install
+
+# Build-Artefakte löschen (target/-Ordner)
+mvn clean
+
+# Sauber neu bauen und JAR erzeugen (häufigster Workflow!)
+mvn clean package
+
+# Tests überspringen (z.B. bei bekannten Fehlern – nicht empfohlen!)
+mvn clean package -DskipTests
+```
+
+> Die erzeugte JAR-Datei liegt nach `mvn package` im `target/`-Verzeichnis.
+
+----
+
+## Maven – Zusammenfassung
+
+<div>
+
+```
+Entwickler schreibt Code
+        ↓
+    mvn clean package
+        ↓
+  ┌─────────────────────────────────────────────┐
+  │ validate → compile → test → package         │
+  │                                             │
+  │  pom.xml wird gelesen                       │
+  │  Dependencies werden geladen (Maven Central)│
+  │  Quellcode wird kompiliert                  │
+  │  Unit-Tests werden ausgeführt               │
+  │  JAR-Datei wird erzeugt                     │
+  └─────────────────────────────────────────────┘
+        ↓
+  target/mein-projekt-1.0.0.jar
+        ↓
+  java -jar target/mein-projekt-1.0.0.jar
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ---
 
