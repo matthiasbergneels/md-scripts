@@ -239,7 +239,7 @@ public class ThingModelBasedDataObjectRepository extends HashOperationsRepositor
 ```Java
 var numberA = 10;                     // numberA wird zu Integer Variable deklariert
 var numberB = 42.0;                   // numberB wird zu Double Variable deklariert
-var textA = "Herzlich Willkommen";    // textA wird zu String Variable deklariert
+var textA = "Welcome";                // textA wird zu String Variable deklariert
 var myAnimal = new Dog(...);          // myAnimal wird zu Dog Variable deklariert
 
 var test;                             // Compiler Fehler!
@@ -270,8 +270,8 @@ var myThingModelRepo = new ThingModelBasedDataObjectRepository(myChacheTemplate,
 Falsch eingesetzt, wird der Code unverständlicher / komplizierter zu lesen:
 
 ```Java
-var somethingOne = (farm.hasAnimal()) ? new Dog(...) : "Kein Tier";
-var somethingTwo = ("Ergebnis ist " + (numberA + numberB * 50.1)).length() / (double)10;
+var somethingOne = (farm.hasAnimal()) ? new Dog(...) : "No animal";
+var somethingTwo = ("Result is " + (numberA + numberB * 50.1)).length() / (double)10;
 var somethingThree = Something.returnSomething();
 // ...
 ```
@@ -819,7 +819,7 @@ package main.inner.toplevelclass;
 
 public class OuterClass {
 
-    // Innerhalnb einer anderen Klasse definierte Top-Level Klasse
+    // Top-Level class defined inside another class
     public static class InnerTopLevelClass{
         void print(String printText){
             System.out.println(this.getClass().getName() + " " + printText);
@@ -853,7 +853,7 @@ package main.inner.elementclass;
 
 public class OuterClass {
 
-    // Innerhalb einer andere Klasse definierte Element Klasse
+    // Element class defined inside another class
     public class InnerElementClass {
         void print(String printText){
             System.out.println(this.getClass().getName() + " " + printText);
@@ -888,7 +888,7 @@ package main.inner.local;
 public class OuterClass {
 
     void printFromLocalInnerClass(String printText){
-        // innerhalb einer Methode (Scope) definierte Klasse
+        // class defined inside a method (scope)
         class LocalInnerClass{
             void print(String printText){
                 System.out.println(this.getClass().getName() + " " + printText);
@@ -926,8 +926,8 @@ public class OuterClass {
     }
 
     void printFromAnonymousInnerClass(String printText) {
-        // ohne eigenen Bezeichner definiert (kann nicht wiederverwendet werden)
-        // erweitert eine bestehende Klasse oder implementiert ein Interface
+        // defined without its own identifier (cannot be reused)
+        // extends an existing class or implements an interface
         OuterClass.Printable myAnonymousInnerClass = new OuterClass.Printable() {
             @Override
             public void print(String printText) {
@@ -965,12 +965,12 @@ public class OuterClass {
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ```Java
-Interface1 lambda1 = parameter -> Anweisung;
-Interface2 lambda2 = (parameter1, parameter2) -> Anweisung;
+Interface1 lambda1 = parameter -> statement;
+Interface2 lambda2 = (parameter1, parameter2) -> statement;
 Interface3 lambda3 = () -> {
-  Anweisung1;
-  Anweisung2;
-  Anweisung3;
+  statement1;
+  statement2;
+  statement3;
 }
 
 ```
@@ -990,9 +990,9 @@ public class OuterClass {
     }
 
     void printFromLambdaFunction(String printText) {
-        // Lambda Funktionen sind "reine Funktionen" ohne Klasse
-        // nutzen immer ein funktionales Interface (nur eine Methode)
-        // zur Implementierung
+        // Lambda functions are "pure functions" without a class
+        // always use a functional interface (only one method)
+        // for implementation
         OuterClass.Printable myLambdaPrintFunction = (lambdaPrintText) -> {
             System.out.println(this.getClass().getName() + " " + lambdaPrintText);
         };
@@ -1094,7 +1094,7 @@ public class DatabaseConnection {
     private static DatabaseConnection instance;
 
     private DatabaseConnection() {
-        // privater Konstruktor verhindert direkte Instanziierung
+        // private constructor prevents direct instantiation
     }
 
     public static DatabaseConnection getInstance() {
@@ -1107,7 +1107,7 @@ public class DatabaseConnection {
     public void query(String sql) { /* ... */ }
 }
 
-// Verwendung:
+// Usage:
 DatabaseConnection db = DatabaseConnection.getInstance();
 ```
 
@@ -1126,7 +1126,7 @@ public interface Notification {
 }
 
 public class EmailNotification implements Notification {
-    public void send(String message) { System.out.println("E-Mail: " + message); }
+    public void send(String message) { System.out.println("Email: " + message); }
 }
 
 public class SmsNotification implements Notification {
@@ -1138,14 +1138,14 @@ public class NotificationFactory {
         return switch (type) {
             case "email" -> new EmailNotification();
             case "sms"   -> new SmsNotification();
-            default      -> throw new IllegalArgumentException("Unbekannter Typ: " + type);
+            default      -> throw new IllegalArgumentException("Unknown type: " + type);
         };
     }
 }
 
-// Verwendung:
+// Usage:
 Notification n = NotificationFactory.create("email");
-n.send("Willkommen!");
+n.send("Welcome!");
 ```
 
 </div>
@@ -1181,7 +1181,7 @@ public class Pizza {
     }
 }
 
-// Verwendung:
+// Usage:
 Pizza pizza = new Pizza.Builder("Large").cheese().pepperoni().build();
 ```
 
@@ -1203,12 +1203,12 @@ Pizza pizza = new Pizza.Builder("Large").cheese().pepperoni().build();
 <div style="font-size: 0.75em;">
 
 ```Java
-// Komplexes Subsystem
-class CpuSubsystem    { void start() { System.out.println("CPU gestartet"); } }
-class MemorySubsystem { void load()  { System.out.println("Speicher geladen"); } }
-class DiskSubsystem   { void read()  { System.out.println("Disk gelesen"); } }
+// Complex subsystem
+class CpuSubsystem    { void start() { System.out.println("CPU started"); } }
+class MemorySubsystem { void load()  { System.out.println("Memory loaded"); } }
+class DiskSubsystem   { void read()  { System.out.println("Disk read"); } }
 
-// Facade: einfache Schnittstelle nach außen
+// Facade: simple interface to the outside
 public class ComputerFacade {
     private final CpuSubsystem    cpu    = new CpuSubsystem();
     private final MemorySubsystem memory = new MemorySubsystem();
@@ -1218,13 +1218,13 @@ public class ComputerFacade {
         cpu.start();
         memory.load();
         disk.read();
-        System.out.println("Computer gestartet!");
+        System.out.println("Computer started!");
     }
 }
 
-// Verwendung:
+// Usage:
 ComputerFacade computer = new ComputerFacade();
-computer.startComputer();  // Details des Subsystems verborgen
+computer.startComputer();  // subsystem details hidden
 ```
 
 </div>
@@ -1237,17 +1237,17 @@ computer.startComputer();  // Details des Subsystems verborgen
 <div style="font-size: 0.75em;">
 
 ```Java
-// Vorhandene, inkompatible Klasse (z.B. Drittanbieter)
+// Existing, incompatible class (e.g. third-party)
 public class EuroSocket {
-    public void plugIn220V() { System.out.println("220V Strom"); }
+    public void plugIn220V() { System.out.println("220V power"); }
 }
 
-// Zielschnittstelle, die der Client erwartet
+// Target interface expected by the client
 public interface UsbCharger {
     void charge();
 }
 
-// Adapter: verbindet EuroSocket mit UsbCharger
+// Adapter: connects EuroSocket with UsbCharger
 public class SocketAdapter implements UsbCharger {
     private final EuroSocket socket;
 
@@ -1255,12 +1255,12 @@ public class SocketAdapter implements UsbCharger {
 
     @Override
     public void charge() {
-        socket.plugIn220V();      // ruft inkompatible Methode intern auf
-        System.out.println("-> Konvertiert zu USB");
+        socket.plugIn220V();      // calls incompatible method internally
+        System.out.println("-> Converted to USB");
     }
 }
 
-// Verwendung:
+// Usage:
 UsbCharger charger = new SocketAdapter(new EuroSocket());
 charger.charge();
 ```
@@ -1288,16 +1288,16 @@ public interface SortStrategy {
     void sort(int[] data);
 }
 
-// Konkrete Strategien
+// Concrete strategies
 public class BubbleSort implements SortStrategy {
-    public void sort(int[] data) { System.out.println("BubbleSort ausgeführt"); }
+    public void sort(int[] data) { System.out.println("BubbleSort executed"); }
 }
 
 public class QuickSort implements SortStrategy {
-    public void sort(int[] data) { System.out.println("QuickSort ausgeführt"); }
+    public void sort(int[] data) { System.out.println("QuickSort executed"); }
 }
 
-// Context: nutzt eine Strategy
+// Context: uses a strategy
 public class Sorter {
     private SortStrategy strategy;
 
@@ -1308,10 +1308,10 @@ public class Sorter {
     public void sort(int[] data) { strategy.sort(data); }
 }
 
-// Verwendung:
+// Usage:
 Sorter sorter = new Sorter(new BubbleSort());
 sorter.sort(new int[]{3, 1, 2});
-sorter.setStrategy(new QuickSort());  // Strategie zur Laufzeit wechseln
+sorter.setStrategy(new QuickSort());  // switch strategy at runtime
 sorter.sort(new int[]{3, 1, 2});
 ```
 
@@ -1345,14 +1345,14 @@ public class EventSystem {
     }
 }
 
-// Verwendung:
+// Usage:
 EventSystem events = new EventSystem();
 events.subscribe(e -> System.out.println("Logger: " + e));
 events.subscribe(e -> System.out.println("UI-Update: " + e));
 
-events.notifyObservers("Datei gespeichert");
-// Logger: Datei gespeichert
-// UI-Update: Datei gespeichert
+events.notifyObservers("File saved");
+// Logger: File saved
+// UI-Update: File saved
 ```
 
 </div>
@@ -1380,7 +1380,7 @@ public String getStudentCity(Student student) {
             return address.getCity();
         }
     }
-    return "Unbekannt";
+    return "Unknown";
 }
 ```
 
@@ -1403,10 +1403,10 @@ public String getStudentCity(Student student) {
 * befindet sich im Package ```java.util```
 
 ```Java
-// Ohne Optional: unklar ob null zurückkommen kann
+// Without Optional: unclear whether null can be returned
 public String findCity() { ... }
 
-// Mit Optional: explizit, dass kein Wert möglich ist
+// With Optional: explicit that no value is possible
 public Optional<String> findCity() { ... }
 ```
 
@@ -1423,11 +1423,11 @@ public Optional<String> findCity() { ... }
 * ```Optional.empty()``` – erzeugt ein leeres Optional
 
 ```Java
-Optional<String> mitWert    = Optional.of("Berlin");
-Optional<String> nullable   = Optional.ofNullable(getCity()); // getCity() darf null zurückgeben
-Optional<String> leer       = Optional.empty();
+Optional<String> withValue  = Optional.of("Berlin");
+Optional<String> nullable   = Optional.ofNullable(getCity()); // getCity() may return null
+Optional<String> empty      = Optional.empty();
 
-Optional<String> fehler     = Optional.of(null);              // --> NullPointerException!
+Optional<String> error      = Optional.of(null);              // --> NullPointerException!
 ```
 
 </div><!-- .element style="font-size: 0.85em;" -->
@@ -1453,9 +1453,9 @@ Optional<String> fehler     = Optional.of(null);              // --> NullPointer
 ```Java
 Optional<String> city = Optional.ofNullable(getCity());
 
-String c1 = city.orElse("Unbekannt");
+String c1 = city.orElse("Unknown");
 String c2 = city.orElseGet(() -> loadDefaultCity());
-String c3 = city.orElseThrow(() -> new IllegalStateException("Keine Stadt!"));
+String c3 = city.orElseThrow(() -> new IllegalStateException("No city!"));
 ```
 
 </div><!-- .element style="font-size: 0.8em;" -->
@@ -1483,8 +1483,8 @@ Optional<String> city = Optional.ofNullable(student.getAddress())
                                 .filter(c -> !c.isBlank());
 
 city.ifPresentOrElse(
-    c -> System.out.println("Stadt: " + c),
-    () -> System.out.println("Keine Stadt gefunden")
+    c -> System.out.println("City: " + c),
+    () -> System.out.println("No city found")
 );
 ```
 

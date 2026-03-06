@@ -815,13 +815,13 @@ Typname Variablenname;
 ```
 * Beispiele für Variablendeklarationen
 ```java
-boolean muede;
+boolean tired;
 int a;
 ```
 * Beispiele für Deklarationen mit Initialisierung
 ```java
-char buchstabe = ‘a‘;
-long zahl = 45768;
+char letter = ‘a’;
+long number = 45768;
 ```
 ----
 ## Deklaration von Konstanten
@@ -875,7 +875,7 @@ Literale für Fließkommazahlen float und double
 * String-Literale stehen in doppelten Hochkommata
 
 ```java
-"Hier ist eine Zeichenkette"
+"Here is a string"
 ```
 
 ----
@@ -953,8 +953,8 @@ String html = """
 * Beispiele
 
 ```java
-int [] zahl = {1, 2, 3, 4, 5};
-zahl[1] = 7;
+int [] number = {1, 2, 3, 4, 5};
+number[1] = 7;
 ```
 
 ```java
@@ -968,8 +968,8 @@ matrix[0] = new int[4];
 ```
 
 ```java
-int [][][] wuerfel = new int[3][3][3];
-wuerfel[2][0][0] = 73;
+int [][][] cube = new int[3][3][3];
+cube[2][0][0] = 73;
 ```
 
 <img src="img/03datentypen_04arrays.png" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
@@ -1547,29 +1547,29 @@ anweisung4;
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-//	Deklaration der Attribute
-	int ps;
+//	Declaration of attributes
+	int hp;
 	float kmh;
-	String kfzKZ;
-	String marke;
+	String licensePlate;
+	String brand;
 
-//	Implementierung des Konstruktors
-	Auto(){
-		ps = 75;
+//	Implementation of the constructor
+	Car(){
+		hp = 75;
 		kmh = 0;
-		kfzKZ = "XX-XX 0000";
-		marke = "Eigenbau";
+		licensePlate = "XX-XX 0000";
+		brand = "Custom";
 	}
 
-//	Implementierung der Methoden
-	void beschleunigen(float pluskmh){
-		kmh += pluskmh;
+//	Implementation of methods
+	void accelerate(float plusKmh){
+		kmh += plusKmh;
 	}
-	void bremsen(float minuskmh){
-		if (kmh - minuskmh >= 0){
-			kmh -= minuskmh;
+	void brake(float minusKmh){
+		if (kmh - minusKmh >= 0){
+			kmh -= minusKmh;
 		}
 	}
 }
@@ -1616,21 +1616,21 @@ class Auto {
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-  // Deklaration der gekapselten Attribute
-	private int ps;
+  // Declaration of encapsulated attributes
+	private int hp;
 	private float kmh;
-	private String kfzKZ;
-	private String marke;
+	private String licensePlate;
+	private String brand;
 
-  // Getter- und Setter-Methoden
-	public String getKfzKZ() {
-		return kfzKZ;
+  // Getter and setter methods
+	public String getLicensePlate() {
+		return licensePlate;
 	}
 
-	public void setKfzKZ(String kfzKZ) {
-		this.kfzKZ = kfzKZ;
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
 	}
 
 	public float getKmh() {
@@ -1671,22 +1671,22 @@ objektname.attribut;
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-//	Deklaration der Attribute
-	private int ps;
+//	Declaration of attributes
+	private int hp;
 	private float kmh;
-	private String kfzKZ;
-	private String marke;
-	public int tueren;
+	private String licensePlate;
+	private String brand;
+	public int doors;
 
-//	Getter- und Setter-Methoden
-	public String getKfzKZ() {
-		return kfzKZ;
+//	Getter and setter methods
+	public String getLicensePlate() {
+		return licensePlate;
 	}
 
-	public void setKfzKZ(String kfzKZ) {
-		this.kfzKZ = kfzKZ;
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
 	}
 
 	public float getKmh() {
@@ -1706,22 +1706,22 @@ class Auto {
 
 ```Java
 package prog1.demos.objekt;
-class AutoTest {
+class CarTest {
 	public static void main(String[] args) {
 
-		Auto bmw = new Auto();
-		Auto audi = new Auto();
+		Car bmw = new Car();
+		Car audi = new Car();
 
-		bmw.tueren = 5;
-		audi.tueren = 3;
+		bmw.doors = 5;
+		audi.doors = 3;
 
-		bmw.setKfzKZ("HD-XX 321");
+		bmw.setLicensePlate("HD-XX 321");
 		audi.setKmh(135.7f);
 
-		System.out.println("Der BMW hat das
-			Kennzeichen: " + bmw.getKfzKZ());
+		System.out.println("The BMW has the" +
+			" license plate: " + bmw.getLicensePlate());
 
-		System.out.println("Der Audi fährt: " +
+		System.out.println("The Audi is driving at: " +
 			audi.getKmh());
 	}
 }
@@ -1743,29 +1743,29 @@ class AutoTest {
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-//	Deklaration der gekapselten Attribute
-	private int ps;
+//	Declaration of encapsulated attributes
+	private int hp;
 	private float kmh;
-	private String kfzKZ;
-	private String marke;
+	private String licensePlate;
+	private String brand;
 
-//	überladene Konstruktoren und Methoden
-		Auto(){
-		ps = 75; kmh = 0;
-		kfzKZ = "XX-XX 0000"; marke = "Eigenbau";
+//	overloaded constructors and methods
+		Car(){
+		hp = 75; kmh = 0;
+		licensePlate = "XX-XX 0000"; brand = "Custom";
 	}
 
-	public Auto(int ps, float kmh, String kfzKZ, String marke){
-		this.ps = ps; this.kmh = kmh;
-		this.kfzKZ = kfzKZ; this.marke = marke;
+	public Car(int hp, float kmh, String licensePlate, String brand){
+		this.hp = hp; this.kmh = kmh;
+		this.licensePlate = licensePlate; this.brand = brand;
 	}
 
-	void beschleunigen(float pluskmh){
-		kmh += pluskmh;
+	void accelerate(float plusKmh){
+		kmh += plusKmh;
 	}
-	protected void beschleunigen(){
+	protected void accelerate(){
 		kmh+= 10;
 	}
 }

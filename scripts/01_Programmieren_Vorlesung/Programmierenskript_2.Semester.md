@@ -126,7 +126,7 @@ center: false
 ```java
 public class TankLeer extends Exception {
   public TankLeer (int km) {
-    super("Der Tank ist nach " + km + " Kilometern leer.");
+    super("The tank is empty after " + km + " kilometers.");
   }
 }
 ```
@@ -140,14 +140,14 @@ public class TankLeer extends Exception {
 ```Java
 public class Auto {
   // ...
-  public void fahren() throws TankLeer {
+  public void drive() throws TankLeer {
     while (true) {
-      if (fuel > 0) { 
+      if (fuel > 0) {
         fuel -= 6;
-        tagesKM += 100;
+        dailyKM += 100;
         kmCount += 100;
       } else {
-          throw new TankLeer(tagesKM);
+          throw new TankLeer(dailyKM);
       }
     }
   }
@@ -168,7 +168,7 @@ public class TankLeerDemo {
     Auto bmw = new Auto(0, 35487);
     //...
     try {
-      bmw.fahren();
+      bmw.drive();
     } catch (TankLeer e1) {
       System.out.println(e1.getMessage());
       System.out.println(e1.toString()); e1.printStackTrace();
@@ -177,7 +177,7 @@ public class TankLeerDemo {
     }
     // ...
   finally {
-    System.out.println("Der neue Kilometerstand: " + bmw.getKmCount());
+    System.out.println("The new mileage: " + bmw.getKmCount());
   }
   //...
  }
@@ -200,14 +200,14 @@ public class TankLeerDemo {
 ```Java
 import java.io.*;
 
-public class SchreibenInDatei {
+public class WriteToFile {
   public static void main(String[] args) {
-    File datei = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
+    File file = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
 
-    try (FileWriter schreiber = new FileWriter(datei)) {
-      datei.createNewFile();
-      schreiber.write("Dies ist eine Schreibdemo.");
-      schreiber.write("Es werden mehrere Zeilen geschrieben.");
+    try (FileWriter writer = new FileWriter(file)) {
+      file.createNewFile();
+      writer.write("This is a write demo.");
+      writer.write("Multiple lines are being written.");
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -223,22 +223,22 @@ public class SchreibenInDatei {
 * liefert den Fehlertext zurück
 
 ```
-Der Tank ist nach 1100 Kilometern leer.
+The tank is empty after 1100 kilometers.
 ```
 
 ```public String toString()```
 * liefert die Objektbeschreibung und den Fehlertext zurück
 
 ```
-prog2.demos.exceptions.TankLeer: Der Tank ist nach 1100 Kilometern leer.
+prog2.demos.exceptions.TankLeer: The tank is empty after 1100 kilometers.
 ```
 
 ```public void printStackTrace()```
 * liefert die Objektbeschreibung, den Fehlertext sowie die Weitergabehierarchie bis zur genauen Auslösestelle zurück
 
 ```
-prog2.demos.exceptions.TankLeer: Der Tank ist nach 1100 Kilometern leer.
-at prog2.demos.exceptions.Auto.fahren(Auto.java:21)
+prog2.demos.exceptions.TankLeer: The tank is empty after 1100 kilometers.
+at prog2.demos.exceptions.Auto.drive(Auto.java:21)
 ```
 </div><!-- .element style="font-size: 0.85em;" -->
 ---
@@ -434,7 +434,7 @@ public class ListDemo {
         myList.add("Ludwig");
         myList.add(new Auto(0, 0));
         myList.add(2,"Otto");
-        myList.set(3,"Überschreibt den Ludwig");
+        myList.set(3,"Overwrites Ludwig");
 
         System.out.println(myList.contains("Otto"));
         System.out.println(myList.indexOf("Ludwig"));
@@ -529,13 +529,13 @@ public class SetDemo {
 
 ```Java
 public class Student implements Comparable {
-  private String vorname;
-  private String nachname;
+  private String firstName;
+  private String lastName;
   private int matrikelNo;
 
-  public Student(String vorname, String name, int matrikelNo) {
-    this.vorname = vorname;
-    this.nachname = name;
+  public Student(String firstName, String name, int matrikelNo) {
+    this.firstName = firstName;
+    this.lastName = name;
     this.matrikelNo = matrikelNo;
   }
 
@@ -557,18 +557,18 @@ import java.util.TreeSet;
 public class DemoMenge1 {
 
   public static void main(String[] args) {
-    TreeSet menge = new TreeSet();
-    menge.add(new Student("Peter", "Maier", 75382));
-    menge.add(new Student("Hans", "Müller", 65871));
-    menge.add(new Student("Karl", "Schmidt", 19853));
-    menge.add(new Student("Hans", "Müller", 65872));
-    menge.add(new Student("Karl", "Schmidt", 19853));
+    TreeSet set = new TreeSet();
+    set.add(new Student("Peter", "Maier", 75382));
+    set.add(new Student("Hans", "Müller", 65871));
+    set.add(new Student("Karl", "Schmidt", 19853));
+    set.add(new Student("Hans", "Müller", 65872));
+    set.add(new Student("Karl", "Schmidt", 19853));
 
-    Iterator i = menge.iterator();
+    Iterator i = set.iterator();
     while(i.hasNext()) {
-      Student studie = (Student) i.next();
-      System.out.println(studie.getMatrikelNo() + " " +
-        studie.getVorname() + " " + studie.getNachname());
+      Student student = (Student) i.next();
+      System.out.println(student.getMatrikelNo() + " " +
+        student.getFirstName() + " " + student.getLastName());
     }
   }
 }
@@ -597,14 +597,14 @@ import java.util.Comparator;
 public class StudentComparator implements Comparator{
 
   public int compare(Object obj1, Object obj2) {
-    Student studie1 = (Student) obj1;
-    Student studie2 = (Student) obj2;
-    if ((studie1.getNachname().compareTo(studie2.getNachname())) != 0) {
-      return studie1.getNachname().compareTo(studie2.getNachname());
-    } else if ((studie1.getVorname().compareTo(studie2.getVorname())) != 0) {
-      return studie1.getVorname().compareTo(studie2.getVorname());
-    } else if ((studie1.getMatrikelNo() - studie2.getMatrikelNo()) != 0) {
-      return studie1.getMatrikelNo() - studie2.getMatrikelNo();
+    Student student1 = (Student) obj1;
+    Student student2 = (Student) obj2;
+    if ((student1.getLastName().compareTo(student2.getLastName())) != 0) {
+      return student1.getLastName().compareTo(student2.getLastName());
+    } else if ((student1.getFirstName().compareTo(student2.getFirstName())) != 0) {
+      return student1.getFirstName().compareTo(student2.getFirstName());
+    } else if ((student1.getMatrikelNo() - student2.getMatrikelNo()) != 0) {
+      return student1.getMatrikelNo() - student2.getMatrikelNo();
     }
 
     return 0;
@@ -621,17 +621,17 @@ import java.util.*;
 
 public class DemoMenge1 {
   public static void main(String[] args) {
-    TreeSet menge = new TreeSet(new StudentComparator());
+    TreeSet set = new TreeSet(new StudentComparator());
 
-    menge.add(new Student("Peter", "Maier", 75382));
+    set.add(new Student("Peter", "Maier", 75382));
     //...
-    menge.add(new Student("Karl", "Maier", 85383));
+    set.add(new Student("Karl", "Maier", 85383));
 
-    Iterator i = menge.iterator();
+    Iterator i = set.iterator();
     while(i.hasNext()) {
-      Student studie = (Student) i.next();
-      System.out.println(studie.getMatrikelNo() + " " +
-      studie.getVorname() + " " + studie.getNachname());
+      Student student = (Student) i.next();
+      System.out.println(student.getMatrikelNo() + " " +
+      student.getFirstName() + " " + student.getLastName());
     }
   }
 }
@@ -703,30 +703,30 @@ public class DemoMenge1 {
 <div>
 
 ```Java
-public class Haustier {
-  private String art;
-  private int gewicht;
+public class Pet {
+  private String species;
+  private int weight;
   //...
 
-  public boolean equals(Object objekt) {
-    // Alias-Check
-    if (this == objekt) {
+  public boolean equals(Object object) {
+    // alias check
+    if (this == object) {
         return true;
     }
-    // Test auf null
-    if (objekt == null){
+    // null check
+    if (object == null){
       return false;
     }
-    // Typverträglichkeit
-    if (objekt.getClass() != this.getClass()){
+    // type compatibility
+    if (object.getClass() != this.getClass()){
       return false;
     }
 
-    // Feldvergleich
-    if(!this.art.equals(((Haustier) objekt).getArt())){
+    // field comparison
+    if(!this.species.equals(((Pet) object).getSpecies())){
       return false;
     }
-    if(!(this.gewicht == ((Haustier) objekt).getGewicht())) {
+    if(!(this.weight == ((Pet) object).getWeight())) {
       return false;
     }
 
@@ -743,23 +743,23 @@ public class Haustier {
 <div>
 
 ```Java
-public class Hund extends Haustier {
-  private String rasse;
+public class Dog extends Pet {
+  private String breed;
   //...
 
-  public boolean equals(Object objekt) {
-    // Alias-Check
-    if (this == objekt){
+  public boolean equals(Object object) {
+    // alias check
+    if (this == object){
         return true;
     }
 
-    // Delegation an super
-    if (!super.equals(objekt)){
+    // delegation to super
+    if (!super.equals(object)){
       return false;
     }
 
-    // Feldvergleich
-    if (!this.rasse.equals(((Hund) objekt).getRasse())){
+    // field comparison
+    if (!this.breed.equals(((Dog) object).getBreed())){
         return false;
     }
 
