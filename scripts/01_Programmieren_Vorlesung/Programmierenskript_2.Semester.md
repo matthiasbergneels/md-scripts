@@ -156,7 +156,7 @@ public class Auto {
 ```
 
 * Definition der möglichen Ausnahmen in Methoden-Signatur: ``` throws```
-* Erzeugen eines neuen Ausnahme-Objektes: ``` new TankLeer(tagesKM)```
+* Erzeugen eines neuen Ausnahme-Objektes: ``` new TankLeer(dailyKM)```
 * Auslösen (werfen) der Ausnahme (im Ausnahmefall) innerhalb der Methode: ``` throw```
 
 ----
@@ -519,9 +519,9 @@ public class SetDemo {
 
 * Beispiel:
 ```Java
-"a".compareTo("c"); // --> ergibt -2
-"c".compareTo("c"); // --> ergibt  0
-"c".compareTo("a"); // --> ergibt  2
+"a".compareTo("c"); // --> returns -2
+"c".compareTo("c"); // --> returns  0
+"c".compareTo("a"); // --> returns  2
 ```
 
 ----
@@ -554,7 +554,7 @@ public class Student implements Comparable {
 import java.util.Iterator;
 import java.util.TreeSet;
 
-public class DemoMenge1 {
+public class DemoSet1 {
 
   public static void main(String[] args) {
     TreeSet set = new TreeSet();
@@ -619,7 +619,7 @@ public class StudentComparator implements Comparator{
 ```Java
 import java.util.*;
 
-public class DemoMenge1 {
+public class DemoSet1 {
   public static void main(String[] args) {
     TreeSet set = new TreeSet(new StudentComparator());
 
@@ -2142,18 +2142,18 @@ public class WriteToFile {
 ```Java
 import java.io.*;
 
-public class DateiKopieren {
+public class CopyFile {
   public static void main(String[] args) {
-    File quelle = new File(System.getProperty("user.dir") + "/Eclipse.jpg");
-    File ziel = new File(System.getProperty("user.dir") + "/Eclipse2.jpg");
+    File source = new File(System.getProperty("user.dir") + "/Eclipse.jpg");
+    File target = new File(System.getProperty("user.dir") + "/Eclipse2.jpg");
 
-    byte[] puffer = new byte[(int)quelle.length()];
+    byte[] buffer = new byte[(int)source.length()];
 
-    try (FileInputStream leser = new FileInputStream(quelle);
-          FileOutputStream schreiber = new FileOutputStream(ziel)) {
+    try (FileInputStream reader = new FileInputStream(source);
+          FileOutputStream writer = new FileOutputStream(target)) {
 
-      int byteRead = leser.read(puffer);
-      schreiber.write(puffer, 0, byteRead);
+      int byteRead = reader.read(buffer);
+      writer.write(buffer, 0, byteRead);
 
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -2173,25 +2173,25 @@ public class DateiKopieren {
 ```Java
 import java.io.*;
 
-public class DateiKopierenMitPuffer2 {
+public class CopyFileWithBuffer {
   public static void main(String[] args) {
     final int BUF_SIZE = 1;
-    File quelle = new File(System.getProperty("user.dir") + "/Eclipse.jpg");
-    File ziel = new File(System.getProperty("user.dir") + "/Eclipse2.jpg");
+    File source = new File(System.getProperty("user.dir") + "/Eclipse.jpg");
+    File target = new File(System.getProperty("user.dir") + "/Eclipse2.jpg");
 
     int i = 0;
-    int puffer = 0;
+    int bytesRead = 0;
     byte[] buffer = new byte[BUF_SIZE];
 
-    try (FileInputStream leser = new FileInputStream(quelle);
-          FileOutputStream schreiber = new FileOutputStream(ziel)) {
+    try (FileInputStream reader = new FileInputStream(source);
+          FileOutputStream writer = new FileOutputStream(target)) {
 
       while (true){
-        puffer = leser.read(buffer, i, BUF_SIZE);
-        if (puffer == -1){
+        bytesRead = reader.read(buffer, i, BUF_SIZE);
+        if (bytesRead == -1){
             break;
         }
-        schreiber.write(buffer, i, BUF_SIZE);
+        writer.write(buffer, i, BUF_SIZE);
       }
 
     } catch (FileNotFoundException e) {
@@ -2352,16 +2352,16 @@ Umsetzung in Java
 import java.io.*;
 import java.util.*;
 
-public class PropertiesSpeichernDemo {
+public class PropertiesSaveDemo {
   public static void main(String[] args) {
 
-    File propDateiName = new File(System.getProperty("user.dir") + "\\Demo2.properties");
+    File propFileName = new File(System.getProperty("user.dir") + "\\Demo2.properties");
 
-    try (FileOutputStream propDatei = new FileOutputStream(propDateiName)) {
+    try (FileOutputStream propFile = new FileOutputStream(propFileName)) {
       Properties prop = new Properties();
       prop.setProperty("Name", "Michael Lang");
-      prop.setProperty("Language", "Deutsch");
-      prop.store(propDatei, "Dies ist der Kommentar");
+      prop.setProperty("Language", "German");
+      prop.store(propFile, "This is the comment");
 
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -2377,10 +2377,10 @@ public class PropertiesSpeichernDemo {
 
 Ergebnis (in Demo2.properties Datei):
 ```
-#Dies ist der Kommentar
+#This is the comment
 #Sun Mar 19 17:29:02 CET 2006
 Name=Michael Lang
-Language=Deutsch
+Language=German
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
 
@@ -2393,18 +2393,18 @@ Language=Deutsch
 import java.io.*;
 import java.util.*;
 
-public class PropertiesLadenDemo {
+public class PropertiesLoadDemo {
   public static void main(String[] args) {
-    File propDateiName = new File(System.getProperty("user.dir") + "\\Demo2.properties");
+    File propFileName = new File(System.getProperty("user.dir") + "\\Demo2.properties");
 
-    try (FileInputStream propDatei = new FileInputStream(propDateiName)){
+    try (FileInputStream propFile = new FileInputStream(propFileName)){
 
       Properties prop = new Properties();
-      prop.load(propDatei);
+      prop.load(propFile);
       prop.list(System.out);
 
-      System.out.println("\nHallo " + prop.getProperty("Name"));
-      System.out.println("Sie bekommen die Texte in " + prop.getProperty("Language") + " angezeigt.");
+      System.out.println("\nHello " + prop.getProperty("Name"));
+      System.out.println("You will see the texts in " + prop.getProperty("Language") + ".");
 
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -2422,10 +2422,10 @@ public class PropertiesLadenDemo {
 Ergebnis (Ausgabe auf Konsole):
 ```
 -- listing properties --
-Language=Deutsch
+Language=German
 Name=Michael Lang
-Hallo Michael Lang
-Sie bekommen die Texte in Deutsch angezeigt.
+Hello Michael Lang
+You will see the texts in German.
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
 
@@ -2436,9 +2436,9 @@ Sie bekommen die Texte in Deutsch angezeigt.
 
 Demo.properties Datei:
 ```
-#Dies ist der Kommentar
+#This is the comment
 
-dyna=Text mit einem beliebigen Parameter. : {0}
+dyna=Text with an arbitrary parameter. : {0}
 dany2={2}{0}{1}{1}{3}{4}
 ```
 </div><!-- .element style="font-size: 0.55em;" -->
@@ -2462,13 +2462,13 @@ public class PropertiesDemo {
       e.printStackTrace();
     }
 
-    // Umgang mit dynamischen Texten
-    MessageFormat nachricht = new MessageFormat(settings.getProperty("dyna"));
-    Object[] text = {"mein Text"};
-    System.out.println(nachricht.format(text));
-    nachricht = new MessageFormat(settings.getProperty("dyna2")); // olha
+    // handling dynamic texts
+    MessageFormat message = new MessageFormat(settings.getProperty("dyna"));
+    Object[] text = {"my text"};
+    System.out.println(message.format(text));
+    message = new MessageFormat(settings.getProperty("dyna2")); // olha
     Object[] text2 = {"o","l","H","a","!"};
-    System.out.println(nachricht.format(text2));
+    System.out.println(message.format(text2));
   }
 }
 ```
@@ -2478,8 +2478,8 @@ public class PropertiesDemo {
 
 Ergebnis (Ausgabe auf Konsole):
 ```
-Text mit einem beliebigen Parameter. : mein Text
-Hallo!
+Text with an arbitrary parameter. : my text
+Hello!
 ```
 </div><!-- .element style="font-size: 0.55em;" -->
 
@@ -2552,8 +2552,8 @@ public class BundleDemo {
 
 Ergebnis (Ausgabe auf Konsole):
 ```
-China: Dies ist der Standardtext.
-Deutsch: Dies ist die deutsche Variante.
+China: This is the default text.
+Deutsch: This is the German version.
 English: This is the english version.
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
@@ -2565,7 +2565,7 @@ DemoBundle.properties (Default):
 ```
 #DemoBundle.properties
 
-alias=Dies ist der Standardtext.
+alias=This is the default text.
 
 ```
 
@@ -2573,7 +2573,7 @@ DemoBundle_de.properties (Deutsch):
 ```
 #DemoBundle_de.properties
 
-alias=Dies ist die deutsche Variante.
+alias=This is the German version.
 ```
 
 DemoBundle_en.properties (English):

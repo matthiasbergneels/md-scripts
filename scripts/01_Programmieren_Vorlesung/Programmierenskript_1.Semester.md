@@ -1136,10 +1136,10 @@ Anweisungen sind elementare Arbeitsschritte
 
 ```java
 {
-  Anweisung 1;
-  Anweisung 2;
+  Statement 1;
+  Statement 2;
   ...
-  Anweisung n;
+  Statement n;
 }
 ```
 * ist eine Zusammenfassung von Anweisungen
@@ -1260,8 +1260,8 @@ int numLetters = switch (day) {
 #### Kopfgesteuerte Schleifen
 
 ```JAVA
-while (ausdruck)
-  anweisung;
+while (expression)
+  statement;
 ```
 
 * in Java realisiert durch die while-Schleife
@@ -1275,8 +1275,8 @@ while (ausdruck)
 
 ```JAVA
 do
-  anweisung1;
-while (ausdruck);
+  statement1;
+while (expression);
 ```
 
 * in Java realisiert durch die do-while-Schleife
@@ -1292,7 +1292,7 @@ while (ausdruck);
 
 ```JAVA
 for (init; test; update)
-  anweisung1;
+  statement1;
 ```
 
 * in Java realisiert durch die for-Schleife
@@ -1305,7 +1305,7 @@ for (init; test; update)
 * besondere for-Schleife zum Durchlaufen von Feldern (Arrays)
 
 ```Java
-for ( Typ Bezeicher : Feld )
+for ( Type identifier : array )
 ```
 
 ----
@@ -1328,21 +1328,21 @@ for ( Typ Bezeicher : Feld )
 * schlecht lesbar (gar nicht eingerückt)
 
 ```Java
-ausdruck0; if(ausdruck1) anweisung1; else ausdruck2; ausdruck3;
+expression0; if(expression1) statement1; else expression2; expression3;
 ```
 
 * besser lesbar (eingerückt)
 
 
 ```Java
-ausdruck0;
+expression0;
 
-if(ausdruck1)
-  anweisung1;
+if(expression1)
+  statement1;
 else
-  ausdruck2;
+  expression2;
 
-ausdruck3;
+expression3;
 ```
 
 ----
@@ -1353,31 +1353,31 @@ ausdruck3;
 (dangaling-else)
 
 ```JAVA
-if(ausdruck1)
-  if(ausdruck2)
-    anweisung1;
+if(expression1)
+  if(expression2)
+    statement1;
 else
-  anweisung2;  
+  statement2;
 ```
 
 * besser lesbar (korrekt eingerückt)
 
 ```JAVA
-if(ausdruck1)
-  if(ausdruck2)
-    anweisung1;
+if(expression1)
+  if(expression2)
+    statement1;
   else
-    anweisung2;  
+    statement2;
 ```
 
 * besser lesbar (Verzweigungen mit Coding-Blöcken separiert)
 
 ```JAVA
-if(ausdruck1){
-  if(ausdruck2){
-    anweisung1;
+if(expression1){
+  if(expression2){
+    statement1;
   } else {
-    anweisung2;  
+    statement2;
   }
 }
 ```
@@ -1388,32 +1388,32 @@ if(ausdruck1){
 *schlecht lesbar (falsch eingerückt)
 
 ```JAVA
-while (ausdruck)
-  anweisung1;
-  anweisung2;
-  anweisung3;
-anweisung4;
+while (expression)
+  statement1;
+  statement2;
+  statement3;
+statement4;
 ```
 
 *besser lesbar (korrekt eingerückt)*
 ```JAVA
-while (ausdruck)
-  anweisung1;
+while (expression)
+  statement1;
 
-anweisung2;
-anweisung3;
-anweisung4;
+statement2;
+statement3;
+statement4;
 ```
 
 *besser lesbar (korrekt eingerückt & separiert mit Coding-Block)*
 ```JAVA
-while (ausdruck){
-  anweisung1;
+while (expression){
+  statement1;
 }
 
-anweisung2;
-anweisung3;
-anweisung4;
+statement2;
+statement3;
+statement4;
 ```
 
 ---
