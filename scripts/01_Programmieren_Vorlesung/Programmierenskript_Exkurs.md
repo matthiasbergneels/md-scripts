@@ -1092,10 +1092,199 @@ Beispiele für Strukturmuster sind: Fassade, die eine vereinfachte Schnittstelle
 ---
 # Optionals
 
-> TODO... :-)
+> ```java.util.Optional``` – ein Container-Objekt für potenziell nicht vorhandene Werte (seit Java 8)
 
+----
 
---- 
+## Das Problem: ```null```
+
+<div>
+
+* ```null``` bedeutet "kein Wert" – aber Java-Referenzen können immer ```null``` sein
+* Zugriff auf ein ```null```-Objekt führt zur gefürchteten ```NullPointerException```
+* Klassisches Muster – fehleranfällig und schwer lesbar:
+
+```Java
+public String getStudentCity(Student student) {
+    if (student != null) {
+        Address address = student.getAddress();
+        if (address != null) {
+            return address.getCity();
+        }
+    }
+    return "Unbekannt";
+}
+```
+
+* Probleme:
+  * Entwickler vergessen ```null```-Prüfungen
+  * verschachtelte ```if```-Blöcke reduzieren Lesbarkeit
+  * ```null``` als Rückgabewert ist nicht selbsterklärend
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
+
+## [```Optional```](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Optional.html) – Grundidee
+
+<div>
+
+* ```Optional<T>``` ist ein Container, der **entweder einen Wert enthält oder leer ist**
+* macht das Fehlen eines Wertes **explizit** im Typ-System sichtbar
+* zwingt den Aufrufer, den "kein Wert"-Fall zu behandeln
+* befindet sich im Package ```java.util```
+
+```Java
+// Ohne Optional: unklar ob null zurückkommen kann
+public String findCity() { ... }
+
+// Mit Optional: explizit, dass kein Wert möglich ist
+public Optional<String> findCity() { ... }
+```
+
+</div><!-- .element style="font-size: 0.85em;" -->
+
+----
+
+## Erzeugen von ```Optional```
+
+<div>
+
+* ```Optional.of(value)``` – erzeugt ein Optional mit dem gegebenen Wert (**nicht** ```null```!)
+* ```Optional.ofNullable(value)``` – erzeugt ein Optional; bei ```null``` → leeres Optional
+* ```Optional.empty()``` – erzeugt ein leeres Optional
+
+```Java
+Optional<String> mitWert    = Optional.of("Berlin");
+Optional<String> nullable   = Optional.ofNullable(getCity()); // getCity() darf null zurückgeben
+Optional<String> leer       = Optional.empty();
+
+Optional<String> fehler     = Optional.of(null);              // --> NullPointerException!
+```
+
+</div><!-- .element style="font-size: 0.85em;" -->
+
+----
+
+## Wichtige Methoden (1/2)
+
+<div>
+
+**Prüfen & Wert holen:**
+
+* ```isPresent()``` – gibt ```true``` zurück, wenn ein Wert vorhanden ist
+* ```isEmpty()``` – gibt ```true``` zurück, wenn kein Wert vorhanden ist (seit Java 11)
+* ```get()``` – gibt den Wert zurück; wirft ```NoSuchElementException``` wenn leer → **mit Vorsicht verwenden!**
+
+**Sichere Alternativen zu ```get()```:**
+
+* ```orElse(T other)``` – gibt den Wert zurück oder den Standardwert ```other```
+* ```orElseGet(Supplier)``` – gibt den Wert zurück oder berechnet einen Standardwert per Lambda
+* ```orElseThrow(Supplier)``` – gibt den Wert zurück oder wirft eine eigene Exception
+
+```Java
+Optional<String> city = Optional.ofNullable(getCity());
+
+String c1 = city.orElse("Unbekannt");
+String c2 = city.orElseGet(() -> loadDefaultCity());
+String c3 = city.orElseThrow(() -> new IllegalStateException("Keine Stadt!"));
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
+
+## Wichtige Methoden (2/2)
+
+<div>
+
+**Aktionen ausführen:**
+
+* ```ifPresent(Consumer)``` – führt eine Aktion aus, wenn ein Wert vorhanden ist
+* ```ifPresentOrElse(Consumer, Runnable)``` – Aktion bei Wert oder Alternativ-Aktion bei leer (seit Java 9)
+
+**Transformieren:**
+
+* ```map(Function)``` – transformiert den Wert, falls vorhanden (ähnlich wie bei Streams)
+* ```filter(Predicate)``` – gibt das Optional zurück, wenn der Wert das Prädikat erfüllt, sonst leeres Optional
+* ```flatMap(Function)``` – wie ```map```, aber wenn die Funktion selbst ein Optional zurückgibt
+
+```Java
+Optional<String> city = Optional.ofNullable(student.getAddress())
+                                .map(Address::getCity)
+                                .filter(c -> !c.isBlank());
+
+city.ifPresentOrElse(
+    c -> System.out.println("Stadt: " + c),
+    () -> System.out.println("Keine Stadt gefunden")
+);
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
+
+## Beispiel: Vorher / Nachher
+
+<div>
+
+**Ohne Optional:**
+```Java
+public String getStudentCity(Student student) {
+    if (student != null) {
+        Address address = student.getAddress();
+        if (address != null) {
+            String city = address.getCity();
+            if (city != null && !city.isBlank()) {
+                return city;
+            }
+        }
+    }
+    return "Unbekannt";
+}
+```
+
+**Mit Optional:**
+```Java
+public String getStudentCity(Student student) {
+    return Optional.ofNullable(student)
+                   .map(Student::getAddress)
+                   .map(Address::getCity)
+                   .filter(city -> !city.isBlank())
+                   .orElse("Unbekannt");
+}
+```
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+----
+
+## Wann ```Optional``` verwenden?
+
+<div>
+
+**Empfohlen:**
+* als **Rückgabetyp** von Methoden, wenn kein Wert ein gültiges Ergebnis ist
+  * ```public Optional<Student> findById(int id) { ... }```
+
+**Nicht empfohlen:**
+* als **Methodenparameter** (nutze stattdessen Überladung oder Default-Werte)
+* als **Attribut in Klassen** (```Optional``` ist nicht serialisierbar)
+* für **Collections** – eine leere Collection ist besser als ```Optional<List<...>>```
+
+```Java
+// Gut:
+public Optional<String> findEmail(int userId) { ... }
+
+// Vermeiden:
+public void sendMail(Optional<String> email) { ... }  // Nicht gut
+```
+
+> **Faustregel**: ```Optional``` macht das **Fehlen eines Rückgabewertes explizit** – nicht mehr und nicht weniger.
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+---
 # Programming Principals
 
 > DRY, KISS, ... TODO... :-)
