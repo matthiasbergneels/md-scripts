@@ -2,8 +2,6 @@ name: generateHtml
 
 on:
   push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -50,8 +48,8 @@ jobs:
         git add .
         git commit -m "Automated HTML generation for GitHub Pages"
 
-    - name: GitHub Push changes to main branch
+    - name: GitHub Push changes to current branch
       uses: ad-m/github-push-action@v0.6.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main
+        branch: ${{ github.ref }}
