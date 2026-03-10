@@ -808,24 +808,28 @@ Developer writes code
 
 <div>
 
-* Innere Top-Level Klasse
-  * Geschachtelte statische Klasse innerhalb einer anderen Klasse mit Bezeichner (Klassenname)
+* Statisch verschachtelte Klasse (Static Nested Class)
+  * Geschachtelte **statische** Klasse innerhalb einer anderen Klasse mit Bezeichner (Klassenname)
   * können innerhalb und außerhalb (abhängig von der Sichtbarkeit) der Klasse verwendet werden
+  * hat **keinen** Zugriff auf Instanzvariablen der äußeren Klasse (nur auf statische Mitglieder)
 * Innere Element Klasse
   * Geschachtelte Klasse innerhalb einer anderen Klasse mit Bezeichner (Klassenname)
   * können innerhalb und außerhalb (abhängig von der Sichtbarkeit) der Klasse verwendet werden
     * nur im Kontext eines Objekts der äußeren Klasse
+  * hat Zugriff auf **alle** Mitglieder der äußeren Klasse (auch `private`)
 * Innere lokale Klasse
   * Geschachtelte Klasse innerhalb einer Methode mit Bezeichner (Klassenname)
   * können nur innerhalb der Methode (Scope) genutzt werden
+  * hat Zugriff auf **alle** Mitglieder der äußeren Klasse (auch `private`)
 * Innere anonyme Klasse
   * geschachtelte Klasse innerhalb einer anderen Klasse / Methode **ohne** Bezeichner
-  * werden direkt einer Referenz zugwiesen
+  * werden direkt einer Referenz zugewiesen oder als Methodenargument übergeben
   * basieren immer auf einer Klasse (erweitern) oder einem Interface (implementieren)
+  * hat Zugriff auf **alle** Mitglieder der äußeren Klasse (auch `private`)
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ----
-## Innere Top-Level-Klasse
+## Statisch verschachtelte Klasse (Static Nested Class)
 
 <div>
 
@@ -834,7 +838,7 @@ package main.inner.toplevelclass;
 
 public class OuterClass {
 
-    // Top-Level class defined inside another class
+    // Static nested class - kein Zugriff auf Instanzvariablen der äußeren Klasse
     public static class InnerTopLevelClass{
         void print(String printText){
             System.out.println(this.getClass().getName() + " " + printText);
@@ -850,12 +854,51 @@ public class OuterClass {
         OuterClass myClass = new OuterClass();
 
         System.out.println("OuterClass: " + myClass.getClass().getName());
-        OuterClass.printFromInnerTopLevelClass("Inner Top-Level Class: HelloWorld");
+        OuterClass.printFromInnerTopLevelClass("Static Nested Class: HelloWorld");
     }
 }
 ```
 
 </div><!-- .element style="font-size: 0.9em;" -->
+
+----
+## Anwendungsbeispiel: Static Nested Class
+
+> `Car.Statistics` – Klassenweite Statistik, die kein konkretes Auto-Objekt braucht
+
+<div>
+
+```Java
+public class Car {
+    private static int carCount = 0;
+    private String brand;
+    private int kmh = 0;
+
+    public Car(String brand) {
+        this.brand = brand;
+        Car.carCount++;
+    }
+
+    // Static Nested Class: Zugriff auf statische Mitglieder (carCount),
+    // aber KEIN Zugriff auf Instanzvariablen (brand, kmh)
+    public static class Statistics {
+        public void printStats() {
+            System.out.println("Erstellte Autos: " + Car.carCount);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Car("BMW");
+        new Car("VW");
+        new Car("Audi");
+
+        Car.Statistics stats = new Car.Statistics();
+        stats.printStats();     // Erstellte Autos: 3
+    }
+}
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ----
 ## Innere Element-Klasse
@@ -876,7 +919,9 @@ public class OuterClass {
     }
 
     void printFromInnerElementClass(String printText){
-        OuterClass.InnerElementClass myInnerElementClass = this.new InnerElementClass();
+        // Innerhalb der äußeren Klasse: new InnerElementClass() reicht aus
+        // Von außen wäre die Syntax: outerObj.new InnerElementClass()
+        InnerElementClass myInnerElementClass = new InnerElementClass();
 
         myInnerElementClass.print(printText);
     }
@@ -891,6 +936,45 @@ public class OuterClass {
 ```
 
 </div><!-- .element style="font-size: 0.9em;" -->
+
+----
+## Anwendungsbeispiel: Innere Element-Klasse
+
+> `Car.Engine` – Der Motor gehört zum Auto und greift direkt auf dessen Zustand zu
+
+<div>
+
+```Java
+public class Car {
+    private String brand;
+    private int kmh = 0;
+
+    public Car(String brand) { this.brand = brand; }
+
+    // Innere Element-Klasse: Direkter Zugriff auf brand und kmh der äußeren Instanz
+    public class Engine {
+        public void accelerate(int amount) {
+            kmh += amount;      // greift direkt auf kmh von Car zu
+            System.out.println(brand + " beschleunigt auf " + kmh + " km/h");
+        }
+        public void brake(int amount) {
+            kmh = Math.max(0, kmh - amount);
+            System.out.println(brand + " bremst auf " + kmh + " km/h");
+        }
+    }
+
+    public static void main(String[] args) {
+        Car myCar = new Car("BMW");
+        Car.Engine engine = myCar.new Engine();  // Von außen: outerObj.new InnerClass()
+
+        engine.accelerate(50);  // BMW beschleunigt auf 50 km/h
+        engine.accelerate(30);  // BMW beschleunigt auf 80 km/h
+        engine.brake(20);       // BMW bremst auf 60 km/h
+    }
+}
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ----
 ## Innere lokale Klasse
@@ -927,6 +1011,53 @@ public class OuterClass {
 </div><!-- .element style="font-size: 0.9em;" -->
 
 ----
+## Anwendungsbeispiel: Innere lokale Klasse
+
+> `StudentFormatter` – Formatierungslogik, die nur innerhalb einer Methode gebraucht wird
+
+<div>
+
+```Java
+import java.util.List;
+
+public class StudentRegistry {
+    private List<Student> students;
+
+    public StudentRegistry(List<Student> students) { this.students = students; }
+
+    public void printStudentList(String format) {
+        // Lokale Klasse: nur innerhalb dieser Methode sichtbar und nutzbar
+        class StudentFormatter {
+            String format(Student s) {
+                if (format.equals("short")) {
+                    return s.getMatrikelNo() + ": " + s.getLastName();
+                } else {
+                    return s.getMatrikelNo() + ": " + s.getLastName() + ", " + s.getFirstName();
+                }
+            }
+        }
+
+        StudentFormatter formatter = new StudentFormatter();
+        for (Student s : students) {
+            System.out.println(formatter.format(s));
+        }
+    }
+
+    public static void main(String[] args) {
+        var registry = new StudentRegistry(List.of(
+            new Student("Max", "Müller", 12345),
+            new Student("Anna", "Schmidt", 67890)
+        ));
+
+        registry.printStudentList("short");   // 12345: Müller
+        registry.printStudentList("long");    // 12345: Müller, Max
+    }
+}
+```
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+----
 ## Innere anonyme Klasse
 
 <div>
@@ -943,6 +1074,7 @@ public class OuterClass {
     void printFromAnonymousInnerClass(String printText) {
         // defined without its own identifier (cannot be reused)
         // extends an existing class or implements an interface
+        // 'this' refers to the anonymous class itself (not OuterClass!)
         OuterClass.Printable myAnonymousInnerClass = new OuterClass.Printable() {
             @Override
             public void print(String printText) {
@@ -964,6 +1096,44 @@ public class OuterClass {
 </div><!-- .element style="font-size: 0.75em;" -->
 
 ----
+## Anwendungsbeispiel: Innere anonyme Klasse
+
+> Sortierung von `Student`-Objekten mit einem `Comparator` – einmalig, kein eigener Klassenname nötig
+
+<div>
+
+```Java
+import java.util.*;
+
+public class StudentSorter {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Max",  "Müller",  12345));
+        students.add(new Student("Anna", "Schmidt", 67890));
+        students.add(new Student("Tom",  "Bauer",   11111));
+
+        // Anonyme Klasse implementiert Comparator<Student> (kein Bezeichner, einmalige Nutzung)
+        // 'this' bezieht sich hier auf die anonyme Klasse, nicht auf StudentSorter!
+        Collections.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student s1, Student s2) {
+                return Integer.compare(s1.getMatrikelNo(), s2.getMatrikelNo());
+            }
+        });
+
+        for (Student s : students) {
+            System.out.println(s.getMatrikelNo() + ": " + s.getLastName());
+        }
+        // 11111: Bauer
+        // 12345: Müller
+        // 67890: Schmidt
+    }
+}
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
 ## Lambda Funktionen (anonyme Funktionen)
 
 <div>
@@ -971,7 +1141,8 @@ public class OuterClass {
 * seit Java 8
 * reine Funktionen ohne eigene Klasse
 * Definition: ```()->{}```
-* implementieren ein funktionales Interface (Interface mit **einer** Methode, **ohne default** Implementierung)
+* implementieren ein funktionales Interface (Interface mit **genau einer abstrakten** Methode — SAM: Single Abstract Method)
+  * `default`- und `static`-Methoden im Interface sind erlaubt
   * ersetzen (unter dieser Voraussetzung) anonyme Klassen
 * haben Zugriff auf den umliegenden Kontext (finale / effektiv finale Variablen)
   * in diesem Zusammenhang auch als "Closure" bezeichnet
@@ -1006,8 +1177,9 @@ public class OuterClass {
 
     void printFromLambdaFunction(String printText) {
         // Lambda functions are "pure functions" without a class
-        // always use a functional interface (only one method)
+        // always use a functional interface (SAM - Single Abstract Method)
         // for implementation
+        // 'this' refers to OuterClass (not the lambda!) - key difference to anonymous classes
         OuterClass.Printable myLambdaPrintFunction = (lambdaPrintText) -> {
             System.out.println(this.getClass().getName() + " " + lambdaPrintText);
         };
@@ -1025,6 +1197,181 @@ public class OuterClass {
 ```
 </div><!-- .element style="font-size: 0.8em;" -->
 
+----
+## Anwendungsbeispiel: Lambda
+
+> Dieselbe `Student`-Sortierung – von der anonymen Klasse zum Lambda in drei Schritten
+
+<div>
+
+```Java
+import java.util.*;
+
+public class StudentSorter {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Max",  "Müller",  12345));
+        students.add(new Student("Anna", "Schmidt", 67890));
+        students.add(new Student("Tom",  "Bauer",   11111));
+
+        // Schritt 1: Anonyme Klasse (wie zuvor)
+        Collections.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student s1, Student s2) {
+                return Integer.compare(s1.getMatrikelNo(), s2.getMatrikelNo());
+            }
+        });
+
+        // Schritt 2: Lambda – Comparator<Student> hat genau eine abstrakte Methode (SAM)
+        // 'this' bezieht sich hier auf StudentSorter (nicht auf ein Lambda-Objekt!)
+        Collections.sort(students,
+            (s1, s2) -> Integer.compare(s1.getMatrikelNo(), s2.getMatrikelNo()));
+
+        // Schritt 3: Noch kürzer mit Methoden-Referenz
+        students.sort(Comparator.comparingInt(Student::getMatrikelNo));
+
+        for (Student s : students) {
+            System.out.println(s.getMatrikelNo() + ": " + s.getLastName());
+        }
+    }
+}
+```
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+----
+## Innere Klassen im JDK – Übersicht
+
+> Wo begegnen uns die vier Typen im Java Standard-Quellcode?
+
+<div>
+
+| Typ | JDK-Beispiel | Package |
+|---|---|---|
+| Static Nested Class | `Map.Entry<K,V>` | `java.util` |
+| Static Nested Class | `AbstractMap.SimpleEntry` | `java.util` |
+| Static Nested Class | `Character.UnicodeBlock` | `java.lang` |
+| Innere Element-Klasse | `ArrayList.Itr` | `java.util` |
+| Innere Element-Klasse | `LinkedList.ListItr` | `java.util` |
+| Innere lokale Klasse | *(kaum vorhanden – zu wenig wartbar)* | – |
+| Anonyme Klasse | *(vor Java 8 – heute meist Lambdas)* | – |
+
+</div><!-- .element style="font-size: 0.85em;" -->
+
+----
+## JDK: Static Nested Class – `Map.Entry`
+
+> `java.util.Map.Entry<K,V>` – gehört konzeptuell zu `Map`, braucht aber kein Map-Objekt
+
+<div>
+
+```Java
+// java.util.Map (vereinfacht)
+public interface Map<K, V> {
+
+    // static ist bei Interface-Membern implizit
+    // Entry gehört zur Map, ist aber unabhängig von einer konkreten Map-Instanz
+    interface Entry<K, V> {
+        K getKey();
+        V getValue();
+        V setValue(V value);
+    }
+
+    Set<Map.Entry<K, V>> entrySet();
+}
+
+// Verwendung: Iteration über alle Einträge einer Map
+Map<String, Integer> scores = new HashMap<>();
+scores.put("Alice", 95);
+scores.put("Bob",   82);
+
+for (Map.Entry<String, Integer> entry : scores.entrySet()) {
+    System.out.println(entry.getKey() + " → " + entry.getValue());
+}
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+> Weitere Beispiele: `AbstractMap.SimpleEntry`, `HashMap.Node<K,V>`, `Character.UnicodeBlock`
+
+----
+## JDK: Innere Element-Klasse – `ArrayList.Itr`
+
+> `java.util.ArrayList` – der Iterator greift direkt auf das interne Array zu
+
+<div>
+
+```Java
+// java.util.ArrayList (stark vereinfacht)
+public class ArrayList<E> {
+
+    private Object[] elementData;  // das interne Array
+    private int size;
+    int modCount;                  // zählt strukturelle Änderungen
+
+    // Innere Element-Klasse: kein Getter nötig – direkter Zugriff auf Felder von ArrayList
+    private class Itr implements Iterator<E> {
+        int cursor           = 0;
+        int lastRet          = -1;
+        int expectedModCount = modCount;
+
+        public boolean hasNext() {
+            return cursor != size;             // direkter Zugriff auf ArrayList.size
+        }
+
+        public E next() {
+            checkForComodification();
+            return (E) elementData[cursor++];  // direkter Zugriff auf ArrayList.elementData
+        }
+    }
+
+    public Iterator<E> iterator() {
+        return new Itr();
+    }
+}
+```
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+> Weitere Beispiele: `LinkedList.ListItr`, `HashMap.EntrySet`, `TreeMap.EntrySet`
+
+----
+## JDK: Anonyme Klasse – Vor Java 8
+
+> `java.lang.Runnable` und `java.util.Comparator` – klassische Einsatzgebiete vor Java 8
+
+<div>
+
+```Java
+// Vor Java 8: Thread mit anonymer Klasse (java.lang.Runnable)
+Thread t = new Thread(new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Läuft in einem eigenen Thread");
+    }
+});
+t.start();
+
+// Ab Java 8: Lambda – Runnable ist ein funktionales Interface (SAM)
+new Thread(() -> System.out.println("Läuft in einem eigenen Thread")).start();
+```
+
+```Java
+// Vor Java 8: Sortierung mit anonymem Comparator (java.util.Comparator)
+Collections.sort(students, new Comparator<Student>() {
+    @Override
+    public int compare(Student s1, Student s2) {
+        return s1.getLastName().compareTo(s2.getLastName());
+    }
+});
+
+// Ab Java 8: Lambda
+students.sort((s1, s2) -> s1.getLastName().compareTo(s2.getLastName()));
+```
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+> Seit Java 8 wurden anonyme Klassen im JDK weitgehend durch Lambdas ersetzt – lokale Klassen waren dort nie nennenswert verbreitet.
 
 ---
 # Streams
