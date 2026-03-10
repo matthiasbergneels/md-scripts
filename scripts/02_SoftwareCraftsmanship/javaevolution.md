@@ -133,7 +133,7 @@ jshell> /exit
 String myName = "Volker";
 
 // With Java 10
-var myName = "Volker"
+var myName = "Volker";
 ```
 
 ---
