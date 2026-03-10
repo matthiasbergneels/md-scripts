@@ -252,16 +252,16 @@ public class ThingModelBasedDataObjectRepository extends HashOperationsRepositor
 
 **Beispiele**
 ```Java
-var numberA = 10;                     // numberA wird zu Integer Variable deklariert
-var numberB = 42.0;                   // numberB wird zu Double Variable deklariert
-var textA = "Herzlich Willkommen";    // textA wird zu String Variable deklariert
-var myAnimal = new Dog(...);          // myAnimal wird zu Dog Variable deklariert
+var numberA = 10;                     // numberA is declared as Integer variable
+var numberB = 42.0;                   // numberB is declared as Double variable
+var textA = "Welcome";                // textA is declared as String variable
+var myAnimal = new Dog(...);          // myAnimal is declared as Dog variable
 
-var test;                             // Compiler Fehler!
+var test;                             // Compiler error!
 
 int numberC = 100;
 
-var numberD = numberC;                // numberD wird zu Integer Variable deklariert
+var numberD = numberC;                // numberD is declared as Integer variable
 ```
 
 **Besser lesbarer (kürzerer) Code** durch Vermeidung von Redundanzen
@@ -285,8 +285,8 @@ var myThingModelRepo = new ThingModelBasedDataObjectRepository(myChacheTemplate,
 Falsch eingesetzt, wird der Code unverständlicher / komplizierter zu lesen:
 
 ```Java
-var somethingOne = (farm.hasAnimal()) ? new Dog(...) : "Kein Tier";
-var somethingTwo = ("Ergebnis ist " + (numberA + numberB * 50.1)).length() / (double)10;
+var somethingOne = (farm.hasAnimal()) ? new Dog(...) : "No animal";
+var somethingTwo = ("Result is " + (numberA + numberB * 50.1)).length() / (double)10;
 var somethingThree = Something.returnSomething();
 // ...
 ```
@@ -461,14 +461,340 @@ Eine JAR-Datei enthält:
 
 ----
 
-## Erstellen einer JAR-Datei
+## Erstellen einer JAR-Datei (manuell)
 
-### Manuelles Erstellen mit `javac` und `jar`:
-1. **Kompilieren der Klassen**:
-   ```bash
-   javac MyApp.java
-   ```
+### Schritt 1: Kompilieren der Quellcode-Dateien
+```bash
+javac -d out src/MyApp.java src/Helper.java
+```
 
+### Schritt 2: Manifest-Datei erstellen (`MANIFEST.MF`)
+```
+Manifest-Version: 1.0
+Main-Class: MyApp
+```
+
+### Schritt 3: JAR-Datei erzeugen
+```bash
+jar cfm MyApp.jar MANIFEST.MF -C out .
+```
+
+### Schritt 4: JAR-Datei ausführen
+```bash
+java -jar MyApp.jar
+```
+
+> Sobald ein Projekt wächst (viele Klassen, externe Bibliotheken), wird dieser manuelle Prozess schnell unhandlich → **Build-Tools** schaffen Abhilfe!
+
+----
+
+## IntelliJ IDEA als Build-Umgebung
+
+> IntelliJ IDEA ist eine **Integrated Development Environment (IDE)** von JetBrains. Sie übernimmt intern den Build-Prozess und verbirgt die Komplexität von `javac` und `jar` hinter einer grafischen Oberfläche.
+
+**Was IntelliJ automatisch erledigt:**
+- Kompiliert den Code im Hintergrund bei jeder Änderung (**Auto-Build**)
+- Verwaltet den Classpath (welche Klassen / Bibliotheken verfügbar sind)
+- Zeigt Fehler sofort im Editor an – noch vor dem eigentlichen Build
+- Führt Programme mit einem Klick oder Tastenkürzel aus (`Shift + F10`)
+
+----
+
+## IntelliJ – Projektstruktur
+
+<div>
+
+IntelliJ verwaltet Projekte über eine eigene Konfiguration (`.idea/`-Ordner + `.iml`-Dateien):
+
+```
+mein-projekt/
+├── .idea/                  ← IntelliJ project configuration (not in Git!)
+│   ├── workspace.xml
+│   └── modules.xml
+├── mein-projekt.iml        ← Module configuration (source folders, dependencies)
+└── src/
+    └── de/mbn/myapp/
+        └── MyApp.java
+```
+
+**Wichtige Einstellungen in IntelliJ:**
+- `File → Project Structure` (Strg+Alt+Shift+S): SDK, Quellordner, Ausgabeordner
+- **Source Root**: Ordner, der als Ausgangspunkt für Packages gilt (blau markiert)
+- **Output path**: Wohin `.class`-Dateien kompiliert werden (Standard: `out/`)
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+----
+
+## IntelliJ – Build & Run
+
+<div>
+
+**Bauen:**
+
+| Aktion | Menü | Tastenkürzel |
+|:-------|:-----|:-------------|
+| Projekt bauen | `Build → Build Project` | `Strg + F9` |
+| Einzelne Datei bauen | `Build → Recompile` | `Strg + Shift + F9` |
+| Artefakt (JAR) erzeugen | `Build → Build Artifacts` | – |
+
+**Ausführen:**
+
+| Aktion | Menü | Tastenkürzel |
+|:-------|:-----|:-------------|
+| Programm starten | `Run → Run` | `Shift + F10` |
+| Debugger starten | `Run → Debug` | `Shift + F9` |
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+> IntelliJ kompiliert automatisch, bevor ein Programm ausgeführt wird!
+
+----
+
+## IntelliJ – JAR-Datei erzeugen
+
+<div>
+
+IntelliJ kann JAR-Dateien über sogenannte **Artefakte** erzeugen:
+
+1. `File → Project Structure → Artifacts → + → JAR → From modules with dependencies`
+2. Hauptklasse (`Main Class`) auswählen
+3. `Build → Build Artifacts → Build`
+4. JAR liegt im konfigurierten Ausgabeordner (z.B. `out/artifacts/`)
+
+```
+out/artifacts/mein-projekt_jar/
+└── mein-projekt.jar
+```
+
+5. Ausführen:
+```bash
+java -jar out/artifacts/mein-projekt_jar/mein-projekt.jar
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
+
+## IntelliJ – Grenzen & Einordnung
+
+<div>
+
+**IntelliJ eignet sich gut für:**
+- Einzelne Entwickler / kleine Projekte
+- Schnelles Ausprobieren und Lernen
+- Einfache Projekte ohne viele externe Bibliotheken
+
+**Nachteile gegenüber dedizierten Build-Tools (Maven, Gradle):**
+- Build ist **nicht reproduzierbar** ohne IntelliJ (andere Entwickler, Server, CI/CD)
+- Kein standardisiertes **Dependency Management** (Bibliotheken müssen manuell als JAR heruntergeladen werden)
+- **Keine Kommandozeilen-Automatisierung** möglich
+- Projektkonfiguration ist IDE-spezifisch → nicht portabel
+
+> In professionellen Projekten ersetzt IntelliJ **keine** Build-Tools – es integriert sie! IntelliJ hat eingebaute Unterstützung für Maven und Gradle und delegiert den eigentlichen Build an diese.
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+----
+
+## Warum Build-Tools?
+
+**Probleme ohne Build-Tool:**
+- Viele Klassen → komplexe `javac`-Aufrufe
+- Externe Bibliotheken müssen manuell heruntergeladen und verwaltet werden
+- Kein einheitlicher Prozess → „Works on my machine"
+- Testen, Kompilieren, Paketieren muss manuell koordiniert werden
+
+**Build-Tools lösen diese Probleme:**
+- **Automatisierung**: Kompilieren, Testen, Paketieren in einem Befehl
+- **Dependency Management**: Bibliotheken werden automatisch heruntergeladen
+- **Standardisierung**: Einheitliche Projektstruktur und Prozesse
+- **Reproduzierbarkeit**: Gleiche Ergebnisse auf jedem Rechner
+
+----
+
+## Apache Maven – Einführung
+
+> Apache Maven ist das meistverbreitete Build-Tool im Java-Ökosystem.
+
+<div>
+
+- **Convention over Configuration**: Standardisierte Projektstruktur
+- **Dependency Management**: Bibliotheken aus dem [Maven Central Repository](https://central.sonatype.com/) werden automatisch geladen
+- **Build Lifecycle**: Vordefinierter Ablauf von Build-Phasen
+- **Plugins**: Erweiterbar durch hunderte von Plugins
+- Konfiguration über eine einzige Datei: **`pom.xml`** (Project Object Model)
+
+</div><!-- .element style="font-size: 0.85em;" -->
+
+----
+
+## Maven – Standard-Projektstruktur
+
+```
+mein-projekt/
+├── pom.xml                  ← project configuration
+└── src/
+    ├── main/
+    │   └── java/
+    │       └── de/mbn/myapp/
+    │           └── MyApp.java    ← production code
+    └── test/
+        └── java/
+            └── de/mbn/myapp/
+                └── MyAppTest.java ← test code
+```
+
+> Maven erwartet diese Struktur – kein manuelles Konfigurieren nötig!
+
+----
+
+## Maven – pom.xml (Aufbau)
+
+<div>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Project coordinates (unique identification) -->
+    <groupId>de.mbn.myapp</groupId>      <!-- organization / domain -->
+    <artifactId>mein-projekt</artifactId> <!-- project name -->
+    <version>1.0.0</version>             <!-- version -->
+    <packaging>jar</packaging>           <!-- output format -->
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- External libraries go here -->
+    </dependencies>
+
+</project>
+```
+
+</div><!-- .element style="font-size: 0.7em;" -->
+
+----
+
+## Maven – Dependency Management
+
+> Externe Bibliotheken werden über **Koordinaten** (groupId, artifactId, version) eingebunden. Maven lädt sie automatisch aus dem **Maven Central Repository** herunter.
+
+<div>
+
+```xml
+<dependencies>
+
+    <!-- JUnit 5 for unit tests -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.11.0</version>
+        <scope>test</scope>    <!-- for tests only, not in production JAR -->
+    </dependency>
+
+    <!-- Example: logging library -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>2.0.13</version>
+    </dependency>
+
+</dependencies>
+```
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+**Dependency Scopes:**
+- `compile` (Standard): im Classpath beim Kompilieren und Ausführen
+- `test`: nur beim Testen verfügbar
+- `provided`: wird zur Laufzeit von der Umgebung bereitgestellt (z.B. Servlet-API)
+
+----
+
+## Maven – Build Lifecycle
+
+Maven kennt einen **Standard-Lifecycle** mit festen Phasen (Auswahl):
+
+<div>
+
+| Phase | Beschreibung |
+|:------|:-------------|
+| `validate` | Prüft, ob das Projekt korrekt konfiguriert ist |
+| `compile` | Kompiliert den Quellcode nach `target/classes/` |
+| `test` | Führt Unit-Tests aus (schlägt fehl → Build schlägt fehl) |
+| `package` | Paketiert den Code als JAR/WAR in `target/` |
+| `verify` | Führt Integrationstests und Qualitätsprüfungen aus |
+| `install` | Installiert das Paket in das lokale Maven-Repository (`~/.m2/`) |
+| `deploy` | Veröffentlicht das Paket in ein entferntes Repository |
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+> Jede Phase schließt alle vorherigen Phasen ein: `mvn package` führt auch `validate`, `compile` und `test` aus!
+
+----
+
+## Maven – Wichtige Befehle
+
+```bash
+# Compile project
+mvn compile
+
+# Run tests
+mvn test
+
+# Generate JAR file (in target/)
+mvn package
+
+# Install JAR file into local repository
+mvn install
+
+# Delete build artifacts (target/ folder)
+mvn clean
+
+# Clean rebuild and generate JAR (most common workflow!)
+mvn clean package
+
+# Skip tests (e.g. with known failures – not recommended!)
+mvn clean package -DskipTests
+```
+
+> Die erzeugte JAR-Datei liegt nach `mvn package` im `target/`-Verzeichnis.
+
+----
+
+## Maven – Zusammenfassung
+
+<div>
+
+```
+Developer writes code
+        ↓
+    mvn clean package
+        ↓
+  ┌─────────────────────────────────────────────┐
+  │ validate → compile → test → package         │
+  │                                             │
+  │  pom.xml is read                            │
+  │  Dependencies are loaded (Maven Central)    │
+  │  Source code is compiled                    │
+  │  Unit tests are executed                    │
+  │  JAR file is generated                      │
+  └─────────────────────────────────────────────┘
+        ↓
+  target/mein-projekt-1.0.0.jar
+        ↓
+  java -jar target/mein-projekt-1.0.0.jar
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
 
 ---
 
@@ -508,7 +834,7 @@ package main.inner.toplevelclass;
 
 public class OuterClass {
 
-    // Innerhalnb einer anderen Klasse definierte Top-Level Klasse
+    // Top-Level class defined inside another class
     public static class InnerTopLevelClass{
         void print(String printText){
             System.out.println(this.getClass().getName() + " " + printText);
@@ -542,7 +868,7 @@ package main.inner.elementclass;
 
 public class OuterClass {
 
-    // Innerhalb einer andere Klasse definierte Element Klasse
+    // Element class defined inside another class
     public class InnerElementClass {
         void print(String printText){
             System.out.println(this.getClass().getName() + " " + printText);
@@ -577,7 +903,7 @@ package main.inner.local;
 public class OuterClass {
 
     void printFromLocalInnerClass(String printText){
-        // innerhalb einer Methode (Scope) definierte Klasse
+        // class defined inside a method (scope)
         class LocalInnerClass{
             void print(String printText){
                 System.out.println(this.getClass().getName() + " " + printText);
@@ -615,8 +941,8 @@ public class OuterClass {
     }
 
     void printFromAnonymousInnerClass(String printText) {
-        // ohne eigenen Bezeichner definiert (kann nicht wiederverwendet werden)
-        // erweitert eine bestehende Klasse oder implementiert ein Interface
+        // defined without its own identifier (cannot be reused)
+        // extends an existing class or implements an interface
         OuterClass.Printable myAnonymousInnerClass = new OuterClass.Printable() {
             @Override
             public void print(String printText) {
@@ -654,12 +980,12 @@ public class OuterClass {
 </div><!-- .element style="font-size: 0.8em;" -->
 
 ```Java
-Interface1 lambda1 = parameter -> Anweisung;
-Interface2 lambda2 = (parameter1, parameter2) -> Anweisung;
+Interface1 lambda1 = parameter -> statement;
+Interface2 lambda2 = (parameter1, parameter2) -> statement;
 Interface3 lambda3 = () -> {
-  Anweisung1;
-  Anweisung2;
-  Anweisung3;
+  statement1;
+  statement2;
+  statement3;
 }
 
 ```
@@ -679,9 +1005,9 @@ public class OuterClass {
     }
 
     void printFromLambdaFunction(String printText) {
-        // Lambda Funktionen sind "reine Funktionen" ohne Klasse
-        // nutzen immer ein funktionales Interface (nur eine Methode)
-        // zur Implementierung
+        // Lambda functions are "pure functions" without a class
+        // always use a functional interface (only one method)
+        // for implementation
         OuterClass.Printable myLambdaPrintFunction = (lambdaPrintText) -> {
             System.out.println(this.getClass().getName() + " " + lambdaPrintText);
         };
@@ -750,41 +1076,498 @@ Stream (```java.io```)
 
 * Lösungsschablonen für wiederkehrende Probleme im Software-Entwurf
 * zur Verbesserung der Softwarearchitektur, Strukturierung des Code und bessere Lesbarkeit
-* verschiedene Arten: Erzeugungs-, Struktur- und Verhaltensmuster
 * stellen keine starren Regeln, sondern flexible Richtlinien, die an die jeweilige Situation angepasst werden können
+* geprägt durch die **Gang of Four (GoF)** – Buch: *Design Patterns* (Gamma et al., 1994)
+
+----
+## Übersicht: Kategorien von Entwurfsmustern
+
+| Kategorie | Zweck | Beispiele |
+|---|---|---|
+| **Erzeugungs-Muster** (Creational) | Objekterzeugung flexibel gestalten | Singleton, Factory Method, Builder |
+| **Struktur-Muster** (Structural) | Beziehungen zwischen Klassen/Objekten strukturieren | Facade, Adapter, Composite |
+| **Verhaltens-Muster** (Behavioral) | Kommunikation und Verantwortlichkeiten zwischen Objekten | Strategy, Observer, Command |
 
 ----
 ## Erzeugungs-Muster (Creational Patterns)
 
-* Erzeugung von Objekten
-* entkoppeln die Konstruktion eines Objekts von seiner Repräsentation
-* ermöglichen z.B. eine flexible Auswahl der konkreten Klassen zur Laufzeit
-* Beispiele: factory method, Factory, Singleton, Builder
+* steuern die **Erzeugung von Objekten**
+* entkoppeln die Konstruktion eines Objekts von seiner konkreten Klasse
+* ermöglichen flexible Auswahl der Implementierung zur Laufzeit
+* Beispiele: **Singleton**, **Factory Method**, **Builder**
+
+----
+## Creational Pattern: Singleton
+
+> Stellt sicher, dass von einer Klasse **genau eine Instanz** existiert und bietet einen globalen Zugriffspunkt darauf.
+
+<div style="font-size: 0.75em;">
+
+```Java
+public class DatabaseConnection {
+
+    private static DatabaseConnection instance;
+
+    private DatabaseConnection() {
+        // private constructor prevents direct instantiation
+    }
+
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+        }
+        return instance;
+    }
+
+    public void query(String sql) { /* ... */ }
+}
+
+// Usage:
+DatabaseConnection db = DatabaseConnection.getInstance();
+```
+
+</div>
+
+----
+## Creational Pattern: Factory Method
+
+> Definiert eine Schnittstelle zur Objekterzeugung, überlässt aber **Subklassen** die Entscheidung, welche Klasse instanziiert wird.
+
+<div style="font-size: 0.75em;">
+
+```Java
+public interface Notification {
+    void send(String message);
+}
+
+public class EmailNotification implements Notification {
+    public void send(String message) { System.out.println("Email: " + message); }
+}
+
+public class SmsNotification implements Notification {
+    public void send(String message) { System.out.println("SMS: " + message); }
+}
+
+public class NotificationFactory {
+    public static Notification create(String type) {
+        return switch (type) {
+            case "email" -> new EmailNotification();
+            case "sms"   -> new SmsNotification();
+            default      -> throw new IllegalArgumentException("Unknown type: " + type);
+        };
+    }
+}
+
+// Usage:
+Notification n = NotificationFactory.create("email");
+n.send("Welcome!");
+```
+
+</div>
+
+----
+## Creational Pattern: Builder
+
+> Trennt die **schrittweise Konstruktion** eines komplexen Objekts von seiner Repräsentation.
+
+<div style="font-size: 0.75em;">
+
+```Java
+public class Pizza {
+    private final String size;
+    private final boolean cheese;
+    private final boolean pepperoni;
+
+    private Pizza(Builder builder) {
+        this.size      = builder.size;
+        this.cheese    = builder.cheese;
+        this.pepperoni = builder.pepperoni;
+    }
+
+    public static class Builder {
+        private final String size;
+        private boolean cheese    = false;
+        private boolean pepperoni = false;
+
+        public Builder(String size)       { this.size = size; }
+        public Builder cheese()           { this.cheese = true; return this; }
+        public Builder pepperoni()        { this.pepperoni = true; return this; }
+        public Pizza build()              { return new Pizza(this); }
+    }
+}
+
+// Usage:
+Pizza pizza = new Pizza.Builder("Large").cheese().pepperoni().build();
+```
+
+</div>
 
 ----
 ## Struktur-Muster (Structural Patterns)
 
-* erleichtern den Software Entwurf und die Strukturierung durch herstellen von Beziehungen zwischen Entitäten
-* nutzen Abstraktion um komplexe, kombinierte Objekte zu erzeugen und die einzelnen Bestandteile und Strukturen flexibel zu halten
-* Beispiele: Facade (Einfache Schnittstelle für komplexe Objekte), Adapter (Verbinden von inkompatiblen Schnittstellen) Kompositum, das eine Hierarchie von Objekten bildet, die als Einheit behandelt werden können
+* beschreiben, wie Klassen und Objekte zu größeren Strukturen **zusammengesetzt** werden
+* nutzen Abstraktion, um komplexe Strukturen flexibel und erweiterbar zu halten
+* ermöglichen die Wiederverwendung von Klassen mit inkompatiblen Schnittstellen
+* Beispiele: **Facade**, **Adapter**, **Composite**
 
+----
+## Structural Pattern: Facade
+
+> Bietet eine **vereinfachte Schnittstelle** zu einem komplexen Subsystem.
+
+<div style="font-size: 0.75em;">
+
+```Java
+// Complex subsystem
+class CpuSubsystem    { void start() { System.out.println("CPU started"); } }
+class MemorySubsystem { void load()  { System.out.println("Memory loaded"); } }
+class DiskSubsystem   { void read()  { System.out.println("Disk read"); } }
+
+// Facade: simple interface to the outside
+public class ComputerFacade {
+    private final CpuSubsystem    cpu    = new CpuSubsystem();
+    private final MemorySubsystem memory = new MemorySubsystem();
+    private final DiskSubsystem   disk   = new DiskSubsystem();
+
+    public void startComputer() {
+        cpu.start();
+        memory.load();
+        disk.read();
+        System.out.println("Computer started!");
+    }
+}
+
+// Usage:
+ComputerFacade computer = new ComputerFacade();
+computer.startComputer();  // subsystem details hidden
+```
+
+</div>
+
+----
+## Structural Pattern: Adapter
+
+> Passt die **Schnittstelle einer Klasse** an eine andere, vom Client erwartete Schnittstelle an.
+
+<div style="font-size: 0.75em;">
+
+```Java
+// Existing, incompatible class (e.g. third-party)
+public class EuroSocket {
+    public void plugIn220V() { System.out.println("220V power"); }
+}
+
+// Target interface expected by the client
+public interface UsbCharger {
+    void charge();
+}
+
+// Adapter: connects EuroSocket with UsbCharger
+public class SocketAdapter implements UsbCharger {
+    private final EuroSocket socket;
+
+    public SocketAdapter(EuroSocket socket) { this.socket = socket; }
+
+    @Override
+    public void charge() {
+        socket.plugIn220V();      // calls incompatible method internally
+        System.out.println("-> Converted to USB");
+    }
+}
+
+// Usage:
+UsbCharger charger = new SocketAdapter(new EuroSocket());
+charger.charge();
+```
+
+</div>
 
 ----
 ## Verhaltens-Muster (Behavioral Patterns)
 
-* erleichtern den Software Entwurf und die Strukturierung durch herstellen von Beziehungen zwischen Entitäten
-* nutzen Abstraktion 
-Sie ermöglichen eine Abstraktion, die mit anderen Lösungsansätzen kommunizieren kann2
-Sie können in verschiedene Arten eingeteilt werden, wie zum Beispiel Adapter, Brücke, Dekorierer, Fassade, Fliegengewicht, Kompositum oder Proxy3
-Beispiele für Strukturmuster sind: Fassade, die eine vereinfachte Schnittstelle zu einem komplexen System bietet4; Adapter, der zwei inkompatible Schnittstellen verbindet; Kompositum, das eine Hierarchie von Objekten bildet, die als Einheit behandelt werden können
+* beschreiben die **Kommunikation und Zusammenarbeit** zwischen Objekten zur Laufzeit
+* legen fest, wie Verantwortlichkeiten zwischen Objekten verteilt werden
+* erhöhen die Flexibilität bei der Ausführung von Algorithmen und der Reaktion auf Ereignisse
+* Beispiele: **Strategy**, **Observer**, **Command**
+
+----
+## Behavioral Pattern: Strategy
+
+> Definiert eine Familie von Algorithmen, kapselt sie und macht sie **austauschbar** – ohne den nutzenden Code zu ändern.
+
+<div style="font-size: 0.75em;">
+
+```Java
+// Strategy-Interface
+public interface SortStrategy {
+    void sort(int[] data);
+}
+
+// Concrete strategies
+public class BubbleSort implements SortStrategy {
+    public void sort(int[] data) { System.out.println("BubbleSort executed"); }
+}
+
+public class QuickSort implements SortStrategy {
+    public void sort(int[] data) { System.out.println("QuickSort executed"); }
+}
+
+// Context: uses a strategy
+public class Sorter {
+    private SortStrategy strategy;
+
+    public Sorter(SortStrategy strategy) { this.strategy = strategy; }
+
+    public void setStrategy(SortStrategy strategy) { this.strategy = strategy; }
+
+    public void sort(int[] data) { strategy.sort(data); }
+}
+
+// Usage:
+Sorter sorter = new Sorter(new BubbleSort());
+sorter.sort(new int[]{3, 1, 2});
+sorter.setStrategy(new QuickSort());  // switch strategy at runtime
+sorter.sort(new int[]{3, 1, 2});
+```
+
+</div>
+
+----
+## Behavioral Pattern: Observer
+
+> Definiert eine **1-zu-n Abhängigkeit**: bei Zustandsänderung eines Objekts werden alle abhängigen Objekte automatisch benachrichtigt.
+
+<div style="font-size: 0.75em;">
+
+```Java
+import java.util.ArrayList;
+import java.util.List;
+
+public interface Observer {
+    void update(String event);
+}
+
+public class EventSystem {
+    private final List<Observer> observers = new ArrayList<>();
+
+    public void subscribe(Observer o)   { observers.add(o); }
+    public void unsubscribe(Observer o) { observers.remove(o); }
+
+    public void notifyObservers(String event) {
+        for (Observer o : observers) {
+            o.update(event);
+        }
+    }
+}
+
+// Usage:
+EventSystem events = new EventSystem();
+events.subscribe(e -> System.out.println("Logger: " + e));
+events.subscribe(e -> System.out.println("UI-Update: " + e));
+
+events.notifyObservers("File saved");
+// Logger: File saved
+// UI-Update: File saved
+```
+
+</div>
 
 ---
 # Optionals
 
-> TODO... :-)
+> ```java.util.Optional``` – ein Container-Objekt für potenziell nicht vorhandene Werte (seit Java 8)
 
+----
 
---- 
+## Das Problem: ```null```
+
+<div>
+
+* ```null``` bedeutet "kein Wert" – aber Java-Referenzen können immer ```null``` sein
+* Zugriff auf ein ```null```-Objekt führt zur gefürchteten ```NullPointerException```
+* Klassisches Muster – fehleranfällig und schwer lesbar:
+
+```Java
+public String getStudentCity(Student student) {
+    if (student != null) {
+        Address address = student.getAddress();
+        if (address != null) {
+            return address.getCity();
+        }
+    }
+    return "Unknown";
+}
+```
+
+* Probleme:
+  * Entwickler vergessen ```null```-Prüfungen
+  * verschachtelte ```if```-Blöcke reduzieren Lesbarkeit
+  * ```null``` als Rückgabewert ist nicht selbsterklärend
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
+
+## [```Optional```](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Optional.html) – Grundidee
+
+<div>
+
+* ```Optional<T>``` ist ein Container, der **entweder einen Wert enthält oder leer ist**
+* macht das Fehlen eines Wertes **explizit** im Typ-System sichtbar
+* zwingt den Aufrufer, den "kein Wert"-Fall zu behandeln
+* befindet sich im Package ```java.util```
+
+```Java
+// Without Optional: unclear whether null can be returned
+public String findCity() { ... }
+
+// With Optional: explicit that no value is possible
+public Optional<String> findCity() { ... }
+```
+
+</div><!-- .element style="font-size: 0.85em;" -->
+
+----
+
+## Erzeugen von ```Optional```
+
+<div>
+
+* ```Optional.of(value)``` – erzeugt ein Optional mit dem gegebenen Wert (**nicht** ```null```!)
+* ```Optional.ofNullable(value)``` – erzeugt ein Optional; bei ```null``` → leeres Optional
+* ```Optional.empty()``` – erzeugt ein leeres Optional
+
+```Java
+Optional<String> withValue  = Optional.of("Berlin");
+Optional<String> nullable   = Optional.ofNullable(getCity()); // getCity() may return null
+Optional<String> empty      = Optional.empty();
+
+Optional<String> error      = Optional.of(null);              // --> NullPointerException!
+```
+
+</div><!-- .element style="font-size: 0.85em;" -->
+
+----
+
+## Wichtige Methoden (1/2)
+
+<div>
+
+**Prüfen & Wert holen:**
+
+* ```isPresent()``` – gibt ```true``` zurück, wenn ein Wert vorhanden ist
+* ```isEmpty()``` – gibt ```true``` zurück, wenn kein Wert vorhanden ist (seit Java 11)
+* ```get()``` – gibt den Wert zurück; wirft ```NoSuchElementException``` wenn leer → **mit Vorsicht verwenden!**
+
+**Sichere Alternativen zu ```get()```:**
+
+* ```orElse(T other)``` – gibt den Wert zurück oder den Standardwert ```other```
+* ```orElseGet(Supplier)``` – gibt den Wert zurück oder berechnet einen Standardwert per Lambda
+* ```orElseThrow(Supplier)``` – gibt den Wert zurück oder wirft eine eigene Exception
+
+```Java
+Optional<String> city = Optional.ofNullable(getCity());
+
+String c1 = city.orElse("Unknown");
+String c2 = city.orElseGet(() -> loadDefaultCity());
+String c3 = city.orElseThrow(() -> new IllegalStateException("No city!"));
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
+
+## Wichtige Methoden (2/2)
+
+<div>
+
+**Aktionen ausführen:**
+
+* ```ifPresent(Consumer)``` – führt eine Aktion aus, wenn ein Wert vorhanden ist
+* ```ifPresentOrElse(Consumer, Runnable)``` – Aktion bei Wert oder Alternativ-Aktion bei leer (seit Java 9)
+
+**Transformieren:**
+
+* ```map(Function)``` – transformiert den Wert, falls vorhanden (ähnlich wie bei Streams)
+* ```filter(Predicate)``` – gibt das Optional zurück, wenn der Wert das Prädikat erfüllt, sonst leeres Optional
+* ```flatMap(Function)``` – wie ```map```, aber wenn die Funktion selbst ein Optional zurückgibt
+
+```Java
+Optional<String> city = Optional.ofNullable(student.getAddress())
+                                .map(Address::getCity)
+                                .filter(c -> !c.isBlank());
+
+city.ifPresentOrElse(
+    c -> System.out.println("City: " + c),
+    () -> System.out.println("No city found")
+);
+```
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+----
+
+## Beispiel: Vorher / Nachher
+
+<div>
+
+**Without Optional:**
+```Java
+public String getStudentCity(Student student) {
+    if (student != null) {
+        Address address = student.getAddress();
+        if (address != null) {
+            String city = address.getCity();
+            if (city != null && !city.isBlank()) {
+                return city;
+            }
+        }
+    }
+    return "Unknown";
+}
+```
+
+**With Optional:**
+```Java
+public String getStudentCity(Student student) {
+    return Optional.ofNullable(student)
+                   .map(Student::getAddress)
+                   .map(Address::getCity)
+                   .filter(city -> !city.isBlank())
+                   .orElse("Unknown");
+}
+```
+
+</div><!-- .element style="font-size: 0.75em;" -->
+
+----
+
+## Wann ```Optional``` verwenden?
+
+<div>
+
+**Empfohlen:**
+* als **Rückgabetyp** von Methoden, wenn kein Wert ein gültiges Ergebnis ist
+  * ```public Optional<Student> findById(int id) { ... }```
+
+**Nicht empfohlen:**
+* als **Methodenparameter** (nutze stattdessen Überladung oder Default-Werte)
+* als **Attribut in Klassen** (```Optional``` ist nicht serialisierbar)
+* für **Collections** – eine leere Collection ist besser als ```Optional<List<...>>```
+
+```Java
+// Good:
+public Optional<String> findEmail(int userId) { ... }
+
+// Avoid:
+public void sendMail(Optional<String> email) { ... }  // Not recommended
+```
+
+> **Faustregel**: ```Optional``` macht das **Fehlen eines Rückgabewertes explizit** – nicht mehr und nicht weniger.
+
+</div><!-- .element style="font-size: 0.8em;" -->
+
+---
 # Programming Principals
 
 > DRY, KISS, ... TODO... :-)

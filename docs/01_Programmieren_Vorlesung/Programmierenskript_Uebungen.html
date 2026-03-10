@@ -172,11 +172,11 @@ public class DataTypesDemo {
         int[] numbers = {1, 2, 3, 4, 5};
 
         // Output values to console
-        System.out.println("Alter: " + age);
-        System.out.println("Preis: " + price);
-        System.out.println("Verfügbar: " + isAvailable);
-        System.out.println("Note: " + grade);
-        System.out.println("Zahlen: " + numbers.length + " Elemente");
+        System.out.println("Age: " + age);
+        System.out.println("Price: " + price);
+        System.out.println("Available: " + isAvailable);
+        System.out.println("Grade: " + grade);
+        System.out.println("Numbers: " + numbers.length + " elements");
     }
 }
 ```
@@ -200,7 +200,7 @@ public class DataTypesDemo {
 3. Zählen Sie unterschiedliche Operatoren auf! Unterscheiden Sie dabei die Operatoren nach dem Typ der Operanden!
 4. Erläutern Sie den Fragezeichenoperator anhand des folgenden Codings!
 ```Java
-String X = (a == b) ? “Ja“ : “Nein“;
+String X = (a == b) ? “Yes” : “No”;
 ```
 5. Definieren Sie den Begriff „Anweisung“ im Sinne der Programmierung!
 6. Welche Möglichkeiten bietet Ihnen die Programmiersprache Java, um Verzweigungen zu realisieren?
@@ -226,8 +226,8 @@ beliebige Zahl eingeben soll. Verwenden Sie dazu folgende Eingabemöglichkeit:
   ```JAVA
   import javax.swing.JOptionPane;
   //...
-  String s = JOptionPane.showInputDialog("Geben Sie eine Zahl ein:");
-  int zahl = Integer.parseInt(s);
+  String s = JOptionPane.showInputDialog("Enter a number:");
+  int number = Integer.parseInt(s);
   ```
 
 4. Formulieren Sie eine Anweisung, die zur folgenden semantisch äquivalent ist zu folgender Anweisung ohne Verwendung des Wortes “if” und unter Verwendung logischer Operatoren.
@@ -298,11 +298,11 @@ Lösen Sie diese Aufgabe mithilfe einer
 <div>
 
 ```Java
-public class TestAlgorithmen {
+public class TestAlgorithms {
     public static void main(String[] args) {
-        int zahl1 = meth1(-5);
-        int zahl2 = meth2(2, 6);
-        System.out.println("Zahl 1:\t" + zahl1 + "\nZahl 2:\t" + zahl2);
+        int number1 = meth1(-5);
+        int number2 = meth2(2, 6);
+        System.out.println("Number 1:\t" + number1 + "\nNumber 2:\t" + number2);
     }
     static int meth1(int a) {
         if(a < 0)
@@ -313,11 +313,11 @@ public class TestAlgorithmen {
         return rc;
     }
     static int meth2(int a, int b) {
-    // Wenn b<0 wird eine Fehlermeldung erzeugt -> 2. Semester
-    // Die Fehlermeldung führt zum Abbruch der Methode
+    // If b<0 an error is thrown -> 2nd semester
+    // The error leads to the termination of the method
     if(b < 0)
-        throw new RuntimeException( "unerlaubter Wert");
-    if(b == 0) 
+        throw new RuntimeException( "invalid value");
+    if(b == 0)
         return 1;
     int rc = a;
     for(int i = 1; i < b; i++)
@@ -536,7 +536,7 @@ Beispiel:
 8. Welche Auswirkungen haben die Modifier abstract und final bei Methoden?
 9. Wozu wird der Ausdruck super in der Vererbung benötigt?
 10. Was stellt der Ausdruck this dar?
-11. Beschreiben Sie das Konzept des narrowing und widening Cast!
+11. Beschreiben Sie die Konzepte des Upcasts (widening reference conversion) und Downcasts (narrowing reference conversion)!
 12. Beschreiben Sie das Konzept des Polymorphismus in der objektorientierten Programmierung anhand eines einfachen Beispiels!
 13. Welche Möglichkeiten haben Sie, um in Java Objekte zu kopieren? Worin besteht der Unterschied in den beiden Verfahren?
 14. Innerhalb eines Pakets ```mypackage``` werden zwei Klassen ```Vater``` und ```Sohn``` definiert. ```Sohn``` ist eine Subklasse der Klasse ```Vater```. Beide verfügen über eine Methode ```familienbande()```, die nur für Kindklassen innerhalb des Pakets zugänglich sein soll.
@@ -658,23 +658,23 @@ Setzen Sie die folgenden **Aufgaben** um:
 1. Das folgende Programm soll die Zahlen von 1 bis 100 in eine Textdatei mit dem Namen ausgabe.txt schreiben. Leider kann das Programm in dieser Form nicht ausgeführt werden. Was ist der Grund dafür und wie können Sie es korrigieren? (Anmerkung: Auch wenn der Input- & Output-Stream noch nicht behandelt wurde, können Sie die Frage schon jetzt beantworten.)
 
 ```Java
-import java.io.FileWriter; 
+import java.io.FileWriter;
 
-public class Uebung1 {
-    public static void main(String[] args) { 
-        FileWriter datei;
+public class Exercise1 {
+    public static void main(String[] args) {
+        FileWriter file;
         String text;
 
-        datei = new FileWriter("ausgabe.txt"); 
+        file = new FileWriter("output.txt");
         text = "1\n";
 
-        for(int i = 2; i <=100; i++){ 
+        for(int i = 2; i <=100; i++){
             text += i;
             text += "\n";
         }
 
-    datei.write(text, 0, text.length());
-    datei.flush(); }
+    file.write(text, 0, text.length());
+    file.flush(); }
 }
 ```
 
@@ -702,30 +702,30 @@ Testen Sie Ihre Klasse AutoSitze mit einem kleinen Testprogramm TestAutoSitzeExc
 <div>
 
 ```Java
-public class TankLeerDemo {
+public class TankEmptyDemo {
 
     public static void main(String[] args) {
-        Auto bmw = new Auto(0, 35487); bmw.tanken();
+        Car bmw = new Car(0, 35487); bmw.refuel();
 
-        bmw.tanken();
+        bmw.refuel();
         try {
-            bmw.fahren();
-        } catch (TankLeer e) { 
+            bmw.drive();
+        } catch (TankEmpty e) {
             System.out.println(e.getMessage());
         }
-        
-        bmw.tanken();
+
+        bmw.refuel();
 
         try {
-            bmw.fahren();
+            bmw.drive();
         } catch (Exception e) {
-            e.printStackTrace(); 
-        } catch (TankLeer e) {
-            System.out.println(e.getMessage()); 
-            System.out.println(e.toString()); 
+            e.printStackTrace();
+        } catch (TankEmpty e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.toString());
             e.printStackTrace();
         } finally {
-            System.out.println("Der neue Kilometerstand: " +
+            System.out.println("The new mileage: " +
                                                 bmw.getKmCount());
             bmw.getKmCount());
         }

@@ -794,7 +794,7 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 <img src="img/03datentypen_01datentypen.png" width=65% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
 ----
 ## Arten von Datentypen
-* bool‘sche Typen sind Wahrheitswerte: True und False
+* bool’sche Typen sind Wahrheitswerte: `true` und `false`
 
 * numerische Typen
   * Byte, Short, Integer und Long: Menge der ganzen Zahlen
@@ -825,24 +825,24 @@ Java Entwicklung: "Eat your own dog food!" --> <a href='https://docs.oracle.com/
 ## Deklaration von Variablen
 * Variablen werden durch Datentyp und Variablennamen deklariert
 ```java
-Typname Variablenname;
+TypeName variableName;
 ```
 * Beispiele für Variablendeklarationen
 ```java
-boolean muede;
+boolean tired;
 int a;
 ```
 * Beispiele für Deklarationen mit Initialisierung
 ```java
-char buchstabe = ‘a‘;
-long zahl = 45768;
+char letter = ‘a’;
+long number = 45768;
 ```
 ----
 ## Deklaration von Konstanten
 * Konstanten werden ähnlich wie Variablen deklariert
 vor den Typnamen wird das Schlüsselwort
 ```java
-final gesetzt final Typname Konstantenname;
+final set final TypeName constantName;
 ```
 * Konstanten können nach der Deklaration einmalig mit einem Wert initialisiert werden
 ```java
@@ -889,7 +889,7 @@ Literale für Fließkommazahlen float und double
 * String-Literale stehen in doppelten Hochkommata
 
 ```java
-"Hier ist eine Zeichenkette"
+"Here is a string"
 ```
 
 ----
@@ -967,8 +967,8 @@ String html = """
 * Beispiele
 
 ```java
-int [] zahl = {1, 2, 3, 4, 5};
-zahl[1] = 7;
+int [] number = {1, 2, 3, 4, 5};
+number[1] = 7;
 ```
 
 ```java
@@ -982,8 +982,8 @@ matrix[0] = new int[4];
 ```
 
 ```java
-int [][][] wuerfel = new int[3][3][3];
-wuerfel[2][0][0] = 73;
+int [][][] cube = new int[3][3][3];
+cube[2][0][0] = 73;
 ```
 
 <img src="img/03datentypen_04arrays.png" width=50% /><!-- .element style="border: 0px; box-shadow: 0 0 0 0" -->
@@ -1150,10 +1150,10 @@ Anweisungen sind elementare Arbeitsschritte
 
 ```java
 {
-  Anweisung 1;
-  Anweisung 2;
+  Statement 1;
+  Statement 2;
   ...
-  Anweisung n;
+  Statement n;
 }
 ```
 * ist eine Zusammenfassung von Anweisungen
@@ -1173,8 +1173,8 @@ Anweisungen sind elementare Arbeitsschritte
 **die einfache if-Anweisung**
 
 ```java
-if (ausdruck)
-  anweisung;
+if (expression)
+  statement;
 ```
   * ausdruck kann aus einem relationalen Operator oder aus mehreren relationalen Operatoren bestehen, die mit logischen Operatoren verknüpft sind
   * *anweisung* wird genau dann ausgeführt, wenn ausdruck true ist
@@ -1184,10 +1184,10 @@ if (ausdruck)
 **die if-else-Anweisung**
 
 ```java
-if (ausdruck)
-  anweisung1;
+if (expression)
+  statement1;
 else
-  anweisung2;
+  statement2;
 ```
   * *anweisung1* wird ausgeführt, wenn *ausdruck* true ist
   * ist *ausdruck* false, wird *anweisung2* ausgeführt
@@ -1197,12 +1197,12 @@ else
 **die if-else if-Anweisung**
 
 ```java
-if (ausdruck1)
-  anweisung1;
-else if (ausdruck2)
-  anweisung2;
+if (expression1)
+  statement1;
+else if (expression2)
+  statement2;
 else
-  anweisung3;
+  statement3;
 ```
 
 * *anweisung1* wird ausgeführt, wenn *ausdruck1* true ist
@@ -1214,14 +1214,14 @@ else
 #### Verzweigungen mit der switch-Anweisung
 
 ```JAVA
-switch (ausdruck) {
+switch (expression) {
   case constant1:
-    anweisung1;
+    statement1;
   case constant2:
-    anweisung2;
+    statement2;
   // …
   default:
-    default_anweisung;}
+    defaultStatement;}
 ```
 
 * bietet die Möglichkeit der Mehrfachverzweigung
@@ -1274,8 +1274,8 @@ int numLetters = switch (day) {
 #### Kopfgesteuerte Schleifen
 
 ```JAVA
-while (ausdruck)
-  anweisung;
+while (expression)
+  statement;
 ```
 
 * in Java realisiert durch die while-Schleife
@@ -1289,8 +1289,8 @@ while (ausdruck)
 
 ```JAVA
 do
-  anweisung1;
-while (ausdruck);
+  statement1;
+while (expression);
 ```
 
 * in Java realisiert durch die do-while-Schleife
@@ -1306,7 +1306,7 @@ while (ausdruck);
 
 ```JAVA
 for (init; test; update)
-  anweisung1;
+  statement1;
 ```
 
 * in Java realisiert durch die for-Schleife
@@ -1319,7 +1319,7 @@ for (init; test; update)
 * besondere for-Schleife zum Durchlaufen von Feldern (Arrays)
 
 ```Java
-for ( Typ Bezeicher : Feld )
+for ( Type identifier : array )
 ```
 
 ----
@@ -1342,21 +1342,21 @@ for ( Typ Bezeicher : Feld )
 * schlecht lesbar (gar nicht eingerückt)
 
 ```Java
-ausdruck0; if(ausdruck1) anweisung1; else ausdruck2; ausdruck3;
+expression0; if(expression1) statement1; else expression2; expression3;
 ```
 
 * besser lesbar (eingerückt)
 
 
 ```Java
-ausdruck0;
+expression0;
 
-if(ausdruck1)
-  anweisung1;
+if(expression1)
+  statement1;
 else
-  ausdruck2;
+  expression2;
 
-ausdruck3;
+expression3;
 ```
 
 ----
@@ -1367,31 +1367,31 @@ ausdruck3;
 (dangaling-else)
 
 ```JAVA
-if(ausdruck1)
-  if(ausdruck2)
-    anweisung1;
+if(expression1)
+  if(expression2)
+    statement1;
 else
-  anweisung2;  
+  statement2;
 ```
 
 * besser lesbar (korrekt eingerückt)
 
 ```JAVA
-if(ausdruck1)
-  if(ausdruck2)
-    anweisung1;
+if(expression1)
+  if(expression2)
+    statement1;
   else
-    anweisung2;  
+    statement2;
 ```
 
 * besser lesbar (Verzweigungen mit Coding-Blöcken separiert)
 
 ```JAVA
-if(ausdruck1){
-  if(ausdruck2){
-    anweisung1;
+if(expression1){
+  if(expression2){
+    statement1;
   } else {
-    anweisung2;  
+    statement2;
   }
 }
 ```
@@ -1402,32 +1402,32 @@ if(ausdruck1){
 *schlecht lesbar (falsch eingerückt)
 
 ```JAVA
-while (ausdruck)
-  anweisung1;
-  anweisung2;
-  anweisung3;
-anweisung4;
+while (expression)
+  statement1;
+  statement2;
+  statement3;
+statement4;
 ```
 
 *besser lesbar (korrekt eingerückt)*
 ```JAVA
-while (ausdruck)
-  anweisung1;
+while (expression)
+  statement1;
 
-anweisung2;
-anweisung3;
-anweisung4;
+statement2;
+statement3;
+statement4;
 ```
 
 *besser lesbar (korrekt eingerückt & separiert mit Coding-Block)*
 ```JAVA
-while (ausdruck){
-  anweisung1;
+while (expression){
+  statement1;
 }
 
-anweisung2;
-anweisung3;
-anweisung4;
+statement2;
+statement3;
+statement4;
 ```
 
 ---
@@ -1499,8 +1499,8 @@ anweisung4;
 * die Deklaration von Methoden erfolgt nach folgender Syntax
 
 ```Java
-[Modifier] Typ Name ([Übergabeparameter]) {
-  Anweisungen;
+[Modifier] Type Name ([Parameters]) {
+  Statements;
 }
 ```
 
@@ -1561,29 +1561,29 @@ anweisung4;
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-//	Deklaration der Attribute
-	int ps;
+//	Declaration of attributes
+	int hp;
 	float kmh;
-	String kfzKZ;
-	String marke;
+	String licensePlate;
+	String brand;
 
-//	Implementierung des Konstruktors
-	Auto(){
-		ps = 75;
+//	Implementation of the constructor
+	Car(){
+		hp = 75;
 		kmh = 0;
-		kfzKZ = "XX-XX 0000";
-		marke = "Eigenbau";
+		licensePlate = "XX-XX 0000";
+		brand = "Custom";
 	}
 
-//	Implementierung der Methoden
-	void beschleunigen(float pluskmh){
-		kmh += pluskmh;
+//	Implementation of methods
+	void accelerate(float plusKmh){
+		kmh += plusKmh;
 	}
-	void bremsen(float minuskmh){
-		if (kmh - minuskmh >= 0){
-			kmh -= minuskmh;
+	void brake(float minusKmh){
+		if (kmh - minusKmh >= 0){
+			kmh -= minusKmh;
 		}
 	}
 }
@@ -1630,21 +1630,21 @@ class Auto {
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-  // Deklaration der gekapselten Attribute
-	private int ps;
+  // Declaration of encapsulated attributes
+	private int hp;
 	private float kmh;
-	private String kfzKZ;
-	private String marke;
+	private String licensePlate;
+	private String brand;
 
-  // Getter- und Setter-Methoden
-	public String getKfzKZ() {
-		return kfzKZ;
+  // Getter and setter methods
+	public String getLicensePlate() {
+		return licensePlate;
 	}
 
-	public void setKfzKZ(String kfzKZ) {
-		this.kfzKZ = kfzKZ;
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
 	}
 
 	public float getKmh() {
@@ -1665,8 +1665,8 @@ class Auto {
 * auf Methoden und Attribute wird in der Punktnotation zugegriffen
 
 ```Java
-objektname.methode(Übergabeparameter);
-objektname.attribut;
+objectName.method(parameters);
+objectName.attribute;
 ```
 
 * Voraussetzung: die Sichtbarkeit der Methoden und Attribute lässt den direkten Zugriff zu
@@ -1685,22 +1685,22 @@ objektname.attribut;
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-//	Deklaration der Attribute
-	private int ps;
+//	Declaration of attributes
+	private int hp;
 	private float kmh;
-	private String kfzKZ;
-	private String marke;
-	public int tueren;
+	private String licensePlate;
+	private String brand;
+	public int doors;
 
-//	Getter- und Setter-Methoden
-	public String getKfzKZ() {
-		return kfzKZ;
+//	Getter and setter methods
+	public String getLicensePlate() {
+		return licensePlate;
 	}
 
-	public void setKfzKZ(String kfzKZ) {
-		this.kfzKZ = kfzKZ;
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
 	}
 
 	public float getKmh() {
@@ -1720,22 +1720,22 @@ class Auto {
 
 ```Java
 package prog1.demos.objekt;
-class AutoTest {
+class CarTest {
 	public static void main(String[] args) {
 
-		Auto bmw = new Auto();
-		Auto audi = new Auto();
+		Car bmw = new Car();
+		Car audi = new Car();
 
-		bmw.tueren = 5;
-		audi.tueren = 3;
+		bmw.doors = 5;
+		audi.doors = 3;
 
-		bmw.setKfzKZ("HD-XX 321");
+		bmw.setLicensePlate("HD-XX 321");
 		audi.setKmh(135.7f);
 
-		System.out.println("Der BMW hat das
-			Kennzeichen: " + bmw.getKfzKZ());
+		System.out.println("The BMW has the" +
+			" license plate: " + bmw.getLicensePlate());
 
-		System.out.println("Der Audi fährt: " +
+		System.out.println("The Audi is driving at: " +
 			audi.getKmh());
 	}
 }
@@ -1757,29 +1757,29 @@ class AutoTest {
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-//	Deklaration der gekapselten Attribute
-	private int ps;
+//	Declaration of encapsulated attributes
+	private int hp;
 	private float kmh;
-	private String kfzKZ;
-	private String marke;
+	private String licensePlate;
+	private String brand;
 
-//	überladene Konstruktoren und Methoden
-		Auto(){
-		ps = 75; kmh = 0;
-		kfzKZ = "XX-XX 0000"; marke = "Eigenbau";
+//	overloaded constructors and methods
+		Car(){
+		hp = 75; kmh = 0;
+		licensePlate = "XX-XX 0000"; brand = "Custom";
 	}
 
-	public Auto(int ps, float kmh, String kfzKZ, String marke){
-		this.ps = ps; this.kmh = kmh;
-		this.kfzKZ = kfzKZ; this.marke = marke;
+	public Car(int hp, float kmh, String licensePlate, String brand){
+		this.hp = hp; this.kmh = kmh;
+		this.licensePlate = licensePlate; this.brand = brand;
 	}
 
-	void beschleunigen(float pluskmh){
-		kmh += pluskmh;
+	void accelerate(float plusKmh){
+		kmh += plusKmh;
 	}
-	protected void beschleunigen(){
+	protected void accelerate(){
 		kmh+= 10;
 	}
 }
@@ -1801,15 +1801,15 @@ public class VarargsExample {
         for (int number : numbers) {
             sum += number;
         }
-        System.out.println("Summe: " + sum);
+        System.out.println("Sum: " + sum);
     }
 
     public static void main(String[] args) {
         VarargsExample sumUp = new VarargsExample();
 
-        sumUp.sumOfNumbers(1);          // Gibt: "Summe: 1"
-        sumUp.sumOfNumbers(1, 2, 3);    // Gibt: "Summe: 6"
-        sumUp.sumOfNumbers();           // Gibt: "Summe: 0"
+        sumUp.sumOfNumbers(1);          // Output: "Sum: 1"
+        sumUp.sumOfNumbers(1, 2, 3);    // Output: "Sum: 6"
+        sumUp.sumOfNumbers();           // Output: "Sum: 0"
     }
 }
 ```
@@ -1829,30 +1829,30 @@ public class VarargsExample {
 
 ```Java
 package prog1.demos.objekt;
-class Auto {
+class Car {
 
-//	Deklaration der gekapselten Attribute
-	private int ps;
+//	Declaration of encapsulated attributes
+	private int hp;
 	private float kmh;
-	private String kfzKZ;
-	private String marke;
-	private static int autoZaehler = 0;
+	private String licensePlate;
+	private String brand;
+	private static int carCount = 0;
 
-//	Getter- und Setter-Methoden
-	Auto(){
-		autoZaehler++;
-		ps = 75;
+//	Getter and setter methods
+	Car(){
+		carCount++;
+		hp = 75;
 		kmh = 0;
-		kfzKZ = "XX-XX 0000";
-		marke = "Eigenbau";
+		licensePlate = "XX-XX 0000";
+		brand = "Custom";
 	}
 
-	public static int getAutoZaehler() {
-		return autoZaehler;
+	public static int getCarCount() {
+		return carCount;
 	}
 
-	public static void setAutoZaehler(int autoZaehler) {
-		Auto.autoZaehler = autoZaehler;
+	public static void setCarCount(int carCount) {
+		Car.carCount = carCount;
 	}
 }
 
@@ -1865,26 +1865,26 @@ class Auto {
 
 ```Java
 package prog1.demos.objekt;
-class AutoTest {
+class CarTest {
 	public static void main(String[] args) {
 
-		System.out.println(Auto.getAutoZaehler());
+		System.out.println(Car.getCarCount());
 
-		Auto bmw = new Auto();
-		Auto audi = new Auto();
+		Car bmw = new Car();
+		Car audi = new Car();
 
-		System.out.println(Auto.getAutoZaehler());
+		System.out.println(Car.getCarCount());
 
-		bmw.tueren = 5;
-		audi.tueren = 3;
+		bmw.doors = 5;
+		audi.doors = 3;
 
-		bmw.setKfzKZ("HD-XX 321");
+		bmw.setLicensePlate("HD-XX 321");
 		audi.setKmh(135.7f);
 
-		System.out.println("Der BMW hat das
-			Kennzeichen: " + bmw.getKfzKZ());
+		System.out.println("The BMW has the" +
+			" license plate: " + bmw.getLicensePlate());
 
-		System.out.println("Der Audi fährt: " +
+		System.out.println("The Audi is driving at: " +
 			audi.getKmh());
 	}
 }
@@ -1973,11 +1973,13 @@ public class Car {
 * der Garbage Collector in Java startet, wenn die Virtual Machine für neue Objekte Speicherplatz benötigt
 * explizit kann der Garbage Collector auch über den Befehl System.gc(); gestartet werden
 * der Garbage Collector ruft den Destruktor eines Objektes
-* (**Deprecated**) Destruktoren sind parameterlose Methoden mit dem Namen
+* (**Deprecated seit Java 9, entfernt in Java 18**) Destruktoren sind parameterlose Methoden mit dem Namen
 
 ```Java
 protected void finalize();
 ```
+
+> **Hinweis:** `finalize()` ist seit Java 9 deprecated und wurde in Java 18 entfernt. Moderne Alternative: `AutoCloseable` mit `try-with-resources`.
 
 </div><!-- .element style="font-size: 0.8em;" -->
 
@@ -2069,7 +2071,7 @@ protected void finalize();
 * Sie können Methoden überschreiben.
 * Sie kennen die Bedeutung der Modifier abstract und final.
 * Sie können die Bedeutung von this und super erklären.
-* Sie kennen die Konzepte des narrowing und widening casts.
+* Sie kennen die Konzepte des Upcasts (widening reference conversion) und Downcasts (narrowing reference conversion).
 * Sie können den Begriff der Polymorphie erklären.
 
 ---
@@ -2101,7 +2103,7 @@ protected void finalize();
 * die Vererbung ist durch folgende Syntax definiert:
 
 ```JAVA
-class Subklasse extends Superklasse { }
+class SubClass extends SuperClass { }
 ```
 
 * mit extends verweist die Subklasse auf ihre Superklasse
@@ -2124,7 +2126,7 @@ class Subklasse extends Superklasse { }
   * hashCode() – berechnet den Hashwert eines Objektes
   * clone() – kopiert zwei Objekte
   * finalize() – ist der Destruktor
-* in Referenzvariablen vom Typ Object können alle beliebigen Objektreferenzen gespeichert werden (vgl. Narrowing cast)
+* in Referenzvariablen vom Typ Object können alle beliebigen Objektreferenzen gespeichert werden (vgl. Upcast / widening reference conversion)
 
 ----
 ### Sichtbarkeit von Methoden und Attributen
@@ -2135,7 +2137,7 @@ private
 * stärkste Form der Kapselung, da auf die Attribute und Methoden nur innerhalb der Klasse zugegriffen werden kann
 
 **protected**
-* **nur innerhalb eines Paketes und in Subklassen (siehe Kapitel 6: Vererbung) sichtbar**
+* **innerhalb des Paketes (auch für Nicht-Subklassen) und in Subklassen (auch paketübergreifend) sichtbar (siehe Kapitel 6: Vererbung)**
 
 default
 * nur innerhalb des Paketes sichtbar
@@ -2227,33 +2229,33 @@ public enum CarBrand {
 ## Casting von Referenztypen
 
 ----
-### Narrowing Cast
+### Upcast (widening reference conversion)
 * Objekte von Subklassen können in Referenzvariablen gespeichert werden, die vom Typ ihrer Superklasse sind
 * dabei wird nur die Sicht auf die Objekte beschränkt, d.h. es sind nur noch die Attribute und Methoden sichtbar, die in der Superklasse deklariert sind
 * die subklassen-spezifischen Attribute und Methoden sind noch vorhanden, aber vorübergehend ausgeblendet
-* der narrowing cast beschreibt also den Wechsel von einer Sicht mit mehr auf eine Sicht mit weniger Details bei einem Objekt
-* der narrowing cast ist ein wesentliches Prinzip im Vererbungskonzept von Java
-* der narrowing cast ist eine wesentliche Voraussetzung für die Polymorphie
+* der Upcast (widening reference conversion) beschreibt also den Wechsel von einer Sicht mit mehr auf eine Sicht mit weniger Details bei einem Objekt
+* der Upcast ist ein wesentliches Prinzip im Vererbungskonzept von Java
+* der Upcast ist eine wesentliche Voraussetzung für die Polymorphie
 
 ----
-### Widening Cast
+### Downcast (narrowing reference conversion)
 
 <div>
 
-* stellt die Umkehrung des narrowing cast dar
+* stellt die Umkehrung des Upcasts dar
 * Referenzen auf Objekte, die in einer Referenzvariable vom Typ der Superklasse gespeichert sind, sollen in einer Referenzvariable vom Typ der Subklasse gespeichert werden
 * es handelt sich dabei um eine unsichere Konvertierung
   * es muss sichergestellt werden, dass es sich bei den Referenzen um Referenzen auf Objekte der Subklasse handelt
-  * vor der Umwandlung muss der Typ der Referenz mit dem Operator instanceof überprüft werden &#8658; ```referenzvariable instanceof Subklasse``` muss true ergeben
+  * vor der Umwandlung muss der Typ der Referenz mit dem Operator instanceof überprüft werden &#8658; ```referenceVariable instanceof SubClass``` muss true ergeben
   * bei der Durchführung muss ein expliziter Cast auf den Typ der Subklasse durchgeführt werden
 
 ```Java
-refSubklasse = (Subklasse)referenzdatentyp;
+refSubClass = (SubClass)referenceType;
 
 ```
 
 
-* der widening cast wechselt von einer Sicht mit weniger auf eine Sicht mit mehr Details und blendet die subklassen-spezifischen Attribute und Methoden wieder ein
+* der Downcast (narrowing reference conversion) wechselt von einer Sicht mit weniger auf eine Sicht mit mehr Details und blendet die subklassen-spezifischen Attribute und Methoden wieder ein
 
 </div><!-- .element style="font-size: 0.8em;" -->
 
@@ -2279,16 +2281,16 @@ refSubklasse = (Subklasse)referenzdatentyp;
 ```Java
 package prog1.demos.objekt;
 
-class AutoTest {
+class AnimalTest {
   public static void main(String[] args) {
 
-    Tier[] x = new Tier[2];
+    Animal[] x = new Animal[2];
 
-    x[0] = new Hund(25.5f, "Bello", 15.8f, "Schäferhund");  //Narrowing Cast
-    x[1] = new Vogel(10.4f, "Tweety", 0.4f, true);          //Narrowing Cast
+    x[0] = new Dog(25.5f, "Bello", 15.8f, "German Shepherd");  //Upcast
+    x[1] = new Bird(10.4f, "Tweety", 0.4f, true);              //Upcast
 
-    x[0].atmen();
-    x[1].atmen();
+    x[0].breathe();
+    x[1].breathe();
   }
 }
 ```
@@ -2402,12 +2404,12 @@ void main(){
 
   Bookable[] travelAgencyBooking = new Bookable[2];
 
-  travelAgencyBooking[0] = new Hotel(150);      //Narrowing Cast		
-  travelAgencyBooking[1] = new Airplane(245);   //Narrowing Cast
+  travelAgencyBooking[0] = new Hotel(150);      //Upcast
+  travelAgencyBooking[1] = new Airplane(245);   //Upcast
 
   for(Bookable currentBookingEntity : travelAgencyBooking){
     currentBookingEntity.book(10);
-    IO.println("Verbleibende freie Plätze: " + currentBookingEntity.freeSlots());
+    IO.println("Remaining free slots: " + currentBookingEntity.freeSlots());
   }
 
 }
@@ -2550,13 +2552,13 @@ public interface PriorityBookable extends Bookable {
 
 
 ----
-## Polymorphie & Widening-Cast mit Interfaces
+## Polymorphie & Downcast mit Interfaces
 <div>
 
 * Objekte können entsprechend der Vererbungshirarchie der Interfaces auch gecastet werden
-* der Cast eines konkreten Objektes zu einer Interface Referenz ist immer ein narrowing Cast (Sichtbarkeit auf das tatsächliche Objekt wird eingeschränkt)
-* wird aus einer Interfacereferenz in eine Referenz einer konkreten Klasse oder in eine Referenz eines Subinterfaces gecastet handelt es sich um einen widening Cast (Sichtbarkeit auf das tatsächliche Objekt wird erweitert)
-* der widening Cast ist unsicher und sollte abgesichert werden (zum Beispiel über ```instanceof```)
+* der Cast eines konkreten Objektes zu einer Interface Referenz ist immer ein Upcast (widening reference conversion) (Sichtbarkeit auf das tatsächliche Objekt wird eingeschränkt)
+* wird aus einer Interfacereferenz in eine Referenz einer konkreten Klasse oder in eine Referenz eines Subinterfaces gecastet handelt es sich um einen Downcast (narrowing reference conversion) (Sichtbarkeit auf das tatsächliche Objekt wird erweitert)
+* der Downcast ist unsicher und sollte abgesichert werden (zum Beispiel über ```instanceof```)
 * Beispiel:
 
 ```Java
@@ -2564,16 +2566,16 @@ void main(){
 
   Bookable[] travelAgencyBooking = new Bookable[2];
 
-  travelAgencyBooking[0] = new Hotel(150);      //Narrowing Cast		
-  travelAgencyBooking[1] = new Airplane(245);   //Narrowing Cast
+  travelAgencyBooking[0] = new Hotel(150);      //Upcast
+  travelAgencyBooking[1] = new Airplane(245);   //Upcast
 
   for(Bookable currentBookingEntity : travelAgencyBooking){
     boolean successullBooking = currentBookingEntity.book(10);
-    // instanceof-Check and widening cast
+    // instanceof-Check and downcast (narrowing reference conversion) - Pattern Matching seit Java 16 (Preview) / Java 17 (final)
     if(!successfullBooking && currentBookingEntity instanceof PriorityBookable currentPriorityBookingEntity){
       currentPriorityBookingEntity.priorityBook(10);
     }
-    IO.println("Verbleibende freie Plätze: " + currentBookingEntity.freeSlots());
+    IO.println("Remaining free slots: " + currentBookingEntity.freeSlots());
   }
 }
 ```
