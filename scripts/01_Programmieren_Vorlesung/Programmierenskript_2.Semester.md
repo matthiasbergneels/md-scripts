@@ -126,7 +126,7 @@ center: false
 ```java
 public class TankLeer extends Exception {
   public TankLeer (int km) {
-    super("Der Tank ist nach " + km + " Kilometern leer.");
+    super("The tank is empty after " + km + " kilometers.");
   }
 }
 ```
@@ -140,14 +140,14 @@ public class TankLeer extends Exception {
 ```Java
 public class Auto {
   // ...
-  public void fahren() throws TankLeer {
+  public void drive() throws TankLeer {
     while (true) {
-      if (fuel > 0) { 
+      if (fuel > 0) {
         fuel -= 6;
-        tagesKM += 100;
+        dailyKM += 100;
         kmCount += 100;
       } else {
-          throw new TankLeer(tagesKM);
+          throw new TankLeer(dailyKM);
       }
     }
   }
@@ -156,7 +156,7 @@ public class Auto {
 ```
 
 * Definition der möglichen Ausnahmen in Methoden-Signatur: ``` throws```
-* Erzeugen eines neuen Ausnahme-Objektes: ``` new TankLeer(tagesKM)```
+* Erzeugen eines neuen Ausnahme-Objektes: ``` new TankLeer(dailyKM)```
 * Auslösen (werfen) der Ausnahme (im Ausnahmefall) innerhalb der Methode: ``` throw```
 
 ----
@@ -168,7 +168,7 @@ public class TankLeerDemo {
     Auto bmw = new Auto(0, 35487);
     //...
     try {
-      bmw.fahren();
+      bmw.drive();
     } catch (TankLeer e1) {
       System.out.println(e1.getMessage());
       System.out.println(e1.toString()); e1.printStackTrace();
@@ -177,7 +177,7 @@ public class TankLeerDemo {
     }
     // ...
   finally {
-    System.out.println("Der neue Kilometerstand: " + bmw.getKmCount());
+    System.out.println("The new mileage: " + bmw.getKmCount());
   }
   //...
  }
@@ -193,21 +193,21 @@ public class TankLeerDemo {
 
 * vermeiden unschöner Schachtelung von try-Blöcken
   * ABER: andere Reihenfolge im Vergleich zur ```finally``` Ausführung
-* Voraussetzung: Resource implementiert ```Closable``` Interface
+* Voraussetzung: Resource implementiert ```Closeable``` Interface
 * automatisches schließen der Resourcen nach try-Block
   * Exceptions beim schließen werden innerhalb der Catch-Blöcke mit abgefangen
 
 ```Java
 import java.io.*;
 
-public class SchreibenInDatei {
+public class WriteToFile {
   public static void main(String[] args) {
-    File datei = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
+    File file = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
 
-    try (FileWriter schreiber = new FileWriter(datei)) {
-      datei.createNewFile();
-      schreiber.write("Dies ist eine Schreibdemo.");
-      schreiber.write("Es werden mehrere Zeilen geschrieben.");
+    try (FileWriter writer = new FileWriter(file)) {
+      file.createNewFile();
+      writer.write("This is a write demo.");
+      writer.write("Multiple lines are being written.");
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -223,22 +223,22 @@ public class SchreibenInDatei {
 * liefert den Fehlertext zurück
 
 ```
-Der Tank ist nach 1100 Kilometern leer.
+The tank is empty after 1100 kilometers.
 ```
 
 ```public String toString()```
 * liefert die Objektbeschreibung und den Fehlertext zurück
 
 ```
-prog2.demos.exceptions.TankLeer: Der Tank ist nach 1100 Kilometern leer.
+prog2.demos.exceptions.TankLeer: The tank is empty after 1100 kilometers.
 ```
 
 ```public void printStackTrace()```
 * liefert die Objektbeschreibung, den Fehlertext sowie die Weitergabehierarchie bis zur genauen Auslösestelle zurück
 
 ```
-prog2.demos.exceptions.TankLeer: Der Tank ist nach 1100 Kilometern leer.
-at prog2.demos.exceptions.Auto.fahren(Auto.java:21)
+prog2.demos.exceptions.TankLeer: The tank is empty after 1100 kilometers.
+at prog2.demos.exceptions.Auto.drive(Auto.java:21)
 ```
 </div><!-- .element style="font-size: 0.85em;" -->
 ---
@@ -434,7 +434,7 @@ public class ListDemo {
         myList.add("Ludwig");
         myList.add(new Auto(0, 0));
         myList.add(2,"Otto");
-        myList.set(3,"Überschreibt den Ludwig");
+        myList.set(3,"Overwrites Ludwig");
 
         System.out.println(myList.contains("Otto"));
         System.out.println(myList.indexOf("Ludwig"));
@@ -519,9 +519,9 @@ public class SetDemo {
 
 * Beispiel:
 ```Java
-"a".compareTo("c"); // --> ergibt -2
-"c".compareTo("c"); // --> ergibt  0
-"c".compareTo("a"); // --> ergibt  2
+"a".compareTo("c"); // --> returns -2
+"c".compareTo("c"); // --> returns  0
+"c".compareTo("a"); // --> returns  2
 ```
 
 ----
@@ -529,13 +529,13 @@ public class SetDemo {
 
 ```Java
 public class Student implements Comparable {
-  private String vorname;
-  private String nachname;
+  private String firstName;
+  private String lastName;
   private int matrikelNo;
 
-  public Student(String vorname, String name, int matrikelNo) {
-    this.vorname = vorname;
-    this.nachname = name;
+  public Student(String firstName, String name, int matrikelNo) {
+    this.firstName = firstName;
+    this.lastName = name;
     this.matrikelNo = matrikelNo;
   }
 
@@ -554,21 +554,21 @@ public class Student implements Comparable {
 import java.util.Iterator;
 import java.util.TreeSet;
 
-public class DemoMenge1 {
+public class DemoSet1 {
 
   public static void main(String[] args) {
-    TreeSet menge = new TreeSet();
-    menge.add(new Student("Peter", "Maier", 75382));
-    menge.add(new Student("Hans", "Müller", 65871));
-    menge.add(new Student("Karl", "Schmidt", 19853));
-    menge.add(new Student("Hans", "Müller", 65872));
-    menge.add(new Student("Karl", "Schmidt", 19853));
+    TreeSet set = new TreeSet();
+    set.add(new Student("Peter", "Maier", 75382));
+    set.add(new Student("Hans", "Müller", 65871));
+    set.add(new Student("Karl", "Schmidt", 19853));
+    set.add(new Student("Hans", "Müller", 65872));
+    set.add(new Student("Karl", "Schmidt", 19853));
 
-    Iterator i = menge.iterator();
+    Iterator i = set.iterator();
     while(i.hasNext()) {
-      Student studie = (Student) i.next();
-      System.out.println(studie.getMatrikelNo() + " " +
-        studie.getVorname() + " " + studie.getNachname());
+      Student student = (Student) i.next();
+      System.out.println(student.getMatrikelNo() + " " +
+        student.getFirstName() + " " + student.getLastName());
     }
   }
 }
@@ -597,14 +597,14 @@ import java.util.Comparator;
 public class StudentComparator implements Comparator{
 
   public int compare(Object obj1, Object obj2) {
-    Student studie1 = (Student) obj1;
-    Student studie2 = (Student) obj2;
-    if ((studie1.getNachname().compareTo(studie2.getNachname())) != 0) {
-      return studie1.getNachname().compareTo(studie2.getNachname());
-    } else if ((studie1.getVorname().compareTo(studie2.getVorname())) != 0) {
-      return studie1.getVorname().compareTo(studie2.getVorname());
-    } else if ((studie1.getMatrikelNo() - studie2.getMatrikelNo()) != 0) {
-      return studie1.getMatrikelNo() - studie2.getMatrikelNo();
+    Student student1 = (Student) obj1;
+    Student student2 = (Student) obj2;
+    if ((student1.getLastName().compareTo(student2.getLastName())) != 0) {
+      return student1.getLastName().compareTo(student2.getLastName());
+    } else if ((student1.getFirstName().compareTo(student2.getFirstName())) != 0) {
+      return student1.getFirstName().compareTo(student2.getFirstName());
+    } else if ((student1.getMatrikelNo() - student2.getMatrikelNo()) != 0) {
+      return student1.getMatrikelNo() - student2.getMatrikelNo();
     }
 
     return 0;
@@ -619,19 +619,19 @@ public class StudentComparator implements Comparator{
 ```Java
 import java.util.*;
 
-public class DemoMenge1 {
+public class DemoSet1 {
   public static void main(String[] args) {
-    TreeSet menge = new TreeSet(new StudentComparator());
+    TreeSet set = new TreeSet(new StudentComparator());
 
-    menge.add(new Student("Peter", "Maier", 75382));
+    set.add(new Student("Peter", "Maier", 75382));
     //...
-    menge.add(new Student("Karl", "Maier", 85383));
+    set.add(new Student("Karl", "Maier", 85383));
 
-    Iterator i = menge.iterator();
+    Iterator i = set.iterator();
     while(i.hasNext()) {
-      Student studie = (Student) i.next();
-      System.out.println(studie.getMatrikelNo() + " " +
-      studie.getVorname() + " " + studie.getNachname());
+      Student student = (Student) i.next();
+      System.out.println(student.getMatrikelNo() + " " +
+      student.getFirstName() + " " + student.getLastName());
     }
   }
 }
@@ -643,10 +643,10 @@ public class DemoMenge1 {
 * Listen (```Vector```, ```ArrayList```, ...) sind normalerweise unsortiert
 * die Klasse ```Collections``` bietet eine überladene Sortiermethode zum Sortieren von List-Objekten an
 * folgende Sortiermöglichkeiten werden angeboten
-  * ```static void sort(List liste)```
+  * ```static void sort(List list)```
     * sortiert die Liste nach der natürlichen Ordnung
     * dazu müssen die Klassen das Interface Comparable implementieren, deren Instanzen in der Liste gespeichert sind
-  * ```static void sort(List liste, Comparator c)```
+  * ```static void sort(List list, Comparator c)```
     * übersteuert die natürliche Ordnung und sortiert die Objekte der Liste über den entsprechenden Comparator c
 
 ---
@@ -703,30 +703,30 @@ public class DemoMenge1 {
 <div>
 
 ```Java
-public class Haustier {
-  private String art;
-  private int gewicht;
+public class Pet {
+  private String species;
+  private int weight;
   //...
 
-  public boolean equals(Object objekt) {
-    // Alias-Check
-    if (this == objekt) {
+  public boolean equals(Object object) {
+    // alias check
+    if (this == object) {
         return true;
     }
-    // Test auf null
-    if (objekt == null){
+    // null check
+    if (object == null){
       return false;
     }
-    // Typverträglichkeit
-    if (objekt.getClass() != this.getClass()){
+    // type compatibility
+    if (object.getClass() != this.getClass()){
       return false;
     }
 
-    // Feldvergleich
-    if(!this.art.equals(((Haustier) objekt).getArt())){
+    // field comparison
+    if(!this.species.equals(((Pet) object).getSpecies())){
       return false;
     }
-    if(!(this.gewicht == ((Haustier) objekt).getGewicht())) {
+    if(!(this.weight == ((Pet) object).getWeight())) {
       return false;
     }
 
@@ -743,23 +743,23 @@ public class Haustier {
 <div>
 
 ```Java
-public class Hund extends Haustier {
-  private String rasse;
+public class Dog extends Pet {
+  private String breed;
   //...
 
-  public boolean equals(Object objekt) {
-    // Alias-Check
-    if (this == objekt){
+  public boolean equals(Object object) {
+    // alias check
+    if (this == object){
         return true;
     }
 
-    // Delegation an super
-    if (!super.equals(objekt)){
+    // delegation to super
+    if (!super.equals(object)){
       return false;
     }
 
-    // Feldvergleich
-    if (!this.rasse.equals(((Hund) objekt).getRasse())){
+    // field comparison
+    if (!this.breed.equals(((Dog) object).getBreed())){
         return false;
     }
 
@@ -789,33 +789,33 @@ public class Hund extends Haustier {
 ## Überschreiben von ```hashCode()```
 
 ```Java
-public class Haustier {
-  private String art;
-  private int gewicht;
+public class Pet {
+  private String species;
+  private int weight;
   //...
 
-  // Getter- und Setter-Methoden
-  public boolean equals(Object objekt) {
+  // getter and setter methods
+  public boolean equals(Object object) {
     //...
   }
 
   public int hashCode() {
-    return this.getArt().hashCode() ^ this.getGewicht();
+    return this.getSpecies().hashCode() ^ this.getWeight();
   }
 }
 ```
 
 ```Java
-public class Hund extends Haustier {
-  private String rasse;
+public class Dog extends Pet {
+  private String breed;
   //...
 
-  public boolean equals(Object objekt) {
+  public boolean equals(Object object) {
     //...
   }
 
   public int hashCode() {
-    return super.hashCode() ^ this.rasse.hashCode();
+    return super.hashCode() ^ this.breed.hashCode();
   }
 }
 ```
@@ -842,16 +842,16 @@ public class Hund extends Haustier {
 ## ```hashCode()``` – Alternative Implementierung
 
 ```Java
-public class Haustier {
-  private String art;
-  private int gewicht;
+public class Pet {
+  private String species;
+  private int weight;
 
   // ...
   public int hashCode() {
-    int hc = 17;              // beliebiger Initialwert
-    int hashMultiplier = 59;  // beliebige (kleine) Primzahl
+    int hc = 17;              // arbitrary initial value
+    int hashMultiplier = 59;  // arbitrary (small) prime number
 
-    hc = hc * hashMultiplier + (field==null) ? 0 : field.hashCode()) + gewicht;
+    hc = hc * hashMultiplier + ((species==null) ? 0 : species.hashCode()) + weight;
     return hc;
   }
 }
@@ -914,22 +914,22 @@ import java.util.TreeMap;
 
 public class DemoMap {
   public static void main(String[] args) {
-    TreeMap paar = new TreeMap();
-    paar.put(new Integer(130),new Hund(20, "Collie"));
-    paar.put(new Integer(110),new Hund(50, "Bernhardiner"));
-    paar.put(new Integer(100),new Hund(18, "Labrador"));
-    paar.put(new Integer(120),new Hund(30, "Schäferhund"));
-    paar.put(new Integer(130),new Hund(20, "Cocker"));
+    TreeMap map = new TreeMap();
+    map.put(new Integer(130),new Dog(20, "Collie"));
+    map.put(new Integer(110),new Dog(50, "Saint Bernard"));
+    map.put(new Integer(100),new Dog(18, "Labrador"));
+    map.put(new Integer(120),new Dog(30, "German Shepherd"));
+    map.put(new Integer(130),new Dog(20, "Cocker"));
 
-    Set schluessel = paar.keySet();
-    Iterator i = schluessel.iterator();
+    Set keys = map.keySet();
+    Iterator i = keys.iterator();
     while (i.hasNext()) {
       Integer a = (Integer) i.next();
-      Hund dog = (Hund) paar.get(a);
-      System.out.println("Schlüssel: " + a + " Wert: " + dog.getRasse());
+      Dog dog = (Dog) map.get(a);
+      System.out.println("Key: " + a + " Value: " + dog.getBreed());
     }
 
-    System.out.println(paar.size());
+    System.out.println(map.size());
   }
 }
 ```
@@ -1084,16 +1084,16 @@ import javax.swing.*;
 
 public class DemoFlow {
   public static void main(String[] args) {
-    JFrame fenster = new JFrame("Flow");
-    fenster.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    JFrame window = new JFrame("Flow");
+    window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     JPanel p = new JPanel(new FlowLayout(0));
-    p.add(new JLabel("Beschreibung"));
+    p.add(new JLabel("Description"));
     p.add(new JTextField(20));
 
-    fenster.getContentPane().add(p);
-    fenster.pack();
-    fenster.setVisible(true);
+    window.getContentPane().add(p);
+    window.pack();
+    window.setVisible(true);
   }
 }
 ```
@@ -1157,20 +1157,20 @@ import javax.swing.border.Border;
 
 public class DemoLogonScreen {
   public DemoLogonScreen() { ...
-    Border rahmen1 = BorderFactory.createEtchedBorder();
-    Border rahmen2 = BorderFactory.createTitledBorder(rahmen1, "Verbindung");
-    Border rahmen3 = BorderFactory.createTitledBorder(rahmen1, "Dateien");
-    Border rahmen4 = BorderFactory.createTitledBorder(rahmen1, "Berechtigungen");
-    Border rahmen5 = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
-    linkeEingabe.setBorder(rahmen2);
-    rechteEingabe1.setBorder(rahmen3);
-    rechteEingabe2.setBorder(rahmen4);
-    mainPanel.setBorder(rahmen5);
+    Border border1 = BorderFactory.createEtchedBorder();
+    Border border2 = BorderFactory.createTitledBorder(border1, "Connection");
+    Border border3 = BorderFactory.createTitledBorder(border1, "Files");
+    Border border4 = BorderFactory.createTitledBorder(border1, "Permissions");
+    Border border5 = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
+    leftInput.setBorder(border2);
+    rightInput1.setBorder(border3);
+    rightInput2.setBorder(border4);
+    mainPanel.setBorder(border5);
     // ...
   }
 
   public static void main(String[] args) {
-    DemoLogonScreen fenster = new DemoLogonScreen();
+    DemoLogonScreen window = new DemoLogonScreen();
   }
 }
 ```
@@ -1204,13 +1204,13 @@ import javax.swing.*;
 
 public class DemoLabelGrafik {
   public static void main(String[] args) {
-    JFrame fenster = new JFrame("Bild und Label"); fenster.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); fenster.setLayout(new GridLayout(2,1));
-    JLabel text = new JLabel("Hier kommt eine Grafik:");
-    ImageIcon img = new ImageIcon("G:/BA/Vorlesungen/Programmierung/Demos Vorlesung/Eclipse.jpg"); JLabel bild = new JLabel(img);
-    fenster.getContentPane().add(text);
-    fenster.getContentPane().add(bild);
-    fenster.pack();
-    fenster.setVisible(true);
+    JFrame window = new JFrame("Image and Label"); window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); window.setLayout(new GridLayout(2,1));
+    JLabel text = new JLabel("Here comes a graphic:");
+    ImageIcon img = new ImageIcon("G:/BA/Vorlesungen/Programmierung/Demos Vorlesung/Eclipse.jpg"); JLabel image = new JLabel(img);
+    window.getContentPane().add(text);
+    window.getContentPane().add(image);
+    window.pack();
+    window.setVisible(true);
   }
 }
 
@@ -1331,7 +1331,7 @@ public class DemoLabelGrafik {
 * der ItemListener ist als Interface implementiert
 * das Interface gibt die abstrakte Methode ```itemStateChanged(ItemEvent e)``` vor
 * das Interface wird von Objekten implementiert, die an einem Auswahlereignis interessiert sind
-* Auswahlereignisse können von Objekten folgender Klassen ausgelöst werden: ```JComboBox```, ```JCkeckBox```, ```JList``` oder ```JCheckBoxMenuItem```
+* Auswahlereignisse können von Objekten folgender Klassen ausgelöst werden: ```JComboBox```, ```JCheckBox```, ```JList``` oder ```JCheckBoxMenuItem```
 * die Zuordnung zu einem ItemListener erfolgt über die jeweiligen Objekt-Methoden ```addItemListener()``` oder ```removeItemListener()```
 * wird ein Eintrag bei o.g. Objekten ausgewählt, wird implizit die Methode ```itemStateChanged(ItemEvent e)``` bei allen bei dem Objekt registrierten ```ItemListenern``` ausgeführt
 * Beispiel: beim Setzen des Hakens wird ein zusätzliches Feld eingeblendet
@@ -1353,28 +1353,28 @@ public class DemoJComboBox {
   // ...
   public DemoJComboBox() {
     // ...
-    ItemListener zuhoerer = new ItemListener() {
+    ItemListener listener = new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
-        JComboBox auswahl = (JComboBox)e.getSource();
-        if(auswahl.getSelectedItem().equals("sonstiges")) {
-          sonstLabel.setVisible(true);
-          sonst.setVisible(true);
+        JComboBox selection = (JComboBox)e.getSource();
+        if(selection.getSelectedItem().equals("other")) {
+          otherLabel.setVisible(true);
+          other.setVisible(true);
         } else {
-          sonstLabel.setVisible(false);
-          sonst.setVisible(false);
+          otherLabel.setVisible(false);
+          other.setVisible(false);
         }
       }
     };
 
-    Object[] werte = {"DVD", "VCD", "VHS", "SVCD", "sonstiges"};
+    Object[] values = {"DVD", "VCD", "VHS", "SVCD", "other"};
 
-    JComboBox medium = new JComboBox(werte);
-    medium.addItemListener(zuhoerer);
+    JComboBox medium = new JComboBox(values);
+    medium.addItemListener(listener);
     //...
   }
 
   public static void main(String[] args) {
-    DemoJComboBox fenster = new DemoJComboBox();
+    DemoJComboBox window = new DemoJComboBox();
   }
 }
 ```
@@ -1413,14 +1413,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 // ...
 
-public class DemoButton { public DemoButton() {
+public class DemoButton {
   public DemoButton() {
     // ...
-    ActionListener zuhoerer = new ActionListener() {
+    ActionListener listener = new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        String ereignis = e.getActionCommand();
-        if (ereignis.equals("OK")) {
-          System.out.println("Es wurde OK gedrückt.");
+        String event = e.getActionCommand();
+        if (event.equals("OK")) {
+          System.out.println("OK was pressed.");
         } else {
           System.exit(0);
         }
@@ -1428,14 +1428,14 @@ public class DemoButton { public DemoButton() {
     };
 
     JButton ok = new JButton("OK");
-    ok.addActionListener(zuhoerer);
+    ok.addActionListener(listener);
     JButton exit = new JButton("Exit");
-    exit.addActionListener(zuhoerer);
+    exit.addActionListener(listener);
     //...
   }
 
   public static void main(String[] args) {
-    DemoButton fenster = new DemoButton(); }
+    DemoButton window = new DemoButton(); }
   }
 }
 ```
@@ -1458,7 +1458,7 @@ public class DemoButton { public DemoButton() {
 </div><!-- .element style="font-size: 0.9em;" -->
 
 ----
-## Beispiel: ```JCkeckBox``` mit ```ItemListener```
+## Beispiel: ```JCheckBox``` mit ```ItemListener```
 
 <div>
 
@@ -1470,12 +1470,12 @@ public class DemoJCheckBox {
   // ...
 
 
-  private ItemListener hoerer1 = new ItemListener() {
+  private ItemListener listener1 = new ItemListener() {
     public void itemStateChanged(ItemEvent e) {
       if (e.getStateChange() == ItemEvent.SELECTED) {
-        ueber.setText("Datei wird überschrieben");
+        overwrite.setText("File will be overwritten");
       } else {
-        ueber.setText("Datei wird nicht überschrieben");
+        overwrite.setText("File will not be overwritten");
       }
     }
   };
@@ -1483,13 +1483,13 @@ public class DemoJCheckBox {
 
   public DemoJCheckBox() {
     // ...
-    JCheckBox ueber = new JCheckBox("Datei wird nicht überschrieben", false);
-    ueber.addItemListener(hoerer1);
+    JCheckBox overwrite = new JCheckBox("File will not be overwritten", false);
+    overwrite.addItemListener(listener1);
     // ...
   }
 
   public static void main(String[] args) {
-    DemoJCheckBox fenster = new DemoJCheckBox(); }
+    DemoJCheckBox window = new DemoJCheckBox(); }
   }
 }
 
@@ -1526,14 +1526,14 @@ import java.awt.event.ActionListener;
 
 public class DemoRadioButton {
 
-  private ActionListener hoerer2 = new ActionListener() {
+  private ActionListener listener2 = new ActionListener() {
     public void actionPerformed(ActionEvent e) {
       if (opt1 == e.getSource()) {
-        System.out.println("Datei kann nur gelesen werden");
+        System.out.println("File can only be read");
       } else if (opt2 == e.getSource()) {
-        System.out.println("Datei kann nur geschrieben werden");
+        System.out.println("File can only be written");
       } else if (opt3 == e.getSource()) {
-        System.out.println("Datei kann gelesen und geschrieben werden");
+        System.out.println("File can be read and written");
       }
     }
   };
@@ -1541,10 +1541,10 @@ public class DemoRadioButton {
 
   public DemoRadioButton() {
     // ...
-    opt1 = new JRadioButton("Nur Lesen",true);
-    opt1.addActionListener(hoerer2);
-    opt2 = new JRadioButton("Nur Schreiben",false);
-    opt2.addActionListener(hoerer2);
+    opt1 = new JRadioButton("Read only",true);
+    opt1.addActionListener(listener2);
+    opt2 = new JRadioButton("Write only",false);
+    opt2.addActionListener(listener2);
     optGroup = new ButtonGroup();
     optGroup.add(opt1);
     optGroup.add(opt2);
@@ -1553,7 +1553,7 @@ public class DemoRadioButton {
   }
 
   public static void main(String[] args) {
-    DemoRadioButton fenster = new DemoRadioButton();
+    DemoRadioButton window = new DemoRadioButton();
   }
 }
 
@@ -1586,27 +1586,27 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class DemoJMenuBar {
-  private ActionListener hoerer = new ActionListener() {
+  private ActionListener listener = new ActionListener() {
     public void actionPerformed(ActionEvent e) {
-      String ereignis = e.getActionCommand();
-      if (ereignis.equals("Beenden")){
-        System.exit(0);  
+      String event = e.getActionCommand();
+      if (event.equals("Quit")){
+        System.exit(0);
       } else {
-        System.out.println(ereignis);
+        System.out.println(event);
       }
     }
   };
 
   public DemoJMenuBar() { ...
-    JMenuBar menue = new JMenuBar();
+    JMenuBar menuBar = new JMenuBar();
     // ...
-    JMenu bea = new JMenu("Bearbeiten");
-    JMenuItem aus = new JMenuItem("Ausschneiden"); ...
-    aus.addActionListener(hoerer); bea.add(aus);
+    JMenu edit = new JMenu("Edit");
+    JMenuItem cut = new JMenuItem("Cut"); ...
+    cut.addActionListener(listener); edit.add(cut);
     // ...
-    menue.add(bea);
+    menuBar.add(edit);
     // ...
-    fenster.setJMenuBar(menue);
+    window.setJMenuBar(menuBar);
   }
   // ...
 }
@@ -1635,13 +1635,13 @@ public class DemoToolTip {
   public DemoToolTip() {
     //...
     JButton ok = new JButton("OK");
-    ok.addActionListener(zuhoerer);
-    ok.setToolTipText("Führt die Funktion aus");
+    ok.addActionListener(listener);
+    ok.setToolTipText("Executes the function");
     // ...
   }
 
   public static void main(String[] args) {
-    DemoToolTip fenster = new DemoToolTip();
+    DemoToolTip window = new DemoToolTip();
   }
 }
 ```
@@ -1706,14 +1706,14 @@ Wichtige Methoden der Klasse File
 ```Java
 import java.io.File;
 
-public class AusgabeVerzeichnis {
+public class PrintDirectory {
   public static void main(String[] args) {
 
-    File[] laufwerke = File.listRoots();
+    File[] drives = File.listRoots();
 
-    for (int i = 0; i < laufwerke.length; i++) {
-      System.out.println(laufwerke[i].getPath()
-        + (laufwerke[i].exists() ? " ist aktiviert" : " ist deaktiviert"));
+    for (int i = 0; i < drives.length; i++) {
+      System.out.println(drives[i].getPath()
+        + (drives[i].exists() ? " is active" : " is inactive"));
       }
     }
 }
@@ -1728,18 +1728,18 @@ public class AusgabeVerzeichnis {
 ```Java
 import java.io.File;
 
-public class VerzeichnisEigenschaften {
+public class DirectoryProperties {
   public static void main(String[] args) {
-    File verzeichnis = new File("G:/BA/Vorlesungen/Programmierung/Skript");
+    File directory = new File("G:/BA/Vorlesungen/Programmierung/Skript");
 
-    if (verzeichnis.exists() && verzeichnis.isDirectory()) {
-      System.out.println("Vorgänger:\t" + verzeichnis.getParent());
-      System.out.println("Pfad:\t\t" + verzeichnis.getPath());
-      System.out.println("Name:\t\t" + verzeichnis.getName());
-      File[] liste = verzeichnis.listFiles();
+    if (directory.exists() && directory.isDirectory()) {
+      System.out.println("Parent:\t" + directory.getParent());
+      System.out.println("Path:\t\t" + directory.getPath());
+      System.out.println("Name:\t\t" + directory.getName());
+      File[] list = directory.listFiles();
     } else {
-      System.out.println(" Das Verzeichnis "
-                      + verzeichnis.getPath() + " existiert nicht.");
+      System.out.println(" The directory "
+                      + directory.getPath() + " does not exist.");
     }
   }
 }
@@ -1764,20 +1764,20 @@ public class VerzeichnisEigenschaften {
 ```Java
 import java.io.File;
 
-public class DateiEigenschaften {
+public class FileProperties {
   public static void main(String[] args) throws Exception {
 
-    File datei = new File("G:/BA/Vorlesungen/Programmierung/Skript/Programmierung 1.ppt");
+    File file = new File("G:/BA/Vorlesungen/Programmierung/Skript/Programmierung 1.ppt");
 
-    if (datei.exists() && datei.isFile()) {
-      System.out.println("Name der Datei:\t\t" + datei.getName()
-                          + "\nSpeicherort der Datei:\t" + datei.getPath()
-                          + "\nPfad der Datei:\t\t" + datei.getParent()
-                          + "\nGrösse der Datei:\t" + datei.length() + " Byte"
-                          + "\nBerechtigung (r/w):\t" + datei.canRead() + " " + datei.canWrite()
-                          + "\nZuletzt geändert:\t" + datei.lastModified());
+    if (file.exists() && file.isFile()) {
+      System.out.println("File name:\t\t" + file.getName()
+                          + "\nFile location:\t" + file.getPath()
+                          + "\nFile path:\t\t" + file.getParent()
+                          + "\nFile size:\t" + file.length() + " Byte"
+                          + "\nPermissions (r/w):\t" + file.canRead() + " " + file.canWrite()
+                          + "\nLast modified:\t" + file.lastModified());
     } else {
-      System.out.println(" Die Datei " + datei.getName() + " existiert nicht.");
+      System.out.println(" The file " + file.getName() + " does not exist.");
     }
   }
 }
@@ -1801,26 +1801,26 @@ public class DateiEigenschaften {
 ```Java
 import java.io.File;
 
-public class Verzeichnis {
+public class Directory {
   public static void main(String[] args) {
 
-    File verzeichnis = new File(System.getProperty("user.dir"));
-    File neuerOrdner = new File(verzeichnis.getPath() + "/demoPfad/");
-    File neuerOrdner2 = new File(verzeichnis.getPath() + "/demoPfad2/");
+    File directory = new File(System.getProperty("user.dir"));
+    File newFolder = new File(directory.getPath() + "/demoPath/");
+    File newFolder2 = new File(directory.getPath() + "/demoPath2/");
 
-    if (!neuerOrdner.exists()) {
-      neuerOrdner.mkdir();
-      System.out.println("Der Pfad wurde angelegt.");
+    if (!newFolder.exists()) {
+      newFolder.mkdir();
+      System.out.println("The path was created.");
     }
 
-    if (!neuerOrdner2.exists()) {
-      neuerOrdner.renameTo(neuerOrdner2);
-      System.out.println("Der Pfad wurde umbenannt.");
+    if (!newFolder2.exists()) {
+      newFolder.renameTo(newFolder2);
+      System.out.println("The path was renamed.");
     }
 
-    if (neuerOrdner2.exists()) {
-      neuerOrdner2.delete(); // Setzt voraus, dass der Ordner leer ist
-      System.out.println("Der Pfad wurde gelöscht.");
+    if (newFolder2.exists()) {
+      newFolder2.delete(); // requires the folder to be empty
+      System.out.println("The path was deleted.");
     }
   }
 }
@@ -1838,26 +1838,26 @@ public class Verzeichnis {
 import java.io.File;
 import java.io.IOException;
 
-public class Dateien {
+public class Files {
   public static void main(String[] args) {
-    File verzeichnis = new File(System.getProperty("user.dir"));
-    File neueDatei = new File(verzeichnis.getParent() + "/MeineDatei.txt");
-    File neueDatei2 = new File(verzeichnis.getParent() + "/MeineDatei2.txt");
+    File directory = new File(System.getProperty("user.dir"));
+    File newFile = new File(directory.getParent() + "/MyFile.txt");
+    File newFile2 = new File(directory.getParent() + "/MyFile2.txt");
 
     try {
-      if (!neueDatei.exists()) {
-        neueDatei.createNewFile();
+      if (!newFile.exists()) {
+        newFile.createNewFile();
       }
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    if (!neueDatei2.exists()) {
-      neueDatei.renameTo(neueDatei2);
+    if (!newFile2.exists()) {
+      newFile.renameTo(newFile2);
     }
 
-    if (neueDatei2.exists()) {
-      neueDatei2.delete();
+    if (newFile2.exists()) {
+      newFile2.delete();
     }
   }
 }
@@ -1932,8 +1932,7 @@ Ausgabestrom
 |:---------------------------------|:-------------------------------------|:-----------|
 |```OutputStream```|```Writer```|Abstrakte Klasse für Zeichenausgabe oder Byte-Ausgabe|
 |```BufferedOutputStream```|```BufferedWriter```|Puffert die Eingabe|
-|```ByteArrayOutputStream```|```LineNumberReader```|Ausgabe des Puffers, nutzt passendes Zeilenendezeichen|
-|```ByteArrayInputStream```|```CharArrayWriter```|Schreibt Arrays|
+|```ByteArrayOutputStream```|```CharArrayWriter```|Schreibt in ein Byte-Array bzw. Char-Array|
 |(keine Entsprechung)|```OutputStreamWriter```|Übersetzt Zeichen-Stream in Byte-Stream|
 |```FileOutputStream```|```FileWriter```|Schreibt in eine Datei|
 
@@ -1947,7 +1946,7 @@ Vordefinierte In- und Outputstreams in der Klasse ```System```
 
 Besondere Stream-Klassen für Standardgeräte
 * ```System.in``` für die Tastatur
-  * Vom Typ ```BufferedInputStream```
+  * Vom Typ ```InputStream```
   * Vorsicht: Checked Exception
 * ```System.out``` für den Monitor
 
@@ -1977,20 +1976,20 @@ Konvertierung der Übergabeparameter
 ```Java
 import java.io.IOException;
 
-public class EingabeTastatur {
+public class KeyboardInput {
   public static void main(String[] args) {
-    byte[] eingabe = new byte[255];
+    byte[] input = new byte[255];
 
-    System.out.print("Geben Sie einen Text ein:");
+    System.out.print("Enter a text:");
 
     try {
-      System.in.read(eingabe, 0, 255);
+      System.in.read(input, 0, 255);
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    System.out.println(eingabe);
-    System.out.println(new String(eingabe));
+    System.out.println(input);
+    System.out.println(new String(input));
   }
 }
 ```
@@ -2002,23 +2001,23 @@ public class EingabeTastatur {
 ```Java
 import java.io.*;
 
-public class EingabeTastaturString {
+public class KeyboardInputString {
   public static void main(String[] args) {
 
     InputStreamReader strRead = new InputStreamReader(System.in);
-    BufferedReader bufString = new BufferedReader(strRead);
+    BufferedReader readBuffer = new BufferedReader(strRead);
 
-    String eingabe = "";
+    String input = "";
 
-    System.out.println("Geben Sie Ihren Text ein: ");
+    System.out.println("Enter your text: ");
 
     try {
-      eingabe = bufString.readLine();
+      input = readBuffer.readLine();
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    System.out.println(new String(eingabe));
+    System.out.println(new String(input));
   }
 }
 ```
@@ -2051,19 +2050,19 @@ Schreiben in Dateien
 ```Java
 import java.io.*;
 
-public class LesenAusDatei {
+public class ReadFromFile {
   public static void main(String[] args) {
-    File datei = new File(System.getProperty("user.dir") + "\\DemoLesen.txt");
+    File file = new File(System.getProperty("user.dir") + "\\DemoLesen.txt");
 
     String text = new String();
 
     try {
-      FileReader leser = new FileReader(datei);
-      BufferedReader lesePuffer = new BufferedReader(leser);
+      FileReader reader = new FileReader(file);
+      BufferedReader readBuffer = new BufferedReader(reader);
 
       String line;
 
-      while ((line = bufferedRenameFileReader.readLine()) != null) {
+      while ((line = readBuffer.readLine()) != null) {
         System.out.println(line);
       }
 
@@ -2086,20 +2085,20 @@ public class LesenAusDatei {
 ```Java
 import java.io.*;
 
-public class SchreibenInDatei {
+public class WriteToFile {
   public static void main(String[] args) {
-    File datei = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
-    FileWriter schreiber = null;
+    File file = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
+    FileWriter writer = null;
 
     try {
-      schreiber = new FileWriter(datei);
-      datei.createNewFile();
-      schreiber.write("Dies ist eine Schreibdemo.");
-      schreiber.write("Es werden mehrere Zeilen geschrieben.");
+      writer = new FileWriter(file);
+      file.createNewFile();
+      writer.write("This is a write demo.");
+      writer.write("Multiple lines are being written.");
     } catch (IOException e) { e.printStackTrace();
     } finally {
       try {
-        schreiber.close();
+        writer.close();
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -2114,20 +2113,20 @@ public class SchreibenInDatei {
 ## Rückblick - Exception Handling: try-with-Resource
 
 * vermeiden unschöner Schachtelung von try-Blöcken
-* Voraussetzung: Resource implementiert ```Closable```
+* Voraussetzung: Resource implementiert ```Closeable```
 * automatisches schließen der Resourcen nach try-Block, Exceptions beim schließen werden innerhalb der Catch-Blöcke mit abgefangen
 
 ```Java
 import java.io.*;
 
-public class SchreibenInDatei {
+public class WriteToFile {
   public static void main(String[] args) {
-    File datei = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
+    File file = new File(System.getProperty("user.dir") + "\\DemoLesen2.txt");
 
-    try (FileWriter schreiber = new FileWriter(datei)) {
-      datei.createNewFile();
-      schreiber.write("Dies ist eine Schreibdemo.");
-      schreiber.write("Es werden mehrere Zeilen geschrieben.");
+    try (FileWriter writer = new FileWriter(file)) {
+      file.createNewFile();
+      writer.write("This is a write demo.");
+      writer.write("Multiple lines are being written.");
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -2143,18 +2142,18 @@ public class SchreibenInDatei {
 ```Java
 import java.io.*;
 
-public class DateiKopieren {
+public class CopyFile {
   public static void main(String[] args) {
-    File quelle = new File(System.getProperty("user.dir") + "/Eclipse.jpg");
-    File ziel = new File(System.getProperty("user.dir") + "/Eclipse2.jpg");
+    File source = new File(System.getProperty("user.dir") + "/Eclipse.jpg");
+    File target = new File(System.getProperty("user.dir") + "/Eclipse2.jpg");
 
-    byte[] puffer = new byte[(int)quelle.length()];
+    byte[] buffer = new byte[(int)source.length()];
 
-    try (FileInputStream leser = new FileInputStream(quelle);
-          FileOutputStream schreiber = new FileOutputStream(ziel)) {
+    try (FileInputStream reader = new FileInputStream(source);
+          FileOutputStream writer = new FileOutputStream(target)) {
 
-      int byteRead = leser.read(puffer);
-      schreiber.write(puffer, 0, byteRead);
+      int byteRead = reader.read(buffer);
+      writer.write(buffer, 0, byteRead);
 
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -2174,25 +2173,25 @@ public class DateiKopieren {
 ```Java
 import java.io.*;
 
-public class DateiKopierenMitPuffer2 {
+public class CopyFileWithBuffer {
   public static void main(String[] args) {
     final int BUF_SIZE = 1;
-    File quelle = new File(System.getProperty("user.dir") + "/Eclipse.jpg");
-    File ziel = new File(System.getProperty("user.dir") + "/Eclipse2.jpg");
+    File source = new File(System.getProperty("user.dir") + "/Eclipse.jpg");
+    File target = new File(System.getProperty("user.dir") + "/Eclipse2.jpg");
 
     int i = 0;
-    int puffer = 0;
+    int bytesRead = 0;
     byte[] buffer = new byte[BUF_SIZE];
 
-    try (FileInputStream leser = new FileInputStream(quelle);
-          FileOutputStream schreiber = new FileOutputStream(ziel)) {
+    try (FileInputStream reader = new FileInputStream(source);
+          FileOutputStream writer = new FileOutputStream(target)) {
 
       while (true){
-        puffer = leser.read(buffer, i, BUF_SIZE);
-        if (puffer == -1){
+        bytesRead = reader.read(buffer, i, BUF_SIZE);
+        if (bytesRead == -1){
             break;
         }
-        schreiber.write(buffer, i, BUF_SIZE);
+        writer.write(buffer, i, BUF_SIZE);
       }
 
     } catch (FileNotFoundException e) {
@@ -2353,16 +2352,16 @@ Umsetzung in Java
 import java.io.*;
 import java.util.*;
 
-public class PropertiesSpeichernDemo {
+public class PropertiesSaveDemo {
   public static void main(String[] args) {
 
-    File propDateiName = new File(System.getProperty("user.dir") + "\\Demo2.properties");
+    File propFileName = new File(System.getProperty("user.dir") + "\\Demo2.properties");
 
-    try (FileOutputStream propDatei = new FileOutputStream(propDateiName)) {
+    try (FileOutputStream propFile = new FileOutputStream(propFileName)) {
       Properties prop = new Properties();
       prop.setProperty("Name", "Michael Lang");
-      prop.setProperty("Language", "Deutsch");
-      prop.store(propDatei, "Dies ist der Kommentar");
+      prop.setProperty("Language", "German");
+      prop.store(propFile, "This is the comment");
 
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -2378,10 +2377,10 @@ public class PropertiesSpeichernDemo {
 
 Ergebnis (in Demo2.properties Datei):
 ```
-#Dies ist der Kommentar
+#This is the comment
 #Sun Mar 19 17:29:02 CET 2006
 Name=Michael Lang
-Language=Deutsch
+Language=German
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
 
@@ -2394,18 +2393,18 @@ Language=Deutsch
 import java.io.*;
 import java.util.*;
 
-public class PropertiesLadenDemo {
+public class PropertiesLoadDemo {
   public static void main(String[] args) {
-    File propDateiName = new File(System.getProperty("user.dir") + "\\Demo2.properties");
+    File propFileName = new File(System.getProperty("user.dir") + "\\Demo2.properties");
 
-    try (FileInputStream propDatei = new FileInputStream(propDateiName)){
+    try (FileInputStream propFile = new FileInputStream(propFileName)){
 
       Properties prop = new Properties();
-      prop.load(propDatei);
+      prop.load(propFile);
       prop.list(System.out);
 
-      System.out.println("\nHallo " + prop.getProperty("Name"));
-      System.out.println("Sie bekommen die Texte in " + prop.getProperty("Language") + " angezeigt.");
+      System.out.println("\nHello " + prop.getProperty("Name"));
+      System.out.println("You will see the texts in " + prop.getProperty("Language") + ".");
 
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -2423,10 +2422,10 @@ public class PropertiesLadenDemo {
 Ergebnis (Ausgabe auf Konsole):
 ```
 -- listing properties --
-Language=Deutsch
+Language=German
 Name=Michael Lang
-Hallo Michael Lang
-Sie bekommen die Texte in Deutsch angezeigt.
+Hello Michael Lang
+You will see the texts in German.
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
 
@@ -2437,9 +2436,9 @@ Sie bekommen die Texte in Deutsch angezeigt.
 
 Demo.properties Datei:
 ```
-#Dies ist der Kommentar
+#This is the comment
 
-dyna=Text mit einem beliebigen Parameter. : {0}
+dyna=Text with an arbitrary parameter. : {0}
 dany2={2}{0}{1}{1}{3}{4}
 ```
 </div><!-- .element style="font-size: 0.55em;" -->
@@ -2463,13 +2462,13 @@ public class PropertiesDemo {
       e.printStackTrace();
     }
 
-    // Umgang mit dynamischen Texten
-    MessageFormat nachricht = new MessageFormat(settings.getProperty("dyna"));
-    Object[] text = {"mein Text"};
-    System.out.println(nachricht.format(text));
-    nachricht = new MessageFormat(settings.getProperty("dyna2")); // olha
+    // handling dynamic texts
+    MessageFormat message = new MessageFormat(settings.getProperty("dyna"));
+    Object[] text = {"my text"};
+    System.out.println(message.format(text));
+    message = new MessageFormat(settings.getProperty("dyna2")); // olha
     Object[] text2 = {"o","l","H","a","!"};
-    System.out.println(nachricht.format(text2));
+    System.out.println(message.format(text2));
   }
 }
 ```
@@ -2479,8 +2478,8 @@ public class PropertiesDemo {
 
 Ergebnis (Ausgabe auf Konsole):
 ```
-Text mit einem beliebigen Parameter. : mein Text
-Hallo!
+Text with an arbitrary parameter. : my text
+Hello!
 ```
 </div><!-- .element style="font-size: 0.55em;" -->
 
@@ -2553,8 +2552,8 @@ public class BundleDemo {
 
 Ergebnis (Ausgabe auf Konsole):
 ```
-China: Dies ist der Standardtext.
-Deutsch: Dies ist die deutsche Variante.
+China: This is the default text.
+Deutsch: This is the German version.
 English: This is the english version.
 ```
 </div><!-- .element style="font-size: 0.6em;" -->
@@ -2566,7 +2565,7 @@ DemoBundle.properties (Default):
 ```
 #DemoBundle.properties
 
-alias=Dies ist der Standardtext.
+alias=This is the default text.
 
 ```
 
@@ -2574,7 +2573,7 @@ DemoBundle_de.properties (Deutsch):
 ```
 #DemoBundle_de.properties
 
-alias=Dies ist die deutsche Variante.
+alias=This is the German version.
 ```
 
 DemoBundle_en.properties (English):
@@ -2620,7 +2619,7 @@ alias=This is the english version.
   * (Warte-)Schlange (Queue)
   * Binärbaum (Binary Tree)
 * Sie können Iteration und Rekursion unterscheiden und passend anwenden
-* Sie können Angaben zu Komplixitäten von Algorithmen (Funktionen) auf den Datenstrukturen machen
+* Sie können Angaben zu Komplexitäten von Algorithmen (Funktionen) auf den Datenstrukturen machen
 
 ---
 ## Listen

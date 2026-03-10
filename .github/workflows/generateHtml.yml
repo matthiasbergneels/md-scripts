@@ -1,6 +1,7 @@
 name: generateHtml
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -9,28 +10,46 @@ jobs:
 
     steps:
     - name: Setup Node Environment
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
-    
+
     - name: checkout main
-      uses: actions/checkout@v2
-    
+      uses: actions/checkout@v4
+
+    - name: Install Chromium system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libgbm-dev \
+          libasound2t64 \
+          libxrandr2 \
+          libxss1 \
+          libgtk-3-0 \
+          libnss3 \
+          libatk-bridge2.0-0 \
+          libdrm2 \
+          libxcomposite1 \
+          libxdamage1 \
+          libxfixes3 \
+          libxkbcommon0 \
+          libpango-1.0-0
+
     - name: Setup project
       run: npm install
-    
+
     - name: Generate HTML static folder docs
       run: npm run publishHtml
-    
+
     - name: Commit static HTML files
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add .
         git commit -m "Automated HTML generation for GitHub Pages"
-    
-    - name: GitHub Push changes to main branch
+
+    - name: GitHub Push changes to current branch
       uses: ad-m/github-push-action@v0.6.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main
+        branch: ${{ github.ref }}
