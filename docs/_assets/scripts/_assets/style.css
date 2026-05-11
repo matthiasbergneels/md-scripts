@@ -1,0 +1,12 @@
+.reveal {
+    font-size: 25px;
+}
+.reveal p {
+    text-align: left;
+}
+.reveal ul {
+    display: block;
+}
+.reveal ol {
+    display: block;
+}

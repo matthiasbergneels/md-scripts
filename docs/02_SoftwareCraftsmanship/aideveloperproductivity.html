@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>AI and Developer Productivity</title>
+    <link rel="shortcut icon" href="./../favicon.ico" />
+    <link rel="stylesheet" href="./../dist/reset.css" />
+    <link rel="stylesheet" href="./../dist/reveal.css" />
+    <link rel="stylesheet" href="./../dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="./../css/highlight/base16/zenburn.css" />
+
+    <link rel="stylesheet" href="./../_assets/scripts/_assets/style.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
+
+# AI and Developer Productivity  
+### [Insights from a 2025 RCT Study](https://arxiv.org/pdf/2507.09089)
+
+----
+
+## Study Goal
+- Measure the **real-world impact of AI tools** on developer productivity  
+- Focus on **experienced open-source maintainers** in large projects  
+- Compare:  
+  - **AI allowed** (Cursor Pro + Claude 3.5/3.7)  
+  - **AI disallowed**  
+- Move beyond synthetic benchmarks → **field experiment in practice**  
+
+----
+
+## Study Setup
+- 16 experienced open-source developers  
+- 246 real issues in large, mature projects (Ø 5 years repo experience)  
+- Expectation: 24–39% faster completion with AI  
+
+----
+
+## Main Results
+- **Reality: +19% longer completion time with AI**  
+- 75% of developers were slower, few saw small speedups  
+- Both developers and experts overestimated benefits  
+- Perception bias: even after the study, devs *believed* AI sped them up  
+
+----
+
+## Reasons for Slowdown
+- **Over-optimism**: using AI even when not helpful  
+- **Complexity**: millions of LOC, strict quality standards, many tacit rules  
+- **Low reliability**: <44% of AI suggestions accepted  
+- **Missing context**: AI lacked implicit repository knowledge  
+
+----
+
+## Key Takeaways
+- Benchmarks ≠ Reality: real-world software is far more complex  
+- Experts and developers significantly overestimate AI’s impact  
+- AI adds extra overhead (review, correction, waiting)  
+- Gains are more likely in:  
+  - small/greenfield projects  
+  - less experienced teams  
+  - better-tailored AI tooling  
+
+----
+
+## Critical Reflections
+- **Very specific setting**: senior maintainers in large OSS repos  
+- **Short tasks (≤ 2h)**: not representative for all development work  
+- **Incentives ($150/h)** may have shaped behavior  
+- **AI tools** (Claude 3.5/3.7, Cursor Pro) are not the absolute frontier anymore  
+
+----
+
+## Study Criticism
+- **Narrow scope**: highly experienced devs in large, mature projects – not generalizable  
+- **Task design**: capped at 2h, bias toward “quick wins” where AI adds little  
+- **Incentives**: paid by the hour → may reduce pressure to optimize for speed  
+- **AI snapshot**: tools were strong in early 2025, but quickly outdated  
+- **Experimental bias**: awareness of being in a study could affect AI usage patterns  
+
+----
+
+## Conclusion
+- **Today**: AI can *slow down* experienced devs in complex projects  
+- **Tomorrow**: with better models, scaffolding, and fine-tuning → real speedups possible  
+- Lesson: **field experiments > lab benchmarks**  
+
+----
+
+## Personal Note
+- AI is becoming an integral part of software engineering workflows  
+- **Risk**: over-reliance on AI in unfamiliar codebases → weaker personal understanding  
+- Developers may become **dependent on AI** for navigation and context instead of building deep expertise  
+- Balance needed: use AI as *support*, not a crutch  
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="./../dist/reveal.js"></script>
+
+    <script src="./../mermaid/dist/mermaid.min.js"></script>
+
+    <script src="./../plugin/markdown/markdown.js"></script>
+    <script src="./../plugin/highlight/highlight.js"></script>
+    <script src="./../plugin/zoom/zoom.js"></script>
+    <script src="./../plugin/notes/notes.js"></script>
+    <script src="./../plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"transition":"slide","transitionSpeed":"slow","controls":true,"progress":true,"slideNumber":"c/t","hash":true,"previewLinks":true,"_":["scripts/"],"static":"docs","static-dirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","staticDirs":"scripts/01_Programmieren_Vorlesung/img,scripts/02_SoftwareCraftsmanship/img,scripts/pdfdownloads,scripts/03_OtherStuff/img","css":"scripts/_assets/style.css"}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
+    </script>
+  </body>
+</html>
