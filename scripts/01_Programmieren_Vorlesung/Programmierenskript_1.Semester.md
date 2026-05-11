@@ -1,9 +1,10 @@
 ---
-title: Programmieren I
-theme: simple
-data-separator-notes: '^Note:'
-center: false
-
+slides:
+  title: Programmieren I
+  theme: simple
+  separator_notes: '^Note:'
+revealjs:
+  center: false
 ---
 
 > Sie legen die Basis für den Weg als erfolgreicher Softwareengineer durch grundlegenden Programmierkenntnissen am Beispiel von ```Java```
@@ -2148,7 +2149,6 @@ public
 * die Sichtbarkeit bei überschriebenen Methoden darf erhöht aber nicht eingeschränkt werden
 </div><!-- .element style="font-size: 0.8em;" -->
 
-----
 ----
 ### Mini-Exkurs: Enum als veerbte Klasse
 * Enums Erben von java.lang.Enum

@@ -1,0 +1,16 @@
+/* Kleinerer Base-Font damit mehr Inhalt auf eine Folie passt */
+.reveal {
+    font-size: 32px;
+}
+
+/* Scrollbar bei zu viel Inhalt */
+.reveal .slides > section,
+.reveal .slides > section > section {
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Code-Blöcke: heller Hintergrund, gut für Druck */
+.reveal pre code {
+    max-height: none;
+}
